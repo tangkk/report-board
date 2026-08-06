@@ -37,7 +37,10 @@ const sectors = [
   { name: "网络与光通信", tone: "blue", stocks: [["NYSE:ANET", "ANET", "数据中心交换机"], ["NASDAQ:MRVL", "MRVL", "高速互联芯片"], ["NYSE:COHR", "COHR", "光通信器件"], ["NASDAQ:LITE", "LITE", "光学与激光器件"], ["NASDAQ:CSCO", "CSCO", "网络设备"], ["NYSE:CIEN", "CIEN", "光网络"]] },
   { name: "数据中心设施", tone: "amber", stocks: [["NYSE:VRT", "VRT", "供电与液冷"], ["NYSE:ETN", "ETN", "电气设备"], ["NYSE:PWR", "PWR", "电网工程"], ["NYSE:MOD", "MOD", "热管理"]] },
   { name: "电力与能源", tone: "lime", stocks: [["NASDAQ:CEG", "CEG", "核电运营"], ["NYSE:VST", "VST", "电力供应"], ["NYSE:GEV", "GEV", "电网与发电设备"], ["NYSE:NRG", "NRG", "综合电力"], ["NYSE:NEE", "NEE", "清洁能源与电网"], ["NYSE:OKLO", "OKLO", "先进核能"]] },
-  { name: "中概科技", tone: "red", stocks: [["NYSE:BABA", "BABA", "电商与云"], ["NASDAQ:PDD", "PDD", "电商"], ["NASDAQ:JD", "JD", "零售物流"], ["NASDAQ:BIDU", "BIDU", "搜索与 AI"], ["NASDAQ:NTES", "NTES", "游戏与互联网"], ["NYSE:TME", "TME", "在线音乐"]] },
+  { name: "中国 AI", tone: "red", stocks: [["NASDAQ:BIDU", "BIDU", "大模型与搜索"], ["NYSE:BABA", "BABA", "通义与云计算"], ["NASDAQ:KC", "KC", "金山云"], ["NASDAQ:WRD", "WRD", "自动驾驶 AI"], ["NASDAQ:PONY", "PONY", "Robotaxi"], ["NASDAQ:HSAI", "HSAI", "激光雷达"]] },
+  { name: "中国芯片", tone: "violet", stocks: [["HKEX:981", "0981", "中芯国际"], ["HKEX:1347", "1347", "华虹半导体"], ["HKEX:3986", "3986", "兆易创新 H"], ["NASDAQ:ACMR", "ACMR", "半导体清洗设备"]] },
+  { name: "中国互联网", tone: "amber", stocks: [["NYSE:BABA", "BABA", "电商与云"], ["NASDAQ:PDD", "PDD", "电商"], ["NASDAQ:JD", "JD", "零售物流"], ["NASDAQ:BIDU", "BIDU", "搜索与 AI"], ["NASDAQ:NTES", "NTES", "游戏与互联网"], ["NYSE:TME", "TME", "在线音乐"], ["NASDAQ:BILI", "BILI", "视频社区"]] },
+  { name: "中国智能汽车", tone: "hot", stocks: [["NYSE:NIO", "NIO", "蔚来"], ["NYSE:XPEV", "XPEV", "小鹏汽车"], ["NASDAQ:LI", "LI", "理想汽车"], ["HKEX:1211", "1211", "比亚迪"], ["HKEX:1810", "1810", "小米集团"], ["NASDAQ:WRD", "WRD", "文远知行"]] },
 ];
 
 const marketIndices = [
