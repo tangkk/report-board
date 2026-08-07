@@ -8,21 +8,40 @@ type WidgetProps = {
 
 function TradingViewWidget({ script, config, className = "" }: WidgetProps) {
   const ref = useRef<HTMLDivElement>(null);
+  const [attempt, setAttempt] = useState(0);
+  const [failed, setFailed] = useState(false);
+  const serializedConfig = JSON.stringify(config);
 
   useEffect(() => {
     if (!ref.current) return;
-    ref.current.innerHTML = "";
+    const container = ref.current;
+    setFailed(false);
+    container.replaceChildren();
     const host = document.createElement("div");
     host.className = "tradingview-widget-container__widget";
     const loader = document.createElement("script");
     loader.src = `https://s3.tradingview.com/external-embedding/${script}`;
     loader.async = true;
     loader.type = "text/javascript";
-    loader.innerHTML = JSON.stringify(config);
-    ref.current.append(host, loader);
-  }, [script, JSON.stringify(config)]);
+    loader.innerHTML = serializedConfig;
+    loader.onerror = () => setFailed(true);
+    container.append(host, loader);
 
-  return <div ref={ref} className={`tradingview-widget-container ${className}`} />;
+    const watchdog = window.setTimeout(() => {
+      if (!container.querySelector("iframe")) setFailed(true);
+    }, 12000);
+
+    return () => {
+      window.clearTimeout(watchdog);
+      loader.onerror = null;
+      container.replaceChildren();
+    };
+  }, [script, serializedConfig, attempt]);
+
+  return <div className={`widget-shell ${className}`}>
+    <div ref={ref} className="tradingview-widget-container" />
+    {failed && <div className="widget-fallback"><span>数据暂时未载入</span><button onClick={() => setAttempt((value) => value + 1)}>重新加载</button></div>}
+  </div>;
 }
 
 const sectors = [
@@ -194,8 +213,8 @@ function App() {
         <section className="section">
           <div className="section-title"><div><span>04 / EVENT RADAR</span><h2>重要经济事件</h2></div><p>关注本周主要经济数据和政策事件。</p></div>
           <div className="calendar-card panel">
-            <div className="calendar-columns" aria-hidden="true">
-              <span>时间</span><span>国家/地区</span><span>事件</span><span>实际值</span><span>预测值</span><span>前值</span>
+            <div className="calendar-legend">
+              <span>数据列说明</span><b>实际值：已公布结果</b><b>预测值：市场预期</b><b>前值：上期结果</b>
             </div>
             <TradingViewWidget className="calendar-widget" script="embed-widget-events.js" config={{
               colorTheme: "light", isTransparent: true, width: "100%", height: "100%", locale: "zh_CN", importanceFilter: "0,1", countryFilter: "us,cn,jp,eu",
