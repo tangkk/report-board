@@ -90,9 +90,11 @@ main { min-height: 100vh; }
 .split-section { display: grid; grid-template-columns: 1.45fr .75fr; gap: 10px; }
 .heatmap-card, .calendar-card { height: 550px; padding: 12px; }
 .heatmap-widget { height: 470px; }
-.calendar-legend { display: flex; flex-wrap: wrap; align-items: center; gap: 7px; min-height: 36px; border-bottom: 1px solid var(--ink); padding: 5px 8px; color: var(--muted); font-size: 10px; }
-.calendar-legend span { margin-right: 3px; font-weight: 700; }
-.calendar-legend b { border: 1px solid #ddd; border-radius: 999px; padding: 3px 7px; background: var(--soft); color: #444; font-weight: 500; }
+.calendar-legend { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 14px; min-height: 36px; border-bottom: 1px solid var(--ink); padding: 5px 8px; color: var(--muted); font-size: 10px; }
+.calendar-legend span { font-weight: 700; }
+.calendar-legend p { margin: 0; }
+.calendar-legend b { color: #444; font-weight: 700; }
+.calendar-legend i { padding: 0 5px; color: var(--red); font-style: normal; }
 .calendar-widget { height: 492px; }
 .news-grid { display: grid; grid-template-columns: 1fr; gap: 10px; }
 .news-card { height: 670px; padding: 8px; }

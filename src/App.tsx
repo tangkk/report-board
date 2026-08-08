@@ -205,7 +205,7 @@ function App() {
           <div className="section-title"><div><span>04 / EVENT RADAR</span><h2>重要经济事件</h2></div><p>关注本周主要经济数据和政策事件。</p></div>
           <div className="calendar-card panel">
             <div className="calendar-legend">
-              <span>数据列说明</span><b>实际值：已公布结果</b><b>预测值：市场预期</b><b>前值：上期结果</b>
+              <span>数值阅读顺序</span><p><b>实际值</b> 已公布结果 <i>→</i> <b>预测值</b> 市场预期 <i>→</i> <b>前值</b> 上期结果</p>
             </div>
             <TradingViewWidget className="calendar-widget" script="embed-widget-events.js" config={{
               colorTheme: "light", isTransparent: true, width: "100%", height: "100%", locale: "zh_CN", importanceFilter: "0,1", countryFilter: "us,cn,jp,eu",
