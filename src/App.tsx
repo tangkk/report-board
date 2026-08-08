@@ -196,9 +196,9 @@ function App() {
           <div className="section-title"><div><span>03 / NEWSWIRE</span><h2>主要新闻与消息</h2></div><p>左侧显示中文市场头条，右侧跟随所选公司并优先采用更新更快的英文新闻源。</p></div>
           <div className="news-grid">
             <div className="news-card panel">
-              <div className="news-label">全市场头条</div>
+              <div className="news-label"><span>全市场头条</span><small>紧凑模式 · 更多条目</small></div>
               <TradingViewWidget className="news-widget" script="embed-widget-timeline.js" config={{
-                feedMode: "all_symbols", isTransparent: true, displayMode: "regular", width: "100%", height: "100%", colorTheme: "light", locale: "zh_CN",
+                feedMode: "all_symbols", isTransparent: true, displayMode: "compact", width: "100%", height: "100%", colorTheme: "light", locale: "zh_CN",
               }} />
             </div>
             <div className="news-card panel">
