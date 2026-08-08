@@ -96,7 +96,9 @@ main { min-height: 100vh; }
 .calendar-widget { height: 492px; }
 .news-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
 .news-card { height: 670px; padding: 8px; }
-.news-label { height: 34px; border-bottom: 1px solid #e6e6e6; padding: 7px 8px; font-size: 11px; font-weight: 700; }
+.news-label { display: flex; align-items: center; justify-content: space-between; gap: 12px; height: 34px; border-bottom: 1px solid #e6e6e6; padding: 7px 8px; font-size: 11px; font-weight: 700; }
+.news-label a { color: var(--red); font-size: 10px; font-weight: 600; text-decoration: none; white-space: nowrap; }
+.news-label a:hover { text-decoration: underline; }
 .news-widget { height: 618px; }
 
 footer { display: flex; align-items: center; justify-content: space-between; gap: 24px; border-top: 1px solid var(--line); padding: 22px 0 4px; color: var(--muted); font-size: 10px; }

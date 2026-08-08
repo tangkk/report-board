@@ -193,7 +193,7 @@ function App() {
         </section>
 
         <section className="section news-section" id="news">
-          <div className="section-title"><div><span>03 / NEWSWIRE</span><h2>主要新闻与消息</h2></div><p>左侧显示全市场头条，右侧自动跟随当前所选公司；点击新闻可打开来源页面。</p></div>
+          <div className="section-title"><div><span>03 / NEWSWIRE</span><h2>主要新闻与消息</h2></div><p>左侧显示中文市场头条，右侧跟随所选公司并优先采用更新更快的英文新闻源。</p></div>
           <div className="news-grid">
             <div className="news-card panel">
               <div className="news-label">全市场头条</div>
@@ -202,9 +202,12 @@ function App() {
               }} />
             </div>
             <div className="news-card panel">
-              <div className="news-label">{newsSymbol.split(":")[1]} 公司动态</div>
+              <div className="news-label">
+                <span>{newsSymbol.split(":")[1]} 最新英文新闻</span>
+                <a href={`https://www.tradingview.com/symbols/${newsSymbol.replace(":", "-")}/news/`} target="_blank" rel="noreferrer">查看完整新闻 ↗</a>
+              </div>
               <TradingViewWidget key={newsSymbol} className="news-widget" script="embed-widget-timeline.js" config={{
-                feedMode: "symbol", symbol: newsSymbol, isTransparent: true, displayMode: "regular", width: "100%", height: "100%", colorTheme: "light", locale: "zh_CN",
+                feedMode: "symbol", symbol: newsSymbol, isTransparent: true, displayMode: "regular", width: "100%", height: "100%", colorTheme: "light", locale: "en",
               }} />
             </div>
           </div>
