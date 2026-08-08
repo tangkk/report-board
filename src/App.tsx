@@ -74,7 +74,6 @@ const marketIndices = [
 function App() {
   const [symbol, setSymbol] = useState("NASDAQ:NVDA");
   const [activeSector, setActiveSector] = useState(0);
-  const [newsSymbol, setNewsSymbol] = useState("NASDAQ:NVDA");
   const [clock, setClock] = useState("");
   const [menuOpen, setMenuOpen] = useState(false);
   const focusStocks = sectors[activeSector].stocks;
@@ -82,13 +81,11 @@ function App() {
   const selectSector = (index: number, jump = false) => {
     setActiveSector(index);
     setSymbol(sectors[index].stocks[0][0]);
-    setNewsSymbol(sectors[index].stocks[0][0]);
     if (jump) window.setTimeout(() => document.getElementById("focus")?.scrollIntoView({ behavior: "smooth" }), 0);
   };
 
   const selectStock = (id: string) => {
     setSymbol(id);
-    setNewsSymbol(id);
   };
 
   useEffect(() => {
@@ -193,21 +190,12 @@ function App() {
         </section>
 
         <section className="section news-section" id="news">
-          <div className="section-title"><div><span>03 / NEWSWIRE</span><h2>主要新闻与消息</h2></div><p>左侧显示中文市场头条，右侧跟随所选公司并优先采用更新更快的英文新闻源。</p></div>
+          <div className="section-title"><div><span>03 / NEWSWIRE</span><h2>主要新闻与消息</h2></div><p>采用覆盖更广、更新更频繁的英文全市场新闻源；点击条目可打开原始报道。</p></div>
           <div className="news-grid">
             <div className="news-card panel">
-              <div className="news-label"><span>全市场头条</span><small>紧凑模式 · 更多条目</small></div>
+              <div className="news-label"><span>全市场头条 · GLOBAL MARKET NEWS</span><small>英文实时源 · 紧凑模式</small></div>
               <TradingViewWidget className="news-widget" script="embed-widget-timeline.js" config={{
-                feedMode: "all_symbols", isTransparent: true, displayMode: "compact", width: "100%", height: "100%", colorTheme: "light", locale: "zh_CN",
-              }} />
-            </div>
-            <div className="news-card panel">
-              <div className="news-label">
-                <span>{newsSymbol.split(":")[1]} 最新英文新闻</span>
-                <a href={`https://www.tradingview.com/symbols/${newsSymbol.replace(":", "-")}/news/`} target="_blank" rel="noreferrer">查看完整新闻 ↗</a>
-              </div>
-              <TradingViewWidget key={newsSymbol} className="news-widget" script="embed-widget-timeline.js" config={{
-                feedMode: "symbol", symbol: newsSymbol, isTransparent: true, displayMode: "regular", width: "100%", height: "100%", colorTheme: "light", locale: "en",
+                feedMode: "all_symbols", isTransparent: true, displayMode: "compact", width: "100%", height: "100%", colorTheme: "light", locale: "en",
               }} />
             </div>
           </div>
