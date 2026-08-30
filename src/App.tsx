@@ -164,7 +164,13 @@ function App() {
       ? company?.metrics?.epsTTM ?? latest.epsDiluted
       : currentPrice && company?.metrics?.peTTM ? currentPrice / company.metrics.peTTM : null;
     const pePerShare = epsTtm != null && epsTtm > 0 ? epsTtm * peMultiple : null;
-    const psPerShare = pePerShare == null && latest.revenue && latest.shares ? latest.revenue / latest.shares * peers.ps : null;
+    const psPerShare = pePerShare == null
+      ? latest.revenue && latest.shares
+        ? latest.revenue / latest.shares * peers.ps
+        : currentPrice && company?.metrics?.psTTM && company.metrics.psTTM > 0
+          ? currentPrice * peers.ps / company.metrics.psTTM
+          : null
+      : null;
     const earningsPerShare = pePerShare ?? psPerShare;
     const evEquity = latest.ebitda == null ? null : latest.ebitda * evMultiple + cash - debt;
     const absoluteEvPerShare = reportedPerShare && evEquity != null && evEquity > 0 && latest.shares ? evEquity / latest.shares : null;
@@ -182,7 +188,7 @@ function App() {
     const upside = targetPrice != null && currentPrice != null ? targetPrice / currentPrice - 1 : null;
     const dispersion = modelPrices.length >= 2 && targetPrice ? (Math.max(...modelPrices) - Math.min(...modelPrices)) / targetPrice : null;
     const confidence = modelPrices.length === 3 && (dispersion ?? 1) <= .75 ? "高" : modelPrices.length >= 2 && (dispersion ?? 1) <= 1 ? "中" : "低";
-    const action = confidence === "低" || upside == null ? "数据不足" : upside >= .25 ? "增持" : upside >= .1 ? "关注" : upside > -.1 ? "观望" : upside > -.25 ? "减持" : "回避";
+    const action = upside == null || modelPrices.length < 2 ? "数据不足" : confidence === "低" ? "模型分歧" : upside >= .25 ? "增持" : upside >= .1 ? "关注" : upside > -.1 ? "观望" : upside > -.25 ? "减持" : "回避";
     return {
       dcfPerShare: dcfBase, pePerShare, psPerShare, peerPs: peers.ps, evEquity, evPerShare, epsTtm,
       targetPrice, bearTarget, bullTarget, currentPrice, upside, action, confidence, dispersion, modelCount: modelPrices.length,
