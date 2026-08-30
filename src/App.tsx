@@ -10,7 +10,7 @@ type Period = {
   salesPerShare?: number | null; grossMargin?: number | null; operatingMargin?: number | null; netMargin?: number | null; fcfMargin?: number | null;
 };
 type Metrics = {
-  beta: number | null; epsTTM: number | null; peTTM: number | null; evEbitdaTTM: number | null;
+  beta: number | null; epsTTM: number | null; peTTM: number | null; psTTM: number | null; evEbitdaTTM: number | null; evRevenueTTM: number | null;
   revenueGrowth3Y: number | null; revenueGrowth5Y: number | null; epsGrowth3Y: number | null; epsGrowth5Y: number | null;
   ebitdaCagr5Y: number | null; freeCashFlowPerShareTTM: number | null; fcfMarginTTM: number | null;
   grossMarginTTM: number | null; operatingMarginTTM: number | null; netProfitMarginTTM: number | null;
@@ -73,11 +73,18 @@ const median = (values: number[]) => {
 const semiconductorSectors = new Set(["AI 与算力", "半导体设备", "晶圆制造", "存储与内存"]);
 
 function peerMultiples(data: FinancialData | null, company?: Company) {
-  if (!data || !company) return { pe: 25, ev: 18, count: 0 };
-  const peers = data.companies.filter((item) => item.sector === company.sector || (semiconductorSectors.has(company.sector) && semiconductorSectors.has(item.sector)));
-  const peValues = peers.map((item) => item.metrics?.peTTM).filter((value): value is number => value != null && value >= 8 && value <= 100);
-  const evValues = peers.map((item) => item.metrics?.evEbitdaTTM).filter((value): value is number => value != null && value >= 4 && value <= 60);
-  return { pe: Math.round(median(peValues) ?? 25), ev: Math.round(median(evValues) ?? 18), count: Math.max(peValues.length, evValues.length) };
+  if (!data || !company) return { pe: 25, ev: 18, ps: 4, count: 0 };
+  const exactPeers = data.companies.filter((item) => item.sector === company.sector);
+  const broadPeers = data.companies.filter((item) => item.sector === company.sector || (semiconductorSectors.has(company.sector) && semiconductorSectors.has(item.sector)));
+  const values = (peers: Company[], key: "peTTM" | "evEbitdaTTM", min: number, max: number) => peers.map((item) => item.metrics?.[key]).filter((value): value is number => value != null && value >= min && value <= max);
+  const exactPe = values(exactPeers, "peTTM", 8, 100), exactEv = values(exactPeers, "evEbitdaTTM", 4, 60);
+  const peValues = exactPe.length >= 2 ? exactPe : values(broadPeers, "peTTM", 8, 100);
+  const evValues = exactEv.length >= 2 ? exactEv : values(broadPeers, "evEbitdaTTM", 4, 60);
+  const psValues = exactPeers.map((item) => {
+    const period = item.periods.at(-1), price = item.market?.price;
+    return item.metrics?.psTTM ?? (period?.revenue && period.shares && price ? price * period.shares / period.revenue : null);
+  }).filter((value): value is number => value != null && value >= .2 && value <= 30);
+  return { pe: Math.round(median(peValues) ?? 25), ev: Math.round(median(evValues) ?? 18), ps: Math.round((median(psValues) ?? 4) * 10) / 10, count: Math.max(peValues.length, evValues.length, psValues.length) };
 }
 
 function historicalRevenueGrowth(periods: Period[]) {
@@ -157,16 +164,19 @@ function App() {
       ? company?.metrics?.epsTTM ?? latest.epsDiluted
       : currentPrice && company?.metrics?.peTTM ? currentPrice / company.metrics.peTTM : null;
     const pePerShare = epsTtm != null && epsTtm > 0 ? epsTtm * peMultiple : null;
+    const psPerShare = pePerShare == null && latest.revenue && latest.shares ? latest.revenue / latest.shares * peers.ps : null;
+    const earningsPerShare = pePerShare ?? psPerShare;
     const evEquity = latest.ebitda == null ? null : latest.ebitda * evMultiple + cash - debt;
-    const evPerShare = reportedPerShare && evEquity != null && latest.shares
-      ? evEquity / latest.shares
+    const absoluteEvPerShare = reportedPerShare && evEquity != null && evEquity > 0 && latest.shares ? evEquity / latest.shares : null;
+    const evPerShare = absoluteEvPerShare
+      ? absoluteEvPerShare
       : currentPrice && company?.metrics?.evEbitdaTTM && company.metrics.evEbitdaTTM > 0
         ? currentPrice * evMultiple / company.metrics.evEbitdaTTM
         : null;
-    const modelPrices = [dcfBase, pePerShare, evPerShare].filter((value): value is number => value != null && Number.isFinite(value) && value > 0);
+    const modelPrices = [dcfBase, earningsPerShare, evPerShare].filter((value): value is number => value != null && Number.isFinite(value) && value > 0);
     const targetPrice = modelPrices.length ? modelPrices.reduce((sum, value) => sum + value, 0) / modelPrices.length : null;
-    const bearModels = [dcfBear, pePerShare == null ? null : pePerShare * .8, evPerShare == null ? null : evPerShare * .8].filter((value): value is number => value != null && value > 0);
-    const bullModels = [dcfBull, pePerShare == null ? null : pePerShare * 1.2, evPerShare == null ? null : evPerShare * 1.2].filter((value): value is number => value != null && value > 0);
+    const bearModels = [dcfBear, earningsPerShare == null ? null : earningsPerShare * .8, evPerShare == null ? null : evPerShare * .8].filter((value): value is number => value != null && value > 0);
+    const bullModels = [dcfBull, earningsPerShare == null ? null : earningsPerShare * 1.2, evPerShare == null ? null : evPerShare * 1.2].filter((value): value is number => value != null && value > 0);
     const bearTarget = bearModels.length ? bearModels.reduce((sum, value) => sum + value, 0) / bearModels.length : null;
     const bullTarget = bullModels.length ? bullModels.reduce((sum, value) => sum + value, 0) / bullModels.length : null;
     const upside = targetPrice != null && currentPrice != null ? targetPrice / currentPrice - 1 : null;
@@ -174,10 +184,10 @@ function App() {
     const confidence = modelPrices.length === 3 && (dispersion ?? 1) <= .75 ? "高" : modelPrices.length >= 2 && (dispersion ?? 1) <= 1 ? "中" : "低";
     const action = confidence === "低" || upside == null ? "数据不足" : upside >= .25 ? "增持" : upside >= .1 ? "关注" : upside > -.1 ? "观望" : upside > -.25 ? "减持" : "回避";
     return {
-      dcfPerShare: dcfBase, pePerShare, evEquity, evPerShare, epsTtm,
+      dcfPerShare: dcfBase, pePerShare, psPerShare, peerPs: peers.ps, evEquity, evPerShare, epsTtm,
       targetPrice, bearTarget, bullTarget, currentPrice, upside, action, confidence, dispersion, modelCount: modelPrices.length,
     };
-  }, [latest, company, growthRate, wacc, terminalGrowth, peMultiple, evMultiple, manualPrice]);
+  }, [latest, company, peers, growthRate, wacc, terminalGrowth, peMultiple, evMultiple, manualPrice]);
 
   const latestFiling = company?.filings?.[0], hasData = Boolean(latest && company);
   const usesPerShareTrend = !company?.periods.some((period) => period.revenue != null);
@@ -255,7 +265,7 @@ function App() {
               ].map(({ label, value, setter, min, max, suffix }) => <label className="slider-row" key={label}><span>{label}<strong>{value}{suffix}</strong></span><input type="range" min={min} max={max} step={1} value={value} onChange={(event) => setter(Number(event.target.value))} /></label>)}{wacc <= terminalGrowth && <p className="model-warning">折现率必须高于永续增长率，DCF 才有意义。</p>}</div>
               <div className="valuation-results">
                 <article className="model-card dcf"><span>SCENARIO DCF / 情景现金流估值</span><h3>10Y Equity FCF DCF</h3><strong>{valuation?.dcfPerShare == null ? "数据不足" : `$${valuation.dcfPerShare.toFixed(2)} / 股`}</strong><p>增长率十年渐降至 {terminalGrowth}%<br />折现率 {wacc}% · 仅正 FCF 启用</p><code>Equity Value = Σ FCFₜ/(1+r)ᵗ + TV/(1+r)¹⁰</code></article>
-                <article className="model-card"><span>PEER EARNINGS / 同业盈利倍数</span><h3>TTM P/E Valuation</h3><strong>{valuation?.pePerShare == null ? "数据不足" : `$${valuation.pePerShare.toFixed(2)} / 股`}</strong><p>TTM EPS {valuation?.epsTtm == null ? "—" : `$${valuation.epsTtm.toFixed(2)}`}<br />同业目标市盈率 {peMultiple}×</p><code>每股价值 = TTM EPS × 同业 P/E 中位数</code></article>
+                {valuation?.pePerShare != null ? <article className="model-card"><span>PEER EARNINGS / 同业盈利倍数</span><h3>TTM P/E Valuation</h3><strong>${valuation.pePerShare.toFixed(2)} / 股</strong><p>TTM EPS {valuation.epsTtm == null ? "—" : `$${valuation.epsTtm.toFixed(2)}`}<br />同业目标市盈率 {peMultiple}×</p><code>每股价值 = TTM EPS × 同业 P/E 中位数</code></article> : <article className="model-card"><span>REVENUE MULTIPLE / 收入倍数</span><h3>P/S Valuation</h3><strong>{valuation?.psPerShare == null ? "数据不足" : `$${valuation.psPerShare.toFixed(2)} / 股`}</strong><p>亏损公司回退模型<br />同业目标 P/S {valuation?.peerPs?.toFixed(1) || "—"}×</p><code>每股价值 = 每股收入 × 同业 P/S 中位数</code></article>}
                 <article className="model-card"><span>ENTERPRISE MULTIPLE / 企业倍数</span><h3>EV / EBITDA</h3><strong>{valuation?.evPerShare == null ? formatMoney(valuation?.evEquity) : `$${valuation.evPerShare.toFixed(2)} / 股`}</strong>{company?.dataBasis === "basic-metrics" ? <p>当前倍数 {company.metrics?.evEbitdaTTM?.toFixed(1) || "—"}×<br />同业目标倍数 {evMultiple}×</p> : <p>EBITDA {formatMoney(latest?.ebitda)}<br />估算股权价值 {formatMoney(valuation?.evEquity)}</p>}<code>{company?.dataBasis === "basic-metrics" ? "目标价 = 当前价 × 同业倍数 / 当前倍数" : "Equity = EBITDA × Multiple + Cash − Debt"}</code></article>
               </div>
             </div>

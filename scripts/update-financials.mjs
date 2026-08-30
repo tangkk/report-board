@@ -123,7 +123,7 @@ function annualPeriodsFromFinnhub(payload) {
 const metricNumber = (payload, key) => Number.isFinite(payload?.metric?.[key]) ? payload.metric[key] : null;
 
 function metricSummary(payload) {
-  const keys = ["beta", "epsTTM", "peTTM", "evEbitdaTTM", "revenueGrowth3Y", "revenueGrowth5Y", "epsGrowth3Y", "epsGrowth5Y", "ebitdaCagr5Y", "freeCashFlowPerShareTTM", "fcfMarginTTM", "grossMarginTTM", "operatingMarginTTM", "netProfitMarginTTM"];
+  const keys = ["beta", "epsTTM", "peTTM", "psTTM", "evEbitdaTTM", "evRevenueTTM", "revenueGrowth3Y", "revenueGrowth5Y", "epsGrowth3Y", "epsGrowth5Y", "ebitdaCagr5Y", "freeCashFlowPerShareTTM", "fcfMarginTTM", "grossMarginTTM", "operatingMarginTTM", "netProfitMarginTTM"];
   return Object.fromEntries(keys.map((key) => [key, metricNumber(payload, key)]));
 }
 
