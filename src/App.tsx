@@ -111,7 +111,7 @@ function App() {
   const [manualPrice, setManualPrice] = useState("");
 
   useEffect(() => {
-    fetch("./data/financials.json")
+    fetch("./data/financials.json?v=3", { cache:"no-store" })
       .then((response) => response.ok ? response.json() : Promise.reject(new Error("load failed")))
       .then((payload: FinancialData) => {
         const companiesWithFallback = payload.companies.length ? payload.companies : companyUniverse.map((item) => ({ ...item, status:"limited" as const, statusNote:"首次财报同步尚未完成；自动任务会继续检查。", periods:[], filings:[] }));
@@ -149,7 +149,7 @@ function App() {
     const currentPrice = Number(manualPrice) > 0 ? Number(manualPrice) : null;
     const growthDecimal = growthRate / 100, discountDecimal = wacc / 100, terminalDecimal = terminalGrowth / 100;
     const cash = latest.cash || 0, debt = latest.debt || 0;
-    const reportedPerShare = company?.dataBasis === "reported-financials" && latest.form.startsWith("10-K");
+    const reportedPerShare = (company?.dataBasis === "reported-financials" || (!company?.dataBasis && latest.form.startsWith("10-K"))) && latest.form.startsWith("10-K");
     const dcfBase = reportedPerShare && latest.freeCashFlow && latest.shares ? dcfPerShare(latest.freeCashFlow, latest.shares, growthDecimal, discountDecimal, terminalDecimal) : null;
     const dcfBear = reportedPerShare && latest.freeCashFlow && latest.shares ? dcfPerShare(latest.freeCashFlow, latest.shares, Math.max(-.1, growthDecimal - .08), discountDecimal + .015, Math.max(0, terminalDecimal - .005)) : null;
     const dcfBull = reportedPerShare && latest.freeCashFlow && latest.shares ? dcfPerShare(latest.freeCashFlow, latest.shares, Math.min(.45, growthDecimal + .08), Math.max(.06, discountDecimal - .01), Math.min(.05, terminalDecimal + .005)) : null;
@@ -158,7 +158,11 @@ function App() {
       : currentPrice && company?.metrics?.peTTM ? currentPrice / company.metrics.peTTM : null;
     const pePerShare = epsTtm != null && epsTtm > 0 ? epsTtm * peMultiple : null;
     const evEquity = latest.ebitda == null ? null : latest.ebitda * evMultiple + cash - debt;
-    const evPerShare = reportedPerShare && evEquity != null && latest.shares ? evEquity / latest.shares : null;
+    const evPerShare = reportedPerShare && evEquity != null && latest.shares
+      ? evEquity / latest.shares
+      : currentPrice && company?.metrics?.evEbitdaTTM && company.metrics.evEbitdaTTM > 0
+        ? currentPrice * evMultiple / company.metrics.evEbitdaTTM
+        : null;
     const modelPrices = [dcfBase, pePerShare, evPerShare].filter((value): value is number => value != null && Number.isFinite(value) && value > 0);
     const targetPrice = modelPrices.length ? modelPrices.reduce((sum, value) => sum + value, 0) / modelPrices.length : null;
     const bearModels = [dcfBear, pePerShare == null ? null : pePerShare * .8, evPerShare == null ? null : evPerShare * .8].filter((value): value is number => value != null && value > 0);
@@ -252,7 +256,7 @@ function App() {
               <div className="valuation-results">
                 <article className="model-card dcf"><span>SCENARIO DCF / 情景现金流估值</span><h3>10Y Equity FCF DCF</h3><strong>{valuation?.dcfPerShare == null ? "数据不足" : `$${valuation.dcfPerShare.toFixed(2)} / 股`}</strong><p>增长率十年渐降至 {terminalGrowth}%<br />折现率 {wacc}% · 仅正 FCF 启用</p><code>Equity Value = Σ FCFₜ/(1+r)ᵗ + TV/(1+r)¹⁰</code></article>
                 <article className="model-card"><span>PEER EARNINGS / 同业盈利倍数</span><h3>TTM P/E Valuation</h3><strong>{valuation?.pePerShare == null ? "数据不足" : `$${valuation.pePerShare.toFixed(2)} / 股`}</strong><p>TTM EPS {valuation?.epsTtm == null ? "—" : `$${valuation.epsTtm.toFixed(2)}`}<br />同业目标市盈率 {peMultiple}×</p><code>每股价值 = TTM EPS × 同业 P/E 中位数</code></article>
-                <article className="model-card"><span>ENTERPRISE MULTIPLE / 企业倍数</span><h3>EV / EBITDA</h3><strong>{valuation?.evPerShare == null ? formatMoney(valuation?.evEquity) : `$${valuation.evPerShare.toFixed(2)} / 股`}</strong><p>EBITDA {formatMoney(latest?.ebitda)}<br />估算股权价值 {formatMoney(valuation?.evEquity)}</p><code>Equity = EBITDA × Multiple + Cash − Debt</code></article>
+                <article className="model-card"><span>ENTERPRISE MULTIPLE / 企业倍数</span><h3>EV / EBITDA</h3><strong>{valuation?.evPerShare == null ? formatMoney(valuation?.evEquity) : `$${valuation.evPerShare.toFixed(2)} / 股`}</strong>{company?.dataBasis === "basic-metrics" ? <p>当前倍数 {company.metrics?.evEbitdaTTM?.toFixed(1) || "—"}×<br />同业目标倍数 {evMultiple}×</p> : <p>EBITDA {formatMoney(latest?.ebitda)}<br />估算股权价值 {formatMoney(valuation?.evEquity)}</p>}<code>{company?.dataBasis === "basic-metrics" ? "目标价 = 当前价 × 同业倍数 / 当前倍数" : "Equity = EBITDA × Multiple + Cash − Debt"}</code></article>
               </div>
             </div>
             <div className="method-note"><b>方法说明 Methodology</b><p>DCF 使用经营现金流减资本开支作为股权现金流近似值，预测十年并让增长率逐步回落至永续增长；折现率由无风险利率假设与截尾 Beta 自动校准。P/E 与 EV/EBITDA 默认采用同板块中位数。Bear/Base/Bull 分别调整增长、折现率和倍数；少于两套有效模型或模型分歧过大时停止给出投资动作。免费数据不含分析师一致预期，因此这仍是历史数据驱动模型，不是卖方盈利预测。</p></div>
