@@ -7,11 +7,15 @@
 - 标准化财报数据优先来自 Finnhub Reported Financials，申报链接指向 SEC EDGAR 原文。对该接口未返回 20-F 明细的外国发行人，自动回退到 Finnhub Basic Financials 的年度 EPS、EBITDA、每股收入及利润率序列。
 - `.github/workflows/update-financials.yml` 每天运行一次；如果公司发布新 10-K、10-Q、20-F、40-F 或 6-K，标准化数据会在下一次任务中更新。
 - 财报和每日参考价格都使用仓库 Secret `FINNHUB_API_KEY`；页面仍允许手动覆盖参考收盘价。
+- 无风险利率由自动任务从 FRED `DGS10` 获取最新十年期美国国债收益率；失败时保留上一次成功值。
 - 港股本地上市公司若没有可用的标准化 XBRL 数据，会保留在公司池并显示覆盖限制。
 
 ## 估值与模型动作
 
-- 10 年 Equity FCF DCF：以经营现金流减资本开支作为股权现金流近似值，增长率逐年向永续增长收敛，并提供 Bear/Base/Bull 情景。
+- 当前合理价值：10 年 Equity FCF DCF、TTM P/E（亏损时回退 P/S）和 EV/EBITDA 的有效结果均值。
+- 十二个月目标价：先按基本面增长率滚动 EPS、收入、EBITDA 与 FCF，再运行 3,000 次 Monte Carlo，对增长率、折现率、永续增长和同业倍数抽样。
+- Bear / Base / Bull 分别是十二个月目标价分布的 P10 / P50 / P90，不再与当前合理价值混为一谈。
+- 10 年 Equity FCF DCF：以经营现金流减资本开支作为股权现金流近似值，增长率逐年向永续增长收敛。
 - P/E：优先使用 TTM EPS，目标倍数默认取同板块可比公司的中位数。
 - P/S：当 TTM EPS 为负时，以同业市销率中位数作为亏损或转型期公司的回退模型。
 - EV/EBITDA：目标倍数同样取同板块中位数，再加现金、减有息负债得到股权价值。
@@ -41,5 +45,7 @@ npm run build
 
 - [Finnhub — Reported Financials API](https://finnhub.io/docs/api/financials-reported)
 - [SEC EDGAR Search](https://www.sec.gov/edgar/search/)
+- [FRED — 10-Year Treasury Constant Maturity Rate](https://fred.stlouisfed.org/series/DGS10)
+- [NIST — Monte Carlo methods](https://www.itl.nist.gov/div898/handbook/pri/section5/pri531.htm)
 - [Aswath Damodaran — Financial measures and ratios](https://pages.stern.nyu.edu/~adamodar/New_Home_Page/definitions.html)
 - [Aswath Damodaran — Discounted cash-flow valuation](https://pages.stern.nyu.edu/~adamodar/New_Home_Page/valuation/val.htm)

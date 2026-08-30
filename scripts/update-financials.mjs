@@ -39,6 +39,22 @@ async function getFinnhub(endpoint) {
   return response.json();
 }
 
+async function getRiskFreeRate(previous) {
+  try {
+    const response = await fetch("https://fred.stlouisfed.org/graph/fredgraph.csv?id=DGS10");
+    if (!response.ok) throw new Error(`FRED ${response.status}`);
+    const rows = (await response.text()).trim().split(/\r?\n/).slice(1).reverse();
+    for (const row of rows) {
+      const [date, rawValue] = row.split(","), value = Number(rawValue);
+      if (date && Number.isFinite(value)) return { riskFreeRate: round(value), riskFreeDate: date, equityRiskPremium: 5, source: "FRED DGS10" };
+    }
+    throw new Error("FRED returned no numeric DGS10 observation");
+  } catch (error) {
+    console.warn(`[macro] ${error.message}`);
+    return previous || { riskFreeRate: 4.25, riskFreeDate: null, equityRiskPremium: 5, source: "Fallback assumption" };
+  }
+}
+
 async function getMarketQuote(ticker) {
   if (!marketApiKey) return null;
   const quote = await getFinnhub(`quote?symbol=${encodeURIComponent(ticker)}`);
@@ -168,6 +184,7 @@ async function main() {
   const cikMap = JSON.parse(await fs.readFile(cikMapPath, "utf8"));
   const previous = await fs.readFile(outputPath, "utf8").then(JSON.parse).catch(() => null);
   const previousByTicker = new Map((previous?.companies || []).map((company) => [company.ticker, company]));
+  const assumptions = await getRiskFreeRate(previous?.assumptions);
 
   const companies = [];
   for (const [index, company] of universe.entries()) {
@@ -223,8 +240,8 @@ async function main() {
     await sleep(1100);
   }
 
-  const next = { source: "Finnhub reported financials / SEC filings", sourceUrl: "https://finnhub.io/docs/api/financials-reported", marketSource: marketApiKey ? "Finnhub EOD" : "Manual / optional Finnhub", companies };
-  const unchanged = previous && JSON.stringify(previous.companies) === JSON.stringify(companies);
+  const next = { source: "Finnhub reported financials / SEC filings", sourceUrl: "https://finnhub.io/docs/api/financials-reported", marketSource: marketApiKey ? "Finnhub EOD" : "Manual / optional Finnhub", assumptions, companies };
+  const unchanged = previous && JSON.stringify(previous.companies) === JSON.stringify(companies) && JSON.stringify(previous.assumptions) === JSON.stringify(assumptions);
   const payload = { generatedAt: unchanged ? previous.generatedAt : new Date().toISOString(), ...next };
   await fs.mkdir(path.dirname(outputPath), { recursive: true });
   await fs.writeFile(outputPath, `${JSON.stringify(payload, null, 2)}\n`);

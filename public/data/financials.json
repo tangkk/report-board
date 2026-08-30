@@ -3,6 +3,12 @@
   "source": "Finnhub reported financials / SEC filings",
   "sourceUrl": "https://finnhub.io/docs/api/financials-reported",
   "marketSource": "Finnhub EOD",
+  "assumptions": {
+    "riskFreeRate": 4.67,
+    "riskFreeDate": "2026-08-27",
+    "equityRiskPremium": 5,
+    "source": "FRED DGS10"
+  },
   "companies": [
     {
       "ticker": "NVDA",

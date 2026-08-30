@@ -22,7 +22,7 @@ type Company = {
   market?: { price: number; date: string; currency: string; source: string } | null;
   dataBasis?: "reported-financials" | "basic-metrics" | "none"; reportCurrency?: string; metrics?: Metrics;
 };
-type FinancialData = { generatedAt: string; source: string; sourceUrl: string; companies: Company[] };
+type FinancialData = { generatedAt: string; source: string; sourceUrl: string; assumptions?: { riskFreeRate: number; riskFreeDate: string | null; equityRiskPremium: number; source: string }; companies: Company[] };
 type StatementKey = "income" | "cash" | "balance";
 
 const terms = [
@@ -41,6 +41,10 @@ const terms = [
   ["P/E", "市盈率", "每股价格 ÷ 每股收益；相对估值中用目标市盈率乘以 EPS 得到估算价格。"],
   ["EV / EBITDA", "企业价值倍数", "企业价值 ÷ EBITDA；有助于在不同负债水平的公司之间进行比较。"],
   ["Price Target", "目标价", "在一组明确假设下由估值模型推导的参考价格，不是未来价格的保证。"],
+  ["Fair Value", "当前合理价值", "基于当前已披露财务数据计算的每股估值，不包含未来十二个月的基本面滚动。"],
+  ["12-Month Target", "十二个月目标价", "把盈利、现金流或收入向前预测十二个月后，再应用目标估值倍数或 DCF 得到的预测价格。"],
+  ["Monte Carlo Simulation", "蒙特卡洛模拟", "对增长率、折现率和估值倍数反复随机抽样，用结果分布表达模型不确定性。"],
+  ["P10 / P50 / P90", "概率分位数", "模拟结果中分别有 10%、50%和90%的结果不高于该数值；页面对应 Bear、Base 和 Bull。"],
   ["Implied Return", "隐含空间", "综合目标价相对参考价格的百分比差，用于机械划分模型动作。"],
 ];
 
@@ -71,6 +75,20 @@ const median = (values: number[]) => {
   return sorted.length % 2 ? sorted[middle] : (sorted[middle - 1] + sorted[middle]) / 2;
 };
 const semiconductorSectors = new Set(["AI 与算力", "半导体设备", "晶圆制造", "存储与内存"]);
+const hashText = (text: string) => Array.from(text).reduce((hash, character) => Math.imul(hash ^ character.charCodeAt(0), 16777619) >>> 0, 2166136261);
+const seededRandom = (seed: number) => () => {
+  seed |= 0; seed = seed + 0x6D2B79F5 | 0;
+  let value = Math.imul(seed ^ seed >>> 15, 1 | seed);
+  value = value + Math.imul(value ^ value >>> 7, 61 | value) ^ value;
+  return ((value ^ value >>> 14) >>> 0) / 4294967296;
+};
+const normalSample = (random: () => number) => Math.sqrt(-2 * Math.log(Math.max(random(), 1e-9))) * Math.cos(2 * Math.PI * random());
+const percentile = (values: number[], probability: number) => {
+  if (!values.length) return null;
+  const sorted = [...values].sort((a, b) => a - b), position = (sorted.length - 1) * probability;
+  const lower = Math.floor(position), fraction = position - lower;
+  return sorted[lower + 1] == null ? sorted[lower] : sorted[lower] + fraction * (sorted[lower + 1] - sorted[lower]);
+};
 
 function peerMultiples(data: FinancialData | null, company?: Company) {
   if (!data || !company) return { pe: 25, ev: 18, ps: 4, count: 0 };
@@ -137,10 +155,13 @@ function App() {
   const latest = company?.periods.at(-1), previous = company?.periods.at(-2);
   const peers = useMemo(() => peerMultiples(data, company), [data, company]);
   const modelDefaults = useMemo(() => {
-    const measuredGrowth = company?.metrics?.revenueGrowth3Y ?? historicalRevenueGrowth(company?.periods || []) ?? 10;
+    const revenueGrowth = company?.metrics?.revenueGrowth3Y ?? historicalRevenueGrowth(company?.periods || []) ?? 10;
+    const earningsGrowth = company?.metrics?.epsGrowth3Y;
+    const measuredGrowth = earningsGrowth != null && earningsGrowth > -50 && earningsGrowth < 150 ? revenueGrowth * .6 + earningsGrowth * .4 : revenueGrowth;
     const beta = clamp(company?.metrics?.beta ?? 1, .7, 2);
-    return { growth: Math.round(clamp(measuredGrowth, -5, 35)), discount: Math.round(clamp(4.25 + beta * 5, 8, 14.5)), pe: peers.pe, ev: peers.ev };
-  }, [company, peers]);
+    const riskFreeRate = data?.assumptions?.riskFreeRate ?? 4.25, equityRiskPremium = data?.assumptions?.equityRiskPremium ?? 5;
+    return { growth: Math.round(clamp(measuredGrowth, -5, 35)), discount: Math.round(clamp(riskFreeRate + beta * equityRiskPremium, 8, 14.5)), pe: peers.pe, ev: peers.ev };
+  }, [company, data?.assumptions, peers]);
 
   useEffect(() => {
     setManualPrice(company?.market?.price ? String(company.market.price) : "");
@@ -158,8 +179,6 @@ function App() {
     const cash = latest.cash || 0, debt = latest.debt || 0;
     const reportedPerShare = (company?.dataBasis === "reported-financials" || (!company?.dataBasis && latest.form.startsWith("10-K"))) && latest.form.startsWith("10-K");
     const dcfBase = reportedPerShare && latest.freeCashFlow && latest.shares ? dcfPerShare(latest.freeCashFlow, latest.shares, growthDecimal, discountDecimal, terminalDecimal) : null;
-    const dcfBear = reportedPerShare && latest.freeCashFlow && latest.shares ? dcfPerShare(latest.freeCashFlow, latest.shares, Math.max(-.1, growthDecimal - .08), discountDecimal + .015, Math.max(0, terminalDecimal - .005)) : null;
-    const dcfBull = reportedPerShare && latest.freeCashFlow && latest.shares ? dcfPerShare(latest.freeCashFlow, latest.shares, Math.min(.45, growthDecimal + .08), Math.max(.06, discountDecimal - .01), Math.min(.05, terminalDecimal + .005)) : null;
     const epsTtm = company?.reportCurrency === "USD" || reportedPerShare
       ? company?.metrics?.epsTTM ?? latest.epsDiluted
       : currentPrice && company?.metrics?.peTTM ? currentPrice / company.metrics.peTTM : null;
@@ -180,18 +199,45 @@ function App() {
         ? currentPrice * evMultiple / company.metrics.evEbitdaTTM
         : null;
     const modelPrices = [dcfBase, earningsPerShare, evPerShare].filter((value): value is number => value != null && Number.isFinite(value) && value > 0);
-    const targetPrice = modelPrices.length ? modelPrices.reduce((sum, value) => sum + value, 0) / modelPrices.length : null;
-    const bearModels = [dcfBear, earningsPerShare == null ? null : earningsPerShare * .8, evPerShare == null ? null : evPerShare * .8].filter((value): value is number => value != null && value > 0);
-    const bullModels = [dcfBull, earningsPerShare == null ? null : earningsPerShare * 1.2, evPerShare == null ? null : evPerShare * 1.2].filter((value): value is number => value != null && value > 0);
-    const bearTarget = bearModels.length ? bearModels.reduce((sum, value) => sum + value, 0) / bearModels.length : null;
-    const bullTarget = bullModels.length ? bullModels.reduce((sum, value) => sum + value, 0) / bullModels.length : null;
+    const fairValue = modelPrices.length ? modelPrices.reduce((sum, value) => sum + value, 0) / modelPrices.length : null;
+    const random = seededRandom(hashText(`${company?.ticker}-${growthRate}-${wacc}-${terminalGrowth}-${peMultiple}-${evMultiple}`));
+    const beta = clamp(company?.metrics?.beta ?? 1, .7, 2.5);
+    const growthSigma = clamp(.045 + beta * .02, .06, .12), multipleSigma = clamp(.1 + beta * .035, .12, .2);
+    const simulations: number[] = [];
+    for (let simulation = 0; simulation < 3000; simulation += 1) {
+      const sampledGrowth = clamp(growthDecimal + normalSample(random) * growthSigma, -.2, .5);
+      const sampledDiscount = clamp(discountDecimal + normalSample(random) * .012, .06, .2);
+      const sampledTerminal = clamp(terminalDecimal + normalSample(random) * .004, 0, Math.min(.055, sampledDiscount - .01));
+      const sampledPe = peMultiple * Math.exp(normalSample(random) * multipleSigma);
+      const sampledEv = evMultiple * Math.exp(normalSample(random) * multipleSigma);
+      const sampledPs = peers.ps * Math.exp(normalSample(random) * multipleSigma);
+      const forecastDcf = reportedPerShare && latest.freeCashFlow && latest.shares
+        ? dcfPerShare(latest.freeCashFlow * (1 + sampledGrowth), latest.shares, sampledGrowth, sampledDiscount, sampledTerminal)
+        : null;
+      const forecastPe = epsTtm != null && epsTtm > 0 ? epsTtm * (1 + sampledGrowth) * sampledPe : null;
+      const forecastPs = forecastPe == null
+        ? latest.revenue && latest.shares
+          ? latest.revenue / latest.shares * (1 + sampledGrowth) * sampledPs
+          : currentPrice && company?.metrics?.psTTM && company.metrics.psTTM > 0
+            ? currentPrice * (1 + sampledGrowth) * sampledPs / company.metrics.psTTM
+            : null
+        : null;
+      const forecastEv = reportedPerShare && latest.ebitda != null && latest.ebitda > 0 && latest.shares
+        ? (latest.ebitda * (1 + sampledGrowth) * sampledEv + cash - debt) / latest.shares
+        : currentPrice && company?.metrics?.evEbitdaTTM && company.metrics.evEbitdaTTM > 0
+          ? currentPrice * (1 + sampledGrowth) * sampledEv / company.metrics.evEbitdaTTM
+          : null;
+      const forecastModels = [forecastDcf, forecastPe ?? forecastPs, forecastEv].filter((value): value is number => value != null && Number.isFinite(value) && value > 0);
+      if (forecastModels.length >= 2) simulations.push(forecastModels.reduce((sum, value) => sum + value, 0) / forecastModels.length);
+    }
+    const bearTarget = percentile(simulations, .1), targetPrice = percentile(simulations, .5), bullTarget = percentile(simulations, .9);
     const upside = targetPrice != null && currentPrice != null ? targetPrice / currentPrice - 1 : null;
-    const dispersion = modelPrices.length >= 2 && targetPrice ? (Math.max(...modelPrices) - Math.min(...modelPrices)) / targetPrice : null;
+    const dispersion = modelPrices.length >= 2 && fairValue ? (Math.max(...modelPrices) - Math.min(...modelPrices)) / fairValue : null;
     const confidence = modelPrices.length === 3 && (dispersion ?? 1) <= .75 ? "高" : modelPrices.length >= 2 && (dispersion ?? 1) <= 1 ? "中" : "低";
     const action = upside == null || modelPrices.length < 2 ? "数据不足" : confidence === "低" ? "模型分歧" : upside >= .25 ? "增持" : upside >= .1 ? "关注" : upside > -.1 ? "观望" : upside > -.25 ? "减持" : "回避";
     return {
       dcfPerShare: dcfBase, pePerShare, psPerShare, peerPs: peers.ps, evEquity, evPerShare, epsTtm,
-      targetPrice, bearTarget, bullTarget, currentPrice, upside, action, confidence, dispersion, modelCount: modelPrices.length,
+      fairValue, targetPrice, bearTarget, bullTarget, currentPrice, upside, action, confidence, dispersion, modelCount: modelPrices.length, simulationCount: simulations.length,
     };
   }, [latest, company, peers, growthRate, wacc, terminalGrowth, peMultiple, evMultiple, manualPrice]);
 
@@ -246,9 +292,9 @@ function App() {
         {hasData ? <>
           <section className="research-call" aria-label="数据模型研究结论">
             <div><span>DATA-DRIVEN CALL / 数据模型结论</span><strong className={`action-${valuation?.action}`}>{valuation?.action}</strong><small>{valuation?.modelCount || 0}/3 模型有效 · {valuation?.confidence || "低"}置信度{company?.dataBasis === "basic-metrics" ? " · 20-F 指标回退" : ""}{company?.sector === "医药与生物科技" ? " · 医药管线风险未计入" : ""}</small></div>
-            <div><span>SCENARIO TARGETS / 情景目标价</span><strong>{valuation?.targetPrice == null ? "—" : `$${valuation.targetPrice.toFixed(2)}`}</strong>{valuation?.bearTarget && valuation?.bullTarget && valuation?.targetPrice ? <div className="scenario-prices"><span><b>BEAR</b>${valuation.bearTarget.toFixed(0)}</span><span><b>BASE</b>${valuation.targetPrice.toFixed(0)}</span><span><b>BULL</b>${valuation.bullTarget.toFixed(0)}</span></div> : <small>模型不足时不输出情景区间</small>}</div>
+            <div><span>12M PRICE TARGET / 十二个月目标价</span><strong>{valuation?.targetPrice == null ? "—" : `$${valuation.targetPrice.toFixed(2)}`}</strong>{valuation?.bearTarget && valuation?.bullTarget && valuation?.targetPrice ? <><div className="scenario-prices"><span><b>BEAR · P10</b>${valuation.bearTarget.toFixed(0)}</span><span><b>BASE · P50</b>${valuation.targetPrice.toFixed(0)}</span><span><b>BULL · P90</b>${valuation.bullTarget.toFixed(0)}</span></div><small className="fair-value-line">今日综合估值 {valuation.fairValue == null ? "—" : `$${valuation.fairValue.toFixed(2)}`} · {valuation.simulationCount} 次有效模拟</small></> : <small>模型不足时不输出预测区间</small>}</div>
             <div><span>REFERENCE PRICE / 参考价格</span><label className="price-input"><b>$</b><input type="number" min="0" step="0.01" value={manualPrice} onChange={(event) => setManualPrice(event.target.value)} placeholder="输入收盘价" /></label><small>{company?.market ? `${company.market.date} · ${company.market.source}` : "可手动输入；配置行情密钥后每日自动更新"}</small></div>
-            <div><span>IMPLIED RETURN / 隐含空间</span><strong className={(valuation?.upside || 0) < 0 ? "negative" : "positive"}>{formatPercent(valuation?.upside ?? null)}</strong><small>目标价 ÷ 参考价 − 1</small></div>
+            <div><span>12M IMPLIED RETURN / 十二个月隐含空间</span><strong className={(valuation?.upside || 0) < 0 ? "negative" : "positive"}>{formatPercent(valuation?.upside ?? null)}</strong><small>P50 目标价 ÷ 参考价 − 1</small></div>
           </section>
           <section className="kpi-grid" aria-label="关键财务指标">{kpiRows.map(({ label, zh, display, delta }, index) => <article className="kpi" key={label}><div><span>0{index + 1}</span><small>FY {latest?.fiscalYear}</small></div><h3>{label}<small>{zh}</small></h3><strong>{display}</strong><p className={delta != null && delta < 0 ? "negative" : ""}>{delta == null ? "年度口径" : `${formatPercent(delta)} YoY`}</p></article>)}</section>
 
@@ -264,10 +310,10 @@ function App() {
           </section>
 
           <section className="section valuation-section" id="valuation">
-            <div className="section-head"><div><span>02 / VALUATION LAB</span><h2>估值模型</h2></div><p>基于历史披露与可调假设的教学性估算<br />不是目标价或投资建议</p></div>
+            <div className="section-head"><div><span>02 / VALUATION & FORECAST LAB</span><h2>估值与预测模型</h2></div><p>当前合理价值 + 十二个月概率目标价<br />规则化研究输出，不是个性化投资建议</p></div>
             <div className="valuation-layout">
               <div className="assumption-panel panel"><div className="panel-title"><div><small>MODEL INPUTS · {peers.count} PEERS</small><h3>公司校准假设 Assumptions</h3></div><button onClick={() => { setGrowthRate(modelDefaults.growth); setWacc(modelDefaults.discount); setTerminalGrowth(3); setPeMultiple(modelDefaults.pe); setEvMultiple(modelDefaults.ev); }}>重置</button></div>{[
-                { label:"Initial FCF Growth / 初始现金流增长", value:growthRate, setter:setGrowthRate, min:-10, max:45, suffix:"%" }, { label:"Discount Rate / 折现率", value:wacc, setter:setWacc, min:6, max:18, suffix:"%" }, { label:"Terminal Growth / 永续增长", value:terminalGrowth, setter:setTerminalGrowth, min:0, max:5, suffix:"%" }, { label:"Peer P/E / 同业市盈率", value:peMultiple, setter:setPeMultiple, min:5, max:100, suffix:"×" }, { label:"Peer EV/EBITDA / 同业企业倍数", value:evMultiple, setter:setEvMultiple, min:4, max:60, suffix:"×" },
+                { label:"Fundamental Growth / 基本面增长", value:growthRate, setter:setGrowthRate, min:-10, max:45, suffix:"%" }, { label:"Discount Rate / 折现率", value:wacc, setter:setWacc, min:6, max:18, suffix:"%" }, { label:"Terminal Growth / 永续增长", value:terminalGrowth, setter:setTerminalGrowth, min:0, max:5, suffix:"%" }, { label:"Peer P/E / 同业市盈率", value:peMultiple, setter:setPeMultiple, min:5, max:100, suffix:"×" }, { label:"Peer EV/EBITDA / 同业企业倍数", value:evMultiple, setter:setEvMultiple, min:4, max:60, suffix:"×" },
               ].map(({ label, value, setter, min, max, suffix }) => <label className="slider-row" key={label}><span>{label}<strong>{value}{suffix}</strong></span><input type="range" min={min} max={max} step={1} value={value} onChange={(event) => setter(Number(event.target.value))} /></label>)}{wacc <= terminalGrowth && <p className="model-warning">折现率必须高于永续增长率，DCF 才有意义。</p>}</div>
               <div className="valuation-results">
                 <article className="model-card dcf"><span>SCENARIO DCF / 情景现金流估值</span><h3>10Y Equity FCF DCF</h3><strong>{valuation?.dcfPerShare == null ? "数据不足" : `$${valuation.dcfPerShare.toFixed(2)} / 股`}</strong><p>增长率十年渐降至 {terminalGrowth}%<br />折现率 {wacc}% · 仅正 FCF 启用</p><code>Equity Value = Σ FCFₜ/(1+r)ᵗ + TV/(1+r)¹⁰</code></article>
@@ -275,7 +321,8 @@ function App() {
                 <article className="model-card"><span>ENTERPRISE MULTIPLE / 企业倍数</span><h3>EV / EBITDA</h3><strong>{valuation?.evPerShare == null ? formatMoney(valuation?.evEquity) : `$${valuation.evPerShare.toFixed(2)} / 股`}</strong>{company?.dataBasis === "basic-metrics" ? <p>当前倍数 {company.metrics?.evEbitdaTTM?.toFixed(1) || "—"}×<br />同业目标倍数 {evMultiple}×</p> : <p>EBITDA {formatMoney(latest?.ebitda)}<br />估算股权价值 {formatMoney(valuation?.evEquity)}</p>}<code>{company?.dataBasis === "basic-metrics" ? "目标价 = 当前价 × 同业倍数 / 当前倍数" : "Equity = EBITDA × Multiple + Cash − Debt"}</code></article>
               </div>
             </div>
-            <div className="method-note"><b>方法说明 Methodology</b><p>DCF 使用经营现金流减资本开支作为股权现金流近似值，预测十年并让增长率逐步回落至永续增长；折现率由无风险利率假设与截尾 Beta 自动校准。P/E 与 EV/EBITDA 默认采用同板块中位数。Bear/Base/Bull 分别调整增长、折现率和倍数；少于两套有效模型或模型分歧过大时停止给出投资动作。免费数据不含分析师一致预期，因此这仍是历史数据驱动模型，不是卖方盈利预测。</p></div>
+            <div className="method-note"><b>方法说明 Methodology</b><p><strong>今日合理价值</strong>是当前 DCF、TTM P/E（亏损时用 P/S）和 EV/EBITDA 的有效结果均值。<strong>十二个月目标价</strong>先把 EPS、收入、EBITDA 与 FCF 按基本面增长率滚动一年，再运行 3,000 次确定性种子 Monte Carlo；每次同时抽样增长率、折现率、永续增长率和同业倍数。Bear/Base/Bull 分别取结果分布的 P10/P50/P90。免费数据不含分析师一致预期，因此这是可复现的历史基本面预测，不是卖方盈利预测。</p></div>
+            <div className="method-links" aria-label="估值与预测方法来源"><a href="https://pages.stern.nyu.edu/~adamodar/New_Home_Page/valuation/val.htm" target="_blank" rel="noreferrer"><b>DCF VALUATION</b><span>Damodaran · NYU ↗</span></a><a href="https://www.itl.nist.gov/div898/handbook/pri/section5/pri531.htm" target="_blank" rel="noreferrer"><b>MONTE CARLO</b><span>NIST Handbook ↗</span></a><a href="https://fred.stlouisfed.org/series/DGS10" target="_blank" rel="noreferrer"><b>RISK-FREE RATE</b><span>FRED DGS10 · {data.assumptions?.riskFreeRate?.toFixed(2) || "—"}% ↗</span></a><a href="https://finnhub.io/docs/api" target="_blank" rel="noreferrer"><b>FINANCIAL DATA</b><span>Finnhub API ↗</span></a><a href="https://www.sec.gov/edgar/search/" target="_blank" rel="noreferrer"><b>PRIMARY FILINGS</b><span>SEC EDGAR ↗</span></a></div>
           </section>
 
           <section className="section" id="filings"><div className="section-head"><div><span>03 / FILING LOG</span><h2>最近申报</h2></div><p>标准化索引 · 链接指向 SEC EDGAR<br />点击可核对公司原始披露</p></div><div className="filing-list">{company?.filings.map((filing) => <a href={filing.url} target="_blank" rel="noreferrer" key={filing.accession}><span className="form-tag">{filing.form}</span><span><b>报告期 {filing.period || "—"}</b><small>提交于 {filing.filed} · {filing.accession}</small></span><i>↗</i></a>)}</div></section>
