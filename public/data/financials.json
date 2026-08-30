@@ -1,6 +1,1778 @@
 {
-  "generatedAt": "2026-08-30T00:00:00.000Z",
+  "generatedAt": "2026-08-30T09:09:20.286Z",
   "source": "SEC EDGAR Company Facts",
   "sourceUrl": "https://www.sec.gov/edgar/sec-api-documentation",
-  "companies": []
+  "marketSource": "Finnhub EOD",
+  "companies": [
+    {
+      "ticker": "NVDA",
+      "name": "NVIDIA",
+      "nameZh": "英伟达",
+      "sector": "AI 与算力",
+      "cik": "0001045810",
+      "exchange": null,
+      "status": "error",
+      "statusNote": "本次更新暂未取得数据",
+      "periods": [],
+      "filings": [],
+      "market": {
+        "price": 217.55,
+        "date": "2026-08-28",
+        "currency": "USD",
+        "source": "Finnhub EOD"
+      }
+    },
+    {
+      "ticker": "AVGO",
+      "name": "Broadcom",
+      "nameZh": "博通",
+      "sector": "AI 与算力",
+      "cik": "0001730168",
+      "exchange": null,
+      "status": "error",
+      "statusNote": "本次更新暂未取得数据",
+      "periods": [],
+      "filings": [],
+      "market": {
+        "price": 368.79,
+        "date": "2026-08-28",
+        "currency": "USD",
+        "source": "Finnhub EOD"
+      }
+    },
+    {
+      "ticker": "AMD",
+      "name": "Advanced Micro Devices",
+      "nameZh": "超威半导体",
+      "sector": "AI 与算力",
+      "cik": "0000002488",
+      "exchange": null,
+      "status": "error",
+      "statusNote": "本次更新暂未取得数据",
+      "periods": [],
+      "filings": [],
+      "market": {
+        "price": 465.58,
+        "date": "2026-08-28",
+        "currency": "USD",
+        "source": "Finnhub EOD"
+      }
+    },
+    {
+      "ticker": "ARM",
+      "name": "Arm Holdings",
+      "nameZh": "安谋控股",
+      "sector": "AI 与算力",
+      "cik": "0001973239",
+      "exchange": null,
+      "status": "error",
+      "statusNote": "本次更新暂未取得数据",
+      "periods": [],
+      "filings": [],
+      "market": {
+        "price": 239.05,
+        "date": "2026-08-28",
+        "currency": "USD",
+        "source": "Finnhub EOD"
+      }
+    },
+    {
+      "ticker": "DELL",
+      "name": "Dell Technologies",
+      "nameZh": "戴尔科技",
+      "sector": "AI 与算力",
+      "cik": "0001571996",
+      "exchange": null,
+      "status": "error",
+      "statusNote": "本次更新暂未取得数据",
+      "periods": [],
+      "filings": [],
+      "market": {
+        "price": 456.24,
+        "date": "2026-08-28",
+        "currency": "USD",
+        "source": "Finnhub EOD"
+      }
+    },
+    {
+      "ticker": "SMCI",
+      "name": "Super Micro Computer",
+      "nameZh": "超微电脑",
+      "sector": "AI 与算力",
+      "cik": "0001375365",
+      "exchange": null,
+      "status": "error",
+      "statusNote": "本次更新暂未取得数据",
+      "periods": [],
+      "filings": [],
+      "market": {
+        "price": 37.08,
+        "date": "2026-08-28",
+        "currency": "USD",
+        "source": "Finnhub EOD"
+      }
+    },
+    {
+      "ticker": "ASML",
+      "name": "ASML Holding",
+      "nameZh": "阿斯麦",
+      "sector": "半导体设备",
+      "cik": "0000937966",
+      "exchange": null,
+      "status": "error",
+      "statusNote": "本次更新暂未取得数据",
+      "periods": [],
+      "filings": [],
+      "market": {
+        "price": 1696.16,
+        "date": "2026-08-28",
+        "currency": "USD",
+        "source": "Finnhub EOD"
+      }
+    },
+    {
+      "ticker": "AMAT",
+      "name": "Applied Materials",
+      "nameZh": "应用材料",
+      "sector": "半导体设备",
+      "cik": "0000006951",
+      "exchange": null,
+      "status": "error",
+      "statusNote": "本次更新暂未取得数据",
+      "periods": [],
+      "filings": [],
+      "market": {
+        "price": 461.67,
+        "date": "2026-08-28",
+        "currency": "USD",
+        "source": "Finnhub EOD"
+      }
+    },
+    {
+      "ticker": "LRCX",
+      "name": "Lam Research",
+      "nameZh": "泛林集团",
+      "sector": "半导体设备",
+      "cik": "0000707549",
+      "exchange": null,
+      "status": "error",
+      "statusNote": "本次更新暂未取得数据",
+      "periods": [],
+      "filings": [],
+      "market": {
+        "price": 301.9,
+        "date": "2026-08-28",
+        "currency": "USD",
+        "source": "Finnhub EOD"
+      }
+    },
+    {
+      "ticker": "KLAC",
+      "name": "KLA",
+      "nameZh": "科磊",
+      "sector": "半导体设备",
+      "cik": "0000319201",
+      "exchange": null,
+      "status": "error",
+      "statusNote": "本次更新暂未取得数据",
+      "periods": [],
+      "filings": [],
+      "market": {
+        "price": 175.54,
+        "date": "2026-08-28",
+        "currency": "USD",
+        "source": "Finnhub EOD"
+      }
+    },
+    {
+      "ticker": "TER",
+      "name": "Teradyne",
+      "nameZh": "泰瑞达",
+      "sector": "半导体设备",
+      "cik": "0000097210",
+      "exchange": null,
+      "status": "error",
+      "statusNote": "本次更新暂未取得数据",
+      "periods": [],
+      "filings": [],
+      "market": {
+        "price": 354.97,
+        "date": "2026-08-28",
+        "currency": "USD",
+        "source": "Finnhub EOD"
+      }
+    },
+    {
+      "ticker": "ONTO",
+      "name": "Onto Innovation",
+      "nameZh": "昂图创新",
+      "sector": "半导体设备",
+      "cik": "0000704532",
+      "exchange": null,
+      "status": "error",
+      "statusNote": "本次更新暂未取得数据",
+      "periods": [],
+      "filings": [],
+      "market": {
+        "price": 270.79,
+        "date": "2026-08-28",
+        "currency": "USD",
+        "source": "Finnhub EOD"
+      }
+    },
+    {
+      "ticker": "TSM",
+      "name": "Taiwan Semiconductor Manufacturing",
+      "nameZh": "台积电 ADR",
+      "sector": "晶圆制造",
+      "cik": "0001046179",
+      "exchange": null,
+      "status": "error",
+      "statusNote": "本次更新暂未取得数据",
+      "periods": [],
+      "filings": [],
+      "market": {
+        "price": 417.52,
+        "date": "2026-08-28",
+        "currency": "USD",
+        "source": "Finnhub EOD"
+      }
+    },
+    {
+      "ticker": "INTC",
+      "name": "Intel",
+      "nameZh": "英特尔",
+      "sector": "晶圆制造",
+      "cik": "0000050863",
+      "exchange": null,
+      "status": "error",
+      "statusNote": "本次更新暂未取得数据",
+      "periods": [],
+      "filings": [],
+      "market": {
+        "price": 89.47,
+        "date": "2026-08-28",
+        "currency": "USD",
+        "source": "Finnhub EOD"
+      }
+    },
+    {
+      "ticker": "GFS",
+      "name": "GlobalFoundries",
+      "nameZh": "格芯",
+      "sector": "晶圆制造",
+      "cik": "0001709048",
+      "exchange": null,
+      "status": "error",
+      "statusNote": "本次更新暂未取得数据",
+      "periods": [],
+      "filings": [],
+      "market": {
+        "price": 44.76,
+        "date": "2026-08-28",
+        "currency": "USD",
+        "source": "Finnhub EOD"
+      }
+    },
+    {
+      "ticker": "UMC",
+      "name": "United Microelectronics",
+      "nameZh": "联电 ADR",
+      "sector": "晶圆制造",
+      "cik": "0001033767",
+      "exchange": null,
+      "status": "error",
+      "statusNote": "本次更新暂未取得数据",
+      "periods": [],
+      "filings": [],
+      "market": {
+        "price": 19.79,
+        "date": "2026-08-28",
+        "currency": "USD",
+        "source": "Finnhub EOD"
+      }
+    },
+    {
+      "ticker": "MU",
+      "name": "Micron Technology",
+      "nameZh": "美光科技",
+      "sector": "存储与内存",
+      "cik": "0000723125",
+      "exchange": null,
+      "status": "error",
+      "statusNote": "本次更新暂未取得数据",
+      "periods": [],
+      "filings": [],
+      "market": {
+        "price": 932.86,
+        "date": "2026-08-28",
+        "currency": "USD",
+        "source": "Finnhub EOD"
+      }
+    },
+    {
+      "ticker": "SNDK",
+      "name": "SanDisk",
+      "nameZh": "闪迪",
+      "sector": "存储与内存",
+      "cik": "0002023554",
+      "exchange": null,
+      "status": "error",
+      "statusNote": "本次更新暂未取得数据",
+      "periods": [],
+      "filings": [],
+      "market": {
+        "price": 1484.98,
+        "date": "2026-08-28",
+        "currency": "USD",
+        "source": "Finnhub EOD"
+      }
+    },
+    {
+      "ticker": "WDC",
+      "name": "Western Digital",
+      "nameZh": "西部数据",
+      "sector": "存储与内存",
+      "cik": "0000106040",
+      "exchange": null,
+      "status": "error",
+      "statusNote": "本次更新暂未取得数据",
+      "periods": [],
+      "filings": [],
+      "market": {
+        "price": 459.45,
+        "date": "2026-08-28",
+        "currency": "USD",
+        "source": "Finnhub EOD"
+      }
+    },
+    {
+      "ticker": "STX",
+      "name": "Seagate Technology",
+      "nameZh": "希捷科技",
+      "sector": "存储与内存",
+      "cik": "0001137789",
+      "exchange": null,
+      "status": "error",
+      "statusNote": "本次更新暂未取得数据",
+      "periods": [],
+      "filings": [],
+      "market": {
+        "price": 829.76,
+        "date": "2026-08-28",
+        "currency": "USD",
+        "source": "Finnhub EOD"
+      }
+    },
+    {
+      "ticker": "MSFT",
+      "name": "Microsoft",
+      "nameZh": "微软",
+      "sector": "云计算",
+      "cik": "0000789019",
+      "exchange": null,
+      "status": "error",
+      "statusNote": "本次更新暂未取得数据",
+      "periods": [],
+      "filings": [],
+      "market": {
+        "price": 513.53,
+        "date": "2026-08-28",
+        "currency": "USD",
+        "source": "Finnhub EOD"
+      }
+    },
+    {
+      "ticker": "AMZN",
+      "name": "Amazon",
+      "nameZh": "亚马逊",
+      "sector": "云计算",
+      "cik": "0001018724",
+      "exchange": null,
+      "status": "error",
+      "statusNote": "本次更新暂未取得数据",
+      "periods": [],
+      "filings": [],
+      "market": {
+        "price": 266.43,
+        "date": "2026-08-28",
+        "currency": "USD",
+        "source": "Finnhub EOD"
+      }
+    },
+    {
+      "ticker": "GOOGL",
+      "name": "Alphabet",
+      "nameZh": "谷歌",
+      "sector": "云计算",
+      "cik": "0001652044",
+      "exchange": null,
+      "status": "error",
+      "statusNote": "本次更新暂未取得数据",
+      "periods": [],
+      "filings": [],
+      "market": {
+        "price": 346.59,
+        "date": "2026-08-28",
+        "currency": "USD",
+        "source": "Finnhub EOD"
+      }
+    },
+    {
+      "ticker": "ORCL",
+      "name": "Oracle",
+      "nameZh": "甲骨文",
+      "sector": "云计算",
+      "cik": "0001341439",
+      "exchange": null,
+      "status": "error",
+      "statusNote": "本次更新暂未取得数据",
+      "periods": [],
+      "filings": [],
+      "market": {
+        "price": 150.85,
+        "date": "2026-08-28",
+        "currency": "USD",
+        "source": "Finnhub EOD"
+      }
+    },
+    {
+      "ticker": "IBM",
+      "name": "IBM",
+      "nameZh": "国际商业机器",
+      "sector": "云计算",
+      "cik": "0000051143",
+      "exchange": null,
+      "status": "error",
+      "statusNote": "本次更新暂未取得数据",
+      "periods": [],
+      "filings": [],
+      "market": {
+        "price": 235.59,
+        "date": "2026-08-28",
+        "currency": "USD",
+        "source": "Finnhub EOD"
+      }
+    },
+    {
+      "ticker": "PLTR",
+      "name": "Palantir Technologies",
+      "nameZh": "帕兰提尔",
+      "sector": "AI 应用层",
+      "cik": "0001321655",
+      "exchange": null,
+      "status": "error",
+      "statusNote": "本次更新暂未取得数据",
+      "periods": [],
+      "filings": [],
+      "market": {
+        "price": 186.29,
+        "date": "2026-08-28",
+        "currency": "USD",
+        "source": "Finnhub EOD"
+      }
+    },
+    {
+      "ticker": "SNOW",
+      "name": "Snowflake",
+      "nameZh": "Snowflake",
+      "sector": "AI 应用层",
+      "cik": "0001640147",
+      "exchange": null,
+      "status": "error",
+      "statusNote": "本次更新暂未取得数据",
+      "periods": [],
+      "filings": [],
+      "market": {
+        "price": 328,
+        "date": "2026-08-28",
+        "currency": "USD",
+        "source": "Finnhub EOD"
+      }
+    },
+    {
+      "ticker": "DDOG",
+      "name": "Datadog",
+      "nameZh": "Datadog",
+      "sector": "AI 应用层",
+      "cik": "0001561550",
+      "exchange": null,
+      "status": "error",
+      "statusNote": "本次更新暂未取得数据",
+      "periods": [],
+      "filings": [],
+      "market": {
+        "price": 236.98,
+        "date": "2026-08-28",
+        "currency": "USD",
+        "source": "Finnhub EOD"
+      }
+    },
+    {
+      "ticker": "NOW",
+      "name": "ServiceNow",
+      "nameZh": "ServiceNow",
+      "sector": "AI 应用层",
+      "cik": "0001373715",
+      "exchange": null,
+      "status": "error",
+      "statusNote": "本次更新暂未取得数据",
+      "periods": [],
+      "filings": [],
+      "market": {
+        "price": 144.71,
+        "date": "2026-08-28",
+        "currency": "USD",
+        "source": "Finnhub EOD"
+      }
+    },
+    {
+      "ticker": "APP",
+      "name": "AppLovin",
+      "nameZh": "AppLovin",
+      "sector": "AI 应用层",
+      "cik": "0001751008",
+      "exchange": null,
+      "status": "error",
+      "statusNote": "本次更新暂未取得数据",
+      "periods": [],
+      "filings": [],
+      "market": {
+        "price": 317.76,
+        "date": "2026-08-28",
+        "currency": "USD",
+        "source": "Finnhub EOD"
+      }
+    },
+    {
+      "ticker": "TEM",
+      "name": "Tempus AI",
+      "nameZh": "Tempus AI",
+      "sector": "AI 应用层",
+      "cik": "0001717115",
+      "exchange": null,
+      "status": "error",
+      "statusNote": "本次更新暂未取得数据",
+      "periods": [],
+      "filings": [],
+      "market": {
+        "price": 64.04,
+        "date": "2026-08-28",
+        "currency": "USD",
+        "source": "Finnhub EOD"
+      }
+    },
+    {
+      "ticker": "CRM",
+      "name": "Salesforce",
+      "nameZh": "赛富时",
+      "sector": "企业软件",
+      "cik": "0001108524",
+      "exchange": null,
+      "status": "error",
+      "statusNote": "本次更新暂未取得数据",
+      "periods": [],
+      "filings": [],
+      "market": {
+        "price": 256,
+        "date": "2026-08-28",
+        "currency": "USD",
+        "source": "Finnhub EOD"
+      }
+    },
+    {
+      "ticker": "ADBE",
+      "name": "Adobe",
+      "nameZh": "奥多比",
+      "sector": "企业软件",
+      "cik": "0000796343",
+      "exchange": null,
+      "status": "error",
+      "statusNote": "本次更新暂未取得数据",
+      "periods": [],
+      "filings": [],
+      "market": {
+        "price": 291.52,
+        "date": "2026-08-28",
+        "currency": "USD",
+        "source": "Finnhub EOD"
+      }
+    },
+    {
+      "ticker": "INTU",
+      "name": "Intuit",
+      "nameZh": "Intuit",
+      "sector": "企业软件",
+      "cik": "0000896878",
+      "exchange": null,
+      "status": "error",
+      "statusNote": "本次更新暂未取得数据",
+      "periods": [],
+      "filings": [],
+      "market": {
+        "price": 358.06,
+        "date": "2026-08-28",
+        "currency": "USD",
+        "source": "Finnhub EOD"
+      }
+    },
+    {
+      "ticker": "CRWD",
+      "name": "CrowdStrike",
+      "nameZh": "CrowdStrike",
+      "sector": "企业软件",
+      "cik": "0001535527",
+      "exchange": null,
+      "status": "error",
+      "statusNote": "本次更新暂未取得数据",
+      "periods": [],
+      "filings": [],
+      "market": {
+        "price": 218.4,
+        "date": "2026-08-28",
+        "currency": "USD",
+        "source": "Finnhub EOD"
+      }
+    },
+    {
+      "ticker": "PANW",
+      "name": "Palo Alto Networks",
+      "nameZh": "派拓网络",
+      "sector": "企业软件",
+      "cik": "0001327567",
+      "exchange": null,
+      "status": "error",
+      "statusNote": "本次更新暂未取得数据",
+      "periods": [],
+      "filings": [],
+      "market": {
+        "price": 371.59,
+        "date": "2026-08-28",
+        "currency": "USD",
+        "source": "Finnhub EOD"
+      }
+    },
+    {
+      "ticker": "META",
+      "name": "Meta Platforms",
+      "nameZh": "Meta",
+      "sector": "互联网平台",
+      "cik": "0001326801",
+      "exchange": null,
+      "status": "error",
+      "statusNote": "本次更新暂未取得数据",
+      "periods": [],
+      "filings": [],
+      "market": {
+        "price": 578.02,
+        "date": "2026-08-28",
+        "currency": "USD",
+        "source": "Finnhub EOD"
+      }
+    },
+    {
+      "ticker": "NFLX",
+      "name": "Netflix",
+      "nameZh": "奈飞",
+      "sector": "互联网平台",
+      "cik": "0001065280",
+      "exchange": null,
+      "status": "error",
+      "statusNote": "本次更新暂未取得数据",
+      "periods": [],
+      "filings": [],
+      "market": {
+        "price": 81.72,
+        "date": "2026-08-28",
+        "currency": "USD",
+        "source": "Finnhub EOD"
+      }
+    },
+    {
+      "ticker": "UBER",
+      "name": "Uber Technologies",
+      "nameZh": "优步",
+      "sector": "互联网平台",
+      "cik": "0001543151",
+      "exchange": null,
+      "status": "error",
+      "statusNote": "本次更新暂未取得数据",
+      "periods": [],
+      "filings": [],
+      "market": {
+        "price": 78.82,
+        "date": "2026-08-28",
+        "currency": "USD",
+        "source": "Finnhub EOD"
+      }
+    },
+    {
+      "ticker": "SHOP",
+      "name": "Shopify",
+      "nameZh": "Shopify",
+      "sector": "互联网平台",
+      "cik": "0001594805",
+      "exchange": null,
+      "status": "error",
+      "statusNote": "本次更新暂未取得数据",
+      "periods": [],
+      "filings": [],
+      "market": {
+        "price": 152.9,
+        "date": "2026-08-28",
+        "currency": "USD",
+        "source": "Finnhub EOD"
+      }
+    },
+    {
+      "ticker": "ABNB",
+      "name": "Airbnb",
+      "nameZh": "爱彼迎",
+      "sector": "互联网平台",
+      "cik": "0001559720",
+      "exchange": null,
+      "status": "error",
+      "statusNote": "本次更新暂未取得数据",
+      "periods": [],
+      "filings": [],
+      "market": {
+        "price": 189.43,
+        "date": "2026-08-28",
+        "currency": "USD",
+        "source": "Finnhub EOD"
+      }
+    },
+    {
+      "ticker": "DASH",
+      "name": "DoorDash",
+      "nameZh": "DoorDash",
+      "sector": "互联网平台",
+      "cik": "0001792789",
+      "exchange": null,
+      "status": "error",
+      "statusNote": "本次更新暂未取得数据",
+      "periods": [],
+      "filings": [],
+      "market": {
+        "price": 236.74,
+        "date": "2026-08-28",
+        "currency": "USD",
+        "source": "Finnhub EOD"
+      }
+    },
+    {
+      "ticker": "ANET",
+      "name": "Arista Networks",
+      "nameZh": "Arista Networks",
+      "sector": "网络与光通信",
+      "cik": "0001596532",
+      "exchange": null,
+      "status": "error",
+      "statusNote": "本次更新暂未取得数据",
+      "periods": [],
+      "filings": [],
+      "market": {
+        "price": 195.38,
+        "date": "2026-08-28",
+        "currency": "USD",
+        "source": "Finnhub EOD"
+      }
+    },
+    {
+      "ticker": "MRVL",
+      "name": "Marvell Technology",
+      "nameZh": "迈威尔科技",
+      "sector": "网络与光通信",
+      "cik": "0001835632",
+      "exchange": null,
+      "status": "error",
+      "statusNote": "本次更新暂未取得数据",
+      "periods": [],
+      "filings": [],
+      "market": {
+        "price": 216.62,
+        "date": "2026-08-28",
+        "currency": "USD",
+        "source": "Finnhub EOD"
+      }
+    },
+    {
+      "ticker": "COHR",
+      "name": "Coherent",
+      "nameZh": "相干公司",
+      "sector": "网络与光通信",
+      "cik": "0000820318",
+      "exchange": null,
+      "status": "error",
+      "statusNote": "本次更新暂未取得数据",
+      "periods": [],
+      "filings": [],
+      "market": {
+        "price": 279.2,
+        "date": "2026-08-28",
+        "currency": "USD",
+        "source": "Finnhub EOD"
+      }
+    },
+    {
+      "ticker": "LITE",
+      "name": "Lumentum Holdings",
+      "nameZh": "Lumentum",
+      "sector": "网络与光通信",
+      "cik": "0001633978",
+      "exchange": null,
+      "status": "error",
+      "statusNote": "本次更新暂未取得数据",
+      "periods": [],
+      "filings": [],
+      "market": {
+        "price": 895,
+        "date": "2026-08-28",
+        "currency": "USD",
+        "source": "Finnhub EOD"
+      }
+    },
+    {
+      "ticker": "CSCO",
+      "name": "Cisco Systems",
+      "nameZh": "思科",
+      "sector": "网络与光通信",
+      "cik": "0000858877",
+      "exchange": null,
+      "status": "error",
+      "statusNote": "本次更新暂未取得数据",
+      "periods": [],
+      "filings": [],
+      "market": {
+        "price": 109.93,
+        "date": "2026-08-28",
+        "currency": "USD",
+        "source": "Finnhub EOD"
+      }
+    },
+    {
+      "ticker": "CIEN",
+      "name": "Ciena",
+      "nameZh": "Ciena",
+      "sector": "网络与光通信",
+      "cik": "0000936395",
+      "exchange": null,
+      "status": "error",
+      "statusNote": "本次更新暂未取得数据",
+      "periods": [],
+      "filings": [],
+      "market": {
+        "price": 378.44,
+        "date": "2026-08-28",
+        "currency": "USD",
+        "source": "Finnhub EOD"
+      }
+    },
+    {
+      "ticker": "VRT",
+      "name": "Vertiv Holdings",
+      "nameZh": "维谛技术",
+      "sector": "数据中心设施",
+      "cik": "0001674101",
+      "exchange": null,
+      "status": "error",
+      "statusNote": "本次更新暂未取得数据",
+      "periods": [],
+      "filings": [],
+      "market": {
+        "price": 257.08,
+        "date": "2026-08-28",
+        "currency": "USD",
+        "source": "Finnhub EOD"
+      }
+    },
+    {
+      "ticker": "ETN",
+      "name": "Eaton",
+      "nameZh": "伊顿",
+      "sector": "数据中心设施",
+      "cik": "0001551182",
+      "exchange": null,
+      "status": "error",
+      "statusNote": "本次更新暂未取得数据",
+      "periods": [],
+      "filings": [],
+      "market": {
+        "price": 402.78,
+        "date": "2026-08-28",
+        "currency": "USD",
+        "source": "Finnhub EOD"
+      }
+    },
+    {
+      "ticker": "PWR",
+      "name": "Quanta Services",
+      "nameZh": "广达服务",
+      "sector": "数据中心设施",
+      "cik": "0001050915",
+      "exchange": null,
+      "status": "error",
+      "statusNote": "本次更新暂未取得数据",
+      "periods": [],
+      "filings": [],
+      "market": {
+        "price": 602.7,
+        "date": "2026-08-28",
+        "currency": "USD",
+        "source": "Finnhub EOD"
+      }
+    },
+    {
+      "ticker": "MOD",
+      "name": "Modine Manufacturing",
+      "nameZh": "摩丁制造",
+      "sector": "数据中心设施",
+      "cik": "0000067347",
+      "exchange": null,
+      "status": "error",
+      "statusNote": "本次更新暂未取得数据",
+      "periods": [],
+      "filings": [],
+      "market": {
+        "price": 177.63,
+        "date": "2026-08-28",
+        "currency": "USD",
+        "source": "Finnhub EOD"
+      }
+    },
+    {
+      "ticker": "CEG",
+      "name": "Constellation Energy",
+      "nameZh": "星座能源",
+      "sector": "电力与能源",
+      "cik": "0001868275",
+      "exchange": null,
+      "status": "error",
+      "statusNote": "本次更新暂未取得数据",
+      "periods": [],
+      "filings": [],
+      "market": {
+        "price": 276.75,
+        "date": "2026-08-28",
+        "currency": "USD",
+        "source": "Finnhub EOD"
+      }
+    },
+    {
+      "ticker": "VST",
+      "name": "Vistra",
+      "nameZh": "Vistra",
+      "sector": "电力与能源",
+      "cik": "0001692819",
+      "exchange": null,
+      "status": "error",
+      "statusNote": "本次更新暂未取得数据",
+      "periods": [],
+      "filings": [],
+      "market": {
+        "price": 137.09,
+        "date": "2026-08-28",
+        "currency": "USD",
+        "source": "Finnhub EOD"
+      }
+    },
+    {
+      "ticker": "GEV",
+      "name": "GE Vernova",
+      "nameZh": "GE Vernova",
+      "sector": "电力与能源",
+      "cik": "0001996810",
+      "exchange": null,
+      "status": "error",
+      "statusNote": "本次更新暂未取得数据",
+      "periods": [],
+      "filings": [],
+      "market": {
+        "price": 911.93,
+        "date": "2026-08-28",
+        "currency": "USD",
+        "source": "Finnhub EOD"
+      }
+    },
+    {
+      "ticker": "NRG",
+      "name": "NRG Energy",
+      "nameZh": "NRG 能源",
+      "sector": "电力与能源",
+      "cik": "0001013871",
+      "exchange": null,
+      "status": "error",
+      "statusNote": "本次更新暂未取得数据",
+      "periods": [],
+      "filings": [],
+      "market": {
+        "price": 111.12,
+        "date": "2026-08-28",
+        "currency": "USD",
+        "source": "Finnhub EOD"
+      }
+    },
+    {
+      "ticker": "NEE",
+      "name": "NextEra Energy",
+      "nameZh": "新纪元能源",
+      "sector": "电力与能源",
+      "cik": "0000753308",
+      "exchange": null,
+      "status": "error",
+      "statusNote": "本次更新暂未取得数据",
+      "periods": [],
+      "filings": [],
+      "market": {
+        "price": 81.84,
+        "date": "2026-08-28",
+        "currency": "USD",
+        "source": "Finnhub EOD"
+      }
+    },
+    {
+      "ticker": "OKLO",
+      "name": "Oklo",
+      "nameZh": "Oklo",
+      "sector": "电力与能源",
+      "cik": "0001849056",
+      "exchange": null,
+      "status": "error",
+      "statusNote": "本次更新暂未取得数据",
+      "periods": [],
+      "filings": [],
+      "market": {
+        "price": 40.14,
+        "date": "2026-08-28",
+        "currency": "USD",
+        "source": "Finnhub EOD"
+      }
+    },
+    {
+      "ticker": "BIDU",
+      "name": "Baidu",
+      "nameZh": "百度",
+      "sector": "中国 AI",
+      "cik": "0001329099",
+      "exchange": null,
+      "status": "error",
+      "statusNote": "本次更新暂未取得数据",
+      "periods": [],
+      "filings": [],
+      "market": {
+        "price": 97.12,
+        "date": "2026-08-28",
+        "currency": "USD",
+        "source": "Finnhub EOD"
+      }
+    },
+    {
+      "ticker": "BABA",
+      "name": "Alibaba Group",
+      "nameZh": "阿里巴巴",
+      "sector": "中国 AI",
+      "cik": "0001577552",
+      "exchange": null,
+      "status": "error",
+      "statusNote": "本次更新暂未取得数据",
+      "periods": [],
+      "filings": [],
+      "market": {
+        "price": 118.9,
+        "date": "2026-08-28",
+        "currency": "USD",
+        "source": "Finnhub EOD"
+      }
+    },
+    {
+      "ticker": "KC",
+      "name": "Kingsoft Cloud",
+      "nameZh": "金山云",
+      "sector": "中国 AI",
+      "cik": "0001795589",
+      "exchange": null,
+      "status": "error",
+      "statusNote": "本次更新暂未取得数据",
+      "periods": [],
+      "filings": [],
+      "market": {
+        "price": 10.64,
+        "date": "2026-08-28",
+        "currency": "USD",
+        "source": "Finnhub EOD"
+      }
+    },
+    {
+      "ticker": "WRD",
+      "name": "WeRide",
+      "nameZh": "文远知行",
+      "sector": "中国 AI",
+      "cik": "0001867729",
+      "exchange": null,
+      "status": "error",
+      "statusNote": "本次更新暂未取得数据",
+      "periods": [],
+      "filings": [],
+      "market": {
+        "price": 6.05,
+        "date": "2026-08-28",
+        "currency": "USD",
+        "source": "Finnhub EOD"
+      }
+    },
+    {
+      "ticker": "PONY",
+      "name": "Pony AI",
+      "nameZh": "小马智行",
+      "sector": "中国 AI",
+      "cik": "0001969302",
+      "exchange": null,
+      "status": "error",
+      "statusNote": "本次更新暂未取得数据",
+      "periods": [],
+      "filings": [],
+      "market": {
+        "price": 7.58,
+        "date": "2026-08-28",
+        "currency": "USD",
+        "source": "Finnhub EOD"
+      }
+    },
+    {
+      "ticker": "HSAI",
+      "name": "Hesai Group",
+      "nameZh": "禾赛科技",
+      "sector": "中国 AI",
+      "cik": "0001861737",
+      "exchange": null,
+      "status": "error",
+      "statusNote": "本次更新暂未取得数据",
+      "periods": [],
+      "filings": [],
+      "market": {
+        "price": 17.42,
+        "date": "2026-08-28",
+        "currency": "USD",
+        "source": "Finnhub EOD"
+      }
+    },
+    {
+      "ticker": "0981.HK",
+      "secTicker": "0981",
+      "name": "Semiconductor Manufacturing International",
+      "nameZh": "中芯国际",
+      "sector": "中国芯片",
+      "status": "unsupported",
+      "statusNote": "SEC EDGAR 暂无该证券的标准化财报数据",
+      "periods": [],
+      "filings": [],
+      "market": null
+    },
+    {
+      "ticker": "1347.HK",
+      "secTicker": "1347",
+      "name": "Hua Hong Semiconductor",
+      "nameZh": "华虹半导体",
+      "sector": "中国芯片",
+      "status": "unsupported",
+      "statusNote": "SEC EDGAR 暂无该证券的标准化财报数据",
+      "periods": [],
+      "filings": [],
+      "market": null
+    },
+    {
+      "ticker": "3986.HK",
+      "secTicker": "3986",
+      "name": "GigaDevice Semiconductor",
+      "nameZh": "兆易创新 H",
+      "sector": "中国芯片",
+      "status": "unsupported",
+      "statusNote": "SEC EDGAR 暂无该证券的标准化财报数据",
+      "periods": [],
+      "filings": [],
+      "market": null
+    },
+    {
+      "ticker": "ACMR",
+      "name": "ACM Research",
+      "nameZh": "盛美半导体",
+      "sector": "中国芯片",
+      "cik": "0001680062",
+      "exchange": null,
+      "status": "error",
+      "statusNote": "本次更新暂未取得数据",
+      "periods": [],
+      "filings": [],
+      "market": {
+        "price": 74.42,
+        "date": "2026-08-28",
+        "currency": "USD",
+        "source": "Finnhub EOD"
+      }
+    },
+    {
+      "ticker": "PDD",
+      "name": "PDD Holdings",
+      "nameZh": "拼多多",
+      "sector": "中国互联网",
+      "cik": "0001737806",
+      "exchange": null,
+      "status": "error",
+      "statusNote": "本次更新暂未取得数据",
+      "periods": [],
+      "filings": [],
+      "market": {
+        "price": 85.69,
+        "date": "2026-08-28",
+        "currency": "USD",
+        "source": "Finnhub EOD"
+      }
+    },
+    {
+      "ticker": "JD",
+      "name": "JD.com",
+      "nameZh": "京东",
+      "sector": "中国互联网",
+      "cik": "0001549802",
+      "exchange": null,
+      "status": "error",
+      "statusNote": "本次更新暂未取得数据",
+      "periods": [],
+      "filings": [],
+      "market": {
+        "price": 28.74,
+        "date": "2026-08-28",
+        "currency": "USD",
+        "source": "Finnhub EOD"
+      }
+    },
+    {
+      "ticker": "NTES",
+      "name": "NetEase",
+      "nameZh": "网易",
+      "sector": "中国互联网",
+      "cik": "0001110646",
+      "exchange": null,
+      "status": "error",
+      "statusNote": "本次更新暂未取得数据",
+      "periods": [],
+      "filings": [],
+      "market": {
+        "price": 122.76,
+        "date": "2026-08-28",
+        "currency": "USD",
+        "source": "Finnhub EOD"
+      }
+    },
+    {
+      "ticker": "TME",
+      "name": "Tencent Music Entertainment",
+      "nameZh": "腾讯音乐",
+      "sector": "中国互联网",
+      "cik": "0001744676",
+      "exchange": null,
+      "status": "error",
+      "statusNote": "本次更新暂未取得数据",
+      "periods": [],
+      "filings": [],
+      "market": {
+        "price": 8.56,
+        "date": "2026-08-28",
+        "currency": "USD",
+        "source": "Finnhub EOD"
+      }
+    },
+    {
+      "ticker": "BILI",
+      "name": "Bilibili",
+      "nameZh": "哔哩哔哩",
+      "sector": "中国互联网",
+      "cik": "0001723690",
+      "exchange": null,
+      "status": "error",
+      "statusNote": "本次更新暂未取得数据",
+      "periods": [],
+      "filings": [],
+      "market": {
+        "price": 16.6,
+        "date": "2026-08-28",
+        "currency": "USD",
+        "source": "Finnhub EOD"
+      }
+    },
+    {
+      "ticker": "NIO",
+      "name": "NIO",
+      "nameZh": "蔚来",
+      "sector": "中国智能汽车",
+      "cik": "0001736541",
+      "exchange": null,
+      "status": "error",
+      "statusNote": "本次更新暂未取得数据",
+      "periods": [],
+      "filings": [],
+      "market": {
+        "price": 4.37,
+        "date": "2026-08-28",
+        "currency": "USD",
+        "source": "Finnhub EOD"
+      }
+    },
+    {
+      "ticker": "XPEV",
+      "name": "XPeng",
+      "nameZh": "小鹏汽车",
+      "sector": "中国智能汽车",
+      "cik": "0001810997",
+      "exchange": null,
+      "status": "error",
+      "statusNote": "本次更新暂未取得数据",
+      "periods": [],
+      "filings": [],
+      "market": {
+        "price": 11.53,
+        "date": "2026-08-28",
+        "currency": "USD",
+        "source": "Finnhub EOD"
+      }
+    },
+    {
+      "ticker": "LI",
+      "name": "Li Auto",
+      "nameZh": "理想汽车",
+      "sector": "中国智能汽车",
+      "cik": "0001791706",
+      "exchange": null,
+      "status": "error",
+      "statusNote": "本次更新暂未取得数据",
+      "periods": [],
+      "filings": [],
+      "market": {
+        "price": 12.23,
+        "date": "2026-08-28",
+        "currency": "USD",
+        "source": "Finnhub EOD"
+      }
+    },
+    {
+      "ticker": "1211.HK",
+      "secTicker": "1211",
+      "name": "BYD Company",
+      "nameZh": "比亚迪",
+      "sector": "中国智能汽车",
+      "status": "unsupported",
+      "statusNote": "SEC EDGAR 暂无该证券的标准化财报数据",
+      "periods": [],
+      "filings": [],
+      "market": null
+    },
+    {
+      "ticker": "1810.HK",
+      "secTicker": "1810",
+      "name": "Xiaomi",
+      "nameZh": "小米集团",
+      "sector": "中国智能汽车",
+      "status": "unsupported",
+      "statusNote": "SEC EDGAR 暂无该证券的标准化财报数据",
+      "periods": [],
+      "filings": [],
+      "market": null
+    },
+    {
+      "ticker": "AAPL",
+      "name": "Apple",
+      "nameZh": "苹果",
+      "sector": "消费科技",
+      "cik": "0000320193",
+      "exchange": null,
+      "status": "error",
+      "statusNote": "本次更新暂未取得数据",
+      "periods": [],
+      "filings": [],
+      "market": {
+        "price": 319.7,
+        "date": "2026-08-28",
+        "currency": "USD",
+        "source": "Finnhub EOD"
+      }
+    },
+    {
+      "ticker": "QCOM",
+      "name": "Qualcomm",
+      "nameZh": "高通",
+      "sector": "芯片设计",
+      "cik": "0000804328",
+      "exchange": null,
+      "status": "error",
+      "statusNote": "本次更新暂未取得数据",
+      "periods": [],
+      "filings": [],
+      "market": {
+        "price": 164.19,
+        "date": "2026-08-28",
+        "currency": "USD",
+        "source": "Finnhub EOD"
+      }
+    },
+    {
+      "ticker": "TXN",
+      "name": "Texas Instruments",
+      "nameZh": "德州仪器",
+      "sector": "芯片设计",
+      "cik": "0000097476",
+      "exchange": null,
+      "status": "error",
+      "statusNote": "本次更新暂未取得数据",
+      "periods": [],
+      "filings": [],
+      "market": {
+        "price": 258.64,
+        "date": "2026-08-28",
+        "currency": "USD",
+        "source": "Finnhub EOD"
+      }
+    },
+    {
+      "ticker": "ADI",
+      "name": "Analog Devices",
+      "nameZh": "亚德诺半导体",
+      "sector": "芯片设计",
+      "cik": "0000006281",
+      "exchange": null,
+      "status": "error",
+      "statusNote": "本次更新暂未取得数据",
+      "periods": [],
+      "filings": [],
+      "market": {
+        "price": 361.78,
+        "date": "2026-08-28",
+        "currency": "USD",
+        "source": "Finnhub EOD"
+      }
+    },
+    {
+      "ticker": "NXPI",
+      "name": "NXP Semiconductors",
+      "nameZh": "恩智浦半导体",
+      "sector": "芯片设计",
+      "cik": "0001413447",
+      "exchange": null,
+      "status": "error",
+      "statusNote": "本次更新暂未取得数据",
+      "periods": [],
+      "filings": [],
+      "market": {
+        "price": 223.58,
+        "date": "2026-08-28",
+        "currency": "USD",
+        "source": "Finnhub EOD"
+      }
+    },
+    {
+      "ticker": "MCHP",
+      "name": "Microchip Technology",
+      "nameZh": "微芯科技",
+      "sector": "芯片设计",
+      "cik": "0000827054",
+      "exchange": null,
+      "status": "error",
+      "statusNote": "本次更新暂未取得数据",
+      "periods": [],
+      "filings": [],
+      "market": {
+        "price": 72.93,
+        "date": "2026-08-28",
+        "currency": "USD",
+        "source": "Finnhub EOD"
+      }
+    },
+    {
+      "ticker": "MPWR",
+      "name": "Monolithic Power Systems",
+      "nameZh": "芯源系统",
+      "sector": "芯片设计",
+      "cik": "0001280452",
+      "exchange": null,
+      "status": "error",
+      "statusNote": "本次更新暂未取得数据",
+      "periods": [],
+      "filings": [],
+      "market": {
+        "price": 1256.26,
+        "date": "2026-08-28",
+        "currency": "USD",
+        "source": "Finnhub EOD"
+      }
+    },
+    {
+      "ticker": "ON",
+      "name": "ON Semiconductor",
+      "nameZh": "安森美半导体",
+      "sector": "芯片设计",
+      "cik": "0001097864",
+      "exchange": null,
+      "status": "error",
+      "statusNote": "本次更新暂未取得数据",
+      "periods": [],
+      "filings": [],
+      "market": {
+        "price": 72.61,
+        "date": "2026-08-28",
+        "currency": "USD",
+        "source": "Finnhub EOD"
+      }
+    },
+    {
+      "ticker": "CDNS",
+      "name": "Cadence Design Systems",
+      "nameZh": "楷登电子",
+      "sector": "EDA 与芯片软件",
+      "cik": "0000813672",
+      "exchange": null,
+      "status": "error",
+      "statusNote": "本次更新暂未取得数据",
+      "periods": [],
+      "filings": [],
+      "market": {
+        "price": 340.39,
+        "date": "2026-08-28",
+        "currency": "USD",
+        "source": "Finnhub EOD"
+      }
+    },
+    {
+      "ticker": "SNPS",
+      "name": "Synopsys",
+      "nameZh": "新思科技",
+      "sector": "EDA 与芯片软件",
+      "cik": "0000883241",
+      "exchange": null,
+      "status": "error",
+      "statusNote": "本次更新暂未取得数据",
+      "periods": [],
+      "filings": [],
+      "market": {
+        "price": 442.61,
+        "date": "2026-08-28",
+        "currency": "USD",
+        "source": "Finnhub EOD"
+      }
+    },
+    {
+      "ticker": "NET",
+      "name": "Cloudflare",
+      "nameZh": "Cloudflare",
+      "sector": "开发者与云平台",
+      "cik": "0001477333",
+      "exchange": null,
+      "status": "error",
+      "statusNote": "本次更新暂未取得数据",
+      "periods": [],
+      "filings": [],
+      "market": {
+        "price": 299.84,
+        "date": "2026-08-28",
+        "currency": "USD",
+        "source": "Finnhub EOD"
+      }
+    },
+    {
+      "ticker": "ZS",
+      "name": "Zscaler",
+      "nameZh": "Zscaler",
+      "sector": "网络安全",
+      "cik": "0001713683",
+      "exchange": null,
+      "status": "error",
+      "statusNote": "本次更新暂未取得数据",
+      "periods": [],
+      "filings": [],
+      "market": {
+        "price": 184.23,
+        "date": "2026-08-28",
+        "currency": "USD",
+        "source": "Finnhub EOD"
+      }
+    },
+    {
+      "ticker": "FTNT",
+      "name": "Fortinet",
+      "nameZh": "飞塔信息",
+      "sector": "网络安全",
+      "cik": "0001262039",
+      "exchange": null,
+      "status": "error",
+      "statusNote": "本次更新暂未取得数据",
+      "periods": [],
+      "filings": [],
+      "market": {
+        "price": 166,
+        "date": "2026-08-28",
+        "currency": "USD",
+        "source": "Finnhub EOD"
+      }
+    },
+    {
+      "ticker": "SAP",
+      "name": "SAP",
+      "nameZh": "思爱普",
+      "sector": "企业软件",
+      "cik": "0001000184",
+      "exchange": null,
+      "status": "error",
+      "statusNote": "本次更新暂未取得数据",
+      "periods": [],
+      "filings": [],
+      "market": {
+        "price": 221.54,
+        "date": "2026-08-28",
+        "currency": "USD",
+        "source": "Finnhub EOD"
+      }
+    },
+    {
+      "ticker": "MRNA",
+      "name": "Moderna",
+      "nameZh": "莫德纳",
+      "sector": "医药与生物科技",
+      "cik": "0001682852",
+      "exchange": null,
+      "status": "error",
+      "statusNote": "本次更新暂未取得数据",
+      "periods": [],
+      "filings": [],
+      "market": {
+        "price": 137.99,
+        "date": "2026-08-28",
+        "currency": "USD",
+        "source": "Finnhub EOD"
+      }
+    },
+    {
+      "ticker": "LLY",
+      "name": "Eli Lilly and Company",
+      "nameZh": "礼来",
+      "sector": "医药与生物科技",
+      "cik": "0000059478",
+      "exchange": null,
+      "status": "error",
+      "statusNote": "本次更新暂未取得数据",
+      "periods": [],
+      "filings": [],
+      "market": {
+        "price": 1174.61,
+        "date": "2026-08-28",
+        "currency": "USD",
+        "source": "Finnhub EOD"
+      }
+    },
+    {
+      "ticker": "NVO",
+      "name": "Novo Nordisk",
+      "nameZh": "诺和诺德",
+      "sector": "医药与生物科技",
+      "cik": "0000353278",
+      "exchange": null,
+      "status": "error",
+      "statusNote": "本次更新暂未取得数据",
+      "periods": [],
+      "filings": [],
+      "market": {
+        "price": 45.61,
+        "date": "2026-08-28",
+        "currency": "USD",
+        "source": "Finnhub EOD"
+      }
+    },
+    {
+      "ticker": "JNJ",
+      "name": "Johnson & Johnson",
+      "nameZh": "强生",
+      "sector": "医药与生物科技",
+      "cik": "0000200406",
+      "exchange": null,
+      "status": "error",
+      "statusNote": "本次更新暂未取得数据",
+      "periods": [],
+      "filings": [],
+      "market": {
+        "price": 268.04,
+        "date": "2026-08-28",
+        "currency": "USD",
+        "source": "Finnhub EOD"
+      }
+    },
+    {
+      "ticker": "MRK",
+      "name": "Merck & Co.",
+      "nameZh": "默沙东",
+      "sector": "医药与生物科技",
+      "cik": "0000310158",
+      "exchange": null,
+      "status": "error",
+      "statusNote": "本次更新暂未取得数据",
+      "periods": [],
+      "filings": [],
+      "market": {
+        "price": 148.35,
+        "date": "2026-08-28",
+        "currency": "USD",
+        "source": "Finnhub EOD"
+      }
+    },
+    {
+      "ticker": "PFE",
+      "name": "Pfizer",
+      "nameZh": "辉瑞",
+      "sector": "医药与生物科技",
+      "cik": "0000078003",
+      "exchange": null,
+      "status": "error",
+      "statusNote": "本次更新暂未取得数据",
+      "periods": [],
+      "filings": [],
+      "market": {
+        "price": 27.96,
+        "date": "2026-08-28",
+        "currency": "USD",
+        "source": "Finnhub EOD"
+      }
+    },
+    {
+      "ticker": "ABBV",
+      "name": "AbbVie",
+      "nameZh": "艾伯维",
+      "sector": "医药与生物科技",
+      "cik": "0001551152",
+      "exchange": null,
+      "status": "error",
+      "statusNote": "本次更新暂未取得数据",
+      "periods": [],
+      "filings": [],
+      "market": {
+        "price": 255.48,
+        "date": "2026-08-28",
+        "currency": "USD",
+        "source": "Finnhub EOD"
+      }
+    },
+    {
+      "ticker": "AMGN",
+      "name": "Amgen",
+      "nameZh": "安进",
+      "sector": "医药与生物科技",
+      "cik": "0000318154",
+      "exchange": null,
+      "status": "error",
+      "statusNote": "本次更新暂未取得数据",
+      "periods": [],
+      "filings": [],
+      "market": {
+        "price": 432.42,
+        "date": "2026-08-28",
+        "currency": "USD",
+        "source": "Finnhub EOD"
+      }
+    }
+  ]
 }
