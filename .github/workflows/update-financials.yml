@@ -1,0 +1,39 @@
+name: Update financial statements
+
+on:
+  schedule:
+    - cron: "17 6 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: financial-data-update
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - name: Refresh SEC filings and market prices
+        env:
+          SEC_USER_AGENT: "Report Board tangkk@users.noreply.github.com"
+          FINNHUB_API_KEY: ${{ secrets.FINNHUB_API_KEY }}
+        run: node scripts/update-financials.mjs
+      - name: Commit new disclosures
+        run: |
+          if git diff --quiet -- public/data/financials.json; then
+            echo "No new filing or price data."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add public/data/financials.json
+          git commit -m "Update financial statement data"
+          git push

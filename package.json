@@ -1,12 +1,13 @@
 {
-  "name": "tech-market-board",
+  "name": "report-board",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "dev": "vite --host 127.0.0.1",
     "build": "tsc --noEmit && vite build",
     "preview": "vite preview --host 127.0.0.1",
-    "lint": "eslint src"
+    "lint": "eslint src",
+    "update-data": "node scripts/update-financials.mjs"
   },
   "dependencies": {
     "react": "19.2.6",

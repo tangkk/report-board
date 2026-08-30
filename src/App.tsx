@@ -1,233 +1,207 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
+import companyUniverse from "../data/company-universe.json";
 
-type WidgetProps = {
-  script: string;
-  config: Record<string, unknown>;
-  className?: string;
+type Period = {
+  fiscalYear: number | string; end: string; filed: string; form: string; accession: string; currency: string;
+  revenue: number | null; grossProfit: number | null; operatingIncome: number | null; netIncome: number | null;
+  epsDiluted: number | null; cashFromOperations: number | null; capex: number | null; freeCashFlow: number | null;
+  depreciation: number | null; ebitda: number | null; assets: number | null; liabilities: number | null;
+  equity: number | null; cash: number | null; debt: number | null; shares: number | null;
+};
+type Filing = { form: string; filed: string; period: string; accession: string; url: string };
+type Company = {
+  ticker: string; name: string; nameZh: string; sector: string; cik?: string; exchange?: string;
+  status: "ready" | "limited" | "unsupported" | "error"; statusNote?: string | null; periods: Period[]; filings: Filing[];
+  market?: { price: number; date: string; currency: string; source: string } | null;
+};
+type FinancialData = { generatedAt: string; source: string; sourceUrl: string; companies: Company[] };
+type StatementKey = "income" | "cash" | "balance";
+
+const terms = [
+  ["Revenue", "营业收入", "公司在扣除成本与费用前，通过销售商品或服务取得的总收入。"],
+  ["Gross Profit", "毛利润", "营业收入减去直接销售成本，反映核心产品或服务的基础盈利能力。"],
+  ["Operating Income", "营业利润", "毛利润扣除研发、销售和管理等经营费用后的利润。"],
+  ["Net Income", "净利润", "扣除利息、税项及其他损益后，归属于股东的最终利润。"],
+  ["Free Cash Flow (FCF)", "自由现金流", "经营活动现金流减资本开支；表示业务在维持和扩张后可自由支配的现金。"],
+  ["EBITDA", "息税折旧摊销前利润", "营业利润加回折旧与摊销，常用于比较不同资本结构公司的经营表现。"],
+  ["Capital Expenditure", "资本开支", "用于购买或升级厂房、设备、数据中心等长期资产的现金支出。"],
+  ["Operating Margin", "营业利润率", "营业利润 ÷ 营业收入；衡量每一元收入转化为经营利润的比例。"],
+  ["Net Debt", "净负债", "有息负债减现金；若为负数，表示公司持有净现金。"],
+  ["Enterprise Value (EV)", "企业价值", "经营性资产对全部资本提供者的价值；从 EV 扣除净负债后得到股权价值。"],
+  ["WACC", "加权平均资本成本", "债权与股权资金成本的加权平均值，在 FCFF DCF 中用作折现率。"],
+  ["Terminal Growth", "永续增长率", "显式预测期结束后，假设公司自由现金流长期稳定增长的比率。"],
+  ["P/E", "市盈率", "每股价格 ÷ 每股收益；相对估值中用目标市盈率乘以 EPS 得到估算价格。"],
+  ["EV / EBITDA", "企业价值倍数", "企业价值 ÷ EBITDA；有助于在不同负债水平的公司之间进行比较。"],
+  ["Price Target", "目标价", "在一组明确假设下由估值模型推导的参考价格，不是未来价格的保证。"],
+  ["Implied Return", "隐含空间", "综合目标价相对参考价格的百分比差，用于机械划分模型动作。"],
+];
+
+const statements: Record<StatementKey, { label: string; rows: [keyof Period, string, string][] }> = {
+  income: { label: "利润表 Income Statement", rows: [["revenue", "Revenue", "营业收入"], ["grossProfit", "Gross Profit", "毛利润"], ["operatingIncome", "Operating Income", "营业利润"], ["netIncome", "Net Income", "净利润"], ["epsDiluted", "Diluted EPS", "稀释每股收益"]] },
+  cash: { label: "现金流 Cash Flow", rows: [["cashFromOperations", "Operating Cash Flow", "经营现金流"], ["capex", "Capital Expenditure", "资本开支"], ["freeCashFlow", "Free Cash Flow", "自由现金流"], ["depreciation", "D&A", "折旧与摊销"]] },
+  balance: { label: "资产负债 Balance Sheet", rows: [["assets", "Total Assets", "总资产"], ["liabilities", "Total Liabilities", "总负债"], ["equity", "Shareholders’ Equity", "股东权益"], ["cash", "Cash", "现金及等价物"], ["debt", "Interest-bearing Debt", "有息负债"]] },
 };
 
-function TradingViewWidget({ script, config, className = "" }: WidgetProps) {
-  const ref = useRef<HTMLDivElement>(null);
-  const [attempt, setAttempt] = useState(0);
-  const [failed, setFailed] = useState(false);
-  const serializedConfig = JSON.stringify(config);
-
-  useEffect(() => {
-    if (!ref.current) return;
-    const container = ref.current;
-    setFailed(false);
-    container.replaceChildren();
-    const host = document.createElement("div");
-    host.className = "tradingview-widget-container__widget";
-    const loader = document.createElement("script");
-    loader.src = `https://s3.tradingview.com/external-embedding/${script}`;
-    loader.async = true;
-    loader.type = "text/javascript";
-    loader.innerHTML = serializedConfig;
-    loader.onerror = () => setFailed(true);
-    container.append(host, loader);
-
-    const watchdog = window.setTimeout(() => {
-      if (!container.querySelector("iframe")) setFailed(true);
-    }, 12000);
-
-    return () => {
-      window.clearTimeout(watchdog);
-      loader.onerror = null;
-      container.replaceChildren();
-    };
-  }, [script, serializedConfig, attempt]);
-
-  return <div className={`widget-shell ${className}`}>
-    <div ref={ref} className="tradingview-widget-container" />
-    {failed && <div className="widget-fallback"><span>数据暂时未载入</span><button onClick={() => setAttempt((value) => value + 1)}>重新加载</button></div>}
-  </div>;
-}
-
-const sectors = [
-  { name: "AI 与算力", tone: "hot", stocks: [["NASDAQ:NVDA", "NVDA", "AI 芯片"], ["NASDAQ:AVGO", "AVGO", "博通 · AI 网络"], ["NASDAQ:AMD", "AMD", "AI 芯片"], ["NASDAQ:ARM", "ARM", "芯片架构"], ["NYSE:DELL", "DELL", "AI 服务器"], ["NASDAQ:SMCI", "SMCI", "AI 服务器"]] },
-  { name: "半导体设备", tone: "lime", stocks: [["NASDAQ:ASML", "ASML", "光刻机"], ["NASDAQ:AMAT", "AMAT", "晶圆设备"], ["NASDAQ:LRCX", "LRCX", "刻蚀设备"], ["NASDAQ:KLAC", "KLAC", "检测设备"], ["NASDAQ:TER", "TER", "芯片测试"], ["NYSE:ONTO", "ONTO", "制程检测"]] },
-  { name: "晶圆制造", tone: "blue", stocks: [["NYSE:TSM", "TSM", "台积电 ADR"], ["NASDAQ:INTC", "INTC", "先进制程"], ["NASDAQ:GFS", "GFS", "成熟制程"], ["NYSE:UMC", "UMC", "联电 ADR"]] },
-  { name: "存储与内存", tone: "violet", stocks: [["NASDAQ:MU", "MU", "DRAM · HBM"], ["NASDAQ:SNDK", "SNDK", "NAND 闪存"], ["NASDAQ:WDC", "WDC", "数据存储"], ["NASDAQ:STX", "STX", "硬盘存储"]] },
-  { name: "云计算", tone: "blue", stocks: [["NASDAQ:MSFT", "MSFT", "Azure"], ["NASDAQ:AMZN", "AMZN", "AWS"], ["NASDAQ:GOOGL", "GOOGL", "Google Cloud"], ["NYSE:ORCL", "ORCL", "企业云"], ["NYSE:IBM", "IBM", "混合云与 AI"]] },
-  { name: "AI 应用层", tone: "red", stocks: [["NASDAQ:PLTR", "PLTR", "AI 决策平台"], ["NYSE:SNOW", "SNOW", "AI 数据云"], ["NASDAQ:DDOG", "DDOG", "AI 运维"], ["NYSE:NOW", "NOW", "企业 AI 工作流"], ["NASDAQ:APP", "APP", "AI 广告平台"], ["NASDAQ:TEM", "TEM", "医疗 AI"]] },
-  { name: "企业软件", tone: "violet", stocks: [["NYSE:CRM", "CRM", "客户软件"], ["NASDAQ:ADBE", "ADBE", "创意软件"], ["NYSE:ORCL", "ORCL", "数据库与云"], ["NASDAQ:INTU", "INTU", "财务软件"], ["NASDAQ:CRWD", "CRWD", "云安全"], ["NASDAQ:PANW", "PANW", "网络安全"]] },
-  { name: "互联网平台", tone: "amber", stocks: [["NASDAQ:META", "META", "社交平台"], ["NASDAQ:NFLX", "NFLX", "流媒体"], ["NYSE:UBER", "UBER", "出行平台"], ["NASDAQ:SHOP", "SHOP", "电商软件"], ["NASDAQ:ABNB", "ABNB", "旅行平台"], ["NASDAQ:DASH", "DASH", "本地生活"]] },
-  { name: "网络与光通信", tone: "blue", stocks: [["NYSE:ANET", "ANET", "数据中心交换机"], ["NASDAQ:MRVL", "MRVL", "高速互联芯片"], ["NYSE:COHR", "COHR", "光通信器件"], ["NASDAQ:LITE", "LITE", "光学与激光器件"], ["NASDAQ:CSCO", "CSCO", "网络设备"], ["NYSE:CIEN", "CIEN", "光网络"]] },
-  { name: "数据中心设施", tone: "amber", stocks: [["NYSE:VRT", "VRT", "供电与液冷"], ["NYSE:ETN", "ETN", "电气设备"], ["NYSE:PWR", "PWR", "电网工程"], ["NYSE:MOD", "MOD", "热管理"]] },
-  { name: "电力与能源", tone: "lime", stocks: [["NASDAQ:CEG", "CEG", "核电运营"], ["NYSE:VST", "VST", "电力供应"], ["NYSE:GEV", "GEV", "电网与发电设备"], ["NYSE:NRG", "NRG", "综合电力"], ["NYSE:NEE", "NEE", "清洁能源与电网"], ["NYSE:OKLO", "OKLO", "先进核能"]] },
-  { name: "中国 AI", tone: "red", stocks: [["NASDAQ:BIDU", "BIDU", "大模型与搜索"], ["NYSE:BABA", "BABA", "通义与云计算"], ["NASDAQ:KC", "KC", "金山云"], ["NASDAQ:WRD", "WRD", "自动驾驶 AI"], ["NASDAQ:PONY", "PONY", "Robotaxi"], ["NASDAQ:HSAI", "HSAI", "激光雷达"]] },
-  { name: "中国芯片", tone: "violet", stocks: [["HKEX:981", "0981", "中芯国际"], ["HKEX:1347", "1347", "华虹半导体"], ["HKEX:3986", "3986", "兆易创新 H"], ["NASDAQ:ACMR", "ACMR", "半导体清洗设备"]] },
-  { name: "中国互联网", tone: "amber", stocks: [["NYSE:BABA", "BABA", "电商与云"], ["NASDAQ:PDD", "PDD", "电商"], ["NASDAQ:JD", "JD", "零售物流"], ["NASDAQ:BIDU", "BIDU", "搜索与 AI"], ["NASDAQ:NTES", "NTES", "游戏与互联网"], ["NYSE:TME", "TME", "在线音乐"], ["NASDAQ:BILI", "BILI", "视频社区"]] },
-  { name: "中国智能汽车", tone: "hot", stocks: [["NYSE:NIO", "NIO", "蔚来"], ["NYSE:XPEV", "XPEV", "小鹏汽车"], ["NASDAQ:LI", "LI", "理想汽车"], ["HKEX:1211", "1211", "比亚迪"], ["HKEX:1810", "1810", "小米集团"], ["NASDAQ:WRD", "WRD", "文远知行"]] },
-];
-
-const marketIndices = [
-  ["FOREXCOM:SPXUSD", "S&P 500"],
-  ["FOREXCOM:NSXUSD", "NASDAQ 100"],
-  ["FOREXCOM:DJI", "DOW 30"],
-  ["AMEX:IWM", "RUSSELL 2000 ETF"],
-  ["AMEX:EWJ", "日本市场 ETF"],
-  ["AMEX:EWH", "香港市场 ETF"],
-];
+const formatMoney = (value: number | null | undefined, compact = true) => {
+  if (value == null || !Number.isFinite(value)) return "—";
+  const absolute = Math.abs(value), sign = value < 0 ? "−" : "";
+  if (!compact) return `${sign}$${absolute.toLocaleString("en-US", { maximumFractionDigits: 2 })}`;
+  if (absolute >= 1e12) return `${sign}$${(absolute / 1e12).toFixed(2)}T`;
+  if (absolute >= 1e9) return `${sign}$${(absolute / 1e9).toFixed(2)}B`;
+  if (absolute >= 1e6) return `${sign}$${(absolute / 1e6).toFixed(1)}M`;
+  return `${sign}$${absolute.toLocaleString("en-US", { maximumFractionDigits: 2 })}`;
+};
+const formatMetric = (key: keyof Period, value: Period[keyof Period]) => typeof value !== "number" ? "—" : key === "epsDiluted" ? `$${value.toFixed(2)}` : formatMoney(value);
+const ratio = (a: number | null, b: number | null) => a == null || b == null || b === 0 ? null : a / b;
+const growth = (a: number | null, b: number | null) => a == null || b == null || b === 0 ? null : a / b - 1;
+const formatPercent = (value: number | null, digits = 1) => value == null || !Number.isFinite(value) ? "—" : `${(value * 100).toFixed(digits)}%`;
 
 function App() {
-  const [symbol, setSymbol] = useState("NASDAQ:NVDA");
-  const [activeSector, setActiveSector] = useState(0);
-  const [clock, setClock] = useState("");
-  const [menuOpen, setMenuOpen] = useState(false);
-  const focusStocks = sectors[activeSector].stocks;
-
-  const selectSector = (index: number, jump = false) => {
-    setActiveSector(index);
-    setSymbol(sectors[index].stocks[0][0]);
-    if (jump) window.setTimeout(() => document.getElementById("focus")?.scrollIntoView({ behavior: "smooth" }), 0);
-  };
-
-  const selectStock = (id: string) => {
-    setSymbol(id);
-  };
+  const [data, setData] = useState<FinancialData | null>(null);
+  const [loadError, setLoadError] = useState(false);
+  const [query, setQuery] = useState("");
+  const [sector, setSector] = useState("全部公司");
+  const [ticker, setTicker] = useState("NVDA");
+  const [statement, setStatement] = useState<StatementKey>("income");
+  const [mobileList, setMobileList] = useState(false);
+  const [growthRate, setGrowthRate] = useState(8), [wacc, setWacc] = useState(10), [terminalGrowth, setTerminalGrowth] = useState(3);
+  const [peMultiple, setPeMultiple] = useState(25), [evMultiple, setEvMultiple] = useState(18);
+  const [manualPrice, setManualPrice] = useState("");
 
   useEffect(() => {
-    const update = () => setClock(new Intl.DateTimeFormat("zh-CN", {
-      timeZone: "America/New_York", hour: "2-digit", minute: "2-digit", second: "2-digit", hour12: false,
-    }).format(new Date()));
-    update();
-    const timer = window.setInterval(update, 1000);
-    return () => window.clearInterval(timer);
+    fetch("./data/financials.json")
+      .then((response) => response.ok ? response.json() : Promise.reject(new Error("load failed")))
+      .then((payload: FinancialData) => {
+        const companiesWithFallback = payload.companies.length ? payload.companies : companyUniverse.map((item) => ({ ...item, status:"limited" as const, statusNote:"首次 SEC 财报同步尚未完成；自动任务会继续检查。", periods:[], filings:[] }));
+        setData({ ...payload, companies:companiesWithFallback });
+        const first = companiesWithFallback.find((item) => item.ticker === "NVDA" && item.periods.length) || companiesWithFallback.find((item) => item.periods.length);
+        if (first) setTicker(first.ticker);
+      }).catch(() => setLoadError(true));
   }, []);
 
-  const chartConfig = {
-    autosize: true,
-    symbol,
-    interval: "15",
-    timezone: "America/New_York",
-    theme: "light",
-    style: "1",
-    locale: "zh_CN",
-    backgroundColor: "rgba(255, 255, 255, 1)",
-    gridColor: "rgba(0, 0, 0, 0.055)",
-    allow_symbol_change: true,
-    calendar: false,
-    support_host: "https://www.tradingview.com",
-  };
+  const sectors = useMemo(() => ["全部公司", ...Array.from(new Set(data?.companies.map((item) => item.sector) || []))], [data]);
+  const companies = useMemo(() => (data?.companies || []).filter((item) => {
+    const needle = query.trim().toLowerCase();
+    return (sector === "全部公司" || item.sector === sector) && (!needle || `${item.ticker} ${item.name} ${item.nameZh}`.toLowerCase().includes(needle));
+  }), [data, query, sector]);
+  const company = data?.companies.find((item) => item.ticker === ticker) || companies[0];
+  const latest = company?.periods.at(-1), previous = company?.periods.at(-2);
 
-  return (
-    <main>
-      <header className="topbar">
-        <a className="brand" href="#top" aria-label="返回首页">
-          <span className="brand-mark">TB</span>
-          <span><b>TECH BOARD</b><small>科技市场看板</small></span>
-        </a>
-        <button className="menu-button" onClick={() => setMenuOpen(!menuOpen)} aria-label="打开导航">菜单</button>
-        <nav className={menuOpen ? "open" : ""} onClick={() => setMenuOpen(false)}>
-          <a href="#market">市场</a><a href="#sectors">板块</a><a href="#focus">个股</a><a href="#news">消息</a>
-        </nav>
-        <div className="session"><span className="pulse" />美东时间 <strong>{clock}</strong></div>
-      </header>
+  useEffect(() => {
+    setManualPrice(company?.market?.price ? String(company.market.price) : "");
+  }, [company?.ticker, company?.market?.price]);
 
-      <section className="ticker-shell" id="top">
-        <TradingViewWidget script="embed-widget-ticker-tape.js" config={{
-          symbols: [
-            { proName: "FOREXCOM:SPXUSD", title: "S&P 500" },
-            { proName: "FOREXCOM:NSXUSD", title: "NASDAQ 100" },
-            { proName: "FOREXCOM:DJI", title: "DOW" },
-            { proName: "NASDAQ:NVDA", title: "NVIDIA" },
-            { proName: "NASDAQ:AAPL", title: "APPLE" },
-            { proName: "NASDAQ:MSFT", title: "MICROSOFT" },
-          ], showSymbolLogo: true, isTransparent: true, displayMode: "adaptive", colorTheme: "light", locale: "zh_CN",
-        }} />
-      </section>
+  const valuation = useMemo(() => {
+    if (!latest) return null;
+    let enterpriseValue = 0;
+    if (latest.freeCashFlow != null && wacc > terminalGrowth) {
+      let projected = latest.freeCashFlow;
+      for (let year = 1; year <= 5; year += 1) { projected *= 1 + growthRate / 100; enterpriseValue += projected / ((1 + wacc / 100) ** year); }
+      enterpriseValue += projected * (1 + terminalGrowth / 100) / ((wacc - terminalGrowth) / 100) / ((1 + wacc / 100) ** 5);
+    }
+    const cash = latest.cash || 0, debt = latest.debt || 0;
+    const equityValue = enterpriseValue ? enterpriseValue + cash - debt : null;
+    const evEquity = latest.ebitda == null ? null : latest.ebitda * evMultiple + cash - debt;
+    const perShareReliable = latest.form.startsWith("10-K");
+    const dcfPerShare = perShareReliable && equityValue != null && latest.shares ? equityValue / latest.shares : null;
+    const pePerShare = perShareReliable && latest.epsDiluted != null ? latest.epsDiluted * peMultiple : null;
+    const evPerShare = perShareReliable && evEquity != null && latest.shares ? evEquity / latest.shares : null;
+    const modelPrices = [dcfPerShare, pePerShare, evPerShare].filter((value): value is number => value != null && Number.isFinite(value) && value > 0);
+    const targetPrice = modelPrices.length ? modelPrices.reduce((sum, value) => sum + value, 0) / modelPrices.length : null;
+    const currentPrice = Number(manualPrice) > 0 ? Number(manualPrice) : null;
+    const upside = targetPrice != null && currentPrice != null ? targetPrice / currentPrice - 1 : null;
+    const action = upside == null ? "等待价格" : upside >= .25 ? "增持" : upside >= .1 ? "关注" : upside > -.1 ? "观望" : upside > -.25 ? "减持" : "回避";
+    return {
+      enterpriseValue: enterpriseValue || null, equityValue,
+      dcfPerShare, pePerShare, evEquity, evPerShare,
+      targetPrice, currentPrice, upside, action, modelCount: modelPrices.length,
+    };
+  }, [latest, growthRate, wacc, terminalGrowth, peMultiple, evMultiple, manualPrice]);
 
-      <div className="page-shell">
-        <section className="hero" id="market">
-          <div className="hero-copy">
-            <p className="eyebrow">TECH MARKET DIRECTORY</p>
-            <div className="title-row"><h1>Tech Board</h1><span className="on-air"><i /> LIVE</span></div>
-            <h2 className="hero-subtitle">看清科技市场正在发生什么</h2>
-            <p className="lead">重要指数、科技龙头、板块强弱与市场消息，集中在一张无需登录的看板。</p>
-            <div className="data-note"><span>DATA</span> 美股免费延迟行情 · 以组件实际标识为准 · 不构成投资建议</div>
+  const latestFiling = company?.filings?.[0], hasData = Boolean(latest && company);
+  const maxRevenue = Math.max(...(company?.periods.map((period) => Math.abs(period.revenue || 0)) || [1]), 1);
+  const chooseCompany = (next: string) => { setTicker(next); setMobileList(false); window.scrollTo({ top: 0, behavior: "smooth" }); };
+
+  if (loadError) return <main className="state-page"><div><span>DATA ERROR</span><h1>财报数据暂时无法载入</h1><p>请稍后刷新页面，或检查自动更新任务是否成功。</p><button onClick={() => window.location.reload()}>重新加载</button></div></main>;
+  if (!data) return <main className="state-page"><div><span>LOADING</span><h1>正在整理公司财报</h1><p>Loading company financial statements…</p></div></main>;
+
+  return <main>
+    <header className="topbar">
+      <a className="brand" href="#overview"><span className="brand-mark">RB</span><span><b>REPORT BOARD</b><small>公司财报看板</small></span></a>
+      <nav><a href="#financials">财报</a><a href="#valuation">估值</a><a href="#filings">申报</a><a href="#glossary">术语</a></nav>
+      <div className="update-status"><i /> 每日检查 <strong>{new Date(data.generatedAt).toLocaleDateString("zh-CN")}</strong></div>
+      <button className="company-toggle" onClick={() => setMobileList(!mobileList)}>选择公司</button>
+    </header>
+
+    <div className="workspace">
+      <aside className={`company-rail ${mobileList ? "open" : ""}`}>
+        <div className="rail-head"><span>COMPANY UNIVERSE</span><strong>{data.companies.length} 家公司</strong></div>
+        <label className="search"><span>搜索</span><input value={query} onChange={(event) => setQuery(event.target.value)} placeholder="代码 / 公司名" /></label>
+        <div className="sector-filter"><select aria-label="选择行业" value={sector} onChange={(event) => setSector(event.target.value)}>{sectors.map((item) => <option key={item}>{item}</option>)}</select></div>
+        <div className="company-list">{companies.map((item) => <button key={item.ticker} className={item.ticker === company?.ticker ? "active" : ""} onClick={() => chooseCompany(item.ticker)}>
+          <span className="ticker-badge">{item.ticker.slice(0, 4)}</span><span><b>{item.ticker}</b><small>{item.nameZh}</small></span><i className={`coverage ${item.status}`} title={item.status} />
+        </button>)}{!companies.length && <p className="empty-list">没有匹配公司</p>}</div>
+        <div className="coverage-key"><span><i className="coverage ready" /> 可分析</span><span><i className="coverage limited" /> 数据有限</span></div>
+      </aside>
+
+      <div className="content">
+        <section className="company-hero" id="overview">
+          <div className="company-title"><p className="eyebrow">{company?.sector || "COMPANY"} / {company?.exchange || "SEC COVERAGE"}</p>
+            <div><h1>{company?.ticker || "—"}</h1><span className={`status-pill ${company?.status}`}>{hasData ? "DATA READY · 数据已就绪" : "LIMITED · 数据有限"}</span></div>
+            <h2>{company?.nameZh} <span>{company?.name}</span></h2>
+            <p>{hasData ? `已追踪 ${company?.periods.length} 个年度财报期间。最近财年截止 ${latest?.end}，数据提交于 ${latest?.filed}。` : company?.statusNote}</p>
           </div>
-          <div className="overview-card panel">
-            <div className="panel-head"><div><small>GLOBAL PULSE</small><h2>主要市场</h2></div><span className="live-label">持续更新</span></div>
-            <div className="market-index-grid">
-              {marketIndices.map(([id, title]) => <div className="market-index-item" key={id}>
-                <div className="market-index-name">{title}</div>
-                <TradingViewWidget className="market-mini-widget" script="embed-widget-mini-symbol-overview.js" config={{
-                  symbol: id, width: "100%", height: "100%", locale: "zh_CN", dateRange: "1D", colorTheme: "light",
-                  isTransparent: true, autosize: true, largeChartUrl: "", chartOnly: false, noTimeScale: false,
-                }} />
-              </div>)}
+          <div className="filing-callout"><span>LATEST FILING / 最新申报</span>{latestFiling ? <><strong>{latestFiling.form}</strong><p>提交 {latestFiling.filed}<br />报告期 {latestFiling.period || "—"}</p><a href={latestFiling.url} target="_blank" rel="noreferrer">查看 SEC 原文 ↗</a></> : <p>暂无可用申报链接</p>}</div>
+        </section>
+
+        {hasData ? <>
+          <section className="research-call" aria-label="数据模型研究结论">
+            <div><span>DATA-DRIVEN CALL / 数据模型结论</span><strong className={`action-${valuation?.action}`}>{valuation?.action}</strong><small>{valuation?.modelCount === 3 ? "三模型覆盖 · 中等置信度" : `${valuation?.modelCount || 0}/3 模型有效 · 低置信度`}{latest?.form.startsWith("20-F") ? " · ADR 换算待核对" : ""}{company?.sector === "医药与生物科技" ? " · 医药管线风险未计入" : ""}</small></div>
+            <div><span>BLENDED TARGET / 综合目标价</span><strong>{valuation?.targetPrice == null ? "—" : `$${valuation.targetPrice.toFixed(2)}`}</strong><small>有效模型结果等权平均</small></div>
+            <div><span>REFERENCE PRICE / 参考价格</span><label className="price-input"><b>$</b><input type="number" min="0" step="0.01" value={manualPrice} onChange={(event) => setManualPrice(event.target.value)} placeholder="输入收盘价" /></label><small>{company?.market ? `${company.market.date} · ${company.market.source}` : "可手动输入；配置行情密钥后每日自动更新"}</small></div>
+            <div><span>IMPLIED RETURN / 隐含空间</span><strong className={(valuation?.upside || 0) < 0 ? "negative" : "positive"}>{formatPercent(valuation?.upside ?? null)}</strong><small>目标价 ÷ 参考价 − 1</small></div>
+          </section>
+          <section className="kpi-grid" aria-label="关键财务指标">{[
+            ["Revenue", "营业收入", latest?.revenue, growth(latest?.revenue ?? null, previous?.revenue ?? null)],
+            ["Net Income", "净利润", latest?.netIncome, growth(latest?.netIncome ?? null, previous?.netIncome ?? null)],
+            ["Free Cash Flow", "自由现金流", latest?.freeCashFlow, growth(latest?.freeCashFlow ?? null, previous?.freeCashFlow ?? null)],
+            ["Operating Margin", "营业利润率", ratio(latest?.operatingIncome ?? null, latest?.revenue ?? null), null],
+          ].map(([label, zh, value, delta], index) => <article className="kpi" key={String(label)}><div><span>0{index + 1}</span><small>FY {latest?.fiscalYear}</small></div><h3>{label}<small>{zh}</small></h3><strong>{label === "Operating Margin" ? formatPercent(value as number | null) : formatMoney(value as number | null)}</strong><p className={(delta as number | null) != null && (delta as number) < 0 ? "negative" : ""}>{delta == null ? "年度口径" : `${formatPercent(delta as number)} YoY`}</p></article>)}</section>
+
+          <section className="section" id="financials">
+            <div className="section-head"><div><span>01 / FINANCIAL HISTORY</span><h2>历史财务表现</h2></div><p>年度口径 · Annual basis<br />金额统一按 SEC 披露单位显示</p></div>
+            <div className="history-grid">
+              <div className="trend-card panel"><div className="panel-title"><div><small>REVENUE SCALE</small><h3>收入趋势 Revenue</h3></div><span>{company?.periods.length}Y</span></div><div className="bars">{company?.periods.map((period) => <div className="bar-column" key={period.end}><div className="bar-value">{formatMoney(period.revenue)}</div><div className="bar-track"><div style={{ height: `${Math.max(4, Math.abs(period.revenue || 0) / maxRevenue * 100)}%` }} /></div><span>{period.fiscalYear}</span></div>)}</div></div>
+              <div className="quality-card panel"><div className="panel-title"><div><small>QUALITY CHECK</small><h3>盈利与现金质量</h3></div><span>Latest FY</span></div>{[
+                ["Gross Margin / 毛利率", ratio(latest?.grossProfit ?? null, latest?.revenue ?? null)], ["Operating Margin / 营业利润率", ratio(latest?.operatingIncome ?? null, latest?.revenue ?? null)], ["Net Margin / 净利率", ratio(latest?.netIncome ?? null, latest?.revenue ?? null)], ["FCF Margin / 自由现金流率", ratio(latest?.freeCashFlow ?? null, latest?.revenue ?? null)],
+              ].map(([label, value]) => <div className="ratio-row" key={String(label)}><span>{label}</span><div><i style={{ width: `${Math.min(100, Math.max(0, (value as number || 0) * 200))}%` }} /></div><strong>{formatPercent(value as number | null)}</strong></div>)}</div>
             </div>
-          </div>
-        </section>
+            <div className="statement-card panel"><div className="statement-tabs" role="tablist">{(Object.keys(statements) as StatementKey[]).map((key) => <button key={key} className={statement === key ? "active" : ""} onClick={() => setStatement(key)}>{statements[key].label}</button>)}</div><div className="table-scroll"><table><thead><tr><th>Metric / 指标</th>{company?.periods.map((period) => <th key={period.end}>FY {period.fiscalYear}<small>{period.end}</small></th>)}</tr></thead><tbody>{statements[statement].rows.map(([key, en, zh]) => <tr key={key}><td><b>{en}</b><small>{zh}</small></td>{company?.periods.map((period) => <td key={period.end}>{formatMetric(key, period[key])}</td>)}</tr>)}</tbody></table></div></div>
+          </section>
 
-        <section className="section" id="sectors">
-          <div className="section-title"><div><span>01 / SECTOR MAP</span><h2>科技主线</h2></div><p>按产业链而不是交易所组织，快速定位资金关注方向。</p></div>
-          <div className="sector-grid">
-            {sectors.map((sector, index) => <article className={`sector-card ${sector.tone}`} key={sector.name}>
-              <div className="sector-index">0{index + 1}</div><h3>{sector.name}</h3><p>{sector.stocks.map((stock) => stock[1]).join(" · ")}</p><button onClick={() => selectSector(index, true)}>查看代表公司 <span>↗</span></button>
-            </article>)}
-          </div>
-        </section>
-
-        <section className="section focus-section" id="focus">
-          <div className="section-title"><div><span>02 / FOCUS LIST</span><h2>核心科技股</h2></div><p>先选择板块，再选择股票查看 15 分钟 K 线。</p></div>
-          <div className="sector-tabs" role="tablist" aria-label="科技股板块">
-            {sectors.map((sector, index) => <button key={sector.name} className={activeSector === index ? "active" : ""} onClick={() => selectSector(index)}>{sector.name}</button>)}
-          </div>
-          <div className="focus-layout">
-            <aside className="stock-list panel">
-              {focusStocks.map(([id, ticker, tag]) => <button key={id} className={symbol === id ? "active" : ""} onClick={() => selectStock(id)}>
-                <span className="ticker-avatar">{ticker.slice(0, 1)}</span><span><strong>{ticker}</strong><small>{tag}</small></span><i>›</i>
-              </button>)}
-            </aside>
-            <div className="chart-card panel">
-              <div className="panel-head"><div><small>INTERACTIVE CHART</small><h2>{symbol.split(":")[1]}</h2></div><span className="delay-badge">延迟行情</span></div>
-              <TradingViewWidget key={symbol} className="chart-widget" script="embed-widget-advanced-chart.js" config={chartConfig} />
+          <section className="section valuation-section" id="valuation">
+            <div className="section-head"><div><span>02 / VALUATION LAB</span><h2>估值模型</h2></div><p>基于历史披露与可调假设的教学性估算<br />不是目标价或投资建议</p></div>
+            <div className="valuation-layout">
+              <div className="assumption-panel panel"><div className="panel-title"><div><small>MODEL INPUTS</small><h3>关键假设 Assumptions</h3></div><button onClick={() => { setGrowthRate(8); setWacc(10); setTerminalGrowth(3); setPeMultiple(25); setEvMultiple(18); }}>重置</button></div>{[
+                { label:"5Y FCF Growth / 五年现金流增长", value:growthRate, setter:setGrowthRate, min:-10, max:30, suffix:"%" }, { label:"WACC / 加权资本成本", value:wacc, setter:setWacc, min:6, max:18, suffix:"%" }, { label:"Terminal Growth / 永续增长", value:terminalGrowth, setter:setTerminalGrowth, min:0, max:5, suffix:"%" }, { label:"Target P/E / 目标市盈率", value:peMultiple, setter:setPeMultiple, min:5, max:60, suffix:"×" }, { label:"Target EV/EBITDA / 目标企业倍数", value:evMultiple, setter:setEvMultiple, min:4, max:40, suffix:"×" },
+              ].map(({ label, value, setter, min, max, suffix }) => <label className="slider-row" key={label}><span>{label}<strong>{value}{suffix}</strong></span><input type="range" min={min} max={max} step={1} value={value} onChange={(event) => setter(Number(event.target.value))} /></label>)}{wacc <= terminalGrowth && <p className="model-warning">WACC 必须高于永续增长率，DCF 才有意义。</p>}</div>
+              <div className="valuation-results">
+                <article className="model-card dcf"><span>INTRINSIC VALUE / 内在价值</span><h3>FCFF DCF</h3><strong>{valuation?.dcfPerShare == null ? formatMoney(valuation?.equityValue) : `$${valuation.dcfPerShare.toFixed(2)} / 股`}</strong><p>企业价值 {formatMoney(valuation?.enterpriseValue)}<br />股权价值 {formatMoney(valuation?.equityValue)}</p><code>EV = Σ FCFFₜ/(1+WACC)ᵗ + TV/(1+WACC)⁵</code></article>
+                <article className="model-card"><span>EARNINGS MULTIPLE / 盈利倍数</span><h3>P/E Valuation</h3><strong>{valuation?.pePerShare == null ? "数据不足" : `$${valuation.pePerShare.toFixed(2)} / 股`}</strong><p>稀释 EPS {latest?.epsDiluted == null ? "—" : `$${latest.epsDiluted.toFixed(2)}`}<br />目标市盈率 {peMultiple}×</p><code>每股价值 = EPS × 目标 P/E</code></article>
+                <article className="model-card"><span>ENTERPRISE MULTIPLE / 企业倍数</span><h3>EV / EBITDA</h3><strong>{valuation?.evPerShare == null ? formatMoney(valuation?.evEquity) : `$${valuation.evPerShare.toFixed(2)} / 股`}</strong><p>EBITDA {formatMoney(latest?.ebitda)}<br />估算股权价值 {formatMoney(valuation?.evEquity)}</p><code>Equity = EBITDA × Multiple + Cash − Debt</code></article>
+              </div>
             </div>
-          </div>
-        </section>
+            <div className="method-note"><b>方法说明 Methodology</b><p>DCF 使用最近年度自由现金流作为基期，显式预测五年并采用 Gordon Growth 永续模型；P/E 与 EV/EBITDA 是可调目标倍数法。模型未自动纳入股票期权、少数股东权益、周期性正常化或公司特定风险，因此应结合原始财报独立判断。</p></div>
+          </section>
 
-        <section className="section news-section" id="news">
-          <div className="section-title"><div><span>03 / NEWSWIRE</span><h2>主要新闻与消息</h2></div><p>采用覆盖更广、更新更频繁的英文全市场新闻源；点击条目可打开原始报道。</p></div>
-          <div className="news-grid">
-            <div className="news-card panel">
-              <div className="news-label"><span>全市场头条 · GLOBAL MARKET NEWS</span><small>英文实时源 · 紧凑模式</small></div>
-              <TradingViewWidget className="news-widget" script="embed-widget-timeline.js" config={{
-                feedMode: "all_symbols", isTransparent: true, displayMode: "compact", width: "100%", height: "100%", colorTheme: "light", locale: "en",
-              }} />
-            </div>
-          </div>
-        </section>
+          <section className="section" id="filings"><div className="section-head"><div><span>03 / FILING LOG</span><h2>最近申报</h2></div><p>来自 SEC EDGAR 的原始申报记录<br />点击可核对公司披露</p></div><div className="filing-list">{company?.filings.map((filing) => <a href={filing.url} target="_blank" rel="noreferrer" key={filing.accession}><span className="form-tag">{filing.form}</span><span><b>报告期 {filing.period || "—"}</b><small>提交于 {filing.filed} · {filing.accession}</small></span><i>↗</i></a>)}</div></section>
+        </> : <section className="no-data panel"><span>DATA COVERAGE</span><h2>这家公司暂时没有可比的 SEC 标准化年度数据</h2><p>{company?.statusNote || "自动任务会继续每天检查。"}</p><p>港股本地上市公司通常不向 SEC 提交 10-K/20-F，因此需要接入交易所或付费财务数据源后才能补齐。</p></section>}
 
-        <section className="section">
-          <div className="section-title"><div><span>04 / EVENT RADAR</span><h2>重要经济事件</h2></div><p>关注本周主要经济数据和政策事件。</p></div>
-          <div className="calendar-card panel">
-            <div className="calendar-legend">
-              <span>数值阅读顺序</span><p><b>实际值</b> 已公布结果 <i>→</i> <b>预测值</b> 市场预期 <i>→</i> <b>前值</b> 上期结果</p>
-            </div>
-            <TradingViewWidget className="calendar-widget" script="embed-widget-events.js" config={{
-              colorTheme: "light", isTransparent: true, width: "100%", height: "100%", locale: "zh_CN", importanceFilter: "0,1", countryFilter: "us,cn,jp,eu",
-            }} />
-          </div>
-        </section>
-
-        <section className="section">
-          <div className="section-title"><div><span>05 / MARKET BREADTH</span><h2>标普 500 热力图</h2></div><p>按市值查看市场涨跌分布和板块广度。</p></div>
-          <div className="heatmap-card panel">
-            <TradingViewWidget className="heatmap-widget" script="embed-widget-stock-heatmap.js" config={{
-              exchanges: [], dataSource: "SPX500", grouping: "sector", blockSize: "market_cap_basic", blockColor: "change", locale: "zh_CN",
-              symbolUrl: "", colorTheme: "light", hasTopBar: false, isDataSetEnabled: false, isZoomEnabled: true, hasSymbolTooltip: true,
-              isMonoSize: false, width: "100%", height: "100%",
-            }} />
-          </div>
-        </section>
-
-        <footer><div className="brand footer-brand"><span className="brand-mark">TB</span><span><b>TECH BOARD</b><small>ZERO BACKEND MARKET BOARD</small></span></div><p>行情与新闻由 TradingView 组件提供。数据可能延迟，仅供信息参考。</p></footer>
+        <section className="section glossary" id="glossary"><div className="section-head"><div><span>04 / BILINGUAL GLOSSARY</span><h2>财务术语中英对照</h2></div><p>每个术语都配有一句简明定义<br />帮助快速阅读财报与估值结果</p></div><div className="term-grid">{terms.map(([en, zh, definition], index) => <article key={en}><span>{String(index + 1).padStart(2, "0")}</span><h3>{en}<small>{zh}</small></h3><p>{definition}</p></article>)}</div></section>
+        <footer><div><b>REPORT BOARD</b><span>SEC FINANCIAL INTELLIGENCE</span></div><p>数据源：SEC EDGAR Company Facts · 每日自动检查 · 仅供研究与教育，不构成投资建议</p><a href={data.sourceUrl} target="_blank" rel="noreferrer">数据方法 ↗</a></footer>
       </div>
-    </main>
-  );
+    </div>
+  </main>;
 }
 
 export default App;
