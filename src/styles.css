@@ -63,6 +63,11 @@ button { cursor:pointer; }
 .research-call span { letter-spacing:.1em; }
 .research-call strong { display:block; margin:16px 0 7px; font-size:24px; letter-spacing:-.035em; }
 .research-call>div:first-child strong { color:var(--blue); }
+.scenario-prices { display:grid; grid-template-columns:repeat(3,1fr); gap:5px; margin-top:8px; }
+.scenario-prices span { border-left:2px solid var(--line); padding-left:5px; color:var(--ink); font:700 9px ui-monospace,monospace; letter-spacing:0; }
+.scenario-prices span:first-child { border-color:var(--red); }
+.scenario-prices span:last-child { border-color:var(--green); }
+.scenario-prices b { display:block; margin-bottom:1px; color:var(--muted); font-size:7px; letter-spacing:.08em; }
 .research-call .action-增持,.research-call .action-关注,.research-call .positive { color:var(--green); }
 .research-call .action-减持,.research-call .action-回避,.research-call .negative { color:var(--red); }
 .research-call .action-数据不足 { color:var(--muted); }
