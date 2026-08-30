@@ -7,12 +7,20 @@ type Period = {
   epsDiluted: number | null; cashFromOperations: number | null; capex: number | null; freeCashFlow: number | null;
   depreciation: number | null; ebitda: number | null; assets: number | null; liabilities: number | null;
   equity: number | null; cash: number | null; debt: number | null; shares: number | null;
+  salesPerShare?: number | null; grossMargin?: number | null; operatingMargin?: number | null; netMargin?: number | null; fcfMargin?: number | null;
+};
+type Metrics = {
+  beta: number | null; epsTTM: number | null; peTTM: number | null; evEbitdaTTM: number | null;
+  revenueGrowth3Y: number | null; revenueGrowth5Y: number | null; epsGrowth3Y: number | null; epsGrowth5Y: number | null;
+  ebitdaCagr5Y: number | null; freeCashFlowPerShareTTM: number | null; fcfMarginTTM: number | null;
+  grossMarginTTM: number | null; operatingMarginTTM: number | null; netProfitMarginTTM: number | null;
 };
 type Filing = { form: string; filed: string; period: string; accession: string; url: string };
 type Company = {
   ticker: string; name: string; nameZh: string; sector: string; cik?: string; exchange?: string;
   status: "ready" | "limited" | "unsupported" | "error"; statusNote?: string | null; periods: Period[]; filings: Filing[];
   market?: { price: number; date: string; currency: string; source: string } | null;
+  dataBasis?: "reported-financials" | "basic-metrics" | "none"; reportCurrency?: string; metrics?: Metrics;
 };
 type FinancialData = { generatedAt: string; source: string; sourceUrl: string; companies: Company[] };
 type StatementKey = "income" | "cash" | "balance";
@@ -51,10 +59,44 @@ const formatMoney = (value: number | null | undefined, compact = true) => {
   if (absolute >= 1e6) return `${sign}$${(absolute / 1e6).toFixed(1)}M`;
   return `${sign}$${absolute.toLocaleString("en-US", { maximumFractionDigits: 2 })}`;
 };
-const formatMetric = (key: keyof Period, value: Period[keyof Period]) => typeof value !== "number" ? "—" : key === "epsDiluted" ? `$${value.toFixed(2)}` : formatMoney(value);
+const formatMetric = (key: keyof Period, value: Period[keyof Period], currency = "USD") => typeof value !== "number" ? "—" : key === "epsDiluted" ? `${currency === "USD" ? "$" : `${currency} `}${value.toFixed(2)}` : formatMoney(value);
 const ratio = (a: number | null, b: number | null) => a == null || b == null || b === 0 ? null : a / b;
 const growth = (a: number | null, b: number | null) => a == null || b == null || b === 0 ? null : a / b - 1;
 const formatPercent = (value: number | null, digits = 1) => value == null || !Number.isFinite(value) ? "—" : `${(value * 100).toFixed(digits)}%`;
+const clamp = (value: number, min: number, max: number) => Math.min(max, Math.max(min, value));
+const median = (values: number[]) => {
+  const sorted = values.filter(Number.isFinite).sort((a, b) => a - b);
+  if (!sorted.length) return null;
+  const middle = Math.floor(sorted.length / 2);
+  return sorted.length % 2 ? sorted[middle] : (sorted[middle - 1] + sorted[middle]) / 2;
+};
+const semiconductorSectors = new Set(["AI 与算力", "半导体设备", "晶圆制造", "存储与内存"]);
+
+function peerMultiples(data: FinancialData | null, company?: Company) {
+  if (!data || !company) return { pe: 25, ev: 18, count: 0 };
+  const peers = data.companies.filter((item) => item.sector === company.sector || (semiconductorSectors.has(company.sector) && semiconductorSectors.has(item.sector)));
+  const peValues = peers.map((item) => item.metrics?.peTTM).filter((value): value is number => value != null && value >= 8 && value <= 100);
+  const evValues = peers.map((item) => item.metrics?.evEbitdaTTM).filter((value): value is number => value != null && value >= 4 && value <= 60);
+  return { pe: Math.round(median(peValues) ?? 25), ev: Math.round(median(evValues) ?? 18), count: Math.max(peValues.length, evValues.length) };
+}
+
+function historicalRevenueGrowth(periods: Period[]) {
+  const usable = periods.filter((period) => period.revenue != null && period.revenue > 0).slice(-4);
+  if (usable.length < 2) return null;
+  return (Math.pow((usable.at(-1)?.revenue || 0) / (usable[0].revenue || 1), 1 / (usable.length - 1)) - 1) * 100;
+}
+
+function dcfPerShare(fcf: number, shares: number, startGrowth: number, discountRate: number, terminalGrowth: number) {
+  if (fcf <= 0 || shares <= 0 || discountRate <= terminalGrowth) return null;
+  let cashFlow = fcf, presentValue = 0;
+  for (let year = 1; year <= 10; year += 1) {
+    const fadingGrowth = startGrowth + (terminalGrowth - startGrowth) * (year / 10);
+    cashFlow *= 1 + fadingGrowth;
+    presentValue += cashFlow / ((1 + discountRate) ** year);
+  }
+  presentValue += cashFlow * (1 + terminalGrowth) / (discountRate - terminalGrowth) / ((1 + discountRate) ** 10);
+  return presentValue / shares;
+}
 
 function App() {
   const [data, setData] = useState<FinancialData | null>(null);
@@ -64,7 +106,7 @@ function App() {
   const [ticker, setTicker] = useState("NVDA");
   const [statement, setStatement] = useState<StatementKey>("income");
   const [mobileList, setMobileList] = useState(false);
-  const [growthRate, setGrowthRate] = useState(8), [wacc, setWacc] = useState(10), [terminalGrowth, setTerminalGrowth] = useState(3);
+  const [growthRate, setGrowthRate] = useState(15), [wacc, setWacc] = useState(10), [terminalGrowth, setTerminalGrowth] = useState(3);
   const [peMultiple, setPeMultiple] = useState(25), [evMultiple, setEvMultiple] = useState(18);
   const [manualPrice, setManualPrice] = useState("");
 
@@ -86,40 +128,56 @@ function App() {
   }), [data, query, sector]);
   const company = data?.companies.find((item) => item.ticker === ticker) || companies[0];
   const latest = company?.periods.at(-1), previous = company?.periods.at(-2);
+  const peers = useMemo(() => peerMultiples(data, company), [data, company]);
+  const modelDefaults = useMemo(() => {
+    const measuredGrowth = company?.metrics?.revenueGrowth3Y ?? historicalRevenueGrowth(company?.periods || []) ?? 10;
+    const beta = clamp(company?.metrics?.beta ?? 1, .7, 2);
+    return { growth: Math.round(clamp(measuredGrowth, -5, 35)), discount: Math.round(clamp(4.25 + beta * 5, 8, 14.5)), pe: peers.pe, ev: peers.ev };
+  }, [company, peers]);
 
   useEffect(() => {
     setManualPrice(company?.market?.price ? String(company.market.price) : "");
   }, [company?.ticker, company?.market?.price]);
 
+  useEffect(() => {
+    setGrowthRate(modelDefaults.growth); setWacc(modelDefaults.discount); setTerminalGrowth(3);
+    setPeMultiple(modelDefaults.pe); setEvMultiple(modelDefaults.ev);
+  }, [company?.ticker, modelDefaults]);
+
   const valuation = useMemo(() => {
     if (!latest) return null;
-    let enterpriseValue = 0;
-    if (latest.freeCashFlow != null && wacc > terminalGrowth) {
-      let projected = latest.freeCashFlow;
-      for (let year = 1; year <= 5; year += 1) { projected *= 1 + growthRate / 100; enterpriseValue += projected / ((1 + wacc / 100) ** year); }
-      enterpriseValue += projected * (1 + terminalGrowth / 100) / ((wacc - terminalGrowth) / 100) / ((1 + wacc / 100) ** 5);
-    }
-    const cash = latest.cash || 0, debt = latest.debt || 0;
-    const equityValue = enterpriseValue ? enterpriseValue + cash - debt : null;
-    const evEquity = latest.ebitda == null ? null : latest.ebitda * evMultiple + cash - debt;
-    const perShareReliable = latest.form.startsWith("10-K");
-    const dcfPerShare = perShareReliable && equityValue != null && latest.shares ? equityValue / latest.shares : null;
-    const pePerShare = perShareReliable && latest.epsDiluted != null ? latest.epsDiluted * peMultiple : null;
-    const evPerShare = perShareReliable && evEquity != null && latest.shares ? evEquity / latest.shares : null;
-    const modelPrices = [dcfPerShare, pePerShare, evPerShare].filter((value): value is number => value != null && Number.isFinite(value) && value > 0);
-    const targetPrice = modelPrices.length ? modelPrices.reduce((sum, value) => sum + value, 0) / modelPrices.length : null;
     const currentPrice = Number(manualPrice) > 0 ? Number(manualPrice) : null;
+    const growthDecimal = growthRate / 100, discountDecimal = wacc / 100, terminalDecimal = terminalGrowth / 100;
+    const cash = latest.cash || 0, debt = latest.debt || 0;
+    const reportedPerShare = company?.dataBasis === "reported-financials" && latest.form.startsWith("10-K");
+    const dcfBase = reportedPerShare && latest.freeCashFlow && latest.shares ? dcfPerShare(latest.freeCashFlow, latest.shares, growthDecimal, discountDecimal, terminalDecimal) : null;
+    const dcfBear = reportedPerShare && latest.freeCashFlow && latest.shares ? dcfPerShare(latest.freeCashFlow, latest.shares, Math.max(-.1, growthDecimal - .08), discountDecimal + .015, Math.max(0, terminalDecimal - .005)) : null;
+    const dcfBull = reportedPerShare && latest.freeCashFlow && latest.shares ? dcfPerShare(latest.freeCashFlow, latest.shares, Math.min(.45, growthDecimal + .08), Math.max(.06, discountDecimal - .01), Math.min(.05, terminalDecimal + .005)) : null;
+    const epsTtm = company?.reportCurrency === "USD" || reportedPerShare
+      ? company?.metrics?.epsTTM ?? latest.epsDiluted
+      : currentPrice && company?.metrics?.peTTM ? currentPrice / company.metrics.peTTM : null;
+    const pePerShare = epsTtm != null && epsTtm > 0 ? epsTtm * peMultiple : null;
+    const evEquity = latest.ebitda == null ? null : latest.ebitda * evMultiple + cash - debt;
+    const evPerShare = reportedPerShare && evEquity != null && latest.shares ? evEquity / latest.shares : null;
+    const modelPrices = [dcfBase, pePerShare, evPerShare].filter((value): value is number => value != null && Number.isFinite(value) && value > 0);
+    const targetPrice = modelPrices.length ? modelPrices.reduce((sum, value) => sum + value, 0) / modelPrices.length : null;
+    const bearModels = [dcfBear, pePerShare == null ? null : pePerShare * .8, evPerShare == null ? null : evPerShare * .8].filter((value): value is number => value != null && value > 0);
+    const bullModels = [dcfBull, pePerShare == null ? null : pePerShare * 1.2, evPerShare == null ? null : evPerShare * 1.2].filter((value): value is number => value != null && value > 0);
+    const bearTarget = bearModels.length ? bearModels.reduce((sum, value) => sum + value, 0) / bearModels.length : null;
+    const bullTarget = bullModels.length ? bullModels.reduce((sum, value) => sum + value, 0) / bullModels.length : null;
     const upside = targetPrice != null && currentPrice != null ? targetPrice / currentPrice - 1 : null;
-    const action = upside == null ? "等待价格" : upside >= .25 ? "增持" : upside >= .1 ? "关注" : upside > -.1 ? "观望" : upside > -.25 ? "减持" : "回避";
+    const dispersion = modelPrices.length >= 2 && targetPrice ? (Math.max(...modelPrices) - Math.min(...modelPrices)) / targetPrice : null;
+    const confidence = modelPrices.length === 3 && (dispersion ?? 1) <= .75 ? "高" : modelPrices.length >= 2 && (dispersion ?? 1) <= 1 ? "中" : "低";
+    const action = confidence === "低" || upside == null ? "数据不足" : upside >= .25 ? "增持" : upside >= .1 ? "关注" : upside > -.1 ? "观望" : upside > -.25 ? "减持" : "回避";
     return {
-      enterpriseValue: enterpriseValue || null, equityValue,
-      dcfPerShare, pePerShare, evEquity, evPerShare,
-      targetPrice, currentPrice, upside, action, modelCount: modelPrices.length,
+      dcfPerShare: dcfBase, pePerShare, evEquity, evPerShare, epsTtm,
+      targetPrice, bearTarget, bullTarget, currentPrice, upside, action, confidence, dispersion, modelCount: modelPrices.length,
     };
-  }, [latest, growthRate, wacc, terminalGrowth, peMultiple, evMultiple, manualPrice]);
+  }, [latest, company, growthRate, wacc, terminalGrowth, peMultiple, evMultiple, manualPrice]);
 
   const latestFiling = company?.filings?.[0], hasData = Boolean(latest && company);
-  const maxRevenue = Math.max(...(company?.periods.map((period) => Math.abs(period.revenue || 0)) || [1]), 1);
+  const usesPerShareTrend = !company?.periods.some((period) => period.revenue != null);
+  const maxRevenue = Math.max(...(company?.periods.map((period) => Math.abs(usesPerShareTrend ? period.salesPerShare || 0 : period.revenue || 0)) || [1]), 1);
   const chooseCompany = (next: string) => { setTicker(next); setMobileList(false); window.scrollTo({ top: 0, behavior: "smooth" }); };
 
   if (loadError) return <main className="state-page"><div><span>DATA ERROR</span><h1>财报数据暂时无法载入</h1><p>请稍后刷新页面，或检查自动更新任务是否成功。</p><button onClick={() => window.location.reload()}>重新加载</button></div></main>;
@@ -147,17 +205,17 @@ function App() {
       <div className="content">
         <section className="company-hero" id="overview">
           <div className="company-title"><p className="eyebrow">{company?.sector || "COMPANY"} / {company?.exchange || "SEC COVERAGE"}</p>
-            <div><h1>{company?.ticker || "—"}</h1><span className={`status-pill ${company?.status}`}>{hasData ? "DATA READY · 数据已就绪" : "LIMITED · 数据有限"}</span></div>
+            <div><h1>{company?.ticker || "—"}</h1><span className={`status-pill ${company?.status}`}>{company?.dataBasis === "basic-metrics" ? "METRICS · 指标回退" : hasData ? "DATA READY · 数据已就绪" : "LIMITED · 数据有限"}</span></div>
             <h2>{company?.nameZh} <span>{company?.name}</span></h2>
-            <p>{hasData ? `已追踪 ${company?.periods.length} 个年度财报期间。最近财年截止 ${latest?.end}，数据提交于 ${latest?.filed}。` : company?.statusNote}</p>
+            <p>{hasData ? `已追踪 ${company?.periods.length} 个年度期间。最近财年截止 ${latest?.end}${latest?.filed ? `，数据提交于 ${latest.filed}` : ""}。${company?.statusNote || ""}` : company?.statusNote}</p>
           </div>
           <div className="filing-callout"><span>LATEST FILING / 最新申报</span>{latestFiling ? <><strong>{latestFiling.form}</strong><p>提交 {latestFiling.filed}<br />报告期 {latestFiling.period || "—"}</p><a href={latestFiling.url} target="_blank" rel="noreferrer">查看 SEC 原文 ↗</a></> : <p>暂无可用申报链接</p>}</div>
         </section>
 
         {hasData ? <>
           <section className="research-call" aria-label="数据模型研究结论">
-            <div><span>DATA-DRIVEN CALL / 数据模型结论</span><strong className={`action-${valuation?.action}`}>{valuation?.action}</strong><small>{valuation?.modelCount === 3 ? "三模型覆盖 · 中等置信度" : `${valuation?.modelCount || 0}/3 模型有效 · 低置信度`}{latest?.form.startsWith("20-F") ? " · ADR 换算待核对" : ""}{company?.sector === "医药与生物科技" ? " · 医药管线风险未计入" : ""}</small></div>
-            <div><span>BLENDED TARGET / 综合目标价</span><strong>{valuation?.targetPrice == null ? "—" : `$${valuation.targetPrice.toFixed(2)}`}</strong><small>有效模型结果等权平均</small></div>
+            <div><span>DATA-DRIVEN CALL / 数据模型结论</span><strong className={`action-${valuation?.action}`}>{valuation?.action}</strong><small>{valuation?.modelCount || 0}/3 模型有效 · {valuation?.confidence || "低"}置信度{company?.dataBasis === "basic-metrics" ? " · 20-F 指标回退" : ""}{company?.sector === "医药与生物科技" ? " · 医药管线风险未计入" : ""}</small></div>
+            <div><span>BASE TARGET / 基准目标价</span><strong>{valuation?.targetPrice == null ? "—" : `$${valuation.targetPrice.toFixed(2)}`}</strong><small>{valuation?.bearTarget && valuation?.bullTarget ? `情景区间 $${valuation.bearTarget.toFixed(0)}–$${valuation.bullTarget.toFixed(0)}` : "模型不足时不输出动作"}</small></div>
             <div><span>REFERENCE PRICE / 参考价格</span><label className="price-input"><b>$</b><input type="number" min="0" step="0.01" value={manualPrice} onChange={(event) => setManualPrice(event.target.value)} placeholder="输入收盘价" /></label><small>{company?.market ? `${company.market.date} · ${company.market.source}` : "可手动输入；配置行情密钥后每日自动更新"}</small></div>
             <div><span>IMPLIED RETURN / 隐含空间</span><strong className={(valuation?.upside || 0) < 0 ? "negative" : "positive"}>{formatPercent(valuation?.upside ?? null)}</strong><small>目标价 ÷ 参考价 − 1</small></div>
           </section>
@@ -165,33 +223,33 @@ function App() {
             ["Revenue", "营业收入", latest?.revenue, growth(latest?.revenue ?? null, previous?.revenue ?? null)],
             ["Net Income", "净利润", latest?.netIncome, growth(latest?.netIncome ?? null, previous?.netIncome ?? null)],
             ["Free Cash Flow", "自由现金流", latest?.freeCashFlow, growth(latest?.freeCashFlow ?? null, previous?.freeCashFlow ?? null)],
-            ["Operating Margin", "营业利润率", ratio(latest?.operatingIncome ?? null, latest?.revenue ?? null), null],
+            ["Operating Margin", "营业利润率", latest?.operatingMargin ?? ratio(latest?.operatingIncome ?? null, latest?.revenue ?? null), null],
           ].map(([label, zh, value, delta], index) => <article className="kpi" key={String(label)}><div><span>0{index + 1}</span><small>FY {latest?.fiscalYear}</small></div><h3>{label}<small>{zh}</small></h3><strong>{label === "Operating Margin" ? formatPercent(value as number | null) : formatMoney(value as number | null)}</strong><p className={(delta as number | null) != null && (delta as number) < 0 ? "negative" : ""}>{delta == null ? "年度口径" : `${formatPercent(delta as number)} YoY`}</p></article>)}</section>
 
           <section className="section" id="financials">
             <div className="section-head"><div><span>01 / FINANCIAL HISTORY</span><h2>历史财务表现</h2></div><p>年度口径 · Annual basis<br />金额按原始 XBRL 披露单位显示</p></div>
             <div className="history-grid">
-              <div className="trend-card panel"><div className="panel-title"><div><small>REVENUE SCALE</small><h3>收入趋势 Revenue</h3></div><span>{company?.periods.length}Y</span></div><div className="bars">{company?.periods.map((period) => <div className="bar-column" key={period.end}><div className="bar-value">{formatMoney(period.revenue)}</div><div className="bar-track"><div style={{ height: `${Math.max(4, Math.abs(period.revenue || 0) / maxRevenue * 100)}%` }} /></div><span>{period.fiscalYear}</span></div>)}</div></div>
+              <div className="trend-card panel"><div className="panel-title"><div><small>{usesPerShareTrend ? "PER-SHARE SCALE" : "REVENUE SCALE"}</small><h3>{usesPerShareTrend ? `每股收入 Sales / Share (${company?.reportCurrency})` : "收入趋势 Revenue"}</h3></div><span>{company?.periods.length}Y</span></div><div className="bars">{company?.periods.map((period) => { const value = usesPerShareTrend ? period.salesPerShare : period.revenue; return <div className="bar-column" key={period.end}><div className="bar-value">{usesPerShareTrend ? value?.toFixed(2) || "—" : formatMoney(value)}</div><div className="bar-track"><div style={{ height: `${Math.max(4, Math.abs(value || 0) / maxRevenue * 100)}%` }} /></div><span>{period.fiscalYear}</span></div>; })}</div></div>
               <div className="quality-card panel"><div className="panel-title"><div><small>QUALITY CHECK</small><h3>盈利与现金质量</h3></div><span>Latest FY</span></div>{[
-                ["Gross Margin / 毛利率", ratio(latest?.grossProfit ?? null, latest?.revenue ?? null)], ["Operating Margin / 营业利润率", ratio(latest?.operatingIncome ?? null, latest?.revenue ?? null)], ["Net Margin / 净利率", ratio(latest?.netIncome ?? null, latest?.revenue ?? null)], ["FCF Margin / 自由现金流率", ratio(latest?.freeCashFlow ?? null, latest?.revenue ?? null)],
+                ["Gross Margin / 毛利率", latest?.grossMargin ?? ratio(latest?.grossProfit ?? null, latest?.revenue ?? null)], ["Operating Margin / 营业利润率", latest?.operatingMargin ?? ratio(latest?.operatingIncome ?? null, latest?.revenue ?? null)], ["Net Margin / 净利率", latest?.netMargin ?? ratio(latest?.netIncome ?? null, latest?.revenue ?? null)], ["FCF Margin / 自由现金流率", latest?.fcfMargin ?? ratio(latest?.freeCashFlow ?? null, latest?.revenue ?? null)],
               ].map(([label, value]) => <div className="ratio-row" key={String(label)}><span>{label}</span><div><i style={{ width: `${Math.min(100, Math.max(0, (value as number || 0) * 200))}%` }} /></div><strong>{formatPercent(value as number | null)}</strong></div>)}</div>
             </div>
-            <div className="statement-card panel"><div className="statement-tabs" role="tablist">{(Object.keys(statements) as StatementKey[]).map((key) => <button key={key} className={statement === key ? "active" : ""} onClick={() => setStatement(key)}>{statements[key].label}</button>)}</div><div className="table-scroll"><table><thead><tr><th>Metric / 指标</th>{company?.periods.map((period) => <th key={period.end}>FY {period.fiscalYear}<small>{period.end}</small></th>)}</tr></thead><tbody>{statements[statement].rows.map(([key, en, zh]) => <tr key={key}><td><b>{en}</b><small>{zh}</small></td>{company?.periods.map((period) => <td key={period.end}>{formatMetric(key, period[key])}</td>)}</tr>)}</tbody></table></div></div>
+            <div className="statement-card panel"><div className="statement-tabs" role="tablist">{(Object.keys(statements) as StatementKey[]).map((key) => <button key={key} className={statement === key ? "active" : ""} onClick={() => setStatement(key)}>{statements[key].label}</button>)}</div><div className="table-scroll"><table><thead><tr><th>Metric / 指标</th>{company?.periods.map((period) => <th key={period.end}>FY {period.fiscalYear}<small>{period.end}</small></th>)}</tr></thead><tbody>{statements[statement].rows.map(([key, en, zh]) => <tr key={key}><td><b>{en}</b><small>{zh}</small></td>{company?.periods.map((period) => <td key={period.end}>{formatMetric(key, period[key], period.currency)}</td>)}</tr>)}</tbody></table></div></div>
           </section>
 
           <section className="section valuation-section" id="valuation">
             <div className="section-head"><div><span>02 / VALUATION LAB</span><h2>估值模型</h2></div><p>基于历史披露与可调假设的教学性估算<br />不是目标价或投资建议</p></div>
             <div className="valuation-layout">
-              <div className="assumption-panel panel"><div className="panel-title"><div><small>MODEL INPUTS</small><h3>关键假设 Assumptions</h3></div><button onClick={() => { setGrowthRate(8); setWacc(10); setTerminalGrowth(3); setPeMultiple(25); setEvMultiple(18); }}>重置</button></div>{[
-                { label:"5Y FCF Growth / 五年现金流增长", value:growthRate, setter:setGrowthRate, min:-10, max:30, suffix:"%" }, { label:"WACC / 加权资本成本", value:wacc, setter:setWacc, min:6, max:18, suffix:"%" }, { label:"Terminal Growth / 永续增长", value:terminalGrowth, setter:setTerminalGrowth, min:0, max:5, suffix:"%" }, { label:"Target P/E / 目标市盈率", value:peMultiple, setter:setPeMultiple, min:5, max:60, suffix:"×" }, { label:"Target EV/EBITDA / 目标企业倍数", value:evMultiple, setter:setEvMultiple, min:4, max:40, suffix:"×" },
+              <div className="assumption-panel panel"><div className="panel-title"><div><small>MODEL INPUTS · {peers.count} PEERS</small><h3>公司校准假设 Assumptions</h3></div><button onClick={() => { setGrowthRate(modelDefaults.growth); setWacc(modelDefaults.discount); setTerminalGrowth(3); setPeMultiple(modelDefaults.pe); setEvMultiple(modelDefaults.ev); }}>重置</button></div>{[
+                { label:"Initial FCF Growth / 初始现金流增长", value:growthRate, setter:setGrowthRate, min:-10, max:45, suffix:"%" }, { label:"Discount Rate / 折现率", value:wacc, setter:setWacc, min:6, max:18, suffix:"%" }, { label:"Terminal Growth / 永续增长", value:terminalGrowth, setter:setTerminalGrowth, min:0, max:5, suffix:"%" }, { label:"Peer P/E / 同业市盈率", value:peMultiple, setter:setPeMultiple, min:5, max:100, suffix:"×" }, { label:"Peer EV/EBITDA / 同业企业倍数", value:evMultiple, setter:setEvMultiple, min:4, max:60, suffix:"×" },
               ].map(({ label, value, setter, min, max, suffix }) => <label className="slider-row" key={label}><span>{label}<strong>{value}{suffix}</strong></span><input type="range" min={min} max={max} step={1} value={value} onChange={(event) => setter(Number(event.target.value))} /></label>)}{wacc <= terminalGrowth && <p className="model-warning">WACC 必须高于永续增长率，DCF 才有意义。</p>}</div>
               <div className="valuation-results">
-                <article className="model-card dcf"><span>INTRINSIC VALUE / 内在价值</span><h3>FCFF DCF</h3><strong>{valuation?.dcfPerShare == null ? formatMoney(valuation?.equityValue) : `$${valuation.dcfPerShare.toFixed(2)} / 股`}</strong><p>企业价值 {formatMoney(valuation?.enterpriseValue)}<br />股权价值 {formatMoney(valuation?.equityValue)}</p><code>EV = Σ FCFFₜ/(1+WACC)ᵗ + TV/(1+WACC)⁵</code></article>
-                <article className="model-card"><span>EARNINGS MULTIPLE / 盈利倍数</span><h3>P/E Valuation</h3><strong>{valuation?.pePerShare == null ? "数据不足" : `$${valuation.pePerShare.toFixed(2)} / 股`}</strong><p>稀释 EPS {latest?.epsDiluted == null ? "—" : `$${latest.epsDiluted.toFixed(2)}`}<br />目标市盈率 {peMultiple}×</p><code>每股价值 = EPS × 目标 P/E</code></article>
+                <article className="model-card dcf"><span>SCENARIO DCF / 情景现金流估值</span><h3>10Y Equity FCF DCF</h3><strong>{valuation?.dcfPerShare == null ? "数据不足" : `$${valuation.dcfPerShare.toFixed(2)} / 股`}</strong><p>增长率十年渐降至 {terminalGrowth}%<br />折现率 {wacc}% · 仅正 FCF 启用</p><code>Equity Value = Σ FCFₜ/(1+r)ᵗ + TV/(1+r)¹⁰</code></article>
+                <article className="model-card"><span>PEER EARNINGS / 同业盈利倍数</span><h3>TTM P/E Valuation</h3><strong>{valuation?.pePerShare == null ? "数据不足" : `$${valuation.pePerShare.toFixed(2)} / 股`}</strong><p>TTM EPS {valuation?.epsTtm == null ? "—" : `$${valuation.epsTtm.toFixed(2)}`}<br />同业目标市盈率 {peMultiple}×</p><code>每股价值 = TTM EPS × 同业 P/E 中位数</code></article>
                 <article className="model-card"><span>ENTERPRISE MULTIPLE / 企业倍数</span><h3>EV / EBITDA</h3><strong>{valuation?.evPerShare == null ? formatMoney(valuation?.evEquity) : `$${valuation.evPerShare.toFixed(2)} / 股`}</strong><p>EBITDA {formatMoney(latest?.ebitda)}<br />估算股权价值 {formatMoney(valuation?.evEquity)}</p><code>Equity = EBITDA × Multiple + Cash − Debt</code></article>
               </div>
             </div>
-            <div className="method-note"><b>方法说明 Methodology</b><p>DCF 使用最近年度自由现金流作为基期，显式预测五年并采用 Gordon Growth 永续模型；P/E 与 EV/EBITDA 是可调目标倍数法。模型未自动纳入股票期权、少数股东权益、周期性正常化或公司特定风险，因此应结合原始财报独立判断。</p></div>
+            <div className="method-note"><b>方法说明 Methodology</b><p>DCF 使用经营现金流减资本开支作为股权现金流近似值，预测十年并让增长率逐步回落至永续增长；折现率由无风险利率假设与截尾 Beta 自动校准。P/E 与 EV/EBITDA 默认采用同板块中位数。Bear/Base/Bull 分别调整增长、折现率和倍数；少于两套有效模型或模型分歧过大时停止给出投资动作。免费数据不含分析师一致预期，因此这仍是历史数据驱动模型，不是卖方盈利预测。</p></div>
           </section>
 
           <section className="section" id="filings"><div className="section-head"><div><span>03 / FILING LOG</span><h2>最近申报</h2></div><p>标准化索引 · 链接指向 SEC EDGAR<br />点击可核对公司原始披露</p></div><div className="filing-list">{company?.filings.map((filing) => <a href={filing.url} target="_blank" rel="noreferrer" key={filing.accession}><span className="form-tag">{filing.form}</span><span><b>报告期 {filing.period || "—"}</b><small>提交于 {filing.filed} · {filing.accession}</small></span><i>↗</i></a>)}</div></section>

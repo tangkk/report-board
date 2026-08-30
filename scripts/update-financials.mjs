@@ -18,15 +18,15 @@ const concepts = {
   netIncome: ["NetIncomeLoss", "ProfitLoss"],
   epsDiluted: ["EarningsPerShareDiluted", "DilutedEarningsLossPerShare"],
   cashFromOperations: ["NetCashProvidedByUsedInOperatingActivities", "CashFlowsFromUsedInOperatingActivities"],
-  capex: ["PaymentsToAcquirePropertyPlantAndEquipment", "PurchaseOfPropertyPlantAndEquipment"],
-  depreciation: ["DepreciationDepletionAndAmortization", "DepreciationDepletionAndAmortizationPropertyPlantAndEquipment"],
+  capex: ["PaymentsToAcquirePropertyPlantAndEquipment", "PurchaseOfPropertyPlantAndEquipment", "PaymentsToAcquireProductiveAssets", "PaymentsToAcquirePropertyPlantAndEquipmentAndIntangibleAssets"],
+  depreciation: ["DepreciationDepletionAndAmortization", "DepreciationDepletionAndAmortizationPropertyPlantAndEquipment", "DepreciationDepletionAndAmortizationPropertyPlantAndEquipmentAndIntangibleAssets"],
   assets: ["Assets"],
   liabilities: ["Liabilities"],
   equity: ["StockholdersEquity", "StockholdersEquityIncludingPortionAttributableToNoncontrollingInterest", "Equity"],
   cash: ["CashAndCashEquivalentsAtCarryingValue", "CashCashEquivalentsRestrictedCashAndRestrictedCashEquivalents", "CashAndCashEquivalents"],
   debtCurrent: ["LongTermDebtAndFinanceLeaseObligationsCurrent", "LongTermDebtCurrent", "ShortTermBorrowings"],
   debtLong: ["LongTermDebtAndFinanceLeaseObligationsNoncurrent", "LongTermDebtNoncurrent", "LongTermBorrowings"],
-  shares: ["CommonStockSharesOutstanding", "EntityCommonStockSharesOutstanding", "WeightedAverageNumberOfDilutedSharesOutstanding", "WeightedAverageNumberOfSharesOutstandingDiluted"],
+  shares: ["WeightedAverageNumberOfDilutedSharesOutstanding", "WeightedAverageNumberOfSharesOutstandingDiluted", "CommonStockSharesOutstanding", "EntityCommonStockSharesOutstanding"],
 };
 
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
@@ -57,7 +57,7 @@ function reportValue(report, section, tags) {
 
 function annualPeriodsFromFinnhub(payload) {
   const seenYears = new Set();
-  return (payload?.data || [])
+  const periods = (payload?.data || [])
     .filter((item) => {
       if (!annualForms.has(item.form) || seenYears.has(item.year)) return false;
       seenYears.add(item.year);
@@ -100,6 +100,47 @@ function annualPeriodsFromFinnhub(payload) {
       };
     })
     .reverse();
+
+  // Finnhub occasionally mixes pre-split EPS/shares with post-split years.
+  // Normalize obvious 5x-20x discontinuities onto the latest share basis.
+  let cumulativeFactor = 1;
+  for (let index = periods.length - 2; index >= 0; index -= 1) {
+    const newerShares = periods[index + 1].shares;
+    const currentShares = periods[index].shares;
+    if (newerShares && currentShares) {
+      const rawRatio = newerShares / (currentShares * cumulativeFactor);
+      const split = Math.round(rawRatio);
+      if (split >= 5 && split <= 20 && Math.abs(rawRatio - split) / split < 0.08) cumulativeFactor *= split;
+    }
+    if (cumulativeFactor > 1) {
+      if (periods[index].shares != null) periods[index].shares = round(periods[index].shares * cumulativeFactor);
+      if (periods[index].epsDiluted != null) periods[index].epsDiluted = round(periods[index].epsDiluted / cumulativeFactor);
+    }
+  }
+  return periods;
+}
+
+const metricNumber = (payload, key) => Number.isFinite(payload?.metric?.[key]) ? payload.metric[key] : null;
+
+function metricSummary(payload) {
+  const keys = ["beta", "epsTTM", "peTTM", "evEbitdaTTM", "revenueGrowth3Y", "revenueGrowth5Y", "epsGrowth3Y", "epsGrowth5Y", "ebitdaCagr5Y", "freeCashFlowPerShareTTM", "fcfMarginTTM", "grossMarginTTM", "operatingMarginTTM", "netProfitMarginTTM"];
+  return Object.fromEntries(keys.map((key) => [key, metricNumber(payload, key)]));
+}
+
+function metricSeries(payload, currency = "USD") {
+  const annual = payload?.series?.annual || {};
+  const names = ["eps", "ebitda", "salesPerShare", "grossMargin", "operatingMargin", "netMargin", "fcfMargin"];
+  const maps = Object.fromEntries(names.map((name) => [name, new Map((annual[name] || []).map((item) => [item.period, item.v]))]));
+  const dates = [...new Set(names.flatMap((name) => (annual[name] || []).map((item) => item.period)))].sort().slice(-6);
+  return dates.map((end) => ({
+    fiscalYear: Number(end.slice(0, 4)), end, filed: "", form: "Basic Metrics", accession: "", currency,
+    revenue: null, grossProfit: null, operatingIncome: null, netIncome: null,
+    epsDiluted: round(maps.eps.get(end)), cashFromOperations: null, capex: null, freeCashFlow: null,
+    depreciation: null, ebitda: maps.ebitda.has(end) ? round(maps.ebitda.get(end) * 1e6) : null,
+    assets: null, liabilities: null, equity: null, cash: null, debt: null, shares: null,
+    salesPerShare: round(maps.salesPerShare.get(end)), grossMargin: round(maps.grossMargin.get(end)),
+    operatingMargin: round(maps.operatingMargin.get(end)), netMargin: round(maps.netMargin.get(end)), fcfMargin: round(maps.fcfMargin.get(end)),
+  }));
 }
 
 function filingsFromFinnhub(payloads, cik) {
@@ -140,14 +181,26 @@ async function main() {
       const annual = await getFinnhub(`stock/financials-reported?symbol=${encodeURIComponent(company.ticker)}&freq=annual`);
       await sleep(1100);
       const quarterly = await getFinnhub(`stock/financials-reported?symbol=${encodeURIComponent(company.ticker)}&freq=quarterly`);
-      const periods = annualPeriodsFromFinnhub(annual);
+      await sleep(1100);
+      const basic = await getFinnhub(`stock/metric?symbol=${encodeURIComponent(company.ticker)}&metric=all`);
+      let periods = annualPeriodsFromFinnhub(annual);
+      let profile = null;
+      if (!periods.length) {
+        await sleep(1100);
+        profile = await getFinnhub(`stock/profile2?symbol=${encodeURIComponent(company.ticker)}`);
+        periods = metricSeries(basic, profile.currency || "USD");
+      }
+      const filingPeriods = annualPeriodsFromFinnhub(annual);
       companies.push({
         ...company,
         cik: String(annual.cik || match.cik).padStart(10, "0"),
         secName: match.secName,
         exchange: match.exchange,
-        status: periods.length ? "ready" : "limited",
-        statusNote: periods.length ? null : "数据源已收录该公司，但标准化年度指标不足",
+        status: filingPeriods.length ? "ready" : "limited",
+        statusNote: filingPeriods.length ? null : periods.length ? "20-F 明细接口未覆盖；当前使用 Finnhub Basic Financials 历史指标，绝对财务项目有限" : "数据源已收录该公司，但标准化年度指标不足",
+        dataBasis: filingPeriods.length ? "reported-financials" : periods.length ? "basic-metrics" : "none",
+        reportCurrency: profile?.currency || periods.at(-1)?.currency || "USD",
+        metrics: metricSummary(basic),
         periods,
         filings: filingsFromFinnhub([annual, quarterly], annual.cik || match.cik),
       });
