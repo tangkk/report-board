@@ -21,9 +21,8 @@ jobs:
         with:
           node-version: 22
           cache: npm
-      - name: Refresh SEC filings and market prices
+      - name: Refresh financial statements, SEC filing links, and prices
         env:
-          SEC_USER_AGENT: "Report Board tangkk@users.noreply.github.com"
           FINNHUB_API_KEY: ${{ secrets.FINNHUB_API_KEY }}
         run: node scripts/update-financials.mjs
       - name: Commit new disclosures

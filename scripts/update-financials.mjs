@@ -7,7 +7,6 @@ const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const universePath = path.join(root, "data/company-universe.json");
 const cikMapPath = path.join(root, "data/sec-cik-map.json");
 const outputPath = path.join(root, "public/data/financials.json");
-const userAgent = process.env.SEC_USER_AGENT || "Financial Report Board tangkk@users.noreply.github.com";
 const marketApiKey = process.env.FINNHUB_API_KEY || "";
 const annualForms = new Set(["10-K", "10-K/A", "20-F", "20-F/A", "40-F", "40-F/A"]);
 const filingForms = new Set(["10-K", "10-K/A", "10-Q", "10-Q/A", "20-F", "20-F/A", "40-F", "40-F/A", "6-K", "8-K"]);
@@ -33,107 +32,94 @@ const concepts = {
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 const round = (value) => value == null || !Number.isFinite(value) ? null : Math.round(value * 100) / 100;
 
-async function getJson(url) {
-  const response = await fetch(url, { headers: { "User-Agent": userAgent, Accept: "application/json" } });
-  if (!response.ok) throw new Error(`${response.status} ${response.statusText} — ${url}`);
+async function getFinnhub(endpoint) {
+  if (!marketApiKey) throw new Error("FINNHUB_API_KEY is not configured");
+  const response = await fetch(`https://finnhub.io/api/v1/${endpoint}`, { headers: { "X-Finnhub-Token": marketApiKey, Accept: "application/json" } });
+  if (!response.ok) throw new Error(`Finnhub ${response.status} ${response.statusText}`);
   return response.json();
 }
 
 async function getMarketQuote(ticker) {
   if (!marketApiKey) return null;
-  const response = await fetch(`https://finnhub.io/api/v1/quote?symbol=${encodeURIComponent(ticker)}&token=${marketApiKey}`);
-  if (!response.ok) throw new Error(`Market quote ${response.status}`);
-  const quote = await response.json();
+  const quote = await getFinnhub(`quote?symbol=${encodeURIComponent(ticker)}`);
   if (!quote.c || quote.c <= 0) return null;
   return { price: round(quote.c), date: new Date((quote.t || Date.now() / 1000) * 1000).toISOString().slice(0, 10), currency: "USD", source: "Finnhub EOD" };
 }
 
-function arraysFor(facts, tags) {
-  const arrays = [];
-  for (const namespace of ["us-gaap", "ifrs-full", "dei"]) {
-    for (const tag of tags) {
-      const concept = facts?.facts?.[namespace]?.[tag];
-      if (!concept?.units) continue;
-      for (const values of Object.values(concept.units)) arrays.push(...values);
-    }
+function reportValue(report, section, tags) {
+  const rows = report?.[section] || [];
+  for (const tag of tags) {
+    const row = rows.find((item) => item.concept === tag || item.concept?.endsWith(`_${tag}`));
+    if (row?.value != null) return row.value;
   }
-  return arrays;
+  return null;
 }
 
-function latestMatching(facts, tags, end, flow = true) {
-  return arraysFor(facts, tags)
-    .filter((fact) => fact.end === end && annualForms.has(fact.form) && (flow ? Boolean(fact.start) : true))
-    .sort((a, b) => String(b.filed).localeCompare(String(a.filed)))[0]?.val ?? null;
-}
-
-function annualPeriods(facts) {
-  const revenueFacts = arraysFor(facts, concepts.revenue)
-    .filter((fact) => annualForms.has(fact.form) && fact.fp === "FY" && fact.start && fact.end)
-    .filter((fact) => {
-      const days = (Date.parse(fact.end) - Date.parse(fact.start)) / 86400000;
-      return days >= 300 && days <= 420;
+function annualPeriodsFromFinnhub(payload) {
+  const seenYears = new Set();
+  return (payload?.data || [])
+    .filter((item) => {
+      if (!annualForms.has(item.form) || seenYears.has(item.year)) return false;
+      seenYears.add(item.year);
+      return true;
     })
-    .sort((a, b) => String(b.end).localeCompare(String(a.end)) || String(b.filed).localeCompare(String(a.filed)));
-
-  const unique = [];
-  const seen = new Set();
-  for (const revenue of revenueFacts) {
-    if (seen.has(revenue.end)) continue;
-    seen.add(revenue.end);
-    const end = revenue.end;
-    const debtCurrent = latestMatching(facts, concepts.debtCurrent, end, false) || 0;
-    const debtLong = latestMatching(facts, concepts.debtLong, end, false) || 0;
-    const cashFromOperations = latestMatching(facts, concepts.cashFromOperations, end);
-    const capex = latestMatching(facts, concepts.capex, end);
-    const operatingIncome = latestMatching(facts, concepts.operatingIncome, end);
-    const depreciation = latestMatching(facts, concepts.depreciation, end);
-    unique.push({
-      fiscalYear: revenue.fy || Number(end.slice(0, 4)),
-      end,
-      filed: revenue.filed,
-      form: revenue.form,
-      accession: revenue.accn,
-      currency: "USD",
-      revenue: round(revenue.val),
-      grossProfit: round(latestMatching(facts, concepts.grossProfit, end)),
-      operatingIncome: round(operatingIncome),
-      netIncome: round(latestMatching(facts, concepts.netIncome, end)),
-      epsDiluted: round(latestMatching(facts, concepts.epsDiluted, end)),
-      cashFromOperations: round(cashFromOperations),
-      capex: round(capex),
-      freeCashFlow: cashFromOperations == null || capex == null ? null : round(cashFromOperations - Math.abs(capex)),
-      depreciation: round(depreciation),
-      ebitda: operatingIncome == null ? null : round(operatingIncome + (depreciation || 0)),
-      assets: round(latestMatching(facts, concepts.assets, end, false)),
-      liabilities: round(latestMatching(facts, concepts.liabilities, end, false)),
-      equity: round(latestMatching(facts, concepts.equity, end, false)),
-      cash: round(latestMatching(facts, concepts.cash, end, false)),
-      debt: round(debtCurrent + debtLong),
-      shares: round(latestMatching(facts, concepts.shares, end, false)),
-    });
-    if (unique.length === 6) break;
-  }
-  return unique.reverse();
+    .slice(0, 6)
+    .map((item) => {
+      const report = item.report || {};
+      const debtCurrent = reportValue(report, "bs", concepts.debtCurrent) || 0;
+      const debtLong = reportValue(report, "bs", concepts.debtLong) || 0;
+      const cashFromOperations = reportValue(report, "cf", concepts.cashFromOperations);
+      const capex = reportValue(report, "cf", concepts.capex);
+      const operatingIncome = reportValue(report, "ic", concepts.operatingIncome);
+      const depreciation = reportValue(report, "cf", concepts.depreciation);
+      const revenue = reportValue(report, "ic", concepts.revenue);
+      const revenueRow = (report.ic || []).find((row) => concepts.revenue.some((tag) => row.concept === tag || row.concept?.endsWith(`_${tag}`)));
+      return {
+        fiscalYear: item.year,
+        end: item.endDate,
+        filed: String(item.filedDate || "").slice(0, 10),
+        form: item.form,
+        accession: item.accessNumber,
+        currency: String(revenueRow?.unit || "USD").toUpperCase(),
+        revenue: round(revenue),
+        grossProfit: round(reportValue(report, "ic", concepts.grossProfit)),
+        operatingIncome: round(operatingIncome),
+        netIncome: round(reportValue(report, "ic", concepts.netIncome) ?? reportValue(report, "cf", concepts.netIncome)),
+        epsDiluted: round(reportValue(report, "ic", concepts.epsDiluted)),
+        cashFromOperations: round(cashFromOperations),
+        capex: round(capex),
+        freeCashFlow: cashFromOperations == null || capex == null ? null : round(cashFromOperations - Math.abs(capex)),
+        depreciation: round(depreciation),
+        ebitda: operatingIncome == null ? null : round(operatingIncome + (depreciation || 0)),
+        assets: round(reportValue(report, "bs", concepts.assets)),
+        liabilities: round(reportValue(report, "bs", concepts.liabilities)),
+        equity: round(reportValue(report, "bs", concepts.equity)),
+        cash: round(reportValue(report, "bs", concepts.cash)),
+        debt: round(debtCurrent + debtLong),
+        shares: round(reportValue(report, "bs", concepts.shares) ?? reportValue(report, "ic", concepts.shares)),
+      };
+    })
+    .reverse();
 }
 
-function recentFilings(submissions, cik) {
-  const recent = submissions?.filings?.recent || {};
-  const rows = [];
-  for (let i = 0; i < (recent.form?.length || 0); i += 1) {
-    if (!filingForms.has(recent.form[i])) continue;
-    const accession = recent.accessionNumber[i];
-    const accessionFlat = accession.replaceAll("-", "");
-    rows.push({
-      form: recent.form[i],
-      filed: recent.filingDate[i],
-      period: recent.reportDate[i],
+function filingsFromFinnhub(payloads, cik) {
+  const seen = new Set();
+  return payloads
+    .flatMap((payload) => payload?.data || [])
+    .filter((item) => filingForms.has(item.form) && item.accessNumber && !seen.has(item.accessNumber) && seen.add(item.accessNumber))
+    .sort((a, b) => String(b.filedDate).localeCompare(String(a.filedDate)))
+    .slice(0, 8)
+    .map((item) => {
+    const accession = item.accessNumber;
+    const accessionFlat = String(accession || "").replaceAll("-", "");
+    return {
+      form: item.form,
+      filed: String(item.filedDate || "").slice(0, 10),
+      period: item.endDate,
       accession,
-      primaryDocument: recent.primaryDocument[i],
-      url: `https://www.sec.gov/Archives/edgar/data/${Number(cik)}/${accessionFlat}/${recent.primaryDocument[i]}`,
+      url: accession ? `https://www.sec.gov/Archives/edgar/data/${Number(cik)}/${accessionFlat}/` : "https://www.sec.gov/edgar/search/",
+    };
     });
-    if (rows.length === 8) break;
-  }
-  return rows;
 }
 
 async function main() {
@@ -147,30 +133,30 @@ async function main() {
     const cik = cikMap[company.ticker];
     const match = cik ? { cik: String(cik).padStart(10, "0"), secName: company.name, exchange: company.ticker.endsWith(".HK") ? "HKEX" : null } : null;
     if (!match) {
-      companies.push({ ...company, status: "unsupported", statusNote: "SEC EDGAR 暂无该证券的标准化财报数据", periods: [], filings: [], market: previousByTicker.get(company.ticker)?.market || null });
+      companies.push({ ...company, status: "unsupported", statusNote: "当前数据源暂不覆盖该证券的标准化财报", periods: [], filings: [], market: previousByTicker.get(company.ticker)?.market || null });
       continue;
     }
     try {
-      const [facts, submissions] = await Promise.all([
-        getJson(`https://data.sec.gov/api/xbrl/companyfacts/CIK${match.cik}.json`),
-        getJson(`https://data.sec.gov/submissions/CIK${match.cik}.json`),
-      ]);
-      const periods = annualPeriods(facts);
+      const annual = await getFinnhub(`stock/financials-reported?symbol=${encodeURIComponent(company.ticker)}&freq=annual`);
+      await sleep(1100);
+      const quarterly = await getFinnhub(`stock/financials-reported?symbol=${encodeURIComponent(company.ticker)}&freq=quarterly`);
+      const periods = annualPeriodsFromFinnhub(annual);
       companies.push({
         ...company,
-        cik: match.cik,
+        cik: String(annual.cik || match.cik).padStart(10, "0"),
         secName: match.secName,
         exchange: match.exchange,
         status: periods.length ? "ready" : "limited",
-        statusNote: periods.length ? null : "SEC 已收录该公司，但标准化年度指标不足",
+        statusNote: periods.length ? null : "数据源已收录该公司，但标准化年度指标不足",
         periods,
-        filings: recentFilings(submissions, match.cik),
+        filings: filingsFromFinnhub([annual, quarterly], annual.cik || match.cik),
       });
     } catch (error) {
       console.warn(`[${index + 1}/${universe.length}] ${company.ticker}: ${error.message}`);
-      companies.push({ ...company, cik: match.cik, exchange: match.exchange, status: "error", statusNote: "本次更新暂未取得数据", periods: [], filings: [] });
+      const cached = previousByTicker.get(company.ticker);
+      companies.push(cached?.periods?.length ? cached : { ...company, cik: match.cik, exchange: match.exchange, status: "error", statusNote: "本次更新暂未取得数据", periods: [], filings: [] });
     }
-    await sleep(260);
+    await sleep(1100);
   }
 
   for (const company of companies) {
@@ -184,7 +170,7 @@ async function main() {
     await sleep(1100);
   }
 
-  const next = { source: "SEC EDGAR Company Facts", sourceUrl: "https://www.sec.gov/edgar/sec-api-documentation", marketSource: marketApiKey ? "Finnhub EOD" : "Manual / optional Finnhub", companies };
+  const next = { source: "Finnhub reported financials / SEC filings", sourceUrl: "https://finnhub.io/docs/api/financials-reported", marketSource: marketApiKey ? "Finnhub EOD" : "Manual / optional Finnhub", companies };
   const unchanged = previous && JSON.stringify(previous.companies) === JSON.stringify(companies);
   const payload = { generatedAt: unchanged ? previous.generatedAt : new Date().toISOString(), ...next };
   await fs.mkdir(path.dirname(outputPath), { recursive: true });

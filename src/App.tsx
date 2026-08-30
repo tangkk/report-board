@@ -72,7 +72,7 @@ function App() {
     fetch("./data/financials.json")
       .then((response) => response.ok ? response.json() : Promise.reject(new Error("load failed")))
       .then((payload: FinancialData) => {
-        const companiesWithFallback = payload.companies.length ? payload.companies : companyUniverse.map((item) => ({ ...item, status:"limited" as const, statusNote:"首次 SEC 财报同步尚未完成；自动任务会继续检查。", periods:[], filings:[] }));
+        const companiesWithFallback = payload.companies.length ? payload.companies : companyUniverse.map((item) => ({ ...item, status:"limited" as const, statusNote:"首次财报同步尚未完成；自动任务会继续检查。", periods:[], filings:[] }));
         setData({ ...payload, companies:companiesWithFallback });
         const first = companiesWithFallback.find((item) => item.ticker === "NVDA" && item.periods.length) || companiesWithFallback.find((item) => item.periods.length);
         if (first) setTicker(first.ticker);
@@ -169,7 +169,7 @@ function App() {
           ].map(([label, zh, value, delta], index) => <article className="kpi" key={String(label)}><div><span>0{index + 1}</span><small>FY {latest?.fiscalYear}</small></div><h3>{label}<small>{zh}</small></h3><strong>{label === "Operating Margin" ? formatPercent(value as number | null) : formatMoney(value as number | null)}</strong><p className={(delta as number | null) != null && (delta as number) < 0 ? "negative" : ""}>{delta == null ? "年度口径" : `${formatPercent(delta as number)} YoY`}</p></article>)}</section>
 
           <section className="section" id="financials">
-            <div className="section-head"><div><span>01 / FINANCIAL HISTORY</span><h2>历史财务表现</h2></div><p>年度口径 · Annual basis<br />金额统一按 SEC 披露单位显示</p></div>
+            <div className="section-head"><div><span>01 / FINANCIAL HISTORY</span><h2>历史财务表现</h2></div><p>年度口径 · Annual basis<br />金额按原始 XBRL 披露单位显示</p></div>
             <div className="history-grid">
               <div className="trend-card panel"><div className="panel-title"><div><small>REVENUE SCALE</small><h3>收入趋势 Revenue</h3></div><span>{company?.periods.length}Y</span></div><div className="bars">{company?.periods.map((period) => <div className="bar-column" key={period.end}><div className="bar-value">{formatMoney(period.revenue)}</div><div className="bar-track"><div style={{ height: `${Math.max(4, Math.abs(period.revenue || 0) / maxRevenue * 100)}%` }} /></div><span>{period.fiscalYear}</span></div>)}</div></div>
               <div className="quality-card panel"><div className="panel-title"><div><small>QUALITY CHECK</small><h3>盈利与现金质量</h3></div><span>Latest FY</span></div>{[
@@ -194,11 +194,11 @@ function App() {
             <div className="method-note"><b>方法说明 Methodology</b><p>DCF 使用最近年度自由现金流作为基期，显式预测五年并采用 Gordon Growth 永续模型；P/E 与 EV/EBITDA 是可调目标倍数法。模型未自动纳入股票期权、少数股东权益、周期性正常化或公司特定风险，因此应结合原始财报独立判断。</p></div>
           </section>
 
-          <section className="section" id="filings"><div className="section-head"><div><span>03 / FILING LOG</span><h2>最近申报</h2></div><p>来自 SEC EDGAR 的原始申报记录<br />点击可核对公司披露</p></div><div className="filing-list">{company?.filings.map((filing) => <a href={filing.url} target="_blank" rel="noreferrer" key={filing.accession}><span className="form-tag">{filing.form}</span><span><b>报告期 {filing.period || "—"}</b><small>提交于 {filing.filed} · {filing.accession}</small></span><i>↗</i></a>)}</div></section>
-        </> : <section className="no-data panel"><span>DATA COVERAGE</span><h2>这家公司暂时没有可比的 SEC 标准化年度数据</h2><p>{company?.statusNote || "自动任务会继续每天检查。"}</p><p>港股本地上市公司通常不向 SEC 提交 10-K/20-F，因此需要接入交易所或付费财务数据源后才能补齐。</p></section>}
+          <section className="section" id="filings"><div className="section-head"><div><span>03 / FILING LOG</span><h2>最近申报</h2></div><p>标准化索引 · 链接指向 SEC EDGAR<br />点击可核对公司原始披露</p></div><div className="filing-list">{company?.filings.map((filing) => <a href={filing.url} target="_blank" rel="noreferrer" key={filing.accession}><span className="form-tag">{filing.form}</span><span><b>报告期 {filing.period || "—"}</b><small>提交于 {filing.filed} · {filing.accession}</small></span><i>↗</i></a>)}</div></section>
+        </> : <section className="no-data panel"><span>DATA COVERAGE</span><h2>这家公司暂时没有可比的标准化年度数据</h2><p>{company?.statusNote || "自动任务会继续每天检查。"}</p><p>港股本地上市公司通常不向 SEC 提交 10-K/20-F，因此需要接入交易所或其他财务数据源后才能补齐。</p></section>}
 
         <section className="section glossary" id="glossary"><div className="section-head"><div><span>04 / BILINGUAL GLOSSARY</span><h2>财务术语中英对照</h2></div><p>每个术语都配有一句简明定义<br />帮助快速阅读财报与估值结果</p></div><div className="term-grid">{terms.map(([en, zh, definition], index) => <article key={en}><span>{String(index + 1).padStart(2, "0")}</span><h3>{en}<small>{zh}</small></h3><p>{definition}</p></article>)}</div></section>
-        <footer><div><b>REPORT BOARD</b><span>SEC FINANCIAL INTELLIGENCE</span></div><p>数据源：SEC EDGAR Company Facts · 每日自动检查 · 仅供研究与教育，不构成投资建议</p><a href={data.sourceUrl} target="_blank" rel="noreferrer">数据方法 ↗</a></footer>
+        <footer><div><b>REPORT BOARD</b><span>FINANCIAL INTELLIGENCE</span></div><p>数据源：Finnhub Reported Financials · SEC 原始申报 · 每日自动检查 · 仅供研究与教育，不构成投资建议</p><a href={data.sourceUrl} target="_blank" rel="noreferrer">数据方法 ↗</a></footer>
       </div>
     </div>
   </main>;
