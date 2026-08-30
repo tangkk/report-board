@@ -178,6 +178,17 @@ function App() {
   const latestFiling = company?.filings?.[0], hasData = Boolean(latest && company);
   const usesPerShareTrend = !company?.periods.some((period) => period.revenue != null);
   const maxRevenue = Math.max(...(company?.periods.map((period) => Math.abs(usesPerShareTrend ? period.salesPerShare || 0 : period.revenue || 0)) || [1]), 1);
+  const kpiRows = company?.dataBasis === "basic-metrics" ? [
+    { label:"Sales / Share", zh:"每股收入", display:latest?.salesPerShare == null ? "—" : `${company.reportCurrency} ${latest.salesPerShare.toFixed(2)}`, delta:growth(latest?.salesPerShare ?? null, previous?.salesPerShare ?? null) },
+    { label:"Diluted EPS", zh:"稀释每股收益", display:latest?.epsDiluted == null ? "—" : `${company.reportCurrency} ${latest.epsDiluted.toFixed(2)}`, delta:growth(latest?.epsDiluted ?? null, previous?.epsDiluted ?? null) },
+    { label:"EBITDA", zh:"息税折旧摊销前利润", display:company.reportCurrency === "USD" ? formatMoney(latest?.ebitda) : formatMoney(latest?.ebitda).replace("$", `${company.reportCurrency} `), delta:growth(latest?.ebitda ?? null, previous?.ebitda ?? null) },
+    { label:"Operating Margin", zh:"营业利润率", display:formatPercent(latest?.operatingMargin ?? null), delta:null },
+  ] : [
+    { label:"Revenue", zh:"营业收入", display:formatMoney(latest?.revenue), delta:growth(latest?.revenue ?? null, previous?.revenue ?? null) },
+    { label:"Net Income", zh:"净利润", display:formatMoney(latest?.netIncome), delta:growth(latest?.netIncome ?? null, previous?.netIncome ?? null) },
+    { label:"Free Cash Flow", zh:"自由现金流", display:formatMoney(latest?.freeCashFlow), delta:growth(latest?.freeCashFlow ?? null, previous?.freeCashFlow ?? null) },
+    { label:"Operating Margin", zh:"营业利润率", display:formatPercent(latest?.operatingMargin ?? ratio(latest?.operatingIncome ?? null, latest?.revenue ?? null)), delta:null },
+  ];
   const chooseCompany = (next: string) => { setTicker(next); setMobileList(false); window.scrollTo({ top: 0, behavior: "smooth" }); };
 
   if (loadError) return <main className="state-page"><div><span>DATA ERROR</span><h1>财报数据暂时无法载入</h1><p>请稍后刷新页面，或检查自动更新任务是否成功。</p><button onClick={() => window.location.reload()}>重新加载</button></div></main>;
@@ -219,12 +230,7 @@ function App() {
             <div><span>REFERENCE PRICE / 参考价格</span><label className="price-input"><b>$</b><input type="number" min="0" step="0.01" value={manualPrice} onChange={(event) => setManualPrice(event.target.value)} placeholder="输入收盘价" /></label><small>{company?.market ? `${company.market.date} · ${company.market.source}` : "可手动输入；配置行情密钥后每日自动更新"}</small></div>
             <div><span>IMPLIED RETURN / 隐含空间</span><strong className={(valuation?.upside || 0) < 0 ? "negative" : "positive"}>{formatPercent(valuation?.upside ?? null)}</strong><small>目标价 ÷ 参考价 − 1</small></div>
           </section>
-          <section className="kpi-grid" aria-label="关键财务指标">{[
-            ["Revenue", "营业收入", latest?.revenue, growth(latest?.revenue ?? null, previous?.revenue ?? null)],
-            ["Net Income", "净利润", latest?.netIncome, growth(latest?.netIncome ?? null, previous?.netIncome ?? null)],
-            ["Free Cash Flow", "自由现金流", latest?.freeCashFlow, growth(latest?.freeCashFlow ?? null, previous?.freeCashFlow ?? null)],
-            ["Operating Margin", "营业利润率", latest?.operatingMargin ?? ratio(latest?.operatingIncome ?? null, latest?.revenue ?? null), null],
-          ].map(([label, zh, value, delta], index) => <article className="kpi" key={String(label)}><div><span>0{index + 1}</span><small>FY {latest?.fiscalYear}</small></div><h3>{label}<small>{zh}</small></h3><strong>{label === "Operating Margin" ? formatPercent(value as number | null) : formatMoney(value as number | null)}</strong><p className={(delta as number | null) != null && (delta as number) < 0 ? "negative" : ""}>{delta == null ? "年度口径" : `${formatPercent(delta as number)} YoY`}</p></article>)}</section>
+          <section className="kpi-grid" aria-label="关键财务指标">{kpiRows.map(({ label, zh, display, delta }, index) => <article className="kpi" key={label}><div><span>0{index + 1}</span><small>FY {latest?.fiscalYear}</small></div><h3>{label}<small>{zh}</small></h3><strong>{display}</strong><p className={delta != null && delta < 0 ? "negative" : ""}>{delta == null ? "年度口径" : `${formatPercent(delta)} YoY`}</p></article>)}</section>
 
           <section className="section" id="financials">
             <div className="section-head"><div><span>01 / FINANCIAL HISTORY</span><h2>历史财务表现</h2></div><p>年度口径 · Annual basis<br />金额按原始 XBRL 披露单位显示</p></div>
@@ -242,7 +248,7 @@ function App() {
             <div className="valuation-layout">
               <div className="assumption-panel panel"><div className="panel-title"><div><small>MODEL INPUTS · {peers.count} PEERS</small><h3>公司校准假设 Assumptions</h3></div><button onClick={() => { setGrowthRate(modelDefaults.growth); setWacc(modelDefaults.discount); setTerminalGrowth(3); setPeMultiple(modelDefaults.pe); setEvMultiple(modelDefaults.ev); }}>重置</button></div>{[
                 { label:"Initial FCF Growth / 初始现金流增长", value:growthRate, setter:setGrowthRate, min:-10, max:45, suffix:"%" }, { label:"Discount Rate / 折现率", value:wacc, setter:setWacc, min:6, max:18, suffix:"%" }, { label:"Terminal Growth / 永续增长", value:terminalGrowth, setter:setTerminalGrowth, min:0, max:5, suffix:"%" }, { label:"Peer P/E / 同业市盈率", value:peMultiple, setter:setPeMultiple, min:5, max:100, suffix:"×" }, { label:"Peer EV/EBITDA / 同业企业倍数", value:evMultiple, setter:setEvMultiple, min:4, max:60, suffix:"×" },
-              ].map(({ label, value, setter, min, max, suffix }) => <label className="slider-row" key={label}><span>{label}<strong>{value}{suffix}</strong></span><input type="range" min={min} max={max} step={1} value={value} onChange={(event) => setter(Number(event.target.value))} /></label>)}{wacc <= terminalGrowth && <p className="model-warning">WACC 必须高于永续增长率，DCF 才有意义。</p>}</div>
+              ].map(({ label, value, setter, min, max, suffix }) => <label className="slider-row" key={label}><span>{label}<strong>{value}{suffix}</strong></span><input type="range" min={min} max={max} step={1} value={value} onChange={(event) => setter(Number(event.target.value))} /></label>)}{wacc <= terminalGrowth && <p className="model-warning">折现率必须高于永续增长率，DCF 才有意义。</p>}</div>
               <div className="valuation-results">
                 <article className="model-card dcf"><span>SCENARIO DCF / 情景现金流估值</span><h3>10Y Equity FCF DCF</h3><strong>{valuation?.dcfPerShare == null ? "数据不足" : `$${valuation.dcfPerShare.toFixed(2)} / 股`}</strong><p>增长率十年渐降至 {terminalGrowth}%<br />折现率 {wacc}% · 仅正 FCF 启用</p><code>Equity Value = Σ FCFₜ/(1+r)ᵗ + TV/(1+r)¹⁰</code></article>
                 <article className="model-card"><span>PEER EARNINGS / 同业盈利倍数</span><h3>TTM P/E Valuation</h3><strong>{valuation?.pePerShare == null ? "数据不足" : `$${valuation.pePerShare.toFixed(2)} / 股`}</strong><p>TTM EPS {valuation?.epsTtm == null ? "—" : `$${valuation.epsTtm.toFixed(2)}`}<br />同业目标市盈率 {peMultiple}×</p><code>每股价值 = TTM EPS × 同业 P/E 中位数</code></article>

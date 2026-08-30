@@ -110,7 +110,7 @@ function annualPeriodsFromFinnhub(payload) {
     if (newerShares && currentShares) {
       const rawRatio = newerShares / (currentShares * cumulativeFactor);
       const split = Math.round(rawRatio);
-      if (split >= 5 && split <= 20 && Math.abs(rawRatio - split) / split < 0.08) cumulativeFactor *= split;
+      if (split >= 2 && split <= 20 && Math.abs(rawRatio - split) / split < 0.08) cumulativeFactor *= split;
     }
     if (cumulativeFactor > 1) {
       if (periods[index].shares != null) periods[index].shares = round(periods[index].shares * cumulativeFactor);

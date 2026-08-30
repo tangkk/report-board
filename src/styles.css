@@ -65,6 +65,7 @@ button { cursor:pointer; }
 .research-call>div:first-child strong { color:var(--blue); }
 .research-call .action-增持,.research-call .action-关注,.research-call .positive { color:var(--green); }
 .research-call .action-减持,.research-call .action-回避,.research-call .negative { color:var(--red); }
+.research-call .action-数据不足 { color:var(--muted); }
 .price-input { display:flex; align-items:center; height:34px; margin:10px 0 7px; border-bottom:1px solid var(--ink); }
 .price-input b { font-size:18px; }
 .price-input input { width:100%; border:0; padding:0 6px; outline:0; background:transparent; font-size:19px; font-weight:700; }

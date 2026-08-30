@@ -44,7 +44,7 @@
           "grossProfit": 10396000000,
           "operatingIncome": 4532000000,
           "netIncome": 4332000000,
-          "epsDiluted": 0.69,
+          "epsDiluted": 0.17,
           "cashFromOperations": 5822000000,
           "capex": null,
           "freeCashFlow": null,
@@ -55,7 +55,7 @@
           "equity": 16893000000,
           "cash": 847000000,
           "debt": 5964000000,
-          "shares": 6280000000
+          "shares": 25120000000
         },
         {
           "fiscalYear": 2022,
