@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-13T12:02:21.329Z",
+  "generatedAt": "2026-09-14T12:57:35.628Z",
   "source": "Finnhub reported financials / SEC filings",
   "sourceUrl": "https://finnhub.io/docs/api/financials-reported",
   "marketSource": "Finnhub EOD",
@@ -5360,11 +5360,11 @@
       "reportCurrency": "U_USD",
       "metrics": {
         "beta": 1.772703,
-        "epsTTM": 5.8606,
-        "peTTM": 25.3337,
-        "psTTM": 6.4265,
-        "evEbitdaTTM": 24.1877,
-        "evRevenueTTM": 7.9995,
+        "epsTTM": 6.4411000000000005,
+        "peTTM": 22.8793,
+        "psTTM": 6.0309,
+        "evEbitdaTTM": 21.2911,
+        "evRevenueTTM": 7.2704,
         "revenueGrowth3Y": 10.48,
         "revenueGrowth5Y": 10.72,
         "epsGrowth3Y": 24.02,
@@ -5372,9 +5372,9 @@
         "ebitdaCagr5Y": 6.07,
         "freeCashFlowPerShareTTM": null,
         "fcfMarginTTM": null,
-        "grossMarginTTM": 65.82,
-        "operatingMarginTTM": 30.59,
-        "netProfitMarginTTM": 25.37
+        "grossMarginTTM": 63.96,
+        "operatingMarginTTM": 32.12,
+        "netProfitMarginTTM": 26.36
       },
       "periods": [
         {
@@ -8159,13 +8159,13 @@
         "epsTTM": 0.5125,
         "peTTM": 877.7842,
         "psTTM": 23.4738,
-        "evEbitdaTTM": 166.0938,
+        "evEbitdaTTM": 173.3805,
         "evRevenueTTM": 23.4094,
         "revenueGrowth3Y": 18.54,
         "revenueGrowth5Y": 21.95,
         "epsGrowth3Y": -14.48,
         "epsGrowth5Y": null,
-        "ebitdaCagr5Y": 125.67,
+        "ebitdaCagr5Y": null,
         "freeCashFlowPerShareTTM": null,
         "fcfMarginTTM": null,
         "grossMarginTTM": 70.37,
@@ -14050,7 +14050,7 @@
       "dataBasis": "basic-metrics",
       "reportCurrency": "USD",
       "metrics": {
-        "beta": 3.5302482,
+        "beta": 3.568933,
         "epsTTM": -0.357,
         "peTTM": null,
         "psTTM": 23.363,
