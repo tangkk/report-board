@@ -1,11 +1,11 @@
 {
-  "generatedAt": "2026-10-06T13:27:44.464Z",
+  "generatedAt": "2026-10-07T13:33:51.490Z",
   "source": "Finnhub reported financials / SEC filings",
   "sourceUrl": "https://finnhub.io/docs/api/financials-reported",
   "marketSource": "Finnhub EOD",
   "assumptions": {
-    "riskFreeRate": 5.28,
-    "riskFreeDate": "2026-10-02",
+    "riskFreeRate": 5.31,
+    "riskFreeDate": "2026-10-05",
     "equityRiskPremium": 5,
     "source": "FRED DGS10"
   },
@@ -23,12 +23,12 @@
       "dataBasis": "reported-financials",
       "reportCurrency": "USD",
       "metrics": {
-        "beta": 2.2593277,
+        "beta": 2.2586465,
         "epsTTM": 7.9108,
-        "peTTM": 29.6847,
-        "psTTM": 18.8982,
-        "evEbitdaTTM": 28.5191,
-        "evRevenueTTM": 18.9342,
+        "peTTM": 30.2079,
+        "psTTM": 19.2312,
+        "evEbitdaTTM": 29.0208,
+        "evRevenueTTM": 19.2673,
         "revenueGrowth3Y": 100.05,
         "revenueGrowth5Y": 66.9,
         "epsGrowth3Y": 204.08,
@@ -188,13 +188,6 @@
       ],
       "filings": [
         {
-          "form": "10-Q",
-          "filed": "2026-05-20",
-          "period": "2026-04-26 00:00:00",
-          "accession": "0001045810-26-000052",
-          "url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000052/"
-        },
-        {
           "form": "10-K",
           "filed": "2026-02-25",
           "period": "2026-01-25 00:00:00",
@@ -242,11 +235,18 @@
           "period": "2024-07-28 00:00:00",
           "accession": "0001045810-24-000264",
           "url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581024000264/"
+        },
+        {
+          "form": "10-Q",
+          "filed": "2024-05-29",
+          "period": "2024-04-28 00:00:00",
+          "accession": "0001045810-24-000124",
+          "url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581024000124/"
         }
       ],
       "market": {
-        "price": 238.9,
-        "date": "2026-10-05",
+        "price": 237.7,
+        "date": "2026-10-07",
         "currency": "USD",
         "source": "Finnhub EOD"
       }
@@ -264,12 +264,12 @@
       "dataBasis": "reported-financials",
       "reportCurrency": "USD",
       "metrics": {
-        "beta": 1.4944062,
+        "beta": 1.4934303,
         "epsTTM": 7.8333,
-        "peTTM": 45.3679,
-        "psTTM": 19.4829,
-        "evEbitdaTTM": 39.5712,
-        "evRevenueTTM": 19.8807,
+        "peTTM": 47.4344,
+        "psTTM": 20.3703,
+        "evEbitdaTTM": 41.3377,
+        "evRevenueTTM": 20.7681,
         "revenueGrowth3Y": 24.38,
         "revenueGrowth5Y": 21.74,
         "epsGrowth3Y": 20.59,
@@ -430,13 +430,6 @@
       "filings": [
         {
           "form": "10-Q",
-          "filed": "2026-06-09",
-          "period": "2026-05-03 00:00:00",
-          "accession": "0001730168-26-000054",
-          "url": "https://www.sec.gov/Archives/edgar/data/1730168/000173016826000054/"
-        },
-        {
-          "form": "10-Q",
           "filed": "2026-03-11",
           "period": "2026-02-01 00:00:00",
           "accession": "0001730168-26-000016",
@@ -483,11 +476,18 @@
           "period": "2024-08-04 00:00:00",
           "accession": "0001730168-24-000099",
           "url": "https://www.sec.gov/Archives/edgar/data/1730168/000173016824000099/"
+        },
+        {
+          "form": "10-Q",
+          "filed": "2024-06-13",
+          "period": "2024-05-05 00:00:00",
+          "accession": "0001730168-24-000080",
+          "url": "https://www.sec.gov/Archives/edgar/data/1730168/000173016824000080/"
         }
       ],
       "market": {
-        "price": 362.51,
-        "date": "2026-10-05",
+        "price": 372.92,
+        "date": "2026-10-07",
         "currency": "USD",
         "source": "Finnhub EOD"
       }
@@ -505,12 +505,12 @@
       "dataBasis": "reported-financials",
       "reportCurrency": "USD",
       "metrics": {
-        "beta": 2.5445683,
+        "beta": 2.5433729,
         "epsTTM": 3.8971999999999998,
-        "peTTM": 160.3588,
-        "psTTM": 24.9788,
-        "evEbitdaTTM": 134.4327,
-        "evRevenueTTM": 24.9338,
+        "peTTM": 166.1324,
+        "psTTM": 25.8781,
+        "evEbitdaTTM": 139.2815,
+        "evRevenueTTM": 25.8331,
         "revenueGrowth3Y": 13.64,
         "revenueGrowth5Y": 28.82,
         "epsGrowth3Y": 46.65,
@@ -670,13 +670,6 @@
       ],
       "filings": [
         {
-          "form": "10-Q",
-          "filed": "2026-05-06",
-          "period": "2026-03-28 00:00:00",
-          "accession": "0000002488-26-000076",
-          "url": "https://www.sec.gov/Archives/edgar/data/2488/000000248826000076/"
-        },
-        {
           "form": "10-K",
           "filed": "2026-02-04",
           "period": "2025-12-27 00:00:00",
@@ -724,11 +717,18 @@
           "period": "2024-06-29 00:00:00",
           "accession": "0000002488-24-000123",
           "url": "https://www.sec.gov/Archives/edgar/data/2488/000000248824000123/"
+        },
+        {
+          "form": "10-Q",
+          "filed": "2024-05-01",
+          "period": "2024-03-30 00:00:00",
+          "accession": "0000002488-24-000056",
+          "url": "https://www.sec.gov/Archives/edgar/data/2488/000000248824000056/"
         }
       ],
       "market": {
-        "price": 631.75,
-        "date": "2026-10-05",
+        "price": 635.88,
+        "date": "2026-10-07",
         "currency": "USD",
         "source": "Finnhub EOD"
       }
@@ -746,12 +746,12 @@
       "dataBasis": "basic-metrics",
       "reportCurrency": "USD",
       "metrics": {
-        "beta": 3.7871835,
+        "beta": 3.7901497,
         "epsTTM": 0.9748000000000001,
-        "peTTM": 314.5587,
-        "psTTM": 63.6926,
-        "evEbitdaTTM": 285.1554,
-        "evRevenueTTM": 63.1036,
+        "peTTM": 309.8632,
+        "psTTM": 62.7419,
+        "evEbitdaTTM": 280.8591,
+        "evRevenueTTM": 62.1529,
         "revenueGrowth3Y": 22.46,
         "revenueGrowth5Y": 19.4,
         "epsGrowth3Y": 18.34,
@@ -941,8 +941,8 @@
       ],
       "filings": [],
       "market": {
-        "price": 302.9,
-        "date": "2026-10-05",
+        "price": 293,
+        "date": "2026-10-07",
         "currency": "USD",
         "source": "Finnhub EOD"
       }
@@ -960,12 +960,12 @@
       "dataBasis": "reported-financials",
       "reportCurrency": "USD",
       "metrics": {
-        "beta": 1.40709,
+        "beta": 1.4054185,
         "epsTTM": 17.2331,
-        "peTTM": 30.8641,
-        "psTTM": 2.3226,
-        "evEbitdaTTM": 22.6174,
-        "evRevenueTTM": 2.4741,
+        "peTTM": 32.1005,
+        "psTTM": 2.4157,
+        "evEbitdaTTM": 23.468,
+        "evRevenueTTM": 2.5671,
         "revenueGrowth3Y": 3.53,
         "revenueGrowth5Y": 5.55,
         "epsGrowth3Y": 38.8,
@@ -1125,13 +1125,6 @@
       ],
       "filings": [
         {
-          "form": "10-Q",
-          "filed": "2026-06-09",
-          "period": "2026-05-01 00:00:00",
-          "accession": "0001571996-26-000030",
-          "url": "https://www.sec.gov/Archives/edgar/data/1571996/000157199626000030/"
-        },
-        {
           "form": "10-K",
           "filed": "2026-03-16",
           "period": "2026-01-30 00:00:00",
@@ -1179,11 +1172,18 @@
           "period": "2024-05-03 00:00:00",
           "accession": "0001571996-24-000062",
           "url": "https://www.sec.gov/Archives/edgar/data/1571996/000157199624000062/"
+        },
+        {
+          "form": "10-K",
+          "filed": "2024-03-25",
+          "period": "2024-02-02 00:00:00",
+          "accession": "0001571996-24-000036",
+          "url": "https://www.sec.gov/Archives/edgar/data/1571996/000157199624000036/"
         }
       ],
       "market": {
-        "price": 552.29,
-        "date": "2026-10-05",
+        "price": 561.96,
+        "date": "2026-10-07",
         "currency": "USD",
         "source": "Finnhub EOD"
       }
@@ -1201,12 +1201,12 @@
       "dataBasis": "reported-financials",
       "reportCurrency": "USD",
       "metrics": {
-        "beta": 2.2026837,
+        "beta": 2.200807,
         "epsTTM": 3.2003999999999997,
-        "peTTM": 12.6595,
-        "psTTM": 0.7228,
-        "evEbitdaTTM": 10.4226,
-        "evRevenueTTM": 0.7535,
+        "peTTM": 12.8362,
+        "psTTM": 0.7329,
+        "evEbitdaTTM": 10.5622,
+        "evRevenueTTM": 0.7636,
         "revenueGrowth3Y": 76.34,
         "revenueGrowth5Y": 61.48,
         "epsGrowth3Y": 40.9,
@@ -1367,13 +1367,6 @@
       "filings": [
         {
           "form": "10-Q",
-          "filed": "2026-05-11",
-          "period": "2026-03-31 00:00:00",
-          "accession": "0001375365-26-000014",
-          "url": "https://www.sec.gov/Archives/edgar/data/1375365/000137536526000014/"
-        },
-        {
-          "form": "10-Q",
           "filed": "2026-02-06",
           "period": "2025-12-31 00:00:00",
           "accession": "0001375365-26-000007",
@@ -1420,11 +1413,18 @@
           "period": "2024-12-31 00:00:00",
           "accession": "0001375365-25-000006",
           "url": "https://www.sec.gov/Archives/edgar/data/1375365/000137536525000006/"
+        },
+        {
+          "form": "10-Q",
+          "filed": "2024-05-06",
+          "period": "2024-03-31 00:00:00",
+          "accession": "0001375365-24-000022",
+          "url": "https://www.sec.gov/Archives/edgar/data/1375365/000137536524000022/"
         }
       ],
       "market": {
-        "price": 43.19,
-        "date": "2026-10-05",
+        "price": 42.62,
+        "date": "2026-10-07",
         "currency": "USD",
         "source": "Finnhub EOD"
       }
@@ -1444,10 +1444,10 @@
       "metrics": {
         "beta": 2.165132,
         "epsTTM": 26.964399999999998,
-        "peTTM": 60.6116,
-        "psTTM": 17.8734,
-        "evEbitdaTTM": 44.5211,
-        "evRevenueTTM": 17.7898,
+        "peTTM": 60.7289,
+        "psTTM": 17.908,
+        "evEbitdaTTM": 44.6077,
+        "evRevenueTTM": 17.8244,
         "revenueGrowth3Y": 15.55,
         "revenueGrowth5Y": 18.5,
         "epsGrowth3Y": 17.79,
@@ -1637,8 +1637,8 @@
       ],
       "filings": [],
       "market": {
-        "price": 1859.86,
-        "date": "2026-10-05",
+        "price": 1800.01,
+        "date": "2026-10-07",
         "currency": "USD",
         "source": "Finnhub EOD"
       }
@@ -1656,12 +1656,12 @@
       "dataBasis": "reported-financials",
       "reportCurrency": "USD",
       "metrics": {
-        "beta": 1.6270573,
+        "beta": 1.6282215,
         "epsTTM": 11.5943,
-        "peTTM": 46.065,
-        "psTTM": 13.8432,
-        "evEbitdaTTM": 44.1033,
-        "evRevenueTTM": 13.8273,
+        "peTTM": 46.4392,
+        "psTTM": 13.9557,
+        "evEbitdaTTM": 44.462,
+        "evRevenueTTM": 13.9397,
         "revenueGrowth3Y": 3.23,
         "revenueGrowth5Y": 10.52,
         "epsGrowth3Y": 5.19,
@@ -1822,13 +1822,6 @@
       "filings": [
         {
           "form": "10-Q",
-          "filed": "2026-05-21",
-          "period": "2026-04-26 00:00:00",
-          "accession": "0001628280-26-037227",
-          "url": "https://www.sec.gov/Archives/edgar/data/6951/000162828026037227/"
-        },
-        {
-          "form": "10-Q",
           "filed": "2026-02-19",
           "period": "2026-01-25 00:00:00",
           "accession": "0001628280-26-009694",
@@ -1875,11 +1868,18 @@
           "period": "2024-07-28 00:00:00",
           "accession": "0000006951-24-000032",
           "url": "https://www.sec.gov/Archives/edgar/data/6951/000000695124000032/"
+        },
+        {
+          "form": "10-Q",
+          "filed": "2024-05-23",
+          "period": "2024-04-28 00:00:00",
+          "accession": "0000006951-24-000022",
+          "url": "https://www.sec.gov/Archives/edgar/data/6951/000000695124000022/"
         }
       ],
       "market": {
-        "price": 542.28,
-        "date": "2026-10-05",
+        "price": 520.74,
+        "date": "2026-10-07",
         "currency": "USD",
         "source": "Finnhub EOD"
       }
@@ -1897,12 +1897,12 @@
       "dataBasis": "reported-financials",
       "reportCurrency": "USD",
       "metrics": {
-        "beta": 1.9663508,
+        "beta": 1.9666978,
         "epsTTM": 5.7641,
-        "peTTM": 59.5174,
-        "psTTM": 18.6124,
-        "evEbitdaTTM": 49.8271,
-        "evRevenueTTM": 18.533,
+        "peTTM": 59.5621,
+        "psTTM": 18.6264,
+        "evEbitdaTTM": 49.8648,
+        "evRevenueTTM": 18.5471,
         "revenueGrowth3Y": 10.06,
         "revenueGrowth5Y": 9.7,
         "epsGrowth3Y": 20.16,
@@ -2063,13 +2063,6 @@
       "filings": [
         {
           "form": "10-Q",
-          "filed": "2026-04-23",
-          "period": "2026-03-29 00:00:00",
-          "accession": "0000707549-26-000022",
-          "url": "https://www.sec.gov/Archives/edgar/data/707549/000070754926000022/"
-        },
-        {
-          "form": "10-Q",
           "filed": "2026-01-29",
           "period": "2025-12-28 00:00:00",
           "accession": "0000707549-26-000009",
@@ -2116,11 +2109,18 @@
           "period": "2024-06-30 00:00:00",
           "accession": "0000707549-24-000106",
           "url": "https://www.sec.gov/Archives/edgar/data/707549/000070754924000106/"
+        },
+        {
+          "form": "10-Q",
+          "filed": "2024-04-29",
+          "period": "2024-03-31 00:00:00",
+          "accession": "0000707549-24-000067",
+          "url": "https://www.sec.gov/Archives/edgar/data/707549/000070754924000067/"
         }
       ],
       "market": {
-        "price": 345.8,
-        "date": "2026-10-05",
+        "price": 324.57,
+        "date": "2026-10-07",
         "currency": "USD",
         "source": "Finnhub EOD"
       }
@@ -2138,12 +2138,12 @@
       "dataBasis": "reported-financials",
       "reportCurrency": "USD",
       "metrics": {
-        "beta": 1.4540637,
+        "beta": 1.4550947,
         "epsTTM": 3.6663,
-        "peTTM": 55.7173,
-        "psTTM": 19.8209,
-        "evEbitdaTTM": 45.0674,
-        "evRevenueTTM": 20.133,
+        "peTTM": 53.8277,
+        "psTTM": 19.1487,
+        "evEbitdaTTM": 43.5626,
+        "evRevenueTTM": 19.4607,
         "revenueGrowth3Y": 8.96,
         "revenueGrowth5Y": 14.44,
         "epsGrowth3Y": 14.86,
@@ -2304,13 +2304,6 @@
       "filings": [
         {
           "form": "10-Q",
-          "filed": "2026-04-30",
-          "period": "2026-03-31 00:00:00",
-          "accession": "0000319201-26-000016",
-          "url": "https://www.sec.gov/Archives/edgar/data/319201/000031920126000016/"
-        },
-        {
-          "form": "10-Q",
           "filed": "2026-01-30",
           "period": "2025-12-31 00:00:00",
           "accession": "0000319201-26-000008",
@@ -2357,11 +2350,18 @@
           "period": "2024-06-30 00:00:00",
           "accession": "0000319201-24-000021",
           "url": "https://www.sec.gov/Archives/edgar/data/319201/000031920124000021/"
+        },
+        {
+          "form": "10-Q",
+          "filed": "2024-04-26",
+          "period": "2024-03-31 00:00:00",
+          "accession": "0000319201-24-000012",
+          "url": "https://www.sec.gov/Archives/edgar/data/319201/000031920124000012/"
         }
       ],
       "market": {
-        "price": 206.85,
-        "date": "2026-10-05",
+        "price": 192.64,
+        "date": "2026-10-07",
         "currency": "USD",
         "source": "Finnhub EOD"
       }
@@ -2379,12 +2379,12 @@
       "dataBasis": "reported-financials",
       "reportCurrency": "U_USD",
       "metrics": {
-        "beta": 1.6947781,
+        "beta": 1.6990577,
         "epsTTM": 7.2888,
-        "peTTM": 60.3714,
-        "psTTM": 15.5555,
-        "evEbitdaTTM": 50.6725,
-        "evRevenueTTM": 15.4772,
+        "peTTM": 58.6465,
+        "psTTM": 15.1111,
+        "evEbitdaTTM": 49.2174,
+        "evRevenueTTM": 15.0328,
         "revenueGrowth3Y": 0.37,
         "revenueGrowth5Y": 0.44,
         "epsGrowth3Y": -6.29,
@@ -2544,13 +2544,6 @@
       ],
       "filings": [
         {
-          "form": "10-Q",
-          "filed": "2026-05-01",
-          "period": "2026-03-29 00:00:00",
-          "accession": "0001193125-26-201058",
-          "url": "https://www.sec.gov/Archives/edgar/data/97210/000119312526201058/"
-        },
-        {
           "form": "10-K",
           "filed": "2026-02-19",
           "period": "2025-12-31 00:00:00",
@@ -2598,11 +2591,18 @@
           "period": "2024-06-30 00:00:00",
           "accession": "0000950170-24-089858",
           "url": "https://www.sec.gov/Archives/edgar/data/97210/000095017024089858/"
+        },
+        {
+          "form": "10-Q",
+          "filed": "2023-11-03",
+          "period": "2023-10-01 00:00:00",
+          "accession": "0000950170-23-058679",
+          "url": "https://www.sec.gov/Archives/edgar/data/97210/000095017023058679/"
         }
       ],
       "market": {
-        "price": 444.53,
-        "date": "2026-10-05",
+        "price": 410.82,
+        "date": "2026-10-07",
         "currency": "USD",
         "source": "Finnhub EOD"
       }
@@ -2620,12 +2620,12 @@
       "dataBasis": "reported-financials",
       "reportCurrency": "U_USD",
       "metrics": {
-        "beta": 1.6237025,
+        "beta": 1.6246517,
         "epsTTM": 2.6719,
-        "peTTM": 121.493,
-        "psTTM": 14.3827,
-        "evEbitdaTTM": 83.0884,
-        "evRevenueTTM": 14.5778,
+        "peTTM": 116.5136,
+        "psTTM": 13.7932,
+        "evEbitdaTTM": 79.7286,
+        "evRevenueTTM": 13.9883,
         "revenueGrowth3Y": 0,
         "revenueGrowth5Y": 12.55,
         "epsGrowth3Y": -14.78,
@@ -2785,13 +2785,6 @@
       ],
       "filings": [
         {
-          "form": "10-Q",
-          "filed": "2026-05-05",
-          "period": "2026-03-31 00:00:00",
-          "accession": "0001193125-26-206707",
-          "url": "https://www.sec.gov/Archives/edgar/data/704532/000119312526206707/"
-        },
-        {
           "form": "10-K",
           "filed": "2026-02-24",
           "period": "2026-01-03 00:00:00",
@@ -2839,11 +2832,18 @@
           "period": "2024-06-29 00:00:00",
           "accession": "0000950170-24-094193",
           "url": "https://www.sec.gov/Archives/edgar/data/704532/000095017024094193/"
+        },
+        {
+          "form": "10-Q",
+          "filed": "2023-11-13",
+          "period": "2023-09-30 00:00:00",
+          "accession": "0000950170-23-062243",
+          "url": "https://www.sec.gov/Archives/edgar/data/704532/000095017023062243/"
         }
       ],
       "market": {
-        "price": 325.41,
-        "date": "2026-10-05",
+        "price": 302.13,
+        "date": "2026-10-07",
         "currency": "USD",
         "source": "Finnhub EOD"
       }
@@ -2863,10 +2863,10 @@
       "metrics": {
         "beta": 0.9715419,
         "epsTTM": 87.3818,
-        "peTTM": 28.6109,
-        "psTTM": 14.5057,
-        "evEbitdaTTM": 23.0377,
-        "evRevenueTTM": 14.0242,
+        "peTTM": 29.4693,
+        "psTTM": 14.9408,
+        "evEbitdaTTM": 23.7526,
+        "evRevenueTTM": 14.4594,
         "revenueGrowth3Y": 18.94,
         "revenueGrowth5Y": 23.25,
         "epsGrowth3Y": 19.11,
@@ -3056,8 +3056,8 @@
       ],
       "filings": [],
       "market": {
-        "price": 485.8,
-        "date": "2026-10-05",
+        "price": 473.35,
+        "date": "2026-10-07",
         "currency": "USD",
         "source": "Finnhub EOD"
       }
@@ -3075,12 +3075,12 @@
       "dataBasis": "reported-financials",
       "reportCurrency": "USD",
       "metrics": {
-        "beta": 2.35162,
+        "beta": 2.3472471,
         "epsTTM": -2.1202,
         "peTTM": null,
-        "psTTM": 10.8573,
-        "evEbitdaTTM": 39.1558,
-        "evRevenueTTM": 11.5177,
+        "psTTM": 10.5841,
+        "evEbitdaTTM": 38.2269,
+        "evRevenueTTM": 11.2445,
         "revenueGrowth3Y": -5.71,
         "revenueGrowth5Y": -7.46,
         "epsGrowth3Y": null,
@@ -3240,13 +3240,6 @@
       ],
       "filings": [
         {
-          "form": "10-Q",
-          "filed": "2026-04-24",
-          "period": "2026-03-28 00:00:00",
-          "accession": "0000050863-26-000079",
-          "url": "https://www.sec.gov/Archives/edgar/data/50863/000005086326000079/"
-        },
-        {
           "form": "10-K",
           "filed": "2026-01-23",
           "period": "2025-12-27 00:00:00",
@@ -3294,11 +3287,18 @@
           "period": "2024-06-29 00:00:00",
           "accession": "0000050863-24-000124",
           "url": "https://www.sec.gov/Archives/edgar/data/50863/000005086324000124/"
+        },
+        {
+          "form": "10-Q",
+          "filed": "2024-04-26",
+          "period": "2024-03-30 00:00:00",
+          "accession": "0000050863-24-000076",
+          "url": "https://www.sec.gov/Archives/edgar/data/50863/000005086324000076/"
         }
       ],
       "market": {
-        "price": 116.19,
-        "date": "2026-10-05",
+        "price": 112.49,
+        "date": "2026-10-07",
         "currency": "USD",
         "source": "Finnhub EOD"
       }
@@ -3316,12 +3316,12 @@
       "dataBasis": "basic-metrics",
       "reportCurrency": "USD",
       "metrics": {
-        "beta": 1.8515327,
+        "beta": 1.8516957,
         "epsTTM": 1.2805,
-        "peTTM": 37.217,
-        "psTTM": 3.8408,
-        "evEbitdaTTM": 13.2935,
-        "evRevenueTTM": 3.926,
+        "peTTM": 37.2706,
+        "psTTM": 3.8463,
+        "evEbitdaTTM": 13.3122,
+        "evRevenueTTM": 3.9315,
         "revenueGrowth3Y": -5.74,
         "revenueGrowth5Y": 6.96,
         "epsGrowth3Y": -15.44,
@@ -3511,8 +3511,8 @@
       ],
       "filings": [],
       "market": {
-        "price": 48.56,
-        "date": "2026-10-05",
+        "price": 47.6,
+        "date": "2026-10-07",
         "currency": "USD",
         "source": "Finnhub EOD"
       }
@@ -3532,10 +3532,10 @@
       "metrics": {
         "beta": 1.1394988,
         "epsTTM": 6.6403,
-        "peTTM": 24.3214,
-        "psTTM": 8.0974,
-        "evEbitdaTTM": 17.9663,
-        "evRevenueTTM": 7.853,
+        "peTTM": 22.966,
+        "psTTM": 7.6461,
+        "evEbitdaTTM": 16.934,
+        "evRevenueTTM": 7.4018,
         "revenueGrowth3Y": -5.19,
         "revenueGrowth5Y": 6.08,
         "epsGrowth3Y": -21.6,
@@ -3725,8 +3725,8 @@
       ],
       "filings": [],
       "market": {
-        "price": 23.92,
-        "date": "2026-10-05",
+        "price": 23.09,
+        "date": "2026-10-07",
         "currency": "USD",
         "source": "Finnhub EOD"
       }
@@ -3744,12 +3744,12 @@
       "dataBasis": "reported-financials",
       "reportCurrency": "USD",
       "metrics": {
-        "beta": 2.3855677,
+        "beta": 2.3813581,
         "epsTTM": 74.2111,
-        "peTTM": 14.1442,
-        "psTTM": 9.0235,
-        "evEbitdaTTM": 10.7369,
-        "evRevenueTTM": 8.7743,
+        "peTTM": 14.1438,
+        "psTTM": 9.0232,
+        "evEbitdaTTM": 10.7366,
+        "evRevenueTTM": 8.7741,
         "revenueGrowth3Y": 104.65,
         "revenueGrowth5Y": 36.89,
         "epsGrowth3Y": null,
@@ -3910,13 +3910,6 @@
       "filings": [
         {
           "form": "10-Q",
-          "filed": "2026-06-25",
-          "period": "2026-05-28 00:00:00",
-          "accession": "0000723125-26-000015",
-          "url": "https://www.sec.gov/Archives/edgar/data/723125/000072312526000015/"
-        },
-        {
-          "form": "10-Q",
           "filed": "2026-03-19",
           "period": "2026-02-26 00:00:00",
           "accession": "0000723125-26-000006",
@@ -3963,11 +3956,18 @@
           "period": "2024-08-29 00:00:00",
           "accession": "0000723125-24-000027",
           "url": "https://www.sec.gov/Archives/edgar/data/723125/000072312524000027/"
+        },
+        {
+          "form": "10-Q",
+          "filed": "2024-06-27",
+          "period": "2024-05-30 00:00:00",
+          "accession": "0000723125-24-000019",
+          "url": "https://www.sec.gov/Archives/edgar/data/723125/000072312524000019/"
         }
       ],
       "market": {
-        "price": 1063.96,
-        "date": "2026-10-05",
+        "price": 1017.47,
+        "date": "2026-10-07",
         "currency": "USD",
         "source": "Finnhub EOD"
       }
@@ -3987,10 +3987,10 @@
       "metrics": {
         "beta": 3.6781394,
         "epsTTM": 72.89280000000001,
-        "peTTM": 21.8247,
-        "psTTM": 12.3233,
-        "evEbitdaTTM": 19.5214,
-        "evRevenueTTM": 12.0881,
+        "peTTM": 21.265,
+        "psTTM": 12.0073,
+        "evEbitdaTTM": 19.0111,
+        "evRevenueTTM": 11.7721,
         "revenueGrowth3Y": 49.29,
         "revenueGrowth5Y": null,
         "epsGrowth3Y": null,
@@ -4079,13 +4079,6 @@
       "filings": [
         {
           "form": "10-Q",
-          "filed": "2026-05-01",
-          "period": "2026-04-03 00:00:00",
-          "accession": "0001628280-26-029401",
-          "url": "https://www.sec.gov/Archives/edgar/data/2023554/000162828026029401/"
-        },
-        {
-          "form": "10-Q",
           "filed": "2026-01-30",
           "period": "2026-01-02 00:00:00",
           "accession": "0001628280-26-004407",
@@ -4132,11 +4125,18 @@
           "period": "2012-09-30 00:00:00",
           "accession": "0001000180-12-000072",
           "url": "https://www.sec.gov/Archives/edgar/data/2023554/000100018012000072/"
+        },
+        {
+          "form": "10-Q",
+          "filed": "2012-08-06",
+          "period": "2012-07-01 00:00:00",
+          "accession": "0001000180-12-000051",
+          "url": "https://www.sec.gov/Archives/edgar/data/2023554/000100018012000051/"
         }
       ],
       "market": {
-        "price": 1704.16,
-        "date": "2026-10-05",
+        "price": 1638.31,
+        "date": "2026-10-07",
         "currency": "USD",
         "source": "Finnhub EOD"
       }
@@ -4154,12 +4154,12 @@
       "dataBasis": "reported-financials",
       "reportCurrency": "USD",
       "metrics": {
-        "beta": 2.2846332,
+        "beta": 2.2788374,
         "epsTTM": 24.473300000000002,
-        "peTTM": 15.0389,
-        "psTTM": 10.9704,
-        "evEbitdaTTM": 32.9675,
-        "evRevenueTTM": 10.9296,
+        "peTTM": 15.9905,
+        "psTTM": 11.6646,
+        "evEbitdaTTM": 35.0613,
+        "evRevenueTTM": 11.6238,
         "revenueGrowth3Y": 27.35,
         "revenueGrowth5Y": -5.26,
         "epsGrowth3Y": null,
@@ -4320,13 +4320,6 @@
       "filings": [
         {
           "form": "10-Q",
-          "filed": "2026-05-01",
-          "period": "2026-04-03 00:00:00",
-          "accession": "0001628280-26-029054",
-          "url": "https://www.sec.gov/Archives/edgar/data/106040/000162828026029054/"
-        },
-        {
-          "form": "10-Q",
           "filed": "2026-01-30",
           "period": "2026-01-02 00:00:00",
           "accession": "0001628280-26-004207",
@@ -4373,11 +4366,18 @@
           "period": "2024-06-28 00:00:00",
           "accession": "0000106040-24-000031",
           "url": "https://www.sec.gov/Archives/edgar/data/106040/000010604024000031/"
+        },
+        {
+          "form": "10-Q",
+          "filed": "2024-04-30",
+          "period": "2024-03-29 00:00:00",
+          "accession": "0000106040-24-000022",
+          "url": "https://www.sec.gov/Archives/edgar/data/106040/000010604024000022/"
         }
       ],
       "market": {
-        "price": 441.64,
-        "date": "2026-10-05",
+        "price": 403.09,
+        "date": "2026-10-07",
         "currency": "USD",
         "source": "Finnhub EOD"
       }
@@ -4395,12 +4395,12 @@
       "dataBasis": "reported-financials",
       "reportCurrency": "USD",
       "metrics": {
-        "beta": 2.1624117,
+        "beta": 2.1564693,
         "epsTTM": 13.8741,
-        "peTTM": 63.3537,
-        "psTTM": 16.541,
-        "evEbitdaTTM": 48.2529,
-        "evRevenueTTM": 16.6937,
+        "peTTM": 57.536,
+        "psTTM": 15.0221,
+        "evEbitdaTTM": 43.8624,
+        "evRevenueTTM": 15.1747,
         "revenueGrowth3Y": 18.2,
         "revenueGrowth5Y": 2.69,
         "epsGrowth3Y": null,
@@ -4561,13 +4561,6 @@
       "filings": [
         {
           "form": "10-Q",
-          "filed": "2026-04-29",
-          "period": "2026-04-03 00:00:00",
-          "accession": "0001137789-26-000088",
-          "url": "https://www.sec.gov/Archives/edgar/data/1137789/000113778926000088/"
-        },
-        {
-          "form": "10-Q",
           "filed": "2026-01-30",
           "period": "2026-01-02 00:00:00",
           "accession": "0001137789-26-000026",
@@ -4614,11 +4607,18 @@
           "period": "2024-06-28 00:00:00",
           "accession": "0001137789-24-000068",
           "url": "https://www.sec.gov/Archives/edgar/data/1137789/000113778924000068/"
+        },
+        {
+          "form": "10-Q",
+          "filed": "2024-04-26",
+          "period": "2024-03-29 00:00:00",
+          "accession": "0001137789-24-000034",
+          "url": "https://www.sec.gov/Archives/edgar/data/1137789/000113778924000034/"
         }
       ],
       "market": {
-        "price": 887.09,
-        "date": "2026-10-05",
+        "price": 791.53,
+        "date": "2026-10-07",
         "currency": "USD",
         "source": "Finnhub EOD"
       }
@@ -4636,12 +4636,12 @@
       "dataBasis": "reported-financials",
       "reportCurrency": "U_USD",
       "metrics": {
-        "beta": 1.0598781,
+        "beta": 1.0602406,
         "epsTTM": 17.9466,
-        "peTTM": 29.4948,
-        "psTTM": 11.888,
-        "evEbitdaTTM": 20.8213,
-        "evRevenueTTM": 12.147,
+        "peTTM": 29.505,
+        "psTTM": 11.8921,
+        "evEbitdaTTM": 20.8283,
+        "evRevenueTTM": 12.1511,
         "revenueGrowth3Y": 16.12,
         "revenueGrowth5Y": 14.57,
         "epsGrowth3Y": 22.83,
@@ -4802,13 +4802,6 @@
       "filings": [
         {
           "form": "10-Q",
-          "filed": "2026-04-29",
-          "period": "2026-03-31 00:00:00",
-          "accession": "0001193125-26-191507",
-          "url": "https://www.sec.gov/Archives/edgar/data/789019/000119312526191507/"
-        },
-        {
-          "form": "10-Q",
           "filed": "2026-01-28",
           "period": "2025-12-31 00:00:00",
           "accession": "0001193125-26-027207",
@@ -4855,11 +4848,18 @@
           "period": "2024-06-30 00:00:00",
           "accession": "0000950170-24-087843",
           "url": "https://www.sec.gov/Archives/edgar/data/789019/000095017024087843/"
+        },
+        {
+          "form": "10-Q",
+          "filed": "2023-10-24",
+          "period": "2023-09-30 00:00:00",
+          "accession": "0000950170-23-054855",
+          "url": "https://www.sec.gov/Archives/edgar/data/789019/000095017023054855/"
         }
       ],
       "market": {
-        "price": 525.18,
-        "date": "2026-10-05",
+        "price": 528.48,
+        "date": "2026-10-07",
         "currency": "USD",
         "source": "Finnhub EOD"
       }
@@ -4877,12 +4877,12 @@
       "dataBasis": "reported-financials",
       "reportCurrency": "USD",
       "metrics": {
-        "beta": 1.5144308,
+        "beta": 1.5138777,
         "epsTTM": 12.4325,
-        "peTTM": 20.0165,
-        "psTTM": 3.4909,
-        "evEbitdaTTM": 16.4876,
-        "evRevenueTTM": 3.5903,
+        "peTTM": 20.0448,
+        "psTTM": 3.4959,
+        "evEbitdaTTM": 16.5103,
+        "evRevenueTTM": 3.5953,
         "revenueGrowth3Y": 11.73,
         "revenueGrowth5Y": 13.18,
         "epsGrowth3Y": null,
@@ -5042,13 +5042,6 @@
       ],
       "filings": [
         {
-          "form": "10-Q",
-          "filed": "2026-04-30",
-          "period": "2026-03-31 00:00:00",
-          "accession": "0001018724-26-000014",
-          "url": "https://www.sec.gov/Archives/edgar/data/1018724/000101872426000014/"
-        },
-        {
           "form": "10-K",
           "filed": "2026-02-06",
           "period": "2025-12-31 00:00:00",
@@ -5096,11 +5089,18 @@
           "period": "2024-03-31 00:00:00",
           "accession": "0001018724-24-000083",
           "url": "https://www.sec.gov/Archives/edgar/data/1018724/000101872424000083/"
+        },
+        {
+          "form": "10-K",
+          "filed": "2024-02-02",
+          "period": "2023-12-31 00:00:00",
+          "accession": "0001018724-24-000008",
+          "url": "https://www.sec.gov/Archives/edgar/data/1018724/000101872424000008/"
         }
       ],
       "market": {
-        "price": 251.4,
-        "date": "2026-10-05",
+        "price": 254.77,
+        "date": "2026-10-07",
         "currency": "USD",
         "source": "Finnhub EOD"
       }
@@ -5118,12 +5118,12 @@
       "dataBasis": "reported-financials",
       "reportCurrency": "USD",
       "metrics": {
-        "beta": 1.2062858,
+        "beta": 1.2051611,
         "epsTTM": 19.9118,
-        "peTTM": 17.3721,
-        "psTTM": 9.5148,
-        "evEbitdaTTM": 27.3607,
-        "evRevenueTTM": 9.6096,
+        "peTTM": 17.3838,
+        "psTTM": 9.5213,
+        "evEbitdaTTM": 27.379,
+        "evRevenueTTM": 9.616,
         "revenueGrowth3Y": 12.51,
         "revenueGrowth5Y": 17.15,
         "epsGrowth3Y": 33.35,
@@ -5283,13 +5283,6 @@
       ],
       "filings": [
         {
-          "form": "10-Q",
-          "filed": "2026-04-30",
-          "period": "2026-03-31 00:00:00",
-          "accession": "0001652044-26-000048",
-          "url": "https://www.sec.gov/Archives/edgar/data/1652044/000165204426000048/"
-        },
-        {
           "form": "10-K",
           "filed": "2026-02-05",
           "period": "2025-12-31 00:00:00",
@@ -5337,11 +5330,18 @@
           "period": "2024-06-30 00:00:00",
           "accession": "0001652044-24-000079",
           "url": "https://www.sec.gov/Archives/edgar/data/1652044/000165204424000079/"
+        },
+        {
+          "form": "10-Q",
+          "filed": "2024-04-26",
+          "period": "2024-03-31 00:00:00",
+          "accession": "0001652044-24-000053",
+          "url": "https://www.sec.gov/Archives/edgar/data/1652044/000165204424000053/"
         }
       ],
       "market": {
-        "price": 346.47,
-        "date": "2026-10-05",
+        "price": 346.13,
+        "date": "2026-10-07",
         "currency": "USD",
         "source": "Finnhub EOD"
       }
@@ -5359,12 +5359,12 @@
       "dataBasis": "reported-financials",
       "reportCurrency": "U_USD",
       "metrics": {
-        "beta": 1.7773981,
+        "beta": 1.7781026,
         "epsTTM": 6.4411000000000005,
-        "peTTM": 23.362,
-        "psTTM": 6.1581,
-        "evEbitdaTTM": 22.0385,
-        "evRevenueTTM": 7.5256,
+        "peTTM": 23.1519,
+        "psTTM": 6.1027,
+        "evEbitdaTTM": 21.8762,
+        "evRevenueTTM": 7.4702,
         "revenueGrowth3Y": 10.48,
         "revenueGrowth5Y": 10.72,
         "epsGrowth3Y": 24.02,
@@ -5377,6 +5377,30 @@
         "netProfitMarginTTM": 26.36
       },
       "periods": [
+        {
+          "fiscalYear": 2018,
+          "end": "2018-05-31 00:00:00",
+          "filed": "2018-06-22",
+          "form": "10-K",
+          "accession": "0001193125-18-201034",
+          "currency": "USD",
+          "revenue": 39831000000,
+          "grossProfit": null,
+          "operatingIncome": 13679000000,
+          "netIncome": 3825000000,
+          "epsDiluted": 0,
+          "cashFromOperations": 15386000000,
+          "capex": 1736000000,
+          "freeCashFlow": 13650000000,
+          "depreciation": null,
+          "ebitda": 13679000000,
+          "assets": 137264000000,
+          "liabilities": null,
+          "equity": 45726000000,
+          "cash": 21620000000,
+          "debt": 0,
+          "shares": 4238000000
+        },
         {
           "fiscalYear": 2019,
           "end": "2019-05-31 00:00:00",
@@ -5496,40 +5520,9 @@
           "cash": 10786000000,
           "debt": 0,
           "shares": 2866000000
-        },
-        {
-          "fiscalYear": 2026,
-          "end": "2026-05-31 00:00:00",
-          "filed": "2026-06-22",
-          "form": "10-K",
-          "accession": "0001193125-26-277521",
-          "currency": "U_USD",
-          "revenue": 67357000000,
-          "grossProfit": null,
-          "operatingIncome": 20606000000,
-          "netIncome": 17087000000,
-          "epsDiluted": 5.83,
-          "cashFromOperations": 31977000000,
-          "capex": 55663000000,
-          "freeCashFlow": -23686000000,
-          "depreciation": null,
-          "ebitda": 20606000000,
-          "assets": 261759000000,
-          "liabilities": null,
-          "equity": 42508000000,
-          "cash": 31289000000,
-          "debt": 0,
-          "shares": 2914000000
         }
       ],
       "filings": [
-        {
-          "form": "10-K",
-          "filed": "2026-06-22",
-          "period": "2026-05-31 00:00:00",
-          "accession": "0001193125-26-277521",
-          "url": "https://www.sec.gov/Archives/edgar/data/1341439/000119312526277521/"
-        },
         {
           "form": "10-Q",
           "filed": "2026-03-11",
@@ -5578,11 +5571,18 @@
           "period": "2024-08-31 00:00:00",
           "accession": "0000950170-24-104905",
           "url": "https://www.sec.gov/Archives/edgar/data/1341439/000095017024104905/"
+        },
+        {
+          "form": "10-Q",
+          "filed": "2023-12-12",
+          "period": "2023-11-30 00:00:00",
+          "accession": "0000950170-23-069682",
+          "url": "https://www.sec.gov/Archives/edgar/data/1341439/000095017023069682/"
         }
       ],
       "market": {
-        "price": 142.48,
-        "date": "2026-10-05",
+        "price": 142.03,
+        "date": "2026-10-07",
         "currency": "USD",
         "source": "Finnhub EOD"
       }
@@ -5600,12 +5600,12 @@
       "dataBasis": "reported-financials",
       "reportCurrency": "USD",
       "metrics": {
-        "beta": 0.7902688,
+        "beta": 0.78964037,
         "epsTTM": 11.2633,
-        "peTTM": 19.5702,
-        "psTTM": 3.0371,
-        "evEbitdaTTM": 22.1163,
-        "evRevenueTTM": 3.8304,
+        "peTTM": 19.5684,
+        "psTTM": 3.0368,
+        "evEbitdaTTM": 22.1147,
+        "evRevenueTTM": 3.8301,
         "revenueGrowth3Y": 3.72,
         "revenueGrowth5Y": 4.12,
         "epsGrowth3Y": 83.85,
@@ -5765,13 +5765,6 @@
       ],
       "filings": [
         {
-          "form": "10-Q",
-          "filed": "2026-04-23",
-          "period": "2026-03-31 00:00:00",
-          "accession": "0000051143-26-000038",
-          "url": "https://www.sec.gov/Archives/edgar/data/51143/000005114326000038/"
-        },
-        {
           "form": "10-K",
           "filed": "2026-02-24",
           "period": "2025-12-31 00:00:00",
@@ -5819,11 +5812,18 @@
           "period": "2024-06-30 00:00:00",
           "accession": "0000051143-24-000039",
           "url": "https://www.sec.gov/Archives/edgar/data/51143/000005114324000039/"
+        },
+        {
+          "form": "10-Q",
+          "filed": "2024-04-30",
+          "period": "2024-03-31 00:00:00",
+          "accession": "0000051143-24-000025",
+          "url": "https://www.sec.gov/Archives/edgar/data/51143/000005114324000025/"
         }
       ],
       "market": {
-        "price": 221.58,
-        "date": "2026-10-05",
+        "price": 222.24,
+        "date": "2026-10-07",
         "currency": "USD",
         "source": "Finnhub EOD"
       }
@@ -5841,12 +5841,12 @@
       "dataBasis": "reported-financials",
       "reportCurrency": "USD",
       "metrics": {
-        "beta": 1.6237879,
+        "beta": 1.6206129,
         "epsTTM": 1.1735,
-        "peTTM": 151.1006,
-        "psTTM": 74.0462,
-        "evEbitdaTTM": 170.4307,
-        "evRevenueTTM": 73.7164,
+        "peTTM": 153.5023,
+        "psTTM": 75.2232,
+        "evEbitdaTTM": 173.1518,
+        "evRevenueTTM": 74.8934,
         "revenueGrowth3Y": 32.92,
         "revenueGrowth5Y": 32.58,
         "epsGrowth3Y": null,
@@ -6006,13 +6006,6 @@
       ],
       "filings": [
         {
-          "form": "10-Q",
-          "filed": "2026-05-05",
-          "period": "2026-03-31 00:00:00",
-          "accession": "0001321655-26-000028",
-          "url": "https://www.sec.gov/Archives/edgar/data/1321655/000132165526000028/"
-        },
-        {
           "form": "10-K",
           "filed": "2026-02-17",
           "period": "2025-12-31 00:00:00",
@@ -6060,11 +6053,18 @@
           "period": "2024-06-30 00:00:00",
           "accession": "0001321655-24-000135",
           "url": "https://www.sec.gov/Archives/edgar/data/1321655/000132165524000135/"
+        },
+        {
+          "form": "10-Q",
+          "filed": "2024-05-07",
+          "period": "2024-03-31 00:00:00",
+          "accession": "0001321655-24-000071",
+          "url": "https://www.sec.gov/Archives/edgar/data/1321655/000132165524000071/"
         }
       ],
       "market": {
-        "price": 189.4,
-        "date": "2026-10-05",
+        "price": 192.44,
+        "date": "2026-10-07",
         "currency": "USD",
         "source": "Finnhub EOD"
       }
@@ -6082,12 +6082,12 @@
       "dataBasis": "reported-financials",
       "reportCurrency": "USD",
       "metrics": {
-        "beta": 1.3338507,
+        "beta": 1.3326571,
         "epsTTM": -3.1744,
         "peTTM": null,
-        "psTTM": 22.0678,
+        "psTTM": 22.1068,
         "evEbitdaTTM": null,
-        "evRevenueTTM": 22.174,
+        "evRevenueTTM": 22.2129,
         "revenueGrowth3Y": 31.38,
         "revenueGrowth5Y": 51.23,
         "epsGrowth3Y": null,
@@ -6247,13 +6247,6 @@
       ],
       "filings": [
         {
-          "form": "10-Q",
-          "filed": "2026-05-29",
-          "period": "2026-04-30 00:00:00",
-          "accession": "0001640147-26-000030",
-          "url": "https://www.sec.gov/Archives/edgar/data/1640147/000164014726000030/"
-        },
-        {
           "form": "10-K",
           "filed": "2026-03-20",
           "period": "2026-01-31 00:00:00",
@@ -6301,11 +6294,18 @@
           "period": "2024-07-31 00:00:00",
           "accession": "0001640147-24-000207",
           "url": "https://www.sec.gov/Archives/edgar/data/1640147/000164014724000207/"
+        },
+        {
+          "form": "10-Q",
+          "filed": "2024-05-31",
+          "period": "2024-04-30 00:00:00",
+          "accession": "0001640147-24-000135",
+          "url": "https://www.sec.gov/Archives/edgar/data/1640147/000164014724000135/"
         }
       ],
       "market": {
-        "price": 338.99,
-        "date": "2026-10-05",
+        "price": 334.05,
+        "date": "2026-10-07",
         "currency": "USD",
         "source": "Finnhub EOD"
       }
@@ -6323,12 +6323,12 @@
       "dataBasis": "reported-financials",
       "reportCurrency": "USD",
       "metrics": {
-        "beta": 1.5080111,
+        "beta": 1.5069991,
         "epsTTM": 0.4843,
-        "peTTM": 559.1237,
-        "psTTM": 25.0311,
-        "evEbitdaTTM": 5671.8751,
-        "evRevenueTTM": 25.1699,
+        "peTTM": 560.8829,
+        "psTTM": 25.1098,
+        "evEbitdaTTM": 5689.6221,
+        "evRevenueTTM": 25.2486,
         "revenueGrowth3Y": 26.95,
         "revenueGrowth5Y": 41.53,
         "epsGrowth3Y": null,
@@ -6488,13 +6488,6 @@
       ],
       "filings": [
         {
-          "form": "10-Q",
-          "filed": "2026-05-07",
-          "period": "2026-03-31 00:00:00",
-          "accession": "0001628280-26-032328",
-          "url": "https://www.sec.gov/Archives/edgar/data/1561550/000162828026032328/"
-        },
-        {
           "form": "10-K",
           "filed": "2026-02-18",
           "period": "2025-12-31 00:00:00",
@@ -6542,11 +6535,18 @@
           "period": "2024-06-30 00:00:00",
           "accession": "0001561550-24-000112",
           "url": "https://www.sec.gov/Archives/edgar/data/1561550/000156155024000112/"
+        },
+        {
+          "form": "10-Q",
+          "filed": "2024-05-08",
+          "period": "2024-03-31 00:00:00",
+          "accession": "0001561550-24-000051",
+          "url": "https://www.sec.gov/Archives/edgar/data/1561550/000156155024000051/"
         }
       ],
       "market": {
-        "price": 276.42,
-        "date": "2026-10-05",
+        "price": 277.41,
+        "date": "2026-10-07",
         "currency": "USD",
         "source": "Finnhub EOD"
       }
@@ -6564,12 +6564,12 @@
       "dataBasis": "reported-financials",
       "reportCurrency": "USD",
       "metrics": {
-        "beta": 0.96296394,
+        "beta": 0.9630813,
         "epsTTM": 1.6017000000000001,
-        "peTTM": 83.2029,
-        "psTTM": 9.4318,
-        "evEbitdaTTM": 52.3311,
-        "evRevenueTTM": 9.7721,
+        "peTTM": 84.2555,
+        "psTTM": 9.5511,
+        "evEbitdaTTM": 52.9701,
+        "evRevenueTTM": 9.8914,
         "revenueGrowth3Y": 22.38,
         "revenueGrowth5Y": 24.05,
         "epsGrowth3Y": 73.56,
@@ -6729,13 +6729,6 @@
       ],
       "filings": [
         {
-          "form": "10-Q",
-          "filed": "2026-04-23",
-          "period": "2026-03-31 00:00:00",
-          "accession": "0001373715-26-000056",
-          "url": "https://www.sec.gov/Archives/edgar/data/1373715/000137371526000056/"
-        },
-        {
           "form": "10-K",
           "filed": "2026-01-29",
           "period": "2025-12-31 00:00:00",
@@ -6783,11 +6776,18 @@
           "period": "2024-06-30 00:00:00",
           "accession": "0001373715-24-000272",
           "url": "https://www.sec.gov/Archives/edgar/data/1373715/000137371524000272/"
+        },
+        {
+          "form": "10-Q",
+          "filed": "2024-05-06",
+          "period": "2024-03-31 00:00:00",
+          "accession": "0001373715-24-000169",
+          "url": "https://www.sec.gov/Archives/edgar/data/1373715/000137371524000169/"
         }
       ],
       "market": {
-        "price": 136.08,
-        "date": "2026-10-05",
+        "price": 139.12,
+        "date": "2026-10-07",
         "currency": "USD",
         "source": "Finnhub EOD"
       }
@@ -6805,12 +6805,12 @@
       "dataBasis": "reported-financials",
       "reportCurrency": "USD",
       "metrics": {
-        "beta": 2.4959123,
+        "beta": 2.4905732,
         "epsTTM": 13.0107,
-        "peTTM": 21.3974,
-        "psTTM": 13.8175,
-        "evEbitdaTTM": 17.7447,
-        "evRevenueTTM": 13.8851,
+        "peTTM": 21.1553,
+        "psTTM": 13.6612,
+        "evEbitdaTTM": 17.5449,
+        "evRevenueTTM": 13.7288,
         "revenueGrowth3Y": 24.84,
         "revenueGrowth5Y": 30.45,
         "epsGrowth3Y": null,
@@ -6970,13 +6970,6 @@
       ],
       "filings": [
         {
-          "form": "10-Q",
-          "filed": "2026-05-06",
-          "period": "2026-03-31 00:00:00",
-          "accession": "0001751008-26-000044",
-          "url": "https://www.sec.gov/Archives/edgar/data/1751008/000175100826000044/"
-        },
-        {
           "form": "10-K",
           "filed": "2026-02-19",
           "period": "2025-12-31 00:00:00",
@@ -7024,11 +7017,18 @@
           "period": "2024-06-30 00:00:00",
           "accession": "0001751008-24-000055",
           "url": "https://www.sec.gov/Archives/edgar/data/1751008/000175100824000055/"
+        },
+        {
+          "form": "10-Q",
+          "filed": "2024-05-08",
+          "period": "2024-03-31 00:00:00",
+          "accession": "0001751008-24-000043",
+          "url": "https://www.sec.gov/Archives/edgar/data/1751008/000175100824000043/"
         }
       ],
       "market": {
-        "price": 281.97,
-        "date": "2026-10-05",
+        "price": 275.05,
+        "date": "2026-10-07",
         "currency": "USD",
         "source": "Finnhub EOD"
       }
@@ -7049,9 +7049,9 @@
         "beta": 2.285307,
         "epsTTM": -1.4342,
         "peTTM": null,
-        "psTTM": 10.5273,
+        "psTTM": 9.0695,
         "evEbitdaTTM": null,
-        "evRevenueTTM": 11.0588,
+        "evRevenueTTM": 9.601,
         "revenueGrowth3Y": 58.29,
         "revenueGrowth5Y": 46.57,
         "epsGrowth3Y": null,
@@ -7115,13 +7115,6 @@
       ],
       "filings": [
         {
-          "form": "10-Q",
-          "filed": "2026-05-05",
-          "period": "2026-03-31 00:00:00",
-          "accession": "0001193125-26-206356",
-          "url": "https://www.sec.gov/Archives/edgar/data/1717115/000119312526206356/"
-        },
-        {
           "form": "10-K",
           "filed": "2026-02-24",
           "period": "2025-12-31 00:00:00",
@@ -7172,8 +7165,8 @@
         }
       ],
       "market": {
-        "price": 83.55,
-        "date": "2026-10-05",
+        "price": 70.58,
+        "date": "2026-10-07",
         "currency": "USD",
         "source": "Finnhub EOD"
       }
@@ -7191,12 +7184,12 @@
       "dataBasis": "reported-financials",
       "reportCurrency": "USD",
       "metrics": {
-        "beta": 1.24722,
+        "beta": 1.2468618,
         "epsTTM": 10.976500000000001,
-        "peTTM": 19.9029,
-        "psTTM": 4.3767,
-        "evEbitdaTTM": 23.7785,
-        "evRevenueTTM": 5.0817,
+        "peTTM": 19.526,
+        "psTTM": 4.2938,
+        "evEbitdaTTM": 23.3907,
+        "evRevenueTTM": 4.9988,
         "revenueGrowth3Y": 9.82,
         "revenueGrowth5Y": 14.34,
         "epsGrowth3Y": 234.4,
@@ -7356,13 +7349,6 @@
       ],
       "filings": [
         {
-          "form": "10-Q",
-          "filed": "2026-05-28",
-          "period": "2026-04-30 00:00:00",
-          "accession": "0001108524-26-000127",
-          "url": "https://www.sec.gov/Archives/edgar/data/1108524/000110852426000127/"
-        },
-        {
           "form": "10-K",
           "filed": "2026-03-02",
           "period": "2026-01-31 00:00:00",
@@ -7410,11 +7396,18 @@
           "period": "2024-07-31 00:00:00",
           "accession": "0001108524-24-000022",
           "url": "https://www.sec.gov/Archives/edgar/data/1108524/000110852424000022/"
+        },
+        {
+          "form": "10-Q",
+          "filed": "2024-05-30",
+          "period": "2024-04-30 00:00:00",
+          "accession": "0001108524-24-000009",
+          "url": "https://www.sec.gov/Archives/edgar/data/1108524/000110852424000009/"
         }
       ],
       "market": {
-        "price": 229.79,
-        "date": "2026-10-05",
+        "price": 224.8,
+        "date": "2026-10-07",
         "currency": "USD",
         "source": "Finnhub EOD"
       }
@@ -7432,12 +7425,12 @@
       "dataBasis": "reported-financials",
       "reportCurrency": "USD",
       "metrics": {
-        "beta": 1.416121,
+        "beta": 1.4160382,
         "epsTTM": 17.9203,
-        "peTTM": 12.7003,
-        "psTTM": 3.5621,
-        "evEbitdaTTM": 10.0332,
-        "evRevenueTTM": 3.6393,
+        "peTTM": 12.7588,
+        "psTTM": 3.5786,
+        "evEbitdaTTM": 10.0785,
+        "evRevenueTTM": 3.6557,
         "revenueGrowth3Y": 10.52,
         "revenueGrowth5Y": 13.06,
         "epsGrowth3Y": 18.25,
@@ -7598,13 +7591,6 @@
       "filings": [
         {
           "form": "10-Q",
-          "filed": "2026-06-15",
-          "period": "2026-05-29 00:00:00",
-          "accession": "0000796343-26-000112",
-          "url": "https://www.sec.gov/Archives/edgar/data/796343/000079634326000112/"
-        },
-        {
-          "form": "10-Q",
           "filed": "2026-03-25",
           "period": "2026-02-27 00:00:00",
           "accession": "0000796343-26-000056",
@@ -7651,11 +7637,18 @@
           "period": "2024-08-30 00:00:00",
           "accession": "0000796343-24-000208",
           "url": "https://www.sec.gov/Archives/edgar/data/796343/000079634324000208/"
+        },
+        {
+          "form": "10-Q",
+          "filed": "2024-06-26",
+          "period": "2024-05-31 00:00:00",
+          "accession": "0000796343-24-000150",
+          "url": "https://www.sec.gov/Archives/edgar/data/796343/000079634324000150/"
         }
       ],
       "market": {
-        "price": 238.79,
-        "date": "2026-10-05",
+        "price": 236.29,
+        "date": "2026-10-07",
         "currency": "USD",
         "source": "Finnhub EOD"
       }
@@ -7673,12 +7666,12 @@
       "dataBasis": "reported-financials",
       "reportCurrency": "USD",
       "metrics": {
-        "beta": 0.96472836,
+        "beta": 0.9667636,
         "epsTTM": 16.4982,
-        "peTTM": 16.9308,
-        "psTTM": 3.6043,
-        "evEbitdaTTM": 12.6032,
-        "evRevenueTTM": 3.7425,
+        "peTTM": 16.7345,
+        "psTTM": 3.5626,
+        "evEbitdaTTM": 12.4625,
+        "evRevenueTTM": 3.7007,
         "revenueGrowth3Y": 14.29,
         "revenueGrowth5Y": 17.36,
         "epsGrowth3Y": 25.08,
@@ -7839,13 +7832,6 @@
       "filings": [
         {
           "form": "10-Q",
-          "filed": "2026-05-20",
-          "period": "2026-04-30 00:00:00",
-          "accession": "0000896878-26-000025",
-          "url": "https://www.sec.gov/Archives/edgar/data/896878/000089687826000025/"
-        },
-        {
-          "form": "10-Q",
           "filed": "2026-02-26",
           "period": "2026-01-31 00:00:00",
           "accession": "0000896878-26-000014",
@@ -7892,11 +7878,18 @@
           "period": "2024-07-31 00:00:00",
           "accession": "0000896878-24-000039",
           "url": "https://www.sec.gov/Archives/edgar/data/896878/000089687824000039/"
+        },
+        {
+          "form": "10-Q",
+          "filed": "2024-05-23",
+          "period": "2024-04-30 00:00:00",
+          "accession": "0000896878-24-000026",
+          "url": "https://www.sec.gov/Archives/edgar/data/896878/000089687824000026/"
         }
       ],
       "market": {
-        "price": 284.68,
-        "date": "2026-10-05",
+        "price": 291.92,
+        "date": "2026-10-07",
         "currency": "USD",
         "source": "Finnhub EOD"
       }
@@ -7914,12 +7907,12 @@
       "dataBasis": "reported-financials",
       "reportCurrency": "USD",
       "metrics": {
-        "beta": 1.1423064,
+        "beta": 1.141351,
         "epsTTM": 0.056999999999999995,
-        "peTTM": 4771.1228,
-        "psTTM": 51.6887,
-        "evEbitdaTTM": 3029.1409,
-        "evRevenueTTM": 50.8979,
+        "peTTM": 4884.4461,
+        "psTTM": 52.9164,
+        "evEbitdaTTM": 3102.2068,
+        "evRevenueTTM": 52.1256,
         "revenueGrowth3Y": 29.01,
         "revenueGrowth5Y": 40.64,
         "epsGrowth3Y": null,
@@ -8079,13 +8072,6 @@
       ],
       "filings": [
         {
-          "form": "10-Q",
-          "filed": "2026-06-04",
-          "period": "2026-04-30 00:00:00",
-          "accession": "0001535527-26-000025",
-          "url": "https://www.sec.gov/Archives/edgar/data/1535527/000153552726000025/"
-        },
-        {
           "form": "10-K",
           "filed": "2026-03-05",
           "period": "2026-01-31 00:00:00",
@@ -8133,11 +8119,18 @@
           "period": "2024-07-31 00:00:00",
           "accession": "0001535527-24-000020",
           "url": "https://www.sec.gov/Archives/edgar/data/1535527/000153552724000020/"
+        },
+        {
+          "form": "10-Q",
+          "filed": "2024-06-05",
+          "period": "2024-04-30 00:00:00",
+          "accession": "0001535527-24-000013",
+          "url": "https://www.sec.gov/Archives/edgar/data/1535527/000153552724000013/"
         }
       ],
       "market": {
-        "price": 272.67,
-        "date": "2026-10-05",
+        "price": 274.7,
+        "date": "2026-10-07",
         "currency": "USD",
         "source": "Finnhub EOD"
       }
@@ -8155,12 +8148,12 @@
       "dataBasis": "reported-financials",
       "reportCurrency": "USD",
       "metrics": {
-        "beta": 0.9664523,
+        "beta": 0.96561533,
         "epsTTM": 0.5125,
-        "peTTM": 1074.4309,
-        "psTTM": 28.7326,
-        "evEbitdaTTM": 212.3292,
-        "evRevenueTTM": 28.6681,
+        "peTTM": 1083.8101,
+        "psTTM": 28.9834,
+        "evEbitdaTTM": 214.1869,
+        "evRevenueTTM": 28.919,
         "revenueGrowth3Y": 18.54,
         "revenueGrowth5Y": 21.95,
         "epsGrowth3Y": -14.48,
@@ -8321,13 +8314,6 @@
       "filings": [
         {
           "form": "10-Q",
-          "filed": "2026-06-03",
-          "period": "2026-04-30 00:00:00",
-          "accession": "0001327567-26-000015",
-          "url": "https://www.sec.gov/Archives/edgar/data/1327567/000132756726000015/"
-        },
-        {
-          "form": "10-Q",
           "filed": "2026-02-18",
           "period": "2026-01-31 00:00:00",
           "accession": "0001327567-26-000005",
@@ -8374,11 +8360,18 @@
           "period": "2024-07-31 00:00:00",
           "accession": "0001327567-24-000029",
           "url": "https://www.sec.gov/Archives/edgar/data/1327567/000132756724000029/"
+        },
+        {
+          "form": "10-Q",
+          "filed": "2024-05-21",
+          "period": "2024-04-30 00:00:00",
+          "accession": "0001327567-24-000017",
+          "url": "https://www.sec.gov/Archives/edgar/data/1327567/000132756724000017/"
         }
       ],
       "market": {
-        "price": 406.76,
-        "date": "2026-10-05",
+        "price": 413.52,
+        "date": "2026-10-07",
         "currency": "USD",
         "source": "Finnhub EOD"
       }
@@ -8396,12 +8389,12 @@
       "dataBasis": "reported-financials",
       "reportCurrency": "USD",
       "metrics": {
-        "beta": 1.2536944,
+        "beta": 1.2532645,
         "epsTTM": 26.558100000000003,
-        "peTTM": 27.237,
-        "psTTM": 8.1262,
-        "evEbitdaTTM": 17.5366,
-        "evRevenueTTM": 8.425,
+        "peTTM": 27.754,
+        "psTTM": 8.2805,
+        "evEbitdaTTM": 17.8576,
+        "evRevenueTTM": 8.5793,
         "revenueGrowth3Y": 19.89,
         "revenueGrowth5Y": 18.51,
         "epsGrowth3Y": 39.86,
@@ -8561,13 +8554,6 @@
       ],
       "filings": [
         {
-          "form": "10-Q",
-          "filed": "2026-04-30",
-          "period": "2026-03-31 00:00:00",
-          "accession": "0001628280-26-028526",
-          "url": "https://www.sec.gov/Archives/edgar/data/1326801/000162828026028526/"
-        },
-        {
           "form": "10-K",
           "filed": "2026-01-29",
           "period": "2025-12-31 00:00:00",
@@ -8615,11 +8601,18 @@
           "period": "2024-06-30 00:00:00",
           "accession": "0001326801-24-000069",
           "url": "https://www.sec.gov/Archives/edgar/data/1326801/000132680124000069/"
+        },
+        {
+          "form": "10-Q",
+          "filed": "2024-04-25",
+          "period": "2024-03-31 00:00:00",
+          "accession": "0001326801-24-000049",
+          "url": "https://www.sec.gov/Archives/edgar/data/1326801/000132680124000049/"
         }
       ],
       "market": {
-        "price": 741.9,
-        "date": "2026-10-05",
+        "price": 736.67,
+        "date": "2026-10-07",
         "currency": "USD",
         "source": "Finnhub EOD"
       }
@@ -8637,12 +8630,12 @@
       "dataBasis": "reported-financials",
       "reportCurrency": "USD",
       "metrics": {
-        "beta": 1.6073824,
+        "beta": 1.6045166,
         "epsTTM": 3.1742,
-        "peTTM": 20.474,
-        "psTTM": 5.7775,
-        "evEbitdaTTM": 16.242,
-        "evRevenueTTM": 5.8852,
+        "peTTM": 20.7653,
+        "psTTM": 5.8597,
+        "evEbitdaTTM": 16.4689,
+        "evRevenueTTM": 5.9674,
         "revenueGrowth3Y": 12.64,
         "revenueGrowth5Y": 12.57,
         "epsGrowth3Y": 36.44,
@@ -8803,6 +8796,13 @@
       "filings": [
         {
           "form": "10-Q",
+          "filed": "2026-07-17",
+          "period": "2026-06-30 00:00:00",
+          "accession": "0001065280-26-000212",
+          "url": "https://www.sec.gov/Archives/edgar/data/1065280/000106528026000212/"
+        },
+        {
+          "form": "10-Q",
           "filed": "2026-04-17",
           "period": "2026-03-31 00:00:00",
           "accession": "0001065280-26-000138",
@@ -8849,18 +8849,11 @@
           "period": "2024-09-30 00:00:00",
           "accession": "0001065280-24-000287",
           "url": "https://www.sec.gov/Archives/edgar/data/1065280/000106528024000287/"
-        },
-        {
-          "form": "10-Q",
-          "filed": "2024-07-19",
-          "period": "2024-06-30 00:00:00",
-          "accession": "0001065280-24-000200",
-          "url": "https://www.sec.gov/Archives/edgar/data/1065280/000106528024000200/"
         }
       ],
       "market": {
-        "price": 67.5,
-        "date": "2026-10-05",
+        "price": 68.88,
+        "date": "2026-10-07",
         "currency": "USD",
         "source": "Finnhub EOD"
       }
@@ -8878,12 +8871,12 @@
       "dataBasis": "reported-financials",
       "reportCurrency": "USD",
       "metrics": {
-        "beta": 1.3127369,
+        "beta": 1.3120874,
         "epsTTM": 4.5543000000000005,
-        "peTTM": 14.8751,
-        "psTTM": 2.5801,
-        "evEbitdaTTM": 20.1937,
-        "evRevenueTTM": 2.7223,
+        "peTTM": 14.6886,
+        "psTTM": 2.5477,
+        "evEbitdaTTM": 19.9536,
+        "evRevenueTTM": 2.6899,
         "revenueGrowth3Y": 17.73,
         "revenueGrowth5Y": 36.1,
         "epsGrowth3Y": null,
@@ -9043,13 +9036,6 @@
       ],
       "filings": [
         {
-          "form": "10-Q",
-          "filed": "2026-05-06",
-          "period": "2026-03-31 00:00:00",
-          "accession": "0001543151-26-000022",
-          "url": "https://www.sec.gov/Archives/edgar/data/1543151/000154315126000022/"
-        },
-        {
           "form": "10-K",
           "filed": "2026-02-13",
           "period": "2025-12-31 00:00:00",
@@ -9097,11 +9083,18 @@
           "period": "2024-06-30 00:00:00",
           "accession": "0001543151-24-000027",
           "url": "https://www.sec.gov/Archives/edgar/data/1543151/000154315124000027/"
+        },
+        {
+          "form": "10-Q",
+          "filed": "2024-05-08",
+          "period": "2024-03-31 00:00:00",
+          "accession": "0001543151-24-000020",
+          "url": "https://www.sec.gov/Archives/edgar/data/1543151/000154315124000020/"
         }
       ],
       "market": {
-        "price": 69.48,
-        "date": "2026-10-05",
+        "price": 69.12,
+        "date": "2026-10-07",
         "currency": "USD",
         "source": "Finnhub EOD"
       }
@@ -9119,12 +9112,12 @@
       "dataBasis": "reported-financials",
       "reportCurrency": "USD",
       "metrics": {
-        "beta": 2.702686,
+        "beta": 2.705285,
         "epsTTM": 1.4829,
-        "peTTM": 105.6009,
-        "psTTM": 15.3439,
-        "evEbitdaTTM": 109.3354,
-        "evRevenueTTM": 15.2191,
+        "peTTM": 110.0288,
+        "psTTM": 15.9873,
+        "evEbitdaTTM": 113.9575,
+        "evRevenueTTM": 15.8625,
         "revenueGrowth3Y": 27.31,
         "revenueGrowth5Y": 31.58,
         "epsGrowth3Y": null,
@@ -9188,13 +9181,6 @@
       ],
       "filings": [
         {
-          "form": "10-Q",
-          "filed": "2026-05-05",
-          "period": "2026-03-31 00:00:00",
-          "accession": "0001594805-26-000019",
-          "url": "https://www.sec.gov/Archives/edgar/data/1594805/000159480526000019/"
-        },
-        {
           "form": "10-K",
           "filed": "2026-02-11",
           "period": "2025-12-31 00:00:00",
@@ -9231,8 +9217,8 @@
         }
       ],
       "market": {
-        "price": 160.11,
-        "date": "2026-10-05",
+        "price": 162.83,
+        "date": "2026-10-07",
         "currency": "USD",
         "source": "Finnhub EOD"
       }
@@ -9250,12 +9236,12 @@
       "dataBasis": "reported-financials",
       "reportCurrency": "USD",
       "metrics": {
-        "beta": 1.2778238,
+        "beta": 1.2783275,
         "epsTTM": 4.398,
-        "peTTM": 36.5079,
-        "psTTM": 7.4658,
-        "evEbitdaTTM": 34.2943,
-        "evRevenueTTM": 7.1356,
+        "peTTM": 35.6891,
+        "psTTM": 7.2984,
+        "evEbitdaTTM": 33.4895,
+        "evRevenueTTM": 6.9682,
         "revenueGrowth3Y": 13.38,
         "revenueGrowth5Y": 29.37,
         "epsGrowth3Y": 13.13,
@@ -9391,13 +9377,6 @@
       ],
       "filings": [
         {
-          "form": "10-Q",
-          "filed": "2026-05-07",
-          "period": "2026-03-31 00:00:00",
-          "accession": "0001559720-26-000014",
-          "url": "https://www.sec.gov/Archives/edgar/data/1559720/000155972026000014/"
-        },
-        {
           "form": "10-K",
           "filed": "2026-02-12",
           "period": "2025-12-31 00:00:00",
@@ -9445,11 +9424,18 @@
           "period": "2024-03-31 00:00:00",
           "accession": "0001559720-24-000017",
           "url": "https://www.sec.gov/Archives/edgar/data/1559720/000155972024000017/"
+        },
+        {
+          "form": "10-K",
+          "filed": "2024-02-16",
+          "period": "2023-12-31 00:00:00",
+          "accession": "0001559720-24-000006",
+          "url": "https://www.sec.gov/Archives/edgar/data/1559720/000155972024000006/"
         }
       ],
       "market": {
-        "price": 164.07,
-        "date": "2026-10-05",
+        "price": 160.1,
+        "date": "2026-10-07",
         "currency": "USD",
         "source": "Finnhub EOD"
       }
@@ -9467,12 +9453,12 @@
       "dataBasis": "reported-financials",
       "reportCurrency": "USD",
       "metrics": {
-        "beta": 1.9744403,
+        "beta": 1.9757383,
         "epsTTM": 1.9044,
-        "peTTM": 98.8092,
-        "psTTM": 5.2293,
-        "evEbitdaTTM": 47.5476,
-        "evRevenueTTM": 5.1225,
+        "peTTM": 99.7624,
+        "psTTM": 5.2797,
+        "evEbitdaTTM": 48.0159,
+        "evRevenueTTM": 5.1729,
         "revenueGrowth3Y": 27.73,
         "revenueGrowth5Y": 36.58,
         "epsGrowth3Y": null,
@@ -9632,13 +9618,6 @@
       ],
       "filings": [
         {
-          "form": "10-Q",
-          "filed": "2026-05-06",
-          "period": "2026-03-31 00:00:00",
-          "accession": "0001792789-26-000037",
-          "url": "https://www.sec.gov/Archives/edgar/data/1792789/000179278926000037/"
-        },
-        {
           "form": "10-K",
           "filed": "2026-02-18",
           "period": "2025-12-31 00:00:00",
@@ -9686,11 +9665,18 @@
           "period": "2024-06-30 00:00:00",
           "accession": "0001628280-24-034131",
           "url": "https://www.sec.gov/Archives/edgar/data/1792789/000162828024034131/"
+        },
+        {
+          "form": "10-Q",
+          "filed": "2024-05-01",
+          "period": "2024-03-31 00:00:00",
+          "accession": "0001628280-24-019605",
+          "url": "https://www.sec.gov/Archives/edgar/data/1792789/000162828024019605/"
         }
       ],
       "market": {
-        "price": 191.77,
-        "date": "2026-10-05",
+        "price": 191.99,
+        "date": "2026-10-07",
         "currency": "USD",
         "source": "Finnhub EOD"
       }
@@ -9708,12 +9694,12 @@
       "dataBasis": "reported-financials",
       "reportCurrency": "USD",
       "metrics": {
-        "beta": 1.6116923,
+        "beta": 1.6098886,
         "epsTTM": 3.1709,
-        "peTTM": 64.6578,
-        "psTTM": 24.8098,
-        "evEbitdaTTM": 55.8722,
-        "evRevenueTTM": 24.5925,
+        "peTTM": 64.5175,
+        "psTTM": 24.7559,
+        "evEbitdaTTM": 55.7499,
+        "evRevenueTTM": 24.5387,
         "revenueGrowth3Y": 27.15,
         "revenueGrowth5Y": 31.19,
         "epsGrowth3Y": 37.09,
@@ -9873,13 +9859,6 @@
       ],
       "filings": [
         {
-          "form": "10-Q",
-          "filed": "2026-05-06",
-          "period": "2026-03-31 00:00:00",
-          "accession": "0001596532-26-000078",
-          "url": "https://www.sec.gov/Archives/edgar/data/1596532/000159653226000078/"
-        },
-        {
           "form": "10-K",
           "filed": "2026-02-17",
           "period": "2025-12-31 00:00:00",
@@ -9927,11 +9906,18 @@
           "period": "2024-06-30 00:00:00",
           "accession": "0001596532-24-000279",
           "url": "https://www.sec.gov/Archives/edgar/data/1596532/000159653224000279/"
+        },
+        {
+          "form": "10-Q",
+          "filed": "2024-05-08",
+          "period": "2024-03-31 00:00:00",
+          "accession": "0001596532-24-000173",
+          "url": "https://www.sec.gov/Archives/edgar/data/1596532/000159653224000173/"
         }
       ],
       "market": {
-        "price": 206.9,
-        "date": "2026-10-05",
+        "price": 209.73,
+        "date": "2026-10-07",
         "currency": "USD",
         "source": "Finnhub EOD"
       }
@@ -9949,12 +9935,12 @@
       "dataBasis": "reported-financials",
       "reportCurrency": "USD",
       "metrics": {
-        "beta": 2.2846587,
+        "beta": 2.2832208,
         "epsTTM": 3.03,
-        "peTTM": 90.1016,
-        "psTTM": 25.1695,
-        "evEbitdaTTM": 64.0437,
-        "evRevenueTTM": 25.2785,
+        "peTTM": 95.3366,
+        "psTTM": 26.6319,
+        "evEbitdaTTM": 67.7486,
+        "evRevenueTTM": 26.7409,
         "revenueGrowth3Y": 11.45,
         "revenueGrowth5Y": 22.51,
         "epsGrowth3Y": null,
@@ -10114,13 +10100,6 @@
       ],
       "filings": [
         {
-          "form": "10-Q",
-          "filed": "2026-05-28",
-          "period": "2026-05-02 00:00:00",
-          "accession": "0001835632-26-000019",
-          "url": "https://www.sec.gov/Archives/edgar/data/1835632/000183563226000019/"
-        },
-        {
           "form": "10-K",
           "filed": "2026-03-11",
           "period": "2026-01-31 00:00:00",
@@ -10168,11 +10147,18 @@
           "period": "2024-08-03 00:00:00",
           "accession": "0001835632-24-000142",
           "url": "https://www.sec.gov/Archives/edgar/data/1835632/000183563224000142/"
+        },
+        {
+          "form": "10-Q",
+          "filed": "2024-05-31",
+          "period": "2024-05-04 00:00:00",
+          "accession": "0001835632-24-000063",
+          "url": "https://www.sec.gov/Archives/edgar/data/1835632/000183563224000063/"
         }
       ],
       "market": {
-        "price": 271.25,
-        "date": "2026-10-05",
+        "price": 280.24,
+        "date": "2026-10-07",
         "currency": "USD",
         "source": "Finnhub EOD"
       }
@@ -10190,12 +10176,12 @@
       "dataBasis": "reported-financials",
       "reportCurrency": "USD",
       "metrics": {
-        "beta": 2.178868,
+        "beta": 2.185229,
         "epsTTM": 4.1127,
-        "peTTM": 80.3583,
-        "psTTM": 9.0878,
-        "evEbitdaTTM": 52.1652,
-        "evRevenueTTM": 9.3772,
+        "peTTM": 81.1648,
+        "psTTM": 9.179,
+        "evEbitdaTTM": 52.6725,
+        "evRevenueTTM": 9.4684,
         "revenueGrowth3Y": 11.32,
         "revenueGrowth5Y": 18.04,
         "epsGrowth3Y": null,
@@ -10356,13 +10342,6 @@
       "filings": [
         {
           "form": "10-Q",
-          "filed": "2026-05-06",
-          "period": "2026-03-31 00:00:00",
-          "accession": "0000820318-26-000013",
-          "url": "https://www.sec.gov/Archives/edgar/data/820318/000082031826000013/"
-        },
-        {
-          "form": "10-Q",
           "filed": "2026-02-04",
           "period": "2025-12-31 00:00:00",
           "accession": "0000820318-26-000006",
@@ -10409,11 +10388,18 @@
           "period": "2024-06-30 00:00:00",
           "accession": "0000820318-24-000016",
           "url": "https://www.sec.gov/Archives/edgar/data/820318/000082031824000016/"
+        },
+        {
+          "form": "10-Q",
+          "filed": "2024-05-07",
+          "period": "2024-03-31 00:00:00",
+          "accession": "0000820318-24-000009",
+          "url": "https://www.sec.gov/Archives/edgar/data/820318/000082031824000009/"
         }
       ],
       "market": {
-        "price": 333.64,
-        "date": "2026-10-05",
+        "price": 328.07,
+        "date": "2026-10-07",
         "currency": "USD",
         "source": "Finnhub EOD"
       }
@@ -10431,12 +10417,12 @@
       "dataBasis": "reported-financials",
       "reportCurrency": "USD",
       "metrics": {
-        "beta": 1.618787,
+        "beta": 1.6220986,
         "epsTTM": -81.4174,
         "peTTM": null,
-        "psTTM": 32.5871,
-        "evEbitdaTTM": 302.1668,
-        "evRevenueTTM": 32.4523,
+        "psTTM": 33.5705,
+        "evEbitdaTTM": 311.3238,
+        "evRevenueTTM": 33.4358,
         "revenueGrowth3Y": 19.48,
         "revenueGrowth5Y": 11.58,
         "epsGrowth3Y": null,
@@ -10597,13 +10583,6 @@
       "filings": [
         {
           "form": "10-Q",
-          "filed": "2026-05-06",
-          "period": "2026-03-28 00:00:00",
-          "accession": "0001628280-26-030777",
-          "url": "https://www.sec.gov/Archives/edgar/data/1633978/000162828026030777/"
-        },
-        {
-          "form": "10-Q",
           "filed": "2026-02-04",
           "period": "2025-12-27 00:00:00",
           "accession": "0001628280-26-005129",
@@ -10650,11 +10629,18 @@
           "period": "2024-06-29 00:00:00",
           "accession": "0001628280-24-038024",
           "url": "https://www.sec.gov/Archives/edgar/data/1633978/000162828024038024/"
+        },
+        {
+          "form": "10-Q",
+          "filed": "2024-05-07",
+          "period": "2024-03-30 00:00:00",
+          "accession": "0001628280-24-020767",
+          "url": "https://www.sec.gov/Archives/edgar/data/1633978/000162828024020767/"
         }
       ],
       "market": {
-        "price": 1091.67,
-        "date": "2026-10-05",
+        "price": 1106.75,
+        "date": "2026-10-07",
         "currency": "USD",
         "source": "Finnhub EOD"
       }
@@ -10672,12 +10658,12 @@
       "dataBasis": "reported-financials",
       "reportCurrency": "USD",
       "metrics": {
-        "beta": 1.0049148,
+        "beta": 1.0065198,
         "epsTTM": 3.3282,
-        "peTTM": 33.527,
-        "psTTM": 7.0241,
-        "evEbitdaTTM": 28.6857,
-        "evRevenueTTM": 7.3765,
+        "peTTM": 35.0485,
+        "psTTM": 7.3429,
+        "evEbitdaTTM": 29.9253,
+        "evRevenueTTM": 7.6953,
         "revenueGrowth3Y": 3.57,
         "revenueGrowth5Y": 4.92,
         "epsGrowth3Y": 2.69,
@@ -10838,13 +10824,6 @@
       "filings": [
         {
           "form": "10-Q",
-          "filed": "2026-05-19",
-          "period": "2026-04-25 00:00:00",
-          "accession": "0000858877-26-000078",
-          "url": "https://www.sec.gov/Archives/edgar/data/858877/000085887726000078/"
-        },
-        {
-          "form": "10-Q",
           "filed": "2026-02-17",
           "period": "2026-01-24 00:00:00",
           "accession": "0000858877-26-000021",
@@ -10891,11 +10870,18 @@
           "period": "2024-07-27 00:00:00",
           "accession": "0000858877-24-000017",
           "url": "https://www.sec.gov/Archives/edgar/data/858877/000085887724000017/"
+        },
+        {
+          "form": "10-Q",
+          "filed": "2024-05-21",
+          "period": "2024-04-27 00:00:00",
+          "accession": "0000858877-24-000007",
+          "url": "https://www.sec.gov/Archives/edgar/data/858877/000085887724000007/"
         }
       ],
       "market": {
-        "price": 112.82,
-        "date": "2026-10-05",
+        "price": 117.35,
+        "date": "2026-10-07",
         "currency": "USD",
         "source": "Finnhub EOD"
       }
@@ -10913,12 +10899,12 @@
       "dataBasis": "reported-financials",
       "reportCurrency": "USD",
       "metrics": {
-        "beta": 1.335632,
+        "beta": 1.3390609,
         "epsTTM": 4.4813,
-        "peTTM": 83.5366,
-        "psTTM": 9.0796,
-        "evEbitdaTTM": 73.9268,
-        "evRevenueTTM": 9.2098,
+        "peTTM": 84.4446,
+        "psTTM": 9.1783,
+        "evEbitdaTTM": 74.719,
+        "evRevenueTTM": 9.3085,
         "revenueGrowth3Y": 9.5,
         "revenueGrowth5Y": 6.19,
         "epsGrowth3Y": -5.45,
@@ -11079,13 +11065,6 @@
       "filings": [
         {
           "form": "10-Q",
-          "filed": "2026-06-04",
-          "period": "2026-05-02 00:00:00",
-          "accession": "0001628280-26-040767",
-          "url": "https://www.sec.gov/Archives/edgar/data/936395/000162828026040767/"
-        },
-        {
-          "form": "10-Q",
           "filed": "2026-03-05",
           "period": "2026-01-31 00:00:00",
           "accession": "0001628280-26-015152",
@@ -11132,11 +11111,18 @@
           "period": "2024-07-27 00:00:00",
           "accession": "0000936395-24-000032",
           "url": "https://www.sec.gov/Archives/edgar/data/936395/000093639524000032/"
+        },
+        {
+          "form": "10-Q",
+          "filed": "2024-06-06",
+          "period": "2024-04-27 00:00:00",
+          "accession": "0000936395-24-000025",
+          "url": "https://www.sec.gov/Archives/edgar/data/936395/000093639524000025/"
         }
       ],
       "market": {
-        "price": 389.69,
-        "date": "2026-10-05",
+        "price": 427.33,
+        "date": "2026-10-07",
         "currency": "USD",
         "source": "Finnhub EOD"
       }
@@ -11154,12 +11140,12 @@
       "dataBasis": "reported-financials",
       "reportCurrency": "USD",
       "metrics": {
-        "beta": 2.1160545,
+        "beta": 2.1151109,
         "epsTTM": 4.418900000000001,
-        "peTTM": 55.9289,
-        "psTTM": 8.4384,
-        "evEbitdaTTM": 40.8844,
-        "evRevenueTTM": 8.4496,
+        "peTTM": 56.3075,
+        "psTTM": 8.4955,
+        "evEbitdaTTM": 41.1607,
+        "evRevenueTTM": 8.5067,
         "revenueGrowth3Y": 21.59,
         "revenueGrowth5Y": 18.54,
         "epsGrowth3Y": 156.36,
@@ -11319,13 +11305,6 @@
       ],
       "filings": [
         {
-          "form": "10-Q",
-          "filed": "2026-04-22",
-          "period": "2026-03-31 00:00:00",
-          "accession": "0001628280-26-026556",
-          "url": "https://www.sec.gov/Archives/edgar/data/1674101/000162828026026556/"
-        },
-        {
           "form": "10-K",
           "filed": "2026-02-13",
           "period": "2025-12-31 00:00:00",
@@ -11373,11 +11352,18 @@
           "period": "2024-06-30 00:00:00",
           "accession": "0001628280-24-033173",
           "url": "https://www.sec.gov/Archives/edgar/data/1674101/000162828024033173/"
+        },
+        {
+          "form": "10-Q",
+          "filed": "2024-04-26",
+          "period": "2024-03-31 00:00:00",
+          "accession": "0001628280-24-018417",
+          "url": "https://www.sec.gov/Archives/edgar/data/1674101/000162828024018417/"
         }
       ],
       "market": {
-        "price": 253.62,
-        "date": "2026-10-05",
+        "price": 244.45,
+        "date": "2026-10-07",
         "currency": "USD",
         "source": "Finnhub EOD"
       }
@@ -11395,12 +11381,12 @@
       "dataBasis": "reported-financials",
       "reportCurrency": "USD",
       "metrics": {
-        "beta": 1.1224377,
+        "beta": 1.1213897,
         "epsTTM": 9.831900000000001,
-        "peTTM": 44.4495,
-        "psTTM": 5.6715,
-        "evEbitdaTTM": 29.5307,
-        "evRevenueTTM": 6.3419,
+        "peTTM": 44.4151,
+        "psTTM": 5.6671,
+        "evEbitdaTTM": 29.5103,
+        "evRevenueTTM": 6.3375,
         "revenueGrowth3Y": 9.77,
         "revenueGrowth5Y": 8.98,
         "epsGrowth3Y": 19.38,
@@ -11560,13 +11546,6 @@
       ],
       "filings": [
         {
-          "form": "10-Q",
-          "filed": "2026-05-05",
-          "period": "2026-03-31 00:00:00",
-          "accession": "0001551182-26-000013",
-          "url": "https://www.sec.gov/Archives/edgar/data/1551182/000155118226000013/"
-        },
-        {
           "form": "10-K",
           "filed": "2026-02-26",
           "period": "2025-12-31 00:00:00",
@@ -11614,11 +11593,18 @@
           "period": "2024-06-30 00:00:00",
           "accession": "0001551182-24-000035",
           "url": "https://www.sec.gov/Archives/edgar/data/1551182/000155118224000035/"
+        },
+        {
+          "form": "10-Q",
+          "filed": "2024-04-30",
+          "period": "2024-03-31 00:00:00",
+          "accession": "0001551182-24-000013",
+          "url": "https://www.sec.gov/Archives/edgar/data/1551182/000155118224000013/"
         }
       ],
       "market": {
-        "price": 432.6,
-        "date": "2026-10-05",
+        "price": 431.73,
+        "date": "2026-10-07",
         "currency": "USD",
         "source": "Finnhub EOD"
       }
@@ -11636,12 +11622,12 @@
       "dataBasis": "reported-financials",
       "reportCurrency": "USD",
       "metrics": {
-        "beta": 1.2839216,
+        "beta": 1.2851231,
         "epsTTM": 8.730599999999999,
-        "peTTM": 76.1175,
-        "psTTM": 3.0694,
-        "evEbitdaTTM": 40.668,
-        "evRevenueTTM": 3.2395,
+        "peTTM": 79.728,
+        "psTTM": 3.215,
+        "evEbitdaTTM": 42.4957,
+        "evRevenueTTM": 3.3851,
         "revenueGrowth3Y": 18.6,
         "revenueGrowth5Y": 20.52,
         "epsGrowth3Y": 26.99,
@@ -11801,13 +11787,6 @@
       ],
       "filings": [
         {
-          "form": "10-Q",
-          "filed": "2026-04-30",
-          "period": "2026-03-31 00:00:00",
-          "accession": "0001050915-26-000016",
-          "url": "https://www.sec.gov/Archives/edgar/data/1050915/000105091526000016/"
-        },
-        {
           "form": "10-K",
           "filed": "2026-02-19",
           "period": "2025-12-31 00:00:00",
@@ -11855,11 +11834,18 @@
           "period": "2024-06-30 00:00:00",
           "accession": "0001050915-24-000140",
           "url": "https://www.sec.gov/Archives/edgar/data/1050915/000105091524000140/"
+        },
+        {
+          "form": "10-Q",
+          "filed": "2024-05-02",
+          "period": "2024-03-31 00:00:00",
+          "accession": "0001050915-24-000082",
+          "url": "https://www.sec.gov/Archives/edgar/data/1050915/000105091524000082/"
         }
       ],
       "market": {
-        "price": 683.42,
-        "date": "2026-10-05",
+        "price": 708.46,
+        "date": "2026-10-07",
         "currency": "USD",
         "source": "Finnhub EOD"
       }
@@ -11875,14 +11861,14 @@
       "status": "ready",
       "statusNote": null,
       "dataBasis": "reported-financials",
-      "reportCurrency": "UNIT_STANDARD_USD_7WBEDGKG5UKYAOC07IZVVG",
+      "reportCurrency": "UNIT_STANDARD_USD_UXM0ZLFRXKQG3Y1133OMUQ",
       "metrics": {
-        "beta": 1.8486654,
+        "beta": 1.8478904,
         "epsTTM": 2.651,
-        "peTTM": 68.4369,
-        "psTTM": 2.9263,
-        "evEbitdaTTM": 33.5773,
-        "evRevenueTTM": 3.0547,
+        "peTTM": 70.9287,
+        "psTTM": 3.0328,
+        "evEbitdaTTM": 34.7484,
+        "evRevenueTTM": 3.1612,
         "revenueGrowth3Y": 11.45,
         "revenueGrowth5Y": 11.96,
         "epsGrowth3Y": -7.99,
@@ -11895,6 +11881,30 @@
         "netProfitMarginTTM": 4.28
       },
       "periods": [
+        {
+          "fiscalYear": 2020,
+          "end": "2020-03-31 00:00:00",
+          "filed": "2020-05-29",
+          "form": "10-K",
+          "accession": "0001140361-20-012690",
+          "currency": "U001",
+          "revenue": 1975500000,
+          "grossProfit": 307500000,
+          "operatingIncome": 37900000,
+          "netIncome": -2200000,
+          "epsDiluted": -0.04,
+          "cashFromOperations": 57900000,
+          "capex": 71300000,
+          "freeCashFlow": -13400000,
+          "depreciation": 77100000,
+          "ebitda": 115000000,
+          "assets": 1536100000,
+          "liabilities": 1042500000,
+          "equity": 487900000,
+          "cash": 70900000,
+          "debt": 14800000,
+          "shares": 50800000
+        },
         {
           "fiscalYear": 2021,
           "end": "2021-03-31 00:00:00",
@@ -12014,40 +12024,9 @@
           "cash": 71600000,
           "debt": 9300000,
           "shares": 53900000
-        },
-        {
-          "fiscalYear": 2026,
-          "end": "2026-03-31 00:00:00",
-          "filed": "2026-05-27",
-          "form": "10-K",
-          "accession": "0001104659-26-066795",
-          "currency": "UNIT_STANDARD_USD_7WBEDGKG5UKYAOC07IZVVG",
-          "revenue": 3181100000,
-          "grossProfit": 731100000,
-          "operatingIncome": 342400000,
-          "netIncome": 121500000,
-          "epsDiluted": 2.26,
-          "cashFromOperations": 248700000,
-          "capex": 143300000,
-          "freeCashFlow": 105400000,
-          "depreciation": 79700000,
-          "ebitda": 422100000,
-          "assets": 2674600000,
-          "liabilities": 1471800000,
-          "equity": 1194500000,
-          "cash": 73500000,
-          "debt": 7500000,
-          "shares": 53800000
         }
       ],
       "filings": [
-        {
-          "form": "10-K",
-          "filed": "2026-05-27",
-          "period": "2026-03-31 00:00:00",
-          "accession": "0001104659-26-066795",
-          "url": "https://www.sec.gov/Archives/edgar/data/67347/000110465926066795/"
-        },
         {
           "form": "10-Q",
           "filed": "2026-02-05",
@@ -12096,11 +12075,18 @@
           "period": "2024-06-30 00:00:00",
           "accession": "0001140361-24-035058",
           "url": "https://www.sec.gov/Archives/edgar/data/67347/000114036124035058/"
+        },
+        {
+          "form": "10-K",
+          "filed": "2024-05-22",
+          "period": "2024-03-31 00:00:00",
+          "accession": "0001140361-24-027133",
+          "url": "https://www.sec.gov/Archives/edgar/data/67347/000114036124027133/"
         }
       ],
       "market": {
-        "price": 182.91,
-        "date": "2026-10-05",
+        "price": 183.16,
+        "date": "2026-10-07",
         "currency": "USD",
         "source": "Finnhub EOD"
       }
@@ -12118,12 +12104,12 @@
       "dataBasis": "reported-financials",
       "reportCurrency": "USD",
       "metrics": {
-        "beta": 1.1407629,
+        "beta": 1.1409327,
         "epsTTM": 10.2635,
-        "peTTM": 27.365,
-        "psTTM": 3.0323,
-        "evEbitdaTTM": 19.92,
-        "evRevenueTTM": 3.7999,
+        "peTTM": 30.7169,
+        "psTTM": 3.4037,
+        "evEbitdaTTM": 21.867,
+        "evRevenueTTM": 4.1713,
         "revenueGrowth3Y": 1.47,
         "revenueGrowth5Y": 7.72,
         "epsGrowth3Y": null,
@@ -12283,13 +12269,6 @@
       ],
       "filings": [
         {
-          "form": "10-Q",
-          "filed": "2026-05-11",
-          "period": "2026-03-31 00:00:00",
-          "accession": "0001868275-26-000067",
-          "url": "https://www.sec.gov/Archives/edgar/data/1868275/000186827526000067/"
-        },
-        {
           "form": "10-K",
           "filed": "2026-02-24",
           "period": "2025-12-31 00:00:00",
@@ -12337,11 +12316,18 @@
           "period": "2024-06-30 00:00:00",
           "accession": "0001868275-24-000054",
           "url": "https://www.sec.gov/Archives/edgar/data/1868275/000186827524000054/"
+        },
+        {
+          "form": "10-Q",
+          "filed": "2024-05-09",
+          "period": "2024-03-31 00:00:00",
+          "accession": "0001868275-24-000026",
+          "url": "https://www.sec.gov/Archives/edgar/data/1868275/000186827524000026/"
         }
       ],
       "market": {
-        "price": 267.62,
-        "date": "2026-10-05",
+        "price": 288.27,
+        "date": "2026-10-07",
         "currency": "USD",
         "source": "Finnhub EOD"
       }
@@ -12359,12 +12345,12 @@
       "dataBasis": "reported-financials",
       "reportCurrency": "USD",
       "metrics": {
-        "beta": 1.3832312,
+        "beta": 1.3829302,
         "epsTTM": 6.476699999999999,
-        "peTTM": 21.5068,
-        "psTTM": 2.5137,
-        "evEbitdaTTM": 12.392,
-        "evRevenueTTM": 3.5711,
+        "peTTM": 23.953,
+        "psTTM": 2.7997,
+        "evEbitdaTTM": 13.3841,
+        "evRevenueTTM": 3.857,
         "revenueGrowth3Y": 4.01,
         "revenueGrowth5Y": 10.14,
         "epsGrowth3Y": null,
@@ -12524,13 +12510,6 @@
       ],
       "filings": [
         {
-          "form": "10-Q",
-          "filed": "2026-05-08",
-          "period": "2026-03-31 00:00:00",
-          "accession": "0001692819-26-000014",
-          "url": "https://www.sec.gov/Archives/edgar/data/1692819/000169281926000014/"
-        },
-        {
           "form": "10-K",
           "filed": "2026-02-27",
           "period": "2025-12-31 00:00:00",
@@ -12578,11 +12557,18 @@
           "period": "2024-03-31 00:00:00",
           "accession": "0001692819-24-000033",
           "url": "https://www.sec.gov/Archives/edgar/data/1692819/000169281924000033/"
+        },
+        {
+          "form": "10-K",
+          "filed": "2024-02-29",
+          "period": "2023-12-31 00:00:00",
+          "accession": "0001692819-24-000012",
+          "url": "https://www.sec.gov/Archives/edgar/data/1692819/000169281924000012/"
         }
       ],
       "market": {
-        "price": 144.89,
-        "date": "2026-10-05",
+        "price": 157.38,
+        "date": "2026-10-07",
         "currency": "USD",
         "source": "Finnhub EOD"
       }
@@ -12600,12 +12586,12 @@
       "dataBasis": "reported-financials",
       "reportCurrency": "USD",
       "metrics": {
-        "beta": 0.96913624,
+        "beta": 0.9631268,
         "epsTTM": 34.9802,
-        "peTTM": 27.6732,
-        "psTTM": 6.3738,
-        "evEbitdaTTM": 35.8946,
-        "evRevenueTTM": 6.1242,
+        "peTTM": 28.7692,
+        "psTTM": 6.6262,
+        "evEbitdaTTM": 37.3742,
+        "evRevenueTTM": 6.3766,
         "revenueGrowth3Y": 8.68,
         "revenueGrowth5Y": null,
         "epsGrowth3Y": null,
@@ -12669,13 +12655,6 @@
       ],
       "filings": [
         {
-          "form": "10-Q",
-          "filed": "2026-04-22",
-          "period": "2026-03-31 00:00:00",
-          "accession": "0001996810-26-000064",
-          "url": "https://www.sec.gov/Archives/edgar/data/1996810/000199681026000064/"
-        },
-        {
           "form": "10-K",
           "filed": "2026-01-29",
           "period": "2025-12-31 00:00:00",
@@ -12726,8 +12705,8 @@
         }
       ],
       "market": {
-        "price": 990,
-        "date": "2026-10-05",
+        "price": 1010.52,
+        "date": "2026-10-07",
         "currency": "USD",
         "source": "Finnhub EOD"
       }
@@ -12745,12 +12724,12 @@
       "dataBasis": "reported-financials",
       "reportCurrency": "USD",
       "metrics": {
-        "beta": 1.2181346,
+        "beta": 1.2169845,
         "epsTTM": 4.1093,
-        "peTTM": 23.6946,
-        "psTTM": 0.6073,
-        "evEbitdaTTM": 14.3035,
-        "evRevenueTTM": 1.3045,
+        "peTTM": 25.3169,
+        "psTTM": 0.6489,
+        "evEbitdaTTM": 14.7594,
+        "evRevenueTTM": 1.3461,
         "revenueGrowth3Y": -0.88,
         "revenueGrowth5Y": 27.56,
         "epsGrowth3Y": -5.68,
@@ -12910,13 +12889,6 @@
       ],
       "filings": [
         {
-          "form": "10-Q",
-          "filed": "2026-05-06",
-          "period": "2026-03-31 00:00:00",
-          "accession": "0001013871-26-000012",
-          "url": "https://www.sec.gov/Archives/edgar/data/1013871/000101387126000012/"
-        },
-        {
           "form": "10-K",
           "filed": "2026-02-24",
           "period": "2025-12-31 00:00:00",
@@ -12964,11 +12936,18 @@
           "period": "2024-06-30 00:00:00",
           "accession": "0001013871-24-000015",
           "url": "https://www.sec.gov/Archives/edgar/data/1013871/000101387124000015/"
+        },
+        {
+          "form": "10-Q",
+          "filed": "2024-05-07",
+          "period": "2024-03-31 00:00:00",
+          "accession": "0001013871-24-000010",
+          "url": "https://www.sec.gov/Archives/edgar/data/1013871/000101387124000010/"
         }
       ],
       "market": {
-        "price": 96.8,
-        "date": "2026-10-05",
+        "price": 101.43,
+        "date": "2026-10-07",
         "currency": "USD",
         "source": "Finnhub EOD"
       }
@@ -12986,12 +12965,12 @@
       "dataBasis": "reported-financials",
       "reportCurrency": "USD",
       "metrics": {
-        "beta": 0.62673175,
+        "beta": 0.62697643,
         "epsTTM": 4.4567,
-        "peTTM": 17.2347,
-        "psTTM": 5.584,
-        "evEbitdaTTM": 17.3775,
-        "evRevenueTTM": 9.3236,
+        "peTTM": 17.3379,
+        "psTTM": 5.6174,
+        "evEbitdaTTM": 17.4399,
+        "evRevenueTTM": 9.357,
         "revenueGrowth3Y": 9.36,
         "revenueGrowth5Y": 9.21,
         "epsGrowth3Y": 16.35,
@@ -13151,13 +13130,6 @@
       ],
       "filings": [
         {
-          "form": "10-Q",
-          "filed": "2026-04-23",
-          "period": "2026-03-31 00:00:00",
-          "accession": "0000753308-26-000031",
-          "url": "https://www.sec.gov/Archives/edgar/data/753308/000075330826000031/"
-        },
-        {
           "form": "10-K",
           "filed": "2026-02-13",
           "period": "2025-12-31 00:00:00",
@@ -13205,11 +13177,18 @@
           "period": "2024-06-30 00:00:00",
           "accession": "0000753308-24-000050",
           "url": "https://www.sec.gov/Archives/edgar/data/753308/000075330824000050/"
+        },
+        {
+          "form": "10-Q",
+          "filed": "2024-04-23",
+          "period": "2024-03-31 00:00:00",
+          "accession": "0000753308-24-000023",
+          "url": "https://www.sec.gov/Archives/edgar/data/753308/000075330824000023/"
         }
       ],
       "market": {
-        "price": 76.28,
-        "date": "2026-10-05",
+        "price": 77.46,
+        "date": "2026-10-07",
         "currency": "USD",
         "source": "Finnhub EOD"
       }
@@ -13227,7 +13206,7 @@
       "dataBasis": "reported-financials",
       "reportCurrency": "USD",
       "metrics": {
-        "beta": 1.2773781,
+        "beta": 1.2718029,
         "epsTTM": -0.9317,
         "peTTM": null,
         "psTTM": null,
@@ -13296,13 +13275,6 @@
       ],
       "filings": [
         {
-          "form": "10-Q",
-          "filed": "2026-05-12",
-          "period": "2026-03-31 00:00:00",
-          "accession": "0001628280-26-034095",
-          "url": "https://www.sec.gov/Archives/edgar/data/1849056/000162828026034095/"
-        },
-        {
           "form": "10-K",
           "filed": "2026-03-17",
           "period": "2025-12-31 00:00:00",
@@ -13346,8 +13318,8 @@
         }
       ],
       "market": {
-        "price": 35.97,
-        "date": "2026-10-05",
+        "price": 36.6,
+        "date": "2026-10-07",
         "currency": "USD",
         "source": "Finnhub EOD"
       }
@@ -13365,12 +13337,12 @@
       "dataBasis": "basic-metrics",
       "reportCurrency": "CNY",
       "metrics": {
-        "beta": 0.556652,
+        "beta": 0.5563973,
         "epsTTM": -1.7449000000000003,
         "peTTM": null,
-        "psTTM": 1.4794,
-        "evEbitdaTTM": 15.1863,
-        "evRevenueTTM": 2.1026,
+        "psTTM": 1.483,
+        "evEbitdaTTM": 15.2119,
+        "evRevenueTTM": 2.1061,
         "revenueGrowth3Y": 1.44,
         "revenueGrowth5Y": 3.81,
         "epsGrowth3Y": -11.85,
@@ -13560,8 +13532,8 @@
       ],
       "filings": [],
       "market": {
-        "price": 86.99,
-        "date": "2026-10-05",
+        "price": 85.91,
+        "date": "2026-10-07",
         "currency": "USD",
         "source": "Finnhub EOD"
       }
@@ -13579,12 +13551,12 @@
       "dataBasis": "reported-financials",
       "reportCurrency": "USD",
       "metrics": {
-        "beta": 0.38654706,
+        "beta": 0.3874864,
         "epsTTM": 3.8044,
-        "peTTM": 24.2065,
-        "psTTM": 1.6986,
-        "evEbitdaTTM": 53.8445,
-        "evRevenueTTM": 1.8169,
+        "peTTM": 24.438,
+        "psTTM": 1.7148,
+        "evEbitdaTTM": 54.3259,
+        "evRevenueTTM": 1.8331,
         "revenueGrowth3Y": 5.62,
         "revenueGrowth5Y": 7.37,
         "epsGrowth3Y": 17.04,
@@ -13632,8 +13604,8 @@
         }
       ],
       "market": {
-        "price": 110.8,
-        "date": "2026-10-05",
+        "price": 107.37,
+        "date": "2026-10-07",
         "currency": "USD",
         "source": "Finnhub EOD"
       }
@@ -13651,12 +13623,12 @@
       "dataBasis": "basic-metrics",
       "reportCurrency": "CNY",
       "metrics": {
-        "beta": 2.0889387,
+        "beta": 2.0873306,
         "epsTTM": -0.13219999999999998,
         "peTTM": null,
-        "psTTM": 1.6694,
-        "evEbitdaTTM": 48.3999,
-        "evRevenueTTM": 2.2546,
+        "psTTM": 1.6799,
+        "evEbitdaTTM": 48.6257,
+        "evRevenueTTM": 2.2651,
         "revenueGrowth3Y": 5.33,
         "revenueGrowth5Y": 7.76,
         "epsGrowth3Y": null,
@@ -13846,8 +13818,8 @@
       ],
       "filings": [],
       "market": {
-        "price": 9.27,
-        "date": "2026-10-05",
+        "price": 9.2,
+        "date": "2026-10-07",
         "currency": "USD",
         "source": "Finnhub EOD"
       }
@@ -13868,9 +13840,9 @@
         "beta": 1.7520108,
         "epsTTM": -1.6972000000000003,
         "peTTM": null,
-        "psTTM": 13.8033,
+        "psTTM": 13.8851,
         "evEbitdaTTM": null,
-        "evRevenueTTM": 9.3991,
+        "evRevenueTTM": 9.4808,
         "revenueGrowth3Y": 9.07,
         "revenueGrowth5Y": null,
         "epsGrowth3Y": null,
@@ -14031,8 +14003,8 @@
       ],
       "filings": [],
       "market": {
-        "price": 5.07,
-        "date": "2026-10-05",
+        "price": 5.09,
+        "date": "2026-10-07",
         "currency": "USD",
         "source": "Finnhub EOD"
       }
@@ -14053,9 +14025,9 @@
         "beta": 3.3309073,
         "epsTTM": -0.357,
         "peTTM": null,
-        "psTTM": 20.7679,
+        "psTTM": 20.8121,
         "evEbitdaTTM": null,
-        "evRevenueTTM": 18.1518,
+        "evRevenueTTM": 18.196,
         "revenueGrowth3Y": 9.59,
         "revenueGrowth5Y": null,
         "epsGrowth3Y": null,
@@ -14216,8 +14188,8 @@
       ],
       "filings": [],
       "market": {
-        "price": 6.11,
-        "date": "2026-10-05",
+        "price": 6.05,
+        "date": "2026-10-07",
         "currency": "USD",
         "source": "Finnhub EOD"
       }
@@ -14235,12 +14207,12 @@
       "dataBasis": "basic-metrics",
       "reportCurrency": "CNY",
       "metrics": {
-        "beta": 1.3430711,
+        "beta": 1.336593,
         "epsTTM": 2.8874,
-        "peTTM": 33.0663,
-        "psTTM": 4.9363,
+        "peTTM": 32.8718,
+        "psTTM": 4.9073,
         "evEbitdaTTM": null,
-        "evRevenueTTM": 4.7026,
+        "evRevenueTTM": 4.6736,
         "revenueGrowth3Y": 61.35,
         "revenueGrowth5Y": 54.13,
         "epsGrowth3Y": null,
@@ -14430,8 +14402,8 @@
       ],
       "filings": [],
       "market": {
-        "price": 15.91,
-        "date": "2026-10-05",
+        "price": 16,
+        "date": "2026-10-07",
         "currency": "USD",
         "source": "Finnhub EOD"
       }
@@ -14485,12 +14457,12 @@
       "dataBasis": "reported-financials",
       "reportCurrency": "USD",
       "metrics": {
-        "beta": 2.1505291,
+        "beta": 2.1442926,
         "epsTTM": 2.1323,
-        "peTTM": 35.9259,
-        "psTTM": 5.2007,
-        "evEbitdaTTM": 29.8767,
-        "evRevenueTTM": 4.5952,
+        "peTTM": 35.9862,
+        "psTTM": 5.2094,
+        "evEbitdaTTM": 29.9334,
+        "evRevenueTTM": 4.604,
         "revenueGrowth3Y": 32.35,
         "revenueGrowth5Y": 41.91,
         "epsGrowth3Y": 32.43,
@@ -14650,13 +14622,6 @@
       ],
       "filings": [
         {
-          "form": "10-Q",
-          "filed": "2026-05-08",
-          "period": "2026-03-31 00:00:00",
-          "accession": "0001628280-26-032842",
-          "url": "https://www.sec.gov/Archives/edgar/data/1680062/000162828026032842/"
-        },
-        {
           "form": "10-K",
           "filed": "2026-03-02",
           "period": "2025-12-31 00:00:00",
@@ -14704,11 +14669,18 @@
           "period": "2023-12-31 00:00:00",
           "accession": "0001680062-24-000008",
           "url": "https://www.sec.gov/Archives/edgar/data/1680062/000168006224000008/"
+        },
+        {
+          "form": "10-Q",
+          "filed": "2023-11-08",
+          "period": "2023-09-30 00:00:00",
+          "accession": "0001680062-23-000021",
+          "url": "https://www.sec.gov/Archives/edgar/data/1680062/000168006223000021/"
         }
       ],
       "market": {
-        "price": 76.17,
-        "date": "2026-10-05",
+        "price": 72.9,
+        "date": "2026-10-07",
         "currency": "USD",
         "source": "Finnhub EOD"
       }
@@ -14726,12 +14698,12 @@
       "dataBasis": "basic-metrics",
       "reportCurrency": "CNY",
       "metrics": {
-        "beta": -0.058390725,
+        "beta": -0.059482794,
         "epsTTM": 15.5571,
-        "peTTM": 7.8136,
-        "psTTM": 1.596,
-        "evEbitdaTTM": 5.992,
-        "evRevenueTTM": 1.31,
+        "peTTM": 8.0747,
+        "psTTM": 1.6494,
+        "evEbitdaTTM": 6.2359,
+        "evRevenueTTM": 1.3634,
         "revenueGrowth3Y": 49,
         "revenueGrowth5Y": 48.65,
         "epsGrowth3Y": 44.45,
@@ -14921,8 +14893,8 @@
       ],
       "filings": [],
       "market": {
-        "price": 77.9,
-        "date": "2026-10-05",
+        "price": 78.32,
+        "date": "2026-10-07",
         "currency": "USD",
         "source": "Finnhub EOD"
       }
@@ -14942,10 +14914,10 @@
       "metrics": {
         "beta": 1.3137575,
         "epsTTM": 5.1251,
-        "peTTM": 14.3224,
-        "psTTM": 0.1613,
-        "evEbitdaTTM": 136.5769,
-        "evRevenueTTM": 0.1467,
+        "peTTM": 14.2517,
+        "psTTM": 0.1605,
+        "evEbitdaTTM": 135.8355,
+        "evRevenueTTM": 0.1459,
         "revenueGrowth3Y": 7.76,
         "revenueGrowth5Y": 11.91,
         "epsGrowth3Y": 26.41,
@@ -15135,8 +15107,8 @@
       ],
       "filings": [],
       "market": {
-        "price": 26.36,
-        "date": "2026-10-05",
+        "price": 26.65,
+        "date": "2026-10-07",
         "currency": "USD",
         "source": "Finnhub EOD"
       }
@@ -15154,12 +15126,12 @@
       "dataBasis": "basic-metrics",
       "reportCurrency": "CNY",
       "metrics": {
-        "beta": 0.65343523,
+        "beta": 0.6518787,
         "epsTTM": 10.0807,
-        "peTTM": 15.5802,
-        "psTTM": 4.3442,
-        "evEbitdaTTM": 11.4662,
-        "evRevenueTTM": 4.2566,
+        "peTTM": 15.5298,
+        "psTTM": 4.3302,
+        "evEbitdaTTM": 11.4284,
+        "evRevenueTTM": 4.2426,
         "revenueGrowth3Y": 5.29,
         "revenueGrowth5Y": 8.86,
         "epsGrowth3Y": 19.35,
@@ -15349,8 +15321,8 @@
       ],
       "filings": [],
       "market": {
-        "price": 119.38,
-        "date": "2026-10-05",
+        "price": 119.57,
+        "date": "2026-10-07",
         "currency": "USD",
         "source": "Finnhub EOD"
       }
@@ -15368,12 +15340,12 @@
       "dataBasis": "basic-metrics",
       "reportCurrency": "CNY",
       "metrics": {
-        "beta": 0.74012566,
+        "beta": 0.7385249,
         "epsTTM": 2.8512,
-        "peTTM": 8.9536,
-        "psTTM": 2.3532,
-        "evEbitdaTTM": 7.7693,
-        "evRevenueTTM": 2.2853,
+        "peTTM": 8.832,
+        "psTTM": 2.3212,
+        "evEbitdaTTM": 7.6572,
+        "evRevenueTTM": 2.2523,
         "revenueGrowth3Y": 5.1,
         "revenueGrowth5Y": 2.45,
         "epsGrowth3Y": 46.26,
@@ -15563,8 +15535,8 @@
       ],
       "filings": [],
       "market": {
-        "price": 7.87,
-        "date": "2026-10-05",
+        "price": 7.89,
+        "date": "2026-10-07",
         "currency": "USD",
         "source": "Finnhub EOD"
       }
@@ -15582,12 +15554,12 @@
       "dataBasis": "basic-metrics",
       "reportCurrency": "CNY",
       "metrics": {
-        "beta": 0.58403385,
+        "beta": 0.5828603,
         "epsTTM": 3.3696,
-        "peTTM": 26.5283,
-        "psTTM": 1.2979,
-        "evEbitdaTTM": 178.7805,
-        "evRevenueTTM": 1.4363,
+        "peTTM": 26.5744,
+        "psTTM": 1.3001,
+        "evEbitdaTTM": 179.0615,
+        "evRevenueTTM": 1.4386,
         "revenueGrowth3Y": 11.49,
         "revenueGrowth5Y": 20.39,
         "epsGrowth3Y": null,
@@ -15777,8 +15749,8 @@
       ],
       "filings": [],
       "market": {
-        "price": 14.75,
-        "date": "2026-10-05",
+        "price": 14.91,
+        "date": "2026-10-07",
         "currency": "USD",
         "source": "Finnhub EOD"
       }
@@ -15796,12 +15768,12 @@
       "dataBasis": "basic-metrics",
       "reportCurrency": "CNY",
       "metrics": {
-        "beta": 0.8817845,
+        "beta": 0.88234806,
         "epsTTM": -1.9408,
         "peTTM": null,
-        "psTTM": 0.476,
-        "evEbitdaTTM": 586.1537,
-        "evRevenueTTM": 0.4774,
+        "psTTM": 0.4721,
+        "evEbitdaTTM": 581.3759,
+        "evRevenueTTM": 0.4735,
         "revenueGrowth3Y": 21.09,
         "revenueGrowth5Y": 40.02,
         "epsGrowth3Y": null,
@@ -15991,8 +15963,8 @@
       ],
       "filings": [],
       "market": {
-        "price": 3.42,
-        "date": "2026-10-05",
+        "price": 3.46,
+        "date": "2026-10-07",
         "currency": "USD",
         "source": "Finnhub EOD"
       }
@@ -16010,12 +15982,12 @@
       "dataBasis": "basic-metrics",
       "reportCurrency": "CNY",
       "metrics": {
-        "beta": 0.9655731,
+        "beta": 0.9644967,
         "epsTTM": -1.6317,
         "peTTM": null,
-        "psTTM": 0.7975,
-        "evEbitdaTTM": 102.1902,
-        "evRevenueTTM": 1.119,
+        "psTTM": 0.8113,
+        "evEbitdaTTM": 103.4489,
+        "evRevenueTTM": 1.1328,
         "revenueGrowth3Y": 41.89,
         "revenueGrowth5Y": 67.35,
         "epsGrowth3Y": null,
@@ -16205,8 +16177,8 @@
       ],
       "filings": [],
       "market": {
-        "price": 9.4,
-        "date": "2026-10-05",
+        "price": 9.62,
+        "date": "2026-10-07",
         "currency": "USD",
         "source": "Finnhub EOD"
       }
@@ -16227,9 +16199,9 @@
         "beta": 1.2982078,
         "epsTTM": -2.2845,
         "peTTM": null,
-        "psTTM": 0.7131,
-        "evEbitdaTTM": 16.7261,
-        "evRevenueTTM": 0.5479,
+        "psTTM": 0.7093,
+        "evEbitdaTTM": 16.6121,
+        "evRevenueTTM": 0.5441,
         "revenueGrowth3Y": 35.36,
         "revenueGrowth5Y": 64.04,
         "epsGrowth3Y": null,
@@ -16419,8 +16391,8 @@
       ],
       "filings": [],
       "market": {
-        "price": 10.85,
-        "date": "2026-10-05",
+        "price": 11.05,
+        "date": "2026-10-07",
         "currency": "USD",
         "source": "Finnhub EOD"
       }
@@ -16462,12 +16434,12 @@
       "dataBasis": "reported-financials",
       "reportCurrency": "USD",
       "metrics": {
-        "beta": 1.106227,
+        "beta": 1.1050512,
         "epsTTM": 8.723299999999998,
-        "peTTM": 37.7617,
-        "psTTM": 10.4293,
-        "evEbitdaTTM": 29.2537,
-        "evRevenueTTM": 10.5252,
+        "peTTM": 37.6983,
+        "psTTM": 10.4118,
+        "evEbitdaTTM": 29.205,
+        "evRevenueTTM": 10.5077,
         "revenueGrowth3Y": 1.81,
         "revenueGrowth5Y": 8.68,
         "epsGrowth3Y": 6.89,
@@ -16684,8 +16656,8 @@
         }
       ],
       "market": {
-        "price": 332.89,
-        "date": "2026-10-05",
+        "price": 336.22,
+        "date": "2026-10-07",
         "currency": "USD",
         "source": "Finnhub EOD"
       }
@@ -16703,12 +16675,12 @@
       "dataBasis": "reported-financials",
       "reportCurrency": "USD",
       "metrics": {
-        "beta": 1.7661504,
+        "beta": 1.764328,
         "epsTTM": 8.6404,
-        "peTTM": 20.7461,
-        "psTTM": 4.3588,
-        "evEbitdaTTM": 17.3206,
-        "evRevenueTTM": 4.6024,
+        "peTTM": 20.5158,
+        "psTTM": 4.3104,
+        "evEbitdaTTM": 17.1386,
+        "evRevenueTTM": 4.5541,
         "revenueGrowth3Y": 0.06,
         "revenueGrowth5Y": 15.3,
         "epsGrowth3Y": -23.9,
@@ -16869,13 +16841,6 @@
       "filings": [
         {
           "form": "10-Q",
-          "filed": "2026-04-29",
-          "period": "2026-03-29 00:00:00",
-          "accession": "0000804328-26-000061",
-          "url": "https://www.sec.gov/Archives/edgar/data/804328/000080432826000061/"
-        },
-        {
-          "form": "10-Q",
           "filed": "2026-02-04",
           "period": "2025-12-28 00:00:00",
           "accession": "0000804328-26-000017",
@@ -16922,11 +16887,18 @@
           "period": "2024-06-23 00:00:00",
           "accession": "0000804328-24-000056",
           "url": "https://www.sec.gov/Archives/edgar/data/804328/000080432824000056/"
+        },
+        {
+          "form": "10-Q",
+          "filed": "2024-05-01",
+          "period": "2024-03-24 00:00:00",
+          "accession": "0000804328-24-000039",
+          "url": "https://www.sec.gov/Archives/edgar/data/804328/000080432824000039/"
         }
       ],
       "market": {
-        "price": 180.79,
-        "date": "2026-10-05",
+        "price": 179.33,
+        "date": "2026-10-07",
         "currency": "USD",
         "source": "Finnhub EOD"
       }
@@ -16944,12 +16916,12 @@
       "dataBasis": "reported-financials",
       "reportCurrency": "USD",
       "metrics": {
-        "beta": 1.4168485,
+        "beta": 1.4187942,
         "epsTTM": 6.6129,
-        "peTTM": 43.8795,
-        "psTTM": 13.6513,
-        "evEbitdaTTM": 29.4316,
-        "evRevenueTTM": 14.1855,
+        "peTTM": 44.6664,
+        "psTTM": 13.8961,
+        "evEbitdaTTM": 29.9396,
+        "evRevenueTTM": 14.4303,
         "revenueGrowth3Y": -4.07,
         "revenueGrowth5Y": 4.1,
         "epsGrowth3Y": -16.62,
@@ -17109,13 +17081,6 @@
       ],
       "filings": [
         {
-          "form": "10-Q",
-          "filed": "2026-04-24",
-          "period": "2026-03-31 00:00:00",
-          "accession": "0000097476-26-000101",
-          "url": "https://www.sec.gov/Archives/edgar/data/97476/000009747626000101/"
-        },
-        {
           "form": "10-K",
           "filed": "2026-02-06",
           "period": "2025-12-31 00:00:00",
@@ -17163,11 +17128,18 @@
           "period": "2024-06-30 00:00:00",
           "accession": "0000097476-24-000030",
           "url": "https://www.sec.gov/Archives/edgar/data/97476/000009747624000030/"
+        },
+        {
+          "form": "10-Q",
+          "filed": "2024-04-24",
+          "period": "2024-03-31 00:00:00",
+          "accession": "0000097476-24-000021",
+          "url": "https://www.sec.gov/Archives/edgar/data/97476/000009747624000021/"
         }
       ],
       "market": {
-        "price": 294.9,
-        "date": "2026-10-05",
+        "price": 291.43,
+        "date": "2026-10-07",
         "currency": "USD",
         "source": "Finnhub EOD"
       }
@@ -17185,12 +17157,12 @@
       "dataBasis": "reported-financials",
       "reportCurrency": "USD",
       "metrics": {
-        "beta": 1.2804993,
+        "beta": 1.2823209,
         "epsTTM": 8.4269,
-        "peTTM": 48.5819,
-        "psTTM": 14.4713,
-        "evEbitdaTTM": 36.5559,
-        "evRevenueTTM": 14.9723,
+        "peTTM": 49.1233,
+        "psTTM": 14.6325,
+        "evEbitdaTTM": 36.9497,
+        "evRevenueTTM": 15.1336,
         "revenueGrowth3Y": -2.84,
         "revenueGrowth5Y": 14.49,
         "epsGrowth3Y": -4.58,
@@ -17351,13 +17323,6 @@
       "filings": [
         {
           "form": "10-Q",
-          "filed": "2026-05-20",
-          "period": "2026-05-02 00:00:00",
-          "accession": "0000006281-26-000052",
-          "url": "https://www.sec.gov/Archives/edgar/data/6281/000000628126000052/"
-        },
-        {
-          "form": "10-Q",
           "filed": "2026-02-18",
           "period": "2026-01-31 00:00:00",
           "accession": "0000006281-26-000016",
@@ -17404,11 +17369,18 @@
           "period": "2024-08-03 00:00:00",
           "accession": "0000006281-24-000159",
           "url": "https://www.sec.gov/Archives/edgar/data/6281/000000628124000159/"
+        },
+        {
+          "form": "10-Q",
+          "filed": "2024-05-22",
+          "period": "2024-05-04 00:00:00",
+          "accession": "0000006281-24-000132",
+          "url": "https://www.sec.gov/Archives/edgar/data/6281/000000628124000132/"
         }
       ],
       "market": {
-        "price": 419.1,
-        "date": "2026-10-05",
+        "price": 413.16,
+        "date": "2026-10-07",
         "currency": "USD",
         "source": "Finnhub EOD"
       }
@@ -17426,12 +17398,12 @@
       "dataBasis": "reported-financials",
       "reportCurrency": "USD",
       "metrics": {
-        "beta": 1.8944056,
+        "beta": 1.8945167,
         "epsTTM": 11.7167,
-        "peTTM": 20.6529,
-        "psTTM": 4.66,
-        "evEbitdaTTM": 15.9402,
-        "evRevenueTTM": 5.2481,
+        "peTTM": 20.5096,
+        "psTTM": 4.6277,
+        "evEbitdaTTM": 15.842,
+        "evRevenueTTM": 5.2158,
         "revenueGrowth3Y": -2.42,
         "revenueGrowth5Y": 7.33,
         "epsGrowth3Y": -9.03,
@@ -17591,13 +17563,6 @@
       ],
       "filings": [
         {
-          "form": "10-Q",
-          "filed": "2026-04-28",
-          "period": "2026-03-29 00:00:00",
-          "accession": "0001413447-26-000034",
-          "url": "https://www.sec.gov/Archives/edgar/data/1413447/000141344726000034/"
-        },
-        {
           "form": "10-K",
           "filed": "2026-02-19",
           "period": "2025-12-31 00:00:00",
@@ -17645,11 +17610,18 @@
           "period": "2024-06-30 00:00:00",
           "accession": "0001413447-24-000072",
           "url": "https://www.sec.gov/Archives/edgar/data/1413447/000141344724000072/"
+        },
+        {
+          "form": "10-Q",
+          "filed": "2024-04-30",
+          "period": "2024-03-31 00:00:00",
+          "accession": "0001413447-24-000038",
+          "url": "https://www.sec.gov/Archives/edgar/data/1413447/000141344724000038/"
         }
       ],
       "market": {
-        "price": 241.97,
-        "date": "2026-10-05",
+        "price": 239.22,
+        "date": "2026-10-07",
         "currency": "USD",
         "source": "Finnhub EOD"
       }
@@ -17667,12 +17639,12 @@
       "dataBasis": "reported-financials",
       "reportCurrency": "USD",
       "metrics": {
-        "beta": 1.865917,
+        "beta": 1.8677312,
         "epsTTM": 0.872,
-        "peTTM": 91.9165,
-        "psTTM": 8.5846,
-        "evEbitdaTTM": 40.604,
-        "evRevenueTTM": 9.5781,
+        "peTTM": 93.3012,
+        "psTTM": 8.7139,
+        "evEbitdaTTM": 41.1523,
+        "evRevenueTTM": 9.7074,
         "revenueGrowth3Y": -17.65,
         "revenueGrowth5Y": -2.82,
         "epsGrowth3Y": -52.81,
@@ -17685,6 +17657,30 @@
         "netProfitMarginTTM": 9.34
       },
       "periods": [
+        {
+          "fiscalYear": 2020,
+          "end": "2020-03-31 00:00:00",
+          "filed": "2020-05-22",
+          "form": "10-K",
+          "accession": "0000827054-20-000119",
+          "currency": "USD",
+          "revenue": 5274200000,
+          "grossProfit": 3242100000,
+          "operatingIncome": 647100000,
+          "netIncome": 570600000,
+          "epsDiluted": 1.12,
+          "cashFromOperations": 1543800000,
+          "capex": 67600000,
+          "freeCashFlow": 1476200000,
+          "depreciation": 1215600000,
+          "ebitda": 1862700000,
+          "assets": 17426100000,
+          "liabilities": null,
+          "equity": 5585500000,
+          "cash": 401000000,
+          "debt": 9482200000,
+          "shares": 512400000
+        },
         {
           "fiscalYear": 2021,
           "end": "2021-03-31 00:00:00",
@@ -17804,40 +17800,9 @@
           "cash": 771700000,
           "debt": 5630400000,
           "shares": 537300000
-        },
-        {
-          "fiscalYear": 2026,
-          "end": "2026-03-31 00:00:00",
-          "filed": "2026-05-21",
-          "form": "10-K",
-          "accession": "0000827054-26-000016",
-          "currency": "USD",
-          "revenue": 4713100000,
-          "grossProfit": 2721100000,
-          "operatingIncome": 490100000,
-          "netIncome": 230000000,
-          "epsDiluted": 0.22,
-          "cashFromOperations": 962100000,
-          "capex": 91100000,
-          "freeCashFlow": 871000000,
-          "depreciation": 689300000,
-          "ebitda": 1179400000,
-          "assets": 14370100000,
-          "liabilities": null,
-          "equity": 6432400000,
-          "cash": 240300000,
-          "debt": 5496400000,
-          "shares": 545200000
         }
       ],
       "filings": [
-        {
-          "form": "10-K",
-          "filed": "2026-05-21",
-          "period": "2026-03-31 00:00:00",
-          "accession": "0000827054-26-000016",
-          "url": "https://www.sec.gov/Archives/edgar/data/827054/000082705426000016/"
-        },
         {
           "form": "10-Q",
           "filed": "2026-02-05",
@@ -17886,11 +17851,18 @@
           "period": "2024-06-30 00:00:00",
           "accession": "0000827054-24-000139",
           "url": "https://www.sec.gov/Archives/edgar/data/827054/000082705424000139/"
+        },
+        {
+          "form": "10-K",
+          "filed": "2024-05-23",
+          "period": "2024-03-31 00:00:00",
+          "accession": "0000827054-24-000098",
+          "url": "https://www.sec.gov/Archives/edgar/data/827054/000082705424000098/"
         }
       ],
       "market": {
-        "price": 81.49,
-        "date": "2026-10-05",
+        "price": 80.12,
+        "date": "2026-10-07",
         "currency": "USD",
         "source": "Finnhub EOD"
       }
@@ -17908,12 +17880,12 @@
       "dataBasis": "reported-financials",
       "reportCurrency": "USD",
       "metrics": {
-        "beta": 1.7267442,
+        "beta": 1.7303311,
         "epsTTM": 16.4313,
-        "peTTM": 88.18,
-        "psTTM": 21.6732,
-        "evEbitdaTTM": 69.9146,
-        "evRevenueTTM": 21.366,
+        "peTTM": 90.274,
+        "psTTM": 22.1879,
+        "evEbitdaTTM": 71.5987,
+        "evRevenueTTM": 21.8807,
         "revenueGrowth3Y": 15.86,
         "revenueGrowth5Y": 27,
         "epsGrowth3Y": 12.47,
@@ -18073,13 +18045,6 @@
       ],
       "filings": [
         {
-          "form": "10-Q",
-          "filed": "2026-05-04",
-          "period": "2026-03-31 00:00:00",
-          "accession": "0001437749-26-014647",
-          "url": "https://www.sec.gov/Archives/edgar/data/1280452/000143774926014647/"
-        },
-        {
           "form": "10-K",
           "filed": "2026-02-27",
           "period": "2025-12-31 00:00:00",
@@ -18127,11 +18092,18 @@
           "period": "2024-03-31 00:00:00",
           "accession": "0001437749-24-014648",
           "url": "https://www.sec.gov/Archives/edgar/data/1280452/000143774924014648/"
+        },
+        {
+          "form": "10-K",
+          "filed": "2024-02-29",
+          "period": "2023-12-31 00:00:00",
+          "accession": "0001437749-24-006133",
+          "url": "https://www.sec.gov/Archives/edgar/data/1280452/000143774924006133/"
         }
       ],
       "market": {
-        "price": 1479.89,
-        "date": "2026-10-05",
+        "price": 1450.04,
+        "date": "2026-10-07",
         "currency": "USD",
         "source": "Finnhub EOD"
       }
@@ -18149,12 +18121,12 @@
       "dataBasis": "reported-financials",
       "reportCurrency": "USD",
       "metrics": {
-        "beta": 2.1698866,
+        "beta": 2.17507,
         "epsTTM": 1.5507,
-        "peTTM": 52.806,
-        "psTTM": 5.3694,
-        "evEbitdaTTM": 48.0518,
-        "evRevenueTTM": 5.5256,
+        "peTTM": 53.3311,
+        "psTTM": 5.4228,
+        "evEbitdaTTM": 48.5162,
+        "evRevenueTTM": 5.579,
         "revenueGrowth3Y": -10.37,
         "revenueGrowth5Y": 2.67,
         "epsGrowth3Y": -58.94,
@@ -18314,13 +18286,6 @@
       ],
       "filings": [
         {
-          "form": "10-Q",
-          "filed": "2026-05-04",
-          "period": "2026-04-03 00:00:00",
-          "accession": "0001097864-26-000014",
-          "url": "https://www.sec.gov/Archives/edgar/data/1097864/000109786426000014/"
-        },
-        {
           "form": "10-K",
           "filed": "2026-02-09",
           "period": "2025-12-31 00:00:00",
@@ -18368,11 +18333,18 @@
           "period": "2024-06-28 00:00:00",
           "accession": "0001628280-24-033229",
           "url": "https://www.sec.gov/Archives/edgar/data/1097864/000162828024033229/"
+        },
+        {
+          "form": "10-Q",
+          "filed": "2024-04-29",
+          "period": "2024-03-29 00:00:00",
+          "accession": "0001628280-24-018814",
+          "url": "https://www.sec.gov/Archives/edgar/data/1097864/000162828024018814/"
         }
       ],
       "market": {
-        "price": 85.93,
-        "date": "2026-10-05",
+        "price": 84.99,
+        "date": "2026-10-07",
         "currency": "USD",
         "source": "Finnhub EOD"
       }
@@ -18390,12 +18362,12 @@
       "dataBasis": "reported-financials",
       "reportCurrency": "USD",
       "metrics": {
-        "beta": 1.1064336,
+        "beta": 1.1092854,
         "epsTTM": 5.0263,
-        "peTTM": 71.4846,
-        "psTTM": 16.8742,
-        "evEbitdaTTM": 53.9052,
-        "evRevenueTTM": 17.0527,
+        "peTTM": 70.6432,
+        "psTTM": 16.6756,
+        "evEbitdaTTM": 53.2774,
+        "evRevenueTTM": 16.8541,
         "revenueGrowth3Y": 14.14,
         "revenueGrowth5Y": 14.57,
         "epsGrowth3Y": 9.54,
@@ -18555,13 +18527,6 @@
       ],
       "filings": [
         {
-          "form": "10-Q",
-          "filed": "2026-05-01",
-          "period": "2026-03-31 00:00:00",
-          "accession": "0000813672-26-000047",
-          "url": "https://www.sec.gov/Archives/edgar/data/813672/000081367226000047/"
-        },
-        {
           "form": "10-K",
           "filed": "2026-02-19",
           "period": "2025-12-31 00:00:00",
@@ -18609,11 +18574,18 @@
           "period": "2024-06-30 00:00:00",
           "accession": "0000813672-24-000155",
           "url": "https://www.sec.gov/Archives/edgar/data/813672/000081367224000155/"
+        },
+        {
+          "form": "10-Q",
+          "filed": "2024-04-24",
+          "period": "2024-03-31 00:00:00",
+          "accession": "0000813672-24-000092",
+          "url": "https://www.sec.gov/Archives/edgar/data/813672/000081367224000092/"
         }
       ],
       "market": {
-        "price": 353.48,
-        "date": "2026-10-05",
+        "price": 359.88,
+        "date": "2026-10-07",
         "currency": "USD",
         "source": "Finnhub EOD"
       }
@@ -18631,12 +18603,12 @@
       "dataBasis": "reported-financials",
       "reportCurrency": "USD",
       "metrics": {
-        "beta": 1.219815,
+        "beta": 1.2260166,
         "epsTTM": 5.6530000000000005,
-        "peTTM": 89.2624,
-        "psTTM": 10.2051,
-        "evEbitdaTTM": 42.7363,
-        "evRevenueTTM": 10.8881,
+        "peTTM": 87.7671,
+        "psTTM": 10.0342,
+        "evEbitdaTTM": 42.0653,
+        "evRevenueTTM": 10.7171,
         "revenueGrowth3Y": 15.19,
         "revenueGrowth5Y": 13.87,
         "epsGrowth3Y": 8.52,
@@ -18797,13 +18769,6 @@
       "filings": [
         {
           "form": "10-Q",
-          "filed": "2026-05-27",
-          "period": "2026-04-30 00:00:00",
-          "accession": "0000883241-26-000018",
-          "url": "https://www.sec.gov/Archives/edgar/data/883241/000088324126000018/"
-        },
-        {
-          "form": "10-Q",
           "filed": "2026-02-25",
           "period": "2026-01-31 00:00:00",
           "accession": "0000883241-26-000014",
@@ -18850,11 +18815,18 @@
           "period": "2024-07-31 00:00:00",
           "accession": "0000883241-24-000021",
           "url": "https://www.sec.gov/Archives/edgar/data/883241/000088324124000021/"
+        },
+        {
+          "form": "10-Q",
+          "filed": "2024-05-24",
+          "period": "2024-04-30 00:00:00",
+          "accession": "0000883241-24-000016",
+          "url": "https://www.sec.gov/Archives/edgar/data/883241/000088324124000016/"
         }
       ],
       "market": {
-        "price": 488.47,
-        "date": "2026-10-05",
+        "price": 504.93,
+        "date": "2026-10-07",
         "currency": "USD",
         "source": "Finnhub EOD"
       }
@@ -18872,12 +18844,12 @@
       "dataBasis": "reported-financials",
       "reportCurrency": "USD",
       "metrics": {
-        "beta": 1.3557523,
+        "beta": 1.3556944,
         "epsTTM": -0.5828,
         "peTTM": null,
-        "psTTM": 51.1233,
+        "psTTM": 50.645,
         "evEbitdaTTM": null,
-        "evRevenueTTM": 51.7628,
+        "evRevenueTTM": 51.2844,
         "revenueGrowth3Y": 30.51,
         "revenueGrowth5Y": 38.13,
         "epsGrowth3Y": null,
@@ -19037,13 +19009,6 @@
       ],
       "filings": [
         {
-          "form": "10-Q",
-          "filed": "2026-05-08",
-          "period": "2026-03-31 00:00:00",
-          "accession": "0001477333-26-000038",
-          "url": "https://www.sec.gov/Archives/edgar/data/1477333/000147733326000038/"
-        },
-        {
           "form": "10-K",
           "filed": "2026-02-26",
           "period": "2025-12-31 00:00:00",
@@ -19091,11 +19056,18 @@
           "period": "2024-06-30 00:00:00",
           "accession": "0001477333-24-000070",
           "url": "https://www.sec.gov/Archives/edgar/data/1477333/000147733324000070/"
+        },
+        {
+          "form": "10-Q",
+          "filed": "2024-05-02",
+          "period": "2024-03-31 00:00:00",
+          "accession": "0001477333-24-000050",
+          "url": "https://www.sec.gov/Archives/edgar/data/1477333/000147733324000050/"
         }
       ],
       "market": {
-        "price": 359.49,
-        "date": "2026-10-05",
+        "price": 350.39,
+        "date": "2026-10-07",
         "currency": "USD",
         "source": "Finnhub EOD"
       }
@@ -19113,12 +19085,12 @@
       "dataBasis": "reported-financials",
       "reportCurrency": "USD",
       "metrics": {
-        "beta": 0.88183385,
+        "beta": 0.8820895,
         "epsTTM": -0.3953,
         "peTTM": null,
-        "psTTM": 9.9527,
+        "psTTM": 10.2348,
         "evEbitdaTTM": null,
-        "evRevenueTTM": 10.1818,
+        "evRevenueTTM": 10.4639,
         "revenueGrowth3Y": 27.51,
         "revenueGrowth5Y": 37.87,
         "epsGrowth3Y": null,
@@ -19279,13 +19251,6 @@
       "filings": [
         {
           "form": "10-Q",
-          "filed": "2026-05-26",
-          "period": "2026-04-30 00:00:00",
-          "accession": "0001713683-26-000096",
-          "url": "https://www.sec.gov/Archives/edgar/data/1713683/000171368326000096/"
-        },
-        {
-          "form": "10-Q",
           "filed": "2026-02-26",
           "period": "2026-01-31 00:00:00",
           "accession": "0001713683-26-000048",
@@ -19332,11 +19297,18 @@
           "period": "2024-07-31 00:00:00",
           "accession": "0001713683-24-000109",
           "url": "https://www.sec.gov/Archives/edgar/data/1713683/000171368324000109/"
+        },
+        {
+          "form": "10-Q",
+          "filed": "2024-06-07",
+          "period": "2024-04-30 00:00:00",
+          "accession": "0001713683-24-000075",
+          "url": "https://www.sec.gov/Archives/edgar/data/1713683/000171368324000075/"
         }
       ],
       "market": {
-        "price": 201.8,
-        "date": "2026-10-05",
+        "price": 213.52,
+        "date": "2026-10-07",
         "currency": "USD",
         "source": "Finnhub EOD"
       }
@@ -19354,12 +19326,12 @@
       "dataBasis": "reported-financials",
       "reportCurrency": "USD",
       "metrics": {
-        "beta": 0.9976057,
+        "beta": 0.99751306,
         "epsTTM": 2.8383000000000003,
-        "peTTM": 63.0232,
-        "psTTM": 17.7556,
-        "evEbitdaTTM": 50.4422,
-        "evRevenueTTM": 17.4317,
+        "peTTM": 65.8913,
+        "psTTM": 18.5636,
+        "evEbitdaTTM": 52.7804,
+        "evRevenueTTM": 18.2397,
         "revenueGrowth3Y": 15.46,
         "revenueGrowth5Y": 21.25,
         "epsGrowth3Y": 31.56,
@@ -19519,13 +19491,6 @@
       ],
       "filings": [
         {
-          "form": "10-Q",
-          "filed": "2026-05-08",
-          "period": "2026-03-31 00:00:00",
-          "accession": "0001262039-26-000013",
-          "url": "https://www.sec.gov/Archives/edgar/data/1262039/000126203926000013/"
-        },
-        {
           "form": "10-K",
           "filed": "2026-02-25",
           "period": "2025-12-31 00:00:00",
@@ -19573,11 +19538,18 @@
           "period": "2024-06-30 00:00:00",
           "accession": "0001262039-24-000037",
           "url": "https://www.sec.gov/Archives/edgar/data/1262039/000126203924000037/"
+        },
+        {
+          "form": "10-Q",
+          "filed": "2024-05-06",
+          "period": "2024-03-31 00:00:00",
+          "accession": "0001262039-24-000020",
+          "url": "https://www.sec.gov/Archives/edgar/data/1262039/000126203924000020/"
         }
       ],
       "market": {
-        "price": 184.13,
-        "date": "2026-10-05",
+        "price": 190.52,
+        "date": "2026-10-07",
         "currency": "USD",
         "source": "Finnhub EOD"
       }
@@ -19597,10 +19569,10 @@
       "metrics": {
         "beta": 1.1063635,
         "epsTTM": 6.681,
-        "peTTM": 27.5446,
-        "psTTM": 5.6226,
-        "evEbitdaTTM": 18.7132,
-        "evRevenueTTM": 5.6225,
+        "peTTM": 27.7123,
+        "psTTM": 5.6568,
+        "evEbitdaTTM": 18.8271,
+        "evRevenueTTM": 5.6567,
         "revenueGrowth3Y": 7.62,
         "revenueGrowth5Y": 6.12,
         "epsGrowth3Y": 46.36,
@@ -19790,8 +19762,8 @@
       ],
       "filings": [],
       "market": {
-        "price": 207.74,
-        "date": "2026-10-05",
+        "price": 210.13,
+        "date": "2026-10-07",
         "currency": "USD",
         "source": "Finnhub EOD"
       }
@@ -19809,12 +19781,12 @@
       "dataBasis": "reported-financials",
       "reportCurrency": "USD",
       "metrics": {
-        "beta": 1.1789732,
+        "beta": 1.180412,
         "epsTTM": -7.9847,
         "peTTM": null,
-        "psTTM": 36.1158,
-        "evEbitdaTTM": 90.6061,
-        "evRevenueTTM": 35.6243,
+        "psTTM": 34.1178,
+        "evEbitdaTTM": 85.5246,
+        "evRevenueTTM": 33.6264,
         "revenueGrowth3Y": -53.44,
         "revenueGrowth5Y": 19.34,
         "epsGrowth3Y": null,
@@ -19974,13 +19946,6 @@
       ],
       "filings": [
         {
-          "form": "10-Q",
-          "filed": "2026-05-01",
-          "period": "2026-03-31 00:00:00",
-          "accession": "0001682852-26-000060",
-          "url": "https://www.sec.gov/Archives/edgar/data/1682852/000168285226000060/"
-        },
-        {
           "form": "10-K",
           "filed": "2026-02-20",
           "period": "2025-12-31 00:00:00",
@@ -20028,11 +19993,18 @@
           "period": "2024-06-30 00:00:00",
           "accession": "0001682852-24-000046",
           "url": "https://www.sec.gov/Archives/edgar/data/1682852/000168285224000046/"
+        },
+        {
+          "form": "10-Q",
+          "filed": "2024-05-02",
+          "period": "2024-03-31 00:00:00",
+          "accession": "0001682852-24-000027",
+          "url": "https://www.sec.gov/Archives/edgar/data/1682852/000168285224000027/"
         }
       ],
       "market": {
-        "price": 203.21,
-        "date": "2026-10-05",
+        "price": 187.41,
+        "date": "2026-10-07",
         "currency": "USD",
         "source": "Finnhub EOD"
       }
@@ -20050,12 +20022,12 @@
       "dataBasis": "reported-financials",
       "reportCurrency": "USD",
       "metrics": {
-        "beta": 0.42222032,
+        "beta": 0.41962653,
         "epsTTM": 29.7962,
-        "peTTM": 40.8124,
-        "psTTM": 13.684,
-        "evEbitdaTTM": 31.7955,
-        "evRevenueTTM": 14.2609,
+        "peTTM": 41.0887,
+        "psTTM": 13.7767,
+        "evEbitdaTTM": 32.002,
+        "evRevenueTTM": 14.3535,
         "revenueGrowth3Y": 31.69,
         "revenueGrowth5Y": 21.58,
         "epsGrowth3Y": 49.25,
@@ -20215,13 +20187,6 @@
       ],
       "filings": [
         {
-          "form": "10-Q",
-          "filed": "2026-04-30",
-          "period": "2026-03-31 00:00:00",
-          "accession": "0000059478-26-000045",
-          "url": "https://www.sec.gov/Archives/edgar/data/59478/000005947826000045/"
-        },
-        {
           "form": "10-K",
           "filed": "2026-02-12",
           "period": "2025-12-31 00:00:00",
@@ -20269,11 +20234,18 @@
           "period": "2024-06-30 00:00:00",
           "accession": "0000059478-24-000187",
           "url": "https://www.sec.gov/Archives/edgar/data/59478/000005947824000187/"
+        },
+        {
+          "form": "10-Q",
+          "filed": "2024-04-30",
+          "period": "2024-03-31 00:00:00",
+          "accession": "0000059478-24-000118",
+          "url": "https://www.sec.gov/Archives/edgar/data/59478/000005947824000118/"
         }
       ],
       "market": {
-        "price": 1143.12,
-        "date": "2026-10-05",
+        "price": 1176.2,
+        "date": "2026-10-07",
         "currency": "USD",
         "source": "Finnhub EOD"
       }
@@ -20293,10 +20265,10 @@
       "metrics": {
         "beta": 1.9277941,
         "epsTTM": 26.180699999999998,
-        "peTTM": 9.4696,
-        "psTTM": 3.3472,
-        "evEbitdaTTM": 7.0799,
-        "evRevenueTTM": 3.6375,
+        "peTTM": 9.3954,
+        "psTTM": 3.321,
+        "evEbitdaTTM": 7.0288,
+        "evRevenueTTM": 3.6113,
         "revenueGrowth3Y": 20.43,
         "revenueGrowth5Y": 19.48,
         "epsGrowth3Y": 23.53,
@@ -20486,8 +20458,8 @@
       ],
       "filings": [],
       "market": {
-        "price": 37.54,
-        "date": "2026-10-05",
+        "price": 37.56,
+        "date": "2026-10-07",
         "currency": "USD",
         "source": "Finnhub EOD"
       }
@@ -20505,12 +20477,12 @@
       "dataBasis": "reported-financials",
       "reportCurrency": "USD",
       "metrics": {
-        "beta": 0.2022463,
+        "beta": 0.19910093,
         "epsTTM": 8.624199999999998,
-        "peTTM": 29.0655,
-        "psTTM": 6.2438,
-        "evEbitdaTTM": 19.8046,
-        "evRevenueTTM": 6.663,
+        "peTTM": 29.1348,
+        "psTTM": 6.2587,
+        "evEbitdaTTM": 19.8489,
+        "evRevenueTTM": 6.6779,
         "revenueGrowth3Y": 5.6,
         "revenueGrowth5Y": 2.67,
         "epsGrowth3Y": 17.88,
@@ -20670,13 +20642,6 @@
       ],
       "filings": [
         {
-          "form": "10-Q",
-          "filed": "2026-04-22",
-          "period": "2026-03-29 00:00:00",
-          "accession": "0000200406-26-000087",
-          "url": "https://www.sec.gov/Archives/edgar/data/200406/000020040626000087/"
-        },
-        {
           "form": "10-K",
           "filed": "2026-02-11",
           "period": "2025-12-28 00:00:00",
@@ -20724,11 +20689,18 @@
           "period": "2024-03-31 00:00:00",
           "accession": "0000200406-24-000049",
           "url": "https://www.sec.gov/Archives/edgar/data/200406/000020040624000049/"
+        },
+        {
+          "form": "10-K",
+          "filed": "2024-02-16",
+          "period": "2023-12-31 00:00:00",
+          "accession": "0000200406-24-000013",
+          "url": "https://www.sec.gov/Archives/edgar/data/200406/000020040624000013/"
         }
       ],
       "market": {
-        "price": 252.93,
-        "date": "2026-10-05",
+        "price": 256.33,
+        "date": "2026-10-07",
         "currency": "USD",
         "source": "Finnhub EOD"
       }
@@ -20746,12 +20718,12 @@
       "dataBasis": "reported-financials",
       "reportCurrency": "USD",
       "metrics": {
-        "beta": 0.121110395,
+        "beta": 0.118225746,
         "epsTTM": 1.2521,
-        "peTTM": 109.5726,
-        "psTTM": 5.2228,
-        "evEbitdaTTM": 41.1864,
-        "evRevenueTTM": 5.9296,
+        "peTTM": 109.9732,
+        "psTTM": 5.2419,
+        "evEbitdaTTM": 41.3191,
+        "evRevenueTTM": 5.9487,
         "revenueGrowth3Y": 3.12,
         "revenueGrowth5Y": 9.38,
         "epsGrowth3Y": 8.43,
@@ -20911,13 +20883,6 @@
       ],
       "filings": [
         {
-          "form": "10-Q",
-          "filed": "2026-05-04",
-          "period": "2026-03-31 00:00:00",
-          "accession": "0001628280-26-029802",
-          "url": "https://www.sec.gov/Archives/edgar/data/310158/000162828026029802/"
-        },
-        {
           "form": "10-K",
           "filed": "2026-02-24",
           "period": "2025-12-31 00:00:00",
@@ -20965,11 +20930,18 @@
           "period": "2024-06-30 00:00:00",
           "accession": "0001628280-24-034715",
           "url": "https://www.sec.gov/Archives/edgar/data/310158/000162828024034715/"
+        },
+        {
+          "form": "10-Q",
+          "filed": "2024-05-03",
+          "period": "2024-03-31 00:00:00",
+          "accession": "0001628280-24-020283",
+          "url": "https://www.sec.gov/Archives/edgar/data/310158/000162828024020283/"
         }
       ],
       "market": {
-        "price": 139.54,
-        "date": "2026-10-05",
+        "price": 141.96,
+        "date": "2026-10-07",
         "currency": "USD",
         "source": "Finnhub EOD"
       }
@@ -20987,12 +20959,12 @@
       "dataBasis": "reported-financials",
       "reportCurrency": "USD",
       "metrics": {
-        "beta": 0.31188017,
+        "beta": 0.31015947,
         "epsTTM": 0.7554000000000001,
-        "peTTM": 35.9436,
-        "psTTM": 2.4451,
-        "evEbitdaTTM": 23.834,
-        "evRevenueTTM": 3.422,
+        "peTTM": 36.2593,
+        "psTTM": 2.4666,
+        "evEbitdaTTM": 23.9835,
+        "evRevenueTTM": 3.4434,
         "revenueGrowth3Y": -14.8,
         "revenueGrowth5Y": 8.48,
         "epsGrowth3Y": -37.13,
@@ -21152,13 +21124,6 @@
       ],
       "filings": [
         {
-          "form": "10-Q",
-          "filed": "2026-05-05",
-          "period": "2026-03-29 00:00:00",
-          "accession": "0000078003-26-000054",
-          "url": "https://www.sec.gov/Archives/edgar/data/78003/000007800326000054/"
-        },
-        {
           "form": "10-K",
           "filed": "2026-02-26",
           "period": "2025-12-31 00:00:00",
@@ -21206,11 +21171,18 @@
           "period": "2024-06-30 00:00:00",
           "accession": "0000078003-24-000166",
           "url": "https://www.sec.gov/Archives/edgar/data/78003/000007800324000166/"
+        },
+        {
+          "form": "10-Q",
+          "filed": "2024-05-08",
+          "period": "2024-03-31 00:00:00",
+          "accession": "0000078003-24-000107",
+          "url": "https://www.sec.gov/Archives/edgar/data/78003/000007800324000107/"
         }
       ],
       "market": {
-        "price": 27.41,
-        "date": "2026-10-05",
+        "price": 27.74,
+        "date": "2026-10-07",
         "currency": "USD",
         "source": "Finnhub EOD"
       }
@@ -21228,12 +21200,12 @@
       "dataBasis": "reported-financials",
       "reportCurrency": "USD",
       "metrics": {
-        "beta": 0.20028989,
+        "beta": 0.2001363,
         "epsTTM": 3.5593999999999997,
-        "peTTM": 73.6028,
-        "psTTM": 7.2133,
-        "evEbitdaTTM": 29.959,
-        "evRevenueTTM": 8.2112,
+        "peTTM": 74.4262,
+        "psTTM": 7.294,
+        "evEbitdaTTM": 30.2534,
+        "evRevenueTTM": 8.2919,
         "revenueGrowth3Y": 1.75,
         "revenueGrowth5Y": 5.95,
         "epsGrowth3Y": -28.99,
@@ -21393,13 +21365,6 @@
       ],
       "filings": [
         {
-          "form": "10-Q",
-          "filed": "2026-05-08",
-          "period": "2026-03-31 00:00:00",
-          "accession": "0001551152-26-000017",
-          "url": "https://www.sec.gov/Archives/edgar/data/1551152/000155115226000017/"
-        },
-        {
           "form": "10-K",
           "filed": "2026-02-20",
           "period": "2025-12-31 00:00:00",
@@ -21447,11 +21412,18 @@
           "period": "2024-06-30 00:00:00",
           "accession": "0001551152-24-000031",
           "url": "https://www.sec.gov/Archives/edgar/data/1551152/000155115224000031/"
+        },
+        {
+          "form": "10-Q",
+          "filed": "2024-05-03",
+          "period": "2024-03-31 00:00:00",
+          "accession": "0001551152-24-000020",
+          "url": "https://www.sec.gov/Archives/edgar/data/1551152/000155115224000020/"
         }
       ],
       "market": {
-        "price": 265.76,
-        "date": "2026-10-05",
+        "price": 268.93,
+        "date": "2026-10-07",
         "currency": "USD",
         "source": "Finnhub EOD"
       }
@@ -21469,12 +21441,12 @@
       "dataBasis": "reported-financials",
       "reportCurrency": "USD",
       "metrics": {
-        "beta": 0.4435022,
+        "beta": 0.43995696,
         "epsTTM": 16.102600000000002,
-        "peTTM": 24.7848,
-        "psTTM": 5.6882,
-        "evEbitdaTTM": 17.2111,
-        "evRevenueTTM": 6.8253,
+        "peTTM": 24.9187,
+        "psTTM": 5.719,
+        "evEbitdaTTM": 17.2886,
+        "evRevenueTTM": 6.856,
         "revenueGrowth3Y": 11.77,
         "revenueGrowth5Y": 7.65,
         "epsGrowth3Y": 5.51,
@@ -21634,13 +21606,6 @@
       ],
       "filings": [
         {
-          "form": "10-Q",
-          "filed": "2026-05-01",
-          "period": "2026-03-31 00:00:00",
-          "accession": "0000318154-26-000057",
-          "url": "https://www.sec.gov/Archives/edgar/data/318154/000031815426000057/"
-        },
-        {
           "form": "10-K",
           "filed": "2026-02-13",
           "period": "2025-12-31 00:00:00",
@@ -21688,11 +21653,18 @@
           "period": "2024-03-31 00:00:00",
           "accession": "0000318154-24-000020",
           "url": "https://www.sec.gov/Archives/edgar/data/318154/000031815424000020/"
+        },
+        {
+          "form": "10-K",
+          "filed": "2024-02-14",
+          "period": "2023-12-31 00:00:00",
+          "accession": "0000318154-24-000011",
+          "url": "https://www.sec.gov/Archives/edgar/data/318154/000031815424000011/"
         }
       ],
       "market": {
-        "price": 402.98,
-        "date": "2026-10-05",
+        "price": 405.06,
+        "date": "2026-10-07",
         "currency": "USD",
         "source": "Finnhub EOD"
       }
