@@ -1,11 +1,11 @@
 {
-  "generatedAt": "2026-10-18T11:15:07.483Z",
+  "generatedAt": "2026-10-20T11:46:22.198Z",
   "source": "Finnhub reported financials / SEC filings",
   "sourceUrl": "https://finnhub.io/docs/api/financials-reported",
   "marketSource": "Finnhub EOD",
   "assumptions": {
-    "riskFreeRate": 5.1,
-    "riskFreeDate": "2026-10-15",
+    "riskFreeRate": 5.09,
+    "riskFreeDate": "2026-10-16",
     "equityRiskPremium": 5,
     "source": "FRED DGS10"
   },
@@ -245,8 +245,8 @@
         }
       ],
       "market": {
-        "price": 214.13,
-        "date": "2026-10-16",
+        "price": 217.09,
+        "date": "2026-10-19",
         "currency": "USD",
         "source": "Finnhub EOD"
       }
@@ -266,10 +266,10 @@
       "metrics": {
         "beta": 1.5011349,
         "epsTTM": 7.8333,
-        "peTTM": 41.0122,
-        "psTTM": 17.6123,
-        "evEbitdaTTM": 35.7881,
-        "evRevenueTTM": 18.0101,
+        "peTTM": 41.8567,
+        "psTTM": 17.975,
+        "evEbitdaTTM": 36.5088,
+        "evRevenueTTM": 18.3728,
         "revenueGrowth3Y": 24.38,
         "revenueGrowth5Y": 21.74,
         "epsGrowth3Y": 20.59,
@@ -486,8 +486,8 @@
         }
       ],
       "market": {
-        "price": 328.75,
-        "date": "2026-10-16",
+        "price": 334.59,
+        "date": "2026-10-19",
         "currency": "USD",
         "source": "Finnhub EOD"
       }
@@ -507,10 +507,10 @@
       "metrics": {
         "beta": 2.5563686,
         "epsTTM": 3.8971999999999998,
-        "peTTM": 134.1578,
-        "psTTM": 20.8975,
-        "evEbitdaTTM": 112.428,
-        "evRevenueTTM": 20.8525,
+        "peTTM": 137.0541,
+        "psTTM": 21.3486,
+        "evEbitdaTTM": 114.8604,
+        "evRevenueTTM": 21.3036,
         "revenueGrowth3Y": 13.64,
         "revenueGrowth5Y": 28.82,
         "epsGrowth3Y": 46.65,
@@ -727,8 +727,8 @@
         }
       ],
       "market": {
-        "price": 528.75,
-        "date": "2026-10-16",
+        "price": 538.05,
+        "date": "2026-10-19",
         "currency": "USD",
         "source": "Finnhub EOD"
       }
@@ -748,10 +748,10 @@
       "metrics": {
         "beta": 3.8695087,
         "epsTTM": 0.9748000000000001,
-        "peTTM": 250.4174,
-        "psTTM": 50.7051,
-        "evEbitdaTTM": 226.4669,
-        "evRevenueTTM": 50.1161,
+        "peTTM": 233.0368,
+        "psTTM": 47.1859,
+        "evEbitdaTTM": 210.5639,
+        "evRevenueTTM": 46.5969,
         "revenueGrowth3Y": 22.46,
         "revenueGrowth5Y": 19.4,
         "epsGrowth3Y": 18.34,
@@ -941,8 +941,8 @@
       ],
       "filings": [],
       "market": {
-        "price": 227.8,
-        "date": "2026-10-16",
+        "price": 228.05,
+        "date": "2026-10-19",
         "currency": "USD",
         "source": "Finnhub EOD"
       }
@@ -962,10 +962,10 @@
       "metrics": {
         "beta": 1.4223275,
         "epsTTM": 17.2331,
-        "peTTM": 25.242,
-        "psTTM": 1.8995,
-        "evEbitdaTTM": 18.7496,
-        "evRevenueTTM": 2.051,
+        "peTTM": 25.5404,
+        "psTTM": 1.922,
+        "evEbitdaTTM": 18.9549,
+        "evRevenueTTM": 2.0734,
         "revenueGrowth3Y": 3.53,
         "revenueGrowth5Y": 5.55,
         "epsGrowth3Y": 38.8,
@@ -1182,8 +1182,8 @@
         }
       ],
       "market": {
-        "price": 451.71,
-        "date": "2026-10-16",
+        "price": 455.44,
+        "date": "2026-10-19",
         "currency": "USD",
         "source": "Finnhub EOD"
       }
@@ -1203,10 +1203,10 @@
       "metrics": {
         "beta": 2.2245128,
         "epsTTM": 3.2003999999999997,
-        "peTTM": 9.3164,
-        "psTTM": 0.532,
-        "evEbitdaTTM": 7.7824,
-        "evRevenueTTM": 0.5626,
+        "peTTM": 9.5432,
+        "psTTM": 0.5449,
+        "evEbitdaTTM": 7.9615,
+        "evRevenueTTM": 0.5756,
         "revenueGrowth3Y": 76.34,
         "revenueGrowth5Y": 61.48,
         "epsGrowth3Y": 40.9,
@@ -1423,8 +1423,8 @@
         }
       ],
       "market": {
-        "price": 31.63,
-        "date": "2026-10-16",
+        "price": 32.1,
+        "date": "2026-10-19",
         "currency": "USD",
         "source": "Finnhub EOD"
       }
@@ -1442,12 +1442,12 @@
       "dataBasis": "basic-metrics",
       "reportCurrency": "EUR",
       "metrics": {
-        "beta": 2.0328832,
+        "beta": 1.9849836,
         "epsTTM": 26.964399999999998,
-        "peTTM": 53.6887,
-        "psTTM": 15.8319,
-        "evEbitdaTTM": 39.4122,
-        "evRevenueTTM": 15.7484,
+        "peTTM": 54.1654,
+        "psTTM": 15.9725,
+        "evEbitdaTTM": 39.7639,
+        "evRevenueTTM": 15.8889,
         "revenueGrowth3Y": 15.55,
         "revenueGrowth5Y": 18.5,
         "epsGrowth3Y": 17.79,
@@ -1637,8 +1637,8 @@
       ],
       "filings": [],
       "market": {
-        "price": 1641.52,
-        "date": "2026-10-16",
+        "price": 1647.12,
+        "date": "2026-10-19",
         "currency": "USD",
         "source": "Finnhub EOD"
       }
@@ -1878,8 +1878,8 @@
         }
       ],
       "market": {
-        "price": 409.29,
-        "date": "2026-10-16",
+        "price": 413.11,
+        "date": "2026-10-19",
         "currency": "USD",
         "source": "Finnhub EOD"
       }
@@ -2119,8 +2119,8 @@
         }
       ],
       "market": {
-        "price": 263.94,
-        "date": "2026-10-16",
+        "price": 272.2,
+        "date": "2026-10-19",
         "currency": "USD",
         "source": "Finnhub EOD"
       }
@@ -2140,10 +2140,10 @@
       "metrics": {
         "beta": 1.4675006,
         "epsTTM": 3.6663,
-        "peTTM": 44.7738,
-        "psTTM": 15.9278,
-        "evEbitdaTTM": 36.3528,
-        "evRevenueTTM": 16.2399,
+        "peTTM": 45.4295,
+        "psTTM": 16.1611,
+        "evEbitdaTTM": 36.875,
+        "evRevenueTTM": 16.4732,
         "revenueGrowth3Y": 8.96,
         "revenueGrowth5Y": 14.44,
         "epsGrowth3Y": 14.86,
@@ -2360,8 +2360,8 @@
         }
       ],
       "market": {
-        "price": 165.74,
-        "date": "2026-10-16",
+        "price": 166.4,
+        "date": "2026-10-19",
         "currency": "USD",
         "source": "Finnhub EOD"
       }
@@ -2381,10 +2381,10 @@
       "metrics": {
         "beta": 1.7108371,
         "epsTTM": 7.2888,
-        "peTTM": 44.1748,
-        "psTTM": 11.3823,
-        "evEbitdaTTM": 37.0092,
-        "evRevenueTTM": 11.304,
+        "peTTM": 45.9072,
+        "psTTM": 11.8286,
+        "evEbitdaTTM": 38.4706,
+        "evRevenueTTM": 11.7503,
         "revenueGrowth3Y": 0.37,
         "revenueGrowth5Y": 0.44,
         "epsGrowth3Y": -6.29,
@@ -2601,8 +2601,8 @@
         }
       ],
       "market": {
-        "price": 325,
-        "date": "2026-10-16",
+        "price": 335.53,
+        "date": "2026-10-19",
         "currency": "USD",
         "source": "Finnhub EOD"
       }
@@ -2622,10 +2622,10 @@
       "metrics": {
         "beta": 1.6471195,
         "epsTTM": 2.6719,
-        "peTTM": 81.6763,
-        "psTTM": 9.6691,
-        "evEbitdaTTM": 56.2224,
-        "evRevenueTTM": 9.8642,
+        "peTTM": 84.3631,
+        "psTTM": 9.9871,
+        "evEbitdaTTM": 58.0352,
+        "evRevenueTTM": 10.1822,
         "revenueGrowth3Y": 0,
         "revenueGrowth5Y": 12.55,
         "epsGrowth3Y": -14.78,
@@ -2842,8 +2842,8 @@
         }
       ],
       "market": {
-        "price": 220.7,
-        "date": "2026-10-16",
+        "price": 226.28,
+        "date": "2026-10-19",
         "currency": "USD",
         "source": "Finnhub EOD"
       }
@@ -2861,12 +2861,12 @@
       "dataBasis": "basic-metrics",
       "reportCurrency": "TWD",
       "metrics": {
-        "beta": 0.94865173,
+        "beta": 0.958088,
         "epsTTM": 98.25160000000001,
-        "peTTM": 24.8347,
-        "psTTM": 12.7962,
-        "evEbitdaTTM": 19.6136,
-        "evRevenueTTM": 12.2627,
+        "peTTM": 24.6311,
+        "psTTM": 12.6913,
+        "evEbitdaTTM": 19.4458,
+        "evRevenueTTM": 12.1578,
         "revenueGrowth3Y": 18.94,
         "revenueGrowth5Y": 23.25,
         "epsGrowth3Y": 19.11,
@@ -3056,8 +3056,8 @@
       ],
       "filings": [],
       "market": {
-        "price": 412.61,
-        "date": "2026-10-16",
+        "price": 420.22,
+        "date": "2026-10-19",
         "currency": "USD",
         "source": "Finnhub EOD"
       }
@@ -3078,9 +3078,9 @@
         "beta": 2.371759,
         "epsTTM": -2.1202,
         "peTTM": null,
-        "psTTM": 8.3279,
-        "evEbitdaTTM": 30.5567,
-        "evRevenueTTM": 8.9883,
+        "psTTM": 8.8224,
+        "evEbitdaTTM": 32.2378,
+        "evRevenueTTM": 9.4828,
         "revenueGrowth3Y": -5.71,
         "revenueGrowth5Y": -7.46,
         "epsGrowth3Y": null,
@@ -3297,8 +3297,8 @@
         }
       ],
       "market": {
-        "price": 89.85,
-        "date": "2026-10-16",
+        "price": 92.03,
+        "date": "2026-10-19",
         "currency": "USD",
         "source": "Finnhub EOD"
       }
@@ -3318,10 +3318,10 @@
       "metrics": {
         "beta": 1.8528771,
         "epsTTM": 1.2805,
-        "peTTM": 35.7761,
-        "psTTM": 3.6921,
-        "evEbitdaTTM": 12.79,
-        "evRevenueTTM": 3.7773,
+        "peTTM": 35.3393,
+        "psTTM": 3.647,
+        "evEbitdaTTM": 12.6373,
+        "evRevenueTTM": 3.7322,
         "revenueGrowth3Y": -5.74,
         "revenueGrowth5Y": 6.96,
         "epsGrowth3Y": -15.44,
@@ -3511,8 +3511,8 @@
       ],
       "filings": [],
       "market": {
-        "price": 46.68,
-        "date": "2026-10-16",
+        "price": 46.11,
+        "date": "2026-10-19",
         "currency": "USD",
         "source": "Finnhub EOD"
       }
@@ -3530,12 +3530,12 @@
       "dataBasis": "basic-metrics",
       "reportCurrency": "TWD",
       "metrics": {
-        "beta": 1.1867043,
+        "beta": 1.2470748,
         "epsTTM": 6.6403,
-        "peTTM": 20.1047,
-        "psTTM": 6.6935,
-        "evEbitdaTTM": 14.7545,
-        "evRevenueTTM": 6.4491,
+        "peTTM": 20.0294,
+        "psTTM": 6.6684,
+        "evEbitdaTTM": 14.6972,
+        "evRevenueTTM": 6.4241,
         "revenueGrowth3Y": -5.19,
         "revenueGrowth5Y": 6.08,
         "epsGrowth3Y": -21.6,
@@ -3725,8 +3725,8 @@
       ],
       "filings": [],
       "market": {
-        "price": 19.82,
-        "date": "2026-10-16",
+        "price": 20.08,
+        "date": "2026-10-19",
         "currency": "USD",
         "source": "Finnhub EOD"
       }
@@ -3746,10 +3746,10 @@
       "metrics": {
         "beta": 2.4017596,
         "epsTTM": 74.2111,
-        "peTTM": 11.7024,
-        "psTTM": 7.4657,
-        "evEbitdaTTM": 8.8307,
-        "evRevenueTTM": 7.2165,
+        "peTTM": 12.3205,
+        "psTTM": 7.86,
+        "evEbitdaTTM": 9.3132,
+        "evRevenueTTM": 7.6109,
         "revenueGrowth3Y": 104.65,
         "revenueGrowth5Y": 36.89,
         "epsGrowth3Y": null,
@@ -3966,8 +3966,8 @@
         }
       ],
       "market": {
-        "price": 878.84,
-        "date": "2026-10-16",
+        "price": 904.9,
+        "date": "2026-10-19",
         "currency": "USD",
         "source": "Finnhub EOD"
       }
@@ -3985,12 +3985,12 @@
       "dataBasis": "reported-financials",
       "reportCurrency": "USD",
       "metrics": {
-        "beta": 3.3430574,
+        "beta": 3.6000693,
         "epsTTM": 72.89280000000001,
-        "peTTM": 16.4248,
-        "psTTM": 9.2742,
-        "evEbitdaTTM": 14.5974,
-        "evRevenueTTM": 9.039,
+        "peTTM": 17.3327,
+        "psTTM": 9.7869,
+        "evEbitdaTTM": 15.4253,
+        "evRevenueTTM": 9.5517,
         "revenueGrowth3Y": 49.29,
         "revenueGrowth5Y": null,
         "epsGrowth3Y": null,
@@ -4159,8 +4159,8 @@
         }
       ],
       "market": {
-        "price": 1299.3,
-        "date": "2026-10-16",
+        "price": 1371.12,
+        "date": "2026-10-19",
         "currency": "USD",
         "source": "Finnhub EOD"
       }
@@ -4400,8 +4400,8 @@
         }
       ],
       "market": {
-        "price": 332,
-        "date": "2026-10-16",
+        "price": 352.21,
+        "date": "2026-10-19",
         "currency": "USD",
         "source": "Finnhub EOD"
       }
@@ -4421,10 +4421,10 @@
       "metrics": {
         "beta": 2.1875663,
         "epsTTM": 13.8741,
-        "peTTM": 45.6364,
-        "psTTM": 11.9152,
-        "evEbitdaTTM": 34.8821,
-        "evRevenueTTM": 12.0678,
+        "peTTM": 47.1933,
+        "psTTM": 12.3217,
+        "evEbitdaTTM": 36.057,
+        "evRevenueTTM": 12.4743,
         "revenueGrowth3Y": 18.2,
         "revenueGrowth5Y": 2.69,
         "epsGrowth3Y": null,
@@ -4641,8 +4641,8 @@
         }
       ],
       "market": {
-        "price": 639.01,
-        "date": "2026-10-16",
+        "price": 660.81,
+        "date": "2026-10-19",
         "currency": "USD",
         "source": "Finnhub EOD"
       }
@@ -4662,10 +4662,10 @@
       "metrics": {
         "beta": 1.057522,
         "epsTTM": 17.9466,
-        "peTTM": 29.3721,
-        "psTTM": 11.8385,
-        "evEbitdaTTM": 20.7365,
-        "evRevenueTTM": 12.0975,
+        "peTTM": 29.5189,
+        "psTTM": 11.8977,
+        "evEbitdaTTM": 20.8379,
+        "evRevenueTTM": 12.1567,
         "revenueGrowth3Y": 16.12,
         "revenueGrowth5Y": 14.57,
         "epsGrowth3Y": 22.83,
@@ -4882,8 +4882,8 @@
         }
       ],
       "market": {
-        "price": 529.05,
-        "date": "2026-10-16",
+        "price": 533.52,
+        "date": "2026-10-19",
         "currency": "USD",
         "source": "Finnhub EOD"
       }
@@ -5123,8 +5123,8 @@
         }
       ],
       "market": {
-        "price": 250,
-        "date": "2026-10-16",
+        "price": 262.45,
+        "date": "2026-10-19",
         "currency": "USD",
         "source": "Finnhub EOD"
       }
@@ -5144,10 +5144,10 @@
       "metrics": {
         "beta": 1.2075913,
         "epsTTM": 19.9118,
-        "peTTM": 17.057,
-        "psTTM": 9.3423,
-        "evEbitdaTTM": 26.8694,
-        "evRevenueTTM": 9.4371,
+        "peTTM": 17.312,
+        "psTTM": 9.4819,
+        "evEbitdaTTM": 27.2669,
+        "evRevenueTTM": 9.5767,
         "revenueGrowth3Y": 12.51,
         "revenueGrowth5Y": 17.15,
         "epsGrowth3Y": 33.35,
@@ -5364,8 +5364,8 @@
         }
       ],
       "market": {
-        "price": 340.59,
-        "date": "2026-10-16",
+        "price": 344.18,
+        "date": "2026-10-19",
         "currency": "USD",
         "source": "Finnhub EOD"
       }
@@ -5605,8 +5605,8 @@
         }
       ],
       "market": {
-        "price": 128.23,
-        "date": "2026-10-16",
+        "price": 129.59,
+        "date": "2026-10-19",
         "currency": "USD",
         "source": "Finnhub EOD"
       }
@@ -5626,10 +5626,10 @@
       "metrics": {
         "beta": 0.7865809,
         "epsTTM": 11.2633,
-        "peTTM": 20.3961,
-        "psTTM": 3.1653,
-        "evEbitdaTTM": 22.8564,
-        "evRevenueTTM": 3.9586,
+        "peTTM": 20.6298,
+        "psTTM": 3.2015,
+        "evEbitdaTTM": 23.0658,
+        "evRevenueTTM": 3.9949,
         "revenueGrowth3Y": 3.72,
         "revenueGrowth5Y": 4.12,
         "epsGrowth3Y": 83.85,
@@ -5846,8 +5846,8 @@
         }
       ],
       "market": {
-        "price": 232.14,
-        "date": "2026-10-16",
+        "price": 236.39,
+        "date": "2026-10-19",
         "currency": "USD",
         "source": "Finnhub EOD"
       }
@@ -5867,10 +5867,10 @@
       "metrics": {
         "beta": 1.6273214,
         "epsTTM": 1.1735,
-        "peTTM": 148.1891,
-        "psTTM": 72.6194,
-        "evEbitdaTTM": 167.1321,
-        "evRevenueTTM": 72.2897,
+        "peTTM": 155.2548,
+        "psTTM": 76.082,
+        "evEbitdaTTM": 175.1374,
+        "evRevenueTTM": 75.7522,
         "revenueGrowth3Y": 32.92,
         "revenueGrowth5Y": 32.58,
         "epsGrowth3Y": null,
@@ -6087,8 +6087,8 @@
         }
       ],
       "market": {
-        "price": 186.03,
-        "date": "2026-10-16",
+        "price": 194.15,
+        "date": "2026-10-19",
         "currency": "USD",
         "source": "Finnhub EOD"
       }
@@ -6109,9 +6109,9 @@
         "beta": 1.3412882,
         "epsTTM": -3.1744,
         "peTTM": null,
-        "psTTM": 19.9191,
+        "psTTM": 20.5144,
         "evEbitdaTTM": null,
-        "evRevenueTTM": 20.0252,
+        "evRevenueTTM": 20.6205,
         "revenueGrowth3Y": 31.38,
         "revenueGrowth5Y": 51.23,
         "epsGrowth3Y": null,
@@ -6328,8 +6328,8 @@
         }
       ],
       "market": {
-        "price": 306.84,
-        "date": "2026-10-16",
+        "price": 315.35,
+        "date": "2026-10-19",
         "currency": "USD",
         "source": "Finnhub EOD"
       }
@@ -6349,10 +6349,10 @@
       "metrics": {
         "beta": 1.5159467,
         "epsTTM": 0.4843,
-        "peTTM": 499.6567,
-        "psTTM": 22.3688,
-        "evEbitdaTTM": 5071.9547,
-        "evRevenueTTM": 22.5076,
+        "peTTM": 528.1062,
+        "psTTM": 23.6425,
+        "evEbitdaTTM": 5358.962,
+        "evRevenueTTM": 23.7813,
         "revenueGrowth3Y": 26.95,
         "revenueGrowth5Y": 41.53,
         "epsGrowth3Y": null,
@@ -6569,8 +6569,8 @@
         }
       ],
       "market": {
-        "price": 247.11,
-        "date": "2026-10-16",
+        "price": 260.36,
+        "date": "2026-10-19",
         "currency": "USD",
         "source": "Finnhub EOD"
       }
@@ -6810,8 +6810,8 @@
         }
       ],
       "market": {
-        "price": 141.97,
-        "date": "2026-10-16",
+        "price": 145.36,
+        "date": "2026-10-19",
         "currency": "USD",
         "source": "Finnhub EOD"
       }
@@ -6831,10 +6831,10 @@
       "metrics": {
         "beta": 2.503379,
         "epsTTM": 13.0107,
-        "peTTM": 20.1954,
-        "psTTM": 13.0413,
-        "evEbitdaTTM": 16.7527,
-        "evRevenueTTM": 13.1089,
+        "peTTM": 20.4223,
+        "psTTM": 13.1878,
+        "evEbitdaTTM": 16.9399,
+        "evRevenueTTM": 13.2554,
         "revenueGrowth3Y": 24.84,
         "revenueGrowth5Y": 30.45,
         "epsGrowth3Y": null,
@@ -7051,8 +7051,8 @@
         }
       ],
       "market": {
-        "price": 266.13,
-        "date": "2026-10-16",
+        "price": 269.12,
+        "date": "2026-10-19",
         "currency": "USD",
         "source": "Finnhub EOD"
       }
@@ -7070,12 +7070,12 @@
       "dataBasis": "reported-financials",
       "reportCurrency": "U_USD",
       "metrics": {
-        "beta": 2.3686635,
+        "beta": 2.4214149,
         "epsTTM": -1.4342,
         "peTTM": null,
-        "psTTM": 8.1547,
+        "psTTM": 8.1069,
         "evEbitdaTTM": null,
-        "evRevenueTTM": 8.6862,
+        "evRevenueTTM": 8.6383,
         "revenueGrowth3Y": 58.29,
         "revenueGrowth5Y": 46.57,
         "epsGrowth3Y": null,
@@ -7196,8 +7196,8 @@
         }
       ],
       "market": {
-        "price": 64.72,
-        "date": "2026-10-16",
+        "price": 64.34,
+        "date": "2026-10-19",
         "currency": "USD",
         "source": "Finnhub EOD"
       }
@@ -7217,10 +7217,10 @@
       "metrics": {
         "beta": 1.2429903,
         "epsTTM": 10.976500000000001,
-        "peTTM": 20.5026,
-        "psTTM": 4.5085,
-        "evEbitdaTTM": 24.3955,
-        "evRevenueTTM": 5.2136,
+        "peTTM": 20.2667,
+        "psTTM": 4.4567,
+        "evEbitdaTTM": 24.1528,
+        "evRevenueTTM": 5.1617,
         "revenueGrowth3Y": 9.82,
         "revenueGrowth5Y": 14.34,
         "epsGrowth3Y": 234.4,
@@ -7437,8 +7437,8 @@
         }
       ],
       "market": {
-        "price": 240.7,
-        "date": "2026-10-16",
+        "price": 242.45,
+        "date": "2026-10-19",
         "currency": "USD",
         "source": "Finnhub EOD"
       }
@@ -7678,8 +7678,8 @@
         }
       ],
       "market": {
-        "price": 245.2,
-        "date": "2026-10-16",
+        "price": 247.09,
+        "date": "2026-10-19",
         "currency": "USD",
         "source": "Finnhub EOD"
       }
@@ -7919,8 +7919,8 @@
         }
       ],
       "market": {
-        "price": 325.15,
-        "date": "2026-10-16",
+        "price": 325.62,
+        "date": "2026-10-19",
         "currency": "USD",
         "source": "Finnhub EOD"
       }
@@ -7940,10 +7940,10 @@
       "metrics": {
         "beta": 1.1553042,
         "epsTTM": 0.056999999999999995,
-        "peTTM": 3982.7668,
-        "psTTM": 43.1479,
-        "evEbitdaTTM": 2520.8439,
-        "evRevenueTTM": 42.3571,
+        "peTTM": 4004.2227,
+        "psTTM": 43.3804,
+        "evEbitdaTTM": 2534.6777,
+        "evRevenueTTM": 42.5895,
         "revenueGrowth3Y": 29.01,
         "revenueGrowth5Y": 40.64,
         "epsGrowth3Y": null,
@@ -8160,8 +8160,8 @@
         }
       ],
       "market": {
-        "price": 227.39,
-        "date": "2026-10-16",
+        "price": 228.1,
+        "date": "2026-10-19",
         "currency": "USD",
         "source": "Finnhub EOD"
       }
@@ -8401,8 +8401,8 @@
         }
       ],
       "market": {
-        "price": 342,
-        "date": "2026-10-16",
+        "price": 346.95,
+        "date": "2026-10-19",
         "currency": "USD",
         "source": "Finnhub EOD"
       }
@@ -8642,8 +8642,8 @@
         }
       ],
       "market": {
-        "price": 709.33,
-        "date": "2026-10-16",
+        "price": 705.44,
+        "date": "2026-10-19",
         "currency": "USD",
         "source": "Finnhub EOD"
       }
@@ -8663,10 +8663,10 @@
       "metrics": {
         "beta": 1.6057726,
         "epsTTM": 3.1742,
-        "peTTM": 21.5158,
-        "psTTM": 6.0715,
-        "evEbitdaTTM": 17.0533,
-        "evRevenueTTM": 6.1792,
+        "peTTM": 21.2275,
+        "psTTM": 5.9901,
+        "evEbitdaTTM": 16.8288,
+        "evRevenueTTM": 6.0979,
         "revenueGrowth3Y": 12.64,
         "revenueGrowth5Y": 12.57,
         "epsGrowth3Y": 36.44,
@@ -8883,8 +8883,8 @@
         }
       ],
       "market": {
-        "price": 70.53,
-        "date": "2026-10-16",
+        "price": 69.85,
+        "date": "2026-10-19",
         "currency": "USD",
         "source": "Finnhub EOD"
       }
@@ -8904,10 +8904,10 @@
       "metrics": {
         "beta": 1.310891,
         "epsTTM": 4.5543000000000005,
-        "peTTM": 15.001,
-        "psTTM": 2.6019,
-        "evEbitdaTTM": 20.3556,
-        "evRevenueTTM": 2.7441,
+        "peTTM": 14.969,
+        "psTTM": 2.5963,
+        "evEbitdaTTM": 20.3144,
+        "evRevenueTTM": 2.7385,
         "revenueGrowth3Y": 17.73,
         "revenueGrowth5Y": 36.1,
         "epsGrowth3Y": null,
@@ -9124,8 +9124,8 @@
         }
       ],
       "market": {
-        "price": 70.35,
-        "date": "2026-10-16",
+        "price": 69.96,
+        "date": "2026-10-19",
         "currency": "USD",
         "source": "Finnhub EOD"
       }
@@ -9145,10 +9145,10 @@
       "metrics": {
         "beta": 2.690919,
         "epsTTM": 1.4829,
-        "peTTM": 113.1286,
-        "psTTM": 16.4377,
-        "evEbitdaTTM": 117.1932,
-        "evRevenueTTM": 16.3129,
+        "peTTM": 115.0639,
+        "psTTM": 16.7189,
+        "evEbitdaTTM": 119.2134,
+        "evRevenueTTM": 16.5941,
         "revenueGrowth3Y": 27.31,
         "revenueGrowth5Y": 31.58,
         "epsGrowth3Y": null,
@@ -9262,8 +9262,8 @@
         }
       ],
       "market": {
-        "price": 169.52,
-        "date": "2026-10-16",
+        "price": 171.06,
+        "date": "2026-10-19",
         "currency": "USD",
         "source": "Finnhub EOD"
       }
@@ -9283,10 +9283,10 @@
       "metrics": {
         "beta": 1.2710971,
         "epsTTM": 4.398,
-        "peTTM": 38.6507,
-        "psTTM": 7.904,
-        "evEbitdaTTM": 36.4003,
-        "evRevenueTTM": 7.5738,
+        "peTTM": 39.0579,
+        "psTTM": 7.9873,
+        "evEbitdaTTM": 36.8005,
+        "evRevenueTTM": 7.6571,
         "revenueGrowth3Y": 13.38,
         "revenueGrowth5Y": 29.37,
         "epsGrowth3Y": 13.13,
@@ -9479,8 +9479,8 @@
         }
       ],
       "market": {
-        "price": 173.7,
-        "date": "2026-10-16",
+        "price": 175.46,
+        "date": "2026-10-19",
         "currency": "USD",
         "source": "Finnhub EOD"
       }
@@ -9500,10 +9500,10 @@
       "metrics": {
         "beta": 1.9716579,
         "epsTTM": 1.9044,
-        "peTTM": 97.4592,
-        "psTTM": 5.1578,
-        "evEbitdaTTM": 46.8845,
-        "evRevenueTTM": 5.051,
+        "peTTM": 100.0561,
+        "psTTM": 5.2953,
+        "evEbitdaTTM": 48.1601,
+        "evRevenueTTM": 5.1885,
         "revenueGrowth3Y": 27.73,
         "revenueGrowth5Y": 36.58,
         "epsGrowth3Y": null,
@@ -9720,8 +9720,8 @@
         }
       ],
       "market": {
-        "price": 189.15,
-        "date": "2026-10-16",
+        "price": 193.53,
+        "date": "2026-10-19",
         "currency": "USD",
         "source": "Finnhub EOD"
       }
@@ -9961,8 +9961,8 @@
         }
       ],
       "market": {
-        "price": 176.98,
-        "date": "2026-10-16",
+        "price": 182.95,
+        "date": "2026-10-19",
         "currency": "USD",
         "source": "Finnhub EOD"
       }
@@ -9982,10 +9982,10 @@
       "metrics": {
         "beta": 2.2967274,
         "epsTTM": 3.03,
-        "peTTM": 75.6787,
-        "psTTM": 21.1405,
-        "evEbitdaTTM": 53.8362,
-        "evRevenueTTM": 21.2495,
+        "peTTM": 78.7546,
+        "psTTM": 21.9997,
+        "evEbitdaTTM": 56.0131,
+        "evRevenueTTM": 22.1088,
         "revenueGrowth3Y": 11.45,
         "revenueGrowth5Y": 22.51,
         "epsGrowth3Y": null,
@@ -10202,8 +10202,8 @@
         }
       ],
       "market": {
-        "price": 227.83,
-        "date": "2026-10-16",
+        "price": 237.09,
+        "date": "2026-10-19",
         "currency": "USD",
         "source": "Finnhub EOD"
       }
@@ -10443,8 +10443,8 @@
         }
       ],
       "market": {
-        "price": 232.9,
-        "date": "2026-10-16",
+        "price": 232.02,
+        "date": "2026-10-19",
         "currency": "USD",
         "source": "Finnhub EOD"
       }
@@ -10465,9 +10465,9 @@
         "beta": 1.6341201,
         "epsTTM": -81.4174,
         "peTTM": null,
-        "psTTM": 24.7684,
-        "evEbitdaTTM": 229.3666,
-        "evRevenueTTM": 24.6337,
+        "psTTM": 26.2011,
+        "evEbitdaTTM": 242.7063,
+        "evRevenueTTM": 26.0664,
         "revenueGrowth3Y": 19.48,
         "revenueGrowth5Y": 11.58,
         "epsGrowth3Y": null,
@@ -10684,8 +10684,8 @@
         }
       ],
       "market": {
-        "price": 824.13,
-        "date": "2026-10-16",
+        "price": 834.51,
+        "date": "2026-10-19",
         "currency": "USD",
         "source": "Finnhub EOD"
       }
@@ -10705,10 +10705,10 @@
       "metrics": {
         "beta": 1.0056822,
         "epsTTM": 3.3282,
-        "peTTM": 31.9133,
-        "psTTM": 6.6861,
-        "evEbitdaTTM": 27.371,
-        "evRevenueTTM": 7.0384,
+        "peTTM": 31.6489,
+        "psTTM": 6.6306,
+        "evEbitdaTTM": 27.1555,
+        "evRevenueTTM": 6.983,
         "revenueGrowth3Y": 3.57,
         "revenueGrowth5Y": 4.92,
         "epsGrowth3Y": 2.69,
@@ -10925,8 +10925,8 @@
         }
       ],
       "market": {
-        "price": 107.39,
-        "date": "2026-10-16",
+        "price": 106.5,
+        "date": "2026-10-19",
         "currency": "USD",
         "source": "Finnhub EOD"
       }
@@ -11166,8 +11166,8 @@
         }
       ],
       "market": {
-        "price": 332.73,
-        "date": "2026-10-16",
+        "price": 344.2,
+        "date": "2026-10-19",
         "currency": "USD",
         "source": "Finnhub EOD"
       }
@@ -11407,8 +11407,8 @@
         }
       ],
       "market": {
-        "price": 206.42,
-        "date": "2026-10-16",
+        "price": 206.08,
+        "date": "2026-10-19",
         "currency": "USD",
         "source": "Finnhub EOD"
       }
@@ -11428,10 +11428,10 @@
       "metrics": {
         "beta": 1.1300682,
         "epsTTM": 9.831900000000001,
-        "peTTM": 39.6663,
-        "psTTM": 5.0612,
-        "evEbitdaTTM": 26.6888,
-        "evRevenueTTM": 5.7315,
+        "peTTM": 40.0885,
+        "psTTM": 5.115,
+        "evEbitdaTTM": 26.9397,
+        "evRevenueTTM": 5.7854,
         "revenueGrowth3Y": 9.77,
         "revenueGrowth5Y": 8.98,
         "epsGrowth3Y": 19.38,
@@ -11648,8 +11648,8 @@
         }
       ],
       "market": {
-        "price": 391.25,
-        "date": "2026-10-16",
+        "price": 391.5,
+        "date": "2026-10-19",
         "currency": "USD",
         "source": "Finnhub EOD"
       }
@@ -11669,10 +11669,10 @@
       "metrics": {
         "beta": 1.2871158,
         "epsTTM": 8.730599999999999,
-        "peTTM": 71.5937,
-        "psTTM": 2.887,
-        "evEbitdaTTM": 38.3779,
-        "evRevenueTTM": 3.0571,
+        "peTTM": 71.4569,
+        "psTTM": 2.8814,
+        "evEbitdaTTM": 38.3087,
+        "evRevenueTTM": 3.0516,
         "revenueGrowth3Y": 18.6,
         "revenueGrowth5Y": 20.52,
         "epsGrowth3Y": 26.99,
@@ -11889,8 +11889,8 @@
         }
       ],
       "market": {
-        "price": 631.86,
-        "date": "2026-10-16",
+        "price": 618.41,
+        "date": "2026-10-19",
         "currency": "USD",
         "source": "Finnhub EOD"
       }
@@ -11910,10 +11910,10 @@
       "metrics": {
         "beta": 1.8624918,
         "epsTTM": 2.651,
-        "peTTM": 54.916,
-        "psTTM": 2.3481,
-        "evEbitdaTTM": 27.2223,
-        "evRevenueTTM": 2.4765,
+        "peTTM": 56.4433,
+        "psTTM": 2.4135,
+        "evEbitdaTTM": 27.9401,
+        "evRevenueTTM": 2.5418,
         "revenueGrowth3Y": 11.45,
         "revenueGrowth5Y": 11.96,
         "epsGrowth3Y": -7.99,
@@ -12130,8 +12130,8 @@
         }
       ],
       "market": {
-        "price": 148.86,
-        "date": "2026-10-16",
+        "price": 149.59,
+        "date": "2026-10-19",
         "currency": "USD",
         "source": "Finnhub EOD"
       }
@@ -12151,10 +12151,10 @@
       "metrics": {
         "beta": 1.137032,
         "epsTTM": 10.2635,
-        "peTTM": 27.7485,
-        "psTTM": 3.0748,
-        "evEbitdaTTM": 20.1427,
-        "evRevenueTTM": 3.8424,
+        "peTTM": 26.912,
+        "psTTM": 2.9821,
+        "evEbitdaTTM": 19.6569,
+        "evRevenueTTM": 3.7497,
         "revenueGrowth3Y": 1.47,
         "revenueGrowth5Y": 7.72,
         "epsGrowth3Y": null,
@@ -12371,8 +12371,8 @@
         }
       ],
       "market": {
-        "price": 271.37,
-        "date": "2026-10-16",
+        "price": 263.19,
+        "date": "2026-10-19",
         "currency": "USD",
         "source": "Finnhub EOD"
       }
@@ -12612,8 +12612,8 @@
         }
       ],
       "market": {
-        "price": 152.02,
-        "date": "2026-10-16",
+        "price": 149.7,
+        "date": "2026-10-19",
         "currency": "USD",
         "source": "Finnhub EOD"
       }
@@ -12633,10 +12633,10 @@
       "metrics": {
         "beta": 0.9975674,
         "epsTTM": 34.9802,
-        "peTTM": 25.7501,
-        "psTTM": 5.9308,
-        "evEbitdaTTM": 33.2985,
-        "evRevenueTTM": 5.6812,
+        "peTTM": 25.3934,
+        "psTTM": 5.8487,
+        "evEbitdaTTM": 32.817,
+        "evRevenueTTM": 5.5991,
         "revenueGrowth3Y": 8.68,
         "revenueGrowth5Y": null,
         "epsGrowth3Y": null,
@@ -12757,8 +12757,8 @@
         }
       ],
       "market": {
-        "price": 921.2,
-        "date": "2026-10-16",
+        "price": 908.44,
+        "date": "2026-10-19",
         "currency": "USD",
         "source": "Finnhub EOD"
       }
@@ -12778,10 +12778,10 @@
       "metrics": {
         "beta": 1.2124392,
         "epsTTM": 4.1093,
-        "peTTM": 25.6883,
-        "psTTM": 0.6584,
-        "evEbitdaTTM": 14.8637,
-        "evRevenueTTM": 1.3556,
+        "peTTM": 25.2166,
+        "psTTM": 0.6463,
+        "evEbitdaTTM": 14.7312,
+        "evRevenueTTM": 1.3435,
         "revenueGrowth3Y": -0.88,
         "revenueGrowth5Y": 27.56,
         "epsGrowth3Y": -5.68,
@@ -12998,8 +12998,8 @@
         }
       ],
       "market": {
-        "price": 103.75,
-        "date": "2026-10-16",
+        "price": 99.38,
+        "date": "2026-10-19",
         "currency": "USD",
         "source": "Finnhub EOD"
       }
@@ -13019,10 +13019,10 @@
       "metrics": {
         "beta": 0.62229496,
         "epsTTM": 4.4567,
-        "peTTM": 17.901,
-        "psTTM": 5.7998,
-        "evEbitdaTTM": 17.7799,
-        "evRevenueTTM": 9.5395,
+        "peTTM": 17.5959,
+        "psTTM": 5.701,
+        "evEbitdaTTM": 17.5956,
+        "evRevenueTTM": 9.4406,
         "revenueGrowth3Y": 9.36,
         "revenueGrowth5Y": 9.21,
         "epsGrowth3Y": 16.35,
@@ -13239,8 +13239,8 @@
         }
       ],
       "market": {
-        "price": 79.8,
-        "date": "2026-10-16",
+        "price": 78.17,
+        "date": "2026-10-19",
         "currency": "USD",
         "source": "Finnhub EOD"
       }
@@ -13384,8 +13384,8 @@
         }
       ],
       "market": {
-        "price": 27.97,
-        "date": "2026-10-16",
+        "price": 27.24,
+        "date": "2026-10-19",
         "currency": "USD",
         "source": "Finnhub EOD"
       }
@@ -13406,9 +13406,9 @@
         "beta": 0.5620132,
         "epsTTM": -1.7449000000000003,
         "peTTM": null,
-        "psTTM": 1.3892,
-        "evEbitdaTTM": 14.5344,
-        "evRevenueTTM": 2.0123,
+        "psTTM": 1.4074,
+        "evEbitdaTTM": 14.6663,
+        "evRevenueTTM": 2.0306,
         "revenueGrowth3Y": 1.44,
         "revenueGrowth5Y": 3.81,
         "epsGrowth3Y": -11.85,
@@ -13598,8 +13598,8 @@
       ],
       "filings": [],
       "market": {
-        "price": 80.14,
-        "date": "2026-10-16",
+        "price": 79.78,
+        "date": "2026-10-19",
         "currency": "USD",
         "source": "Finnhub EOD"
       }
@@ -13619,10 +13619,10 @@
       "metrics": {
         "beta": 0.3855404,
         "epsTTM": 3.8044,
-        "peTTM": 24.5991,
-        "psTTM": 1.7261,
-        "evEbitdaTTM": 54.661,
-        "evRevenueTTM": 1.8444,
+        "peTTM": 25.1317,
+        "psTTM": 1.7635,
+        "evEbitdaTTM": 55.7685,
+        "evRevenueTTM": 1.8818,
         "revenueGrowth3Y": 5.62,
         "revenueGrowth5Y": 7.37,
         "epsGrowth3Y": 17.04,
@@ -13670,8 +13670,8 @@
         }
       ],
       "market": {
-        "price": 109.11,
-        "date": "2026-10-16",
+        "price": 108.57,
+        "date": "2026-10-19",
         "currency": "USD",
         "source": "Finnhub EOD"
       }
@@ -13692,9 +13692,9 @@
         "beta": 2.095049,
         "epsTTM": -0.13219999999999998,
         "peTTM": null,
-        "psTTM": 1.5577,
-        "evEbitdaTTM": 46.0021,
-        "evRevenueTTM": 2.1429,
+        "psTTM": 1.6106,
+        "evEbitdaTTM": 47.1375,
+        "evRevenueTTM": 2.1958,
         "revenueGrowth3Y": 5.33,
         "revenueGrowth5Y": 7.76,
         "epsGrowth3Y": null,
@@ -13884,8 +13884,8 @@
       ],
       "filings": [],
       "market": {
-        "price": 8.47,
-        "date": "2026-10-16",
+        "price": 8.53,
+        "date": "2026-10-19",
         "currency": "USD",
         "source": "Finnhub EOD"
       }
@@ -13906,9 +13906,9 @@
         "beta": 1.7520108,
         "epsTTM": -1.6972000000000003,
         "peTTM": null,
-        "psTTM": 11.305,
+        "psTTM": 11.725,
         "evEbitdaTTM": null,
-        "evRevenueTTM": 6.9008,
+        "evRevenueTTM": 7.3208,
         "revenueGrowth3Y": 9.07,
         "revenueGrowth5Y": null,
         "epsGrowth3Y": null,
@@ -14069,8 +14069,8 @@
       ],
       "filings": [],
       "market": {
-        "price": 4.08,
-        "date": "2026-10-16",
+        "price": 4.2,
+        "date": "2026-10-19",
         "currency": "USD",
         "source": "Finnhub EOD"
       }
@@ -14088,12 +14088,12 @@
       "dataBasis": "basic-metrics",
       "reportCurrency": "USD",
       "metrics": {
-        "beta": 3.1972263,
+        "beta": 3.3410814,
         "epsTTM": -0.357,
         "peTTM": null,
-        "psTTM": 17.4246,
+        "psTTM": 17.6981,
         "evEbitdaTTM": null,
-        "evRevenueTTM": 14.8085,
+        "evRevenueTTM": 15.082,
         "revenueGrowth3Y": 9.59,
         "revenueGrowth5Y": null,
         "epsGrowth3Y": null,
@@ -14254,8 +14254,8 @@
       ],
       "filings": [],
       "market": {
-        "price": 4.93,
-        "date": "2026-10-16",
+        "price": 5.01,
+        "date": "2026-10-19",
         "currency": "USD",
         "source": "Finnhub EOD"
       }
@@ -14275,10 +14275,10 @@
       "metrics": {
         "beta": 1.3998013,
         "epsTTM": 2.8874,
-        "peTTM": 28.1167,
-        "psTTM": 4.1974,
+        "peTTM": 27.8332,
+        "psTTM": 4.1551,
         "evEbitdaTTM": null,
-        "evRevenueTTM": 3.9637,
+        "evRevenueTTM": 3.9214,
         "revenueGrowth3Y": 61.35,
         "revenueGrowth5Y": 54.13,
         "epsGrowth3Y": null,
@@ -14468,8 +14468,8 @@
       ],
       "filings": [],
       "market": {
-        "price": 12.42,
-        "date": "2026-10-16",
+        "price": 12.92,
+        "date": "2026-10-19",
         "currency": "USD",
         "source": "Finnhub EOD"
       }
@@ -14525,10 +14525,10 @@
       "metrics": {
         "beta": 2.17915,
         "epsTTM": 2.1323,
-        "peTTM": 24.6182,
-        "psTTM": 3.5638,
-        "evEbitdaTTM": 19.234,
-        "evRevenueTTM": 2.9583,
+        "peTTM": 26.0972,
+        "psTTM": 3.7779,
+        "evEbitdaTTM": 20.626,
+        "evRevenueTTM": 3.1724,
         "revenueGrowth3Y": 32.35,
         "revenueGrowth5Y": 41.91,
         "epsGrowth3Y": 32.43,
@@ -14745,8 +14745,8 @@
         }
       ],
       "market": {
-        "price": 53.1,
-        "date": "2026-10-16",
+        "price": 56.09,
+        "date": "2026-10-19",
         "currency": "USD",
         "source": "Finnhub EOD"
       }
@@ -14766,10 +14766,10 @@
       "metrics": {
         "beta": -0.060476195,
         "epsTTM": 15.5571,
-        "peTTM": 8.5194,
-        "psTTM": 1.7402,
-        "evEbitdaTTM": 6.6514,
-        "evRevenueTTM": 1.4542,
+        "peTTM": 8.3628,
+        "psTTM": 1.7082,
+        "evEbitdaTTM": 6.505,
+        "evRevenueTTM": 1.4222,
         "revenueGrowth3Y": 49,
         "revenueGrowth5Y": 48.65,
         "epsGrowth3Y": 44.45,
@@ -14959,8 +14959,8 @@
       ],
       "filings": [],
       "market": {
-        "price": 80.97,
-        "date": "2026-10-16",
+        "price": 81.39,
+        "date": "2026-10-19",
         "currency": "USD",
         "source": "Finnhub EOD"
       }
@@ -14978,12 +14978,12 @@
       "dataBasis": "basic-metrics",
       "reportCurrency": "CNY",
       "metrics": {
-        "beta": 1.2857581,
+        "beta": 1.2858548,
         "epsTTM": 5.1251,
-        "peTTM": 14.5588,
-        "psTTM": 0.164,
-        "evEbitdaTTM": 139.0548,
-        "evRevenueTTM": 0.1494,
+        "peTTM": 14.713,
+        "psTTM": 0.1657,
+        "evEbitdaTTM": 140.6723,
+        "evRevenueTTM": 0.1511,
         "revenueGrowth3Y": 7.76,
         "revenueGrowth5Y": 11.91,
         "epsGrowth3Y": 26.41,
@@ -15173,8 +15173,8 @@
       ],
       "filings": [],
       "market": {
-        "price": 27.01,
-        "date": "2026-10-16",
+        "price": 26.78,
+        "date": "2026-10-19",
         "currency": "USD",
         "source": "Finnhub EOD"
       }
@@ -15194,10 +15194,10 @@
       "metrics": {
         "beta": 0.6501634,
         "epsTTM": 10.0807,
-        "peTTM": 16.3697,
-        "psTTM": 4.5643,
-        "evEbitdaTTM": 12.0592,
-        "evRevenueTTM": 4.4768,
+        "peTTM": 16.4802,
+        "psTTM": 4.5952,
+        "evEbitdaTTM": 12.1422,
+        "evRevenueTTM": 4.5076,
         "revenueGrowth3Y": 5.29,
         "revenueGrowth5Y": 8.86,
         "epsGrowth3Y": 19.35,
@@ -15387,8 +15387,8 @@
       ],
       "filings": [],
       "market": {
-        "price": 126.06,
-        "date": "2026-10-16",
+        "price": 125.25,
+        "date": "2026-10-19",
         "currency": "USD",
         "source": "Finnhub EOD"
       }
@@ -15408,10 +15408,10 @@
       "metrics": {
         "beta": 0.7337047,
         "epsTTM": 2.8512,
-        "peTTM": 9.1679,
-        "psTTM": 2.4095,
-        "evEbitdaTTM": 7.9667,
-        "evRevenueTTM": 2.3434,
+        "peTTM": 9.506,
+        "psTTM": 2.4984,
+        "evEbitdaTTM": 8.2783,
+        "evRevenueTTM": 2.435,
         "revenueGrowth3Y": 5.1,
         "revenueGrowth5Y": 2.45,
         "epsGrowth3Y": 46.26,
@@ -15601,8 +15601,8 @@
       ],
       "filings": [],
       "market": {
-        "price": 8.63,
-        "date": "2026-10-16",
+        "price": 8.67,
+        "date": "2026-10-19",
         "currency": "USD",
         "source": "Finnhub EOD"
       }
@@ -15622,10 +15622,10 @@
       "metrics": {
         "beta": 0.5880552,
         "epsTTM": 3.3696,
-        "peTTM": 25.6861,
-        "psTTM": 1.2567,
-        "evEbitdaTTM": 173.6521,
-        "evRevenueTTM": 1.3951,
+        "peTTM": 25.9184,
+        "psTTM": 1.268,
+        "evEbitdaTTM": 175.0664,
+        "evRevenueTTM": 1.4065,
         "revenueGrowth3Y": 11.49,
         "revenueGrowth5Y": 20.39,
         "epsGrowth3Y": null,
@@ -15815,8 +15815,8 @@
       ],
       "filings": [],
       "market": {
-        "price": 14.07,
-        "date": "2026-10-16",
+        "price": 14.01,
+        "date": "2026-10-19",
         "currency": "USD",
         "source": "Finnhub EOD"
       }
@@ -15837,9 +15837,9 @@
         "beta": 0.87973005,
         "epsTTM": -1.9408,
         "peTTM": null,
-        "psTTM": 0.4662,
-        "evEbitdaTTM": 574.0939,
-        "evRevenueTTM": 0.4676,
+        "psTTM": 0.4819,
+        "evEbitdaTTM": 593.4553,
+        "evRevenueTTM": 0.4833,
         "revenueGrowth3Y": 21.09,
         "revenueGrowth5Y": 40.02,
         "epsGrowth3Y": null,
@@ -16029,8 +16029,8 @@
       ],
       "filings": [],
       "market": {
-        "price": 3.43,
-        "date": "2026-10-16",
+        "price": 3.39,
+        "date": "2026-10-19",
         "currency": "USD",
         "source": "Finnhub EOD"
       }
@@ -16051,9 +16051,9 @@
         "beta": 0.96702623,
         "epsTTM": -1.6317,
         "peTTM": null,
-        "psTTM": 0.7913,
-        "evEbitdaTTM": 101.6165,
-        "evRevenueTTM": 1.1127,
+        "psTTM": 0.7906,
+        "evEbitdaTTM": 101.5582,
+        "evRevenueTTM": 1.112,
         "revenueGrowth3Y": 41.89,
         "revenueGrowth5Y": 67.35,
         "epsGrowth3Y": null,
@@ -16243,8 +16243,8 @@
       ],
       "filings": [],
       "market": {
-        "price": 9.23,
-        "date": "2026-10-16",
+        "price": 9.21,
+        "date": "2026-10-19",
         "currency": "USD",
         "source": "Finnhub EOD"
       }
@@ -16262,12 +16262,12 @@
       "dataBasis": "basic-metrics",
       "reportCurrency": "CNY",
       "metrics": {
-        "beta": 1.362442,
+        "beta": 1.3626243,
         "epsTTM": -2.2845,
         "peTTM": null,
-        "psTTM": 0.7414,
-        "evEbitdaTTM": 17.5904,
-        "evRevenueTTM": 0.5762,
+        "psTTM": 0.7461,
+        "evEbitdaTTM": 17.7344,
+        "evRevenueTTM": 0.5809,
         "revenueGrowth3Y": 35.36,
         "revenueGrowth5Y": 64.04,
         "epsGrowth3Y": null,
@@ -16457,8 +16457,8 @@
       ],
       "filings": [],
       "market": {
-        "price": 11.34,
-        "date": "2026-10-16",
+        "price": 11.29,
+        "date": "2026-10-19",
         "currency": "USD",
         "source": "Finnhub EOD"
       }
@@ -16502,10 +16502,10 @@
       "metrics": {
         "beta": 1.1040986,
         "epsTTM": 8.723299999999998,
-        "peTTM": 38.8778,
-        "psTTM": 10.7375,
-        "evEbitdaTTM": 30.1104,
-        "evRevenueTTM": 10.8335,
+        "peTTM": 38.7918,
+        "psTTM": 10.7138,
+        "evEbitdaTTM": 30.0444,
+        "evRevenueTTM": 10.8097,
         "revenueGrowth3Y": 1.81,
         "revenueGrowth5Y": 8.68,
         "epsGrowth3Y": 6.89,
@@ -16722,8 +16722,8 @@
         }
       ],
       "market": {
-        "price": 343.46,
-        "date": "2026-10-16",
+        "price": 342.94,
+        "date": "2026-10-19",
         "currency": "USD",
         "source": "Finnhub EOD"
       }
@@ -16743,10 +16743,10 @@
       "metrics": {
         "beta": 1.7704767,
         "epsTTM": 8.6404,
-        "peTTM": 19.8494,
-        "psTTM": 4.1704,
-        "evEbitdaTTM": 16.6117,
-        "evRevenueTTM": 4.4141,
+        "peTTM": 20.4134,
+        "psTTM": 4.2889,
+        "evEbitdaTTM": 17.0576,
+        "evRevenueTTM": 4.5325,
         "revenueGrowth3Y": 0.06,
         "revenueGrowth5Y": 15.3,
         "epsGrowth3Y": -23.9,
@@ -16963,8 +16963,8 @@
         }
       ],
       "market": {
-        "price": 172.11,
-        "date": "2026-10-16",
+        "price": 173.53,
+        "date": "2026-10-19",
         "currency": "USD",
         "source": "Finnhub EOD"
       }
@@ -16984,10 +16984,10 @@
       "metrics": {
         "beta": 1.4179674,
         "epsTTM": 6.6129,
-        "peTTM": 41.7209,
-        "psTTM": 12.9797,
-        "evEbitdaTTM": 28.0383,
-        "evRevenueTTM": 13.5139,
+        "peTTM": 42.3245,
+        "psTTM": 13.1675,
+        "evEbitdaTTM": 28.4279,
+        "evRevenueTTM": 13.7017,
         "revenueGrowth3Y": -4.07,
         "revenueGrowth5Y": 4.1,
         "epsGrowth3Y": -16.62,
@@ -17204,8 +17204,8 @@
         }
       ],
       "market": {
-        "price": 276.48,
-        "date": "2026-10-16",
+        "price": 276.15,
+        "date": "2026-10-19",
         "currency": "USD",
         "source": "Finnhub EOD"
       }
@@ -17225,10 +17225,10 @@
       "metrics": {
         "beta": 1.2814292,
         "epsTTM": 8.4269,
-        "peTTM": 46.3401,
-        "psTTM": 13.8035,
-        "evEbitdaTTM": 34.9256,
-        "evRevenueTTM": 14.3046,
+        "peTTM": 46.288,
+        "psTTM": 13.788,
+        "evEbitdaTTM": 34.8876,
+        "evRevenueTTM": 14.289,
         "revenueGrowth3Y": -2.84,
         "revenueGrowth5Y": 14.49,
         "epsGrowth3Y": -4.58,
@@ -17445,8 +17445,8 @@
         }
       ],
       "market": {
-        "price": 395.44,
-        "date": "2026-10-16",
+        "price": 394.35,
+        "date": "2026-10-19",
         "currency": "USD",
         "source": "Finnhub EOD"
       }
@@ -17686,8 +17686,8 @@
         }
       ],
       "market": {
-        "price": 229.33,
-        "date": "2026-10-16",
+        "price": 230.19,
+        "date": "2026-10-19",
         "currency": "USD",
         "source": "Finnhub EOD"
       }
@@ -17707,10 +17707,10 @@
       "metrics": {
         "beta": 1.8692489,
         "epsTTM": 0.872,
-        "peTTM": 83.8236,
-        "psTTM": 7.8287,
-        "evEbitdaTTM": 37.3998,
-        "evRevenueTTM": 8.8222,
+        "peTTM": 85.4921,
+        "psTTM": 7.9846,
+        "evEbitdaTTM": 38.0604,
+        "evRevenueTTM": 8.9781,
         "revenueGrowth3Y": -17.65,
         "revenueGrowth5Y": -2.82,
         "epsGrowth3Y": -52.81,
@@ -17927,8 +17927,8 @@
         }
       ],
       "market": {
-        "price": 73.85,
-        "date": "2026-10-16",
+        "price": 74.43,
+        "date": "2026-10-19",
         "currency": "USD",
         "source": "Finnhub EOD"
       }
@@ -17948,10 +17948,10 @@
       "metrics": {
         "beta": 1.73546,
         "epsTTM": 16.4313,
-        "peTTM": 73.9665,
-        "psTTM": 18.1798,
-        "evEbitdaTTM": 58.4832,
-        "evRevenueTTM": 17.8726,
+        "peTTM": 76.7966,
+        "psTTM": 18.8754,
+        "evEbitdaTTM": 60.7594,
+        "evRevenueTTM": 18.5682,
         "revenueGrowth3Y": 15.86,
         "revenueGrowth5Y": 27,
         "epsGrowth3Y": 12.47,
@@ -18168,8 +18168,8 @@
         }
       ],
       "market": {
-        "price": 1210.86,
-        "date": "2026-10-16",
+        "price": 1253.66,
+        "date": "2026-10-19",
         "currency": "USD",
         "source": "Finnhub EOD"
       }
@@ -18189,10 +18189,10 @@
       "metrics": {
         "beta": 2.1749585,
         "epsTTM": 1.5507,
-        "peTTM": 44.491,
-        "psTTM": 4.5239,
-        "evEbitdaTTM": 40.6994,
-        "evRevenueTTM": 4.6801,
+        "peTTM": 44.9821,
+        "psTTM": 4.5738,
+        "evEbitdaTTM": 41.1336,
+        "evRevenueTTM": 4.7301,
         "revenueGrowth3Y": -10.37,
         "revenueGrowth5Y": 2.67,
         "epsGrowth3Y": -58.94,
@@ -18409,8 +18409,8 @@
         }
       ],
       "market": {
-        "price": 72.02,
-        "date": "2026-10-16",
+        "price": 73.12,
+        "date": "2026-10-19",
         "currency": "USD",
         "source": "Finnhub EOD"
       }
@@ -18650,8 +18650,8 @@
         }
       ],
       "market": {
-        "price": 319.51,
-        "date": "2026-10-16",
+        "price": 325.86,
+        "date": "2026-10-19",
         "currency": "USD",
         "source": "Finnhub EOD"
       }
@@ -18891,8 +18891,8 @@
         }
       ],
       "market": {
-        "price": 454.63,
-        "date": "2026-10-16",
+        "price": 454.58,
+        "date": "2026-10-19",
         "currency": "USD",
         "source": "Finnhub EOD"
       }
@@ -18913,9 +18913,9 @@
         "beta": 1.3679769,
         "epsTTM": -0.5828,
         "peTTM": null,
-        "psTTM": 41.9951,
+        "psTTM": 42.4851,
         "evEbitdaTTM": null,
-        "evRevenueTTM": 42.6346,
+        "evRevenueTTM": 43.1246,
         "revenueGrowth3Y": 30.51,
         "revenueGrowth5Y": 38.13,
         "epsGrowth3Y": null,
@@ -19132,8 +19132,8 @@
         }
       ],
       "market": {
-        "price": 296.3,
-        "date": "2026-10-16",
+        "price": 297.58,
+        "date": "2026-10-19",
         "currency": "USD",
         "source": "Finnhub EOD"
       }
@@ -19154,9 +19154,9 @@
         "beta": 0.8780654,
         "epsTTM": -0.3953,
         "peTTM": null,
-        "psTTM": 9.8463,
+        "psTTM": 10.0407,
         "evEbitdaTTM": null,
-        "evRevenueTTM": 10.0754,
+        "evRevenueTTM": 10.2698,
         "revenueGrowth3Y": 27.51,
         "revenueGrowth5Y": 37.87,
         "epsGrowth3Y": null,
@@ -19373,8 +19373,8 @@
         }
       ],
       "market": {
-        "price": 207.38,
-        "date": "2026-10-16",
+        "price": 212.53,
+        "date": "2026-10-19",
         "currency": "USD",
         "source": "Finnhub EOD"
       }
@@ -19394,10 +19394,10 @@
       "metrics": {
         "beta": 1.0028756,
         "epsTTM": 2.8383000000000003,
-        "peTTM": 58.5151,
-        "psTTM": 16.4855,
-        "evEbitdaTTM": 46.767,
-        "evRevenueTTM": 16.1616,
+        "peTTM": 58.9113,
+        "psTTM": 16.5971,
+        "evEbitdaTTM": 47.09,
+        "evRevenueTTM": 16.2732,
         "revenueGrowth3Y": 15.46,
         "revenueGrowth5Y": 21.25,
         "epsGrowth3Y": 31.56,
@@ -19614,8 +19614,8 @@
         }
       ],
       "market": {
-        "price": 169.13,
-        "date": "2026-10-16",
+        "price": 171.5,
+        "date": "2026-10-19",
         "currency": "USD",
         "source": "Finnhub EOD"
       }
@@ -19633,12 +19633,12 @@
       "dataBasis": "basic-metrics",
       "reportCurrency": "EUR",
       "metrics": {
-        "beta": 1.0992976,
+        "beta": 1.1160682,
         "epsTTM": 6.681,
-        "peTTM": 30.14,
-        "psTTM": 6.1524,
-        "evEbitdaTTM": 20.4764,
-        "evRevenueTTM": 6.1523,
+        "peTTM": 29.836,
+        "psTTM": 6.0903,
+        "evEbitdaTTM": 20.2699,
+        "evRevenueTTM": 6.0902,
         "revenueGrowth3Y": 7.62,
         "revenueGrowth5Y": 6.12,
         "epsGrowth3Y": 46.36,
@@ -19828,8 +19828,8 @@
       ],
       "filings": [],
       "market": {
-        "price": 224.29,
-        "date": "2026-10-16",
+        "price": 226.03,
+        "date": "2026-10-19",
         "currency": "USD",
         "source": "Finnhub EOD"
       }
@@ -19850,9 +19850,9 @@
         "beta": 1.1690701,
         "epsTTM": -7.9847,
         "peTTM": null,
-        "psTTM": 39.0653,
-        "evEbitdaTTM": 98.1078,
-        "evRevenueTTM": 38.5738,
+        "psTTM": 40.3321,
+        "evEbitdaTTM": 101.3299,
+        "evRevenueTTM": 39.8407,
         "revenueGrowth3Y": -53.44,
         "revenueGrowth5Y": 19.34,
         "epsGrowth3Y": null,
@@ -20069,8 +20069,8 @@
         }
       ],
       "market": {
-        "price": 218.01,
-        "date": "2026-10-16",
+        "price": 226.89,
+        "date": "2026-10-19",
         "currency": "USD",
         "source": "Finnhub EOD"
       }
@@ -20090,10 +20090,10 @@
       "metrics": {
         "beta": 0.41738513,
         "epsTTM": 29.7962,
-        "peTTM": 44.3003,
-        "psTTM": 14.8535,
-        "evEbitdaTTM": 34.4028,
-        "evRevenueTTM": 15.4304,
+        "peTTM": 43.9725,
+        "psTTM": 14.7436,
+        "evEbitdaTTM": 34.1578,
+        "evRevenueTTM": 15.3205,
         "revenueGrowth3Y": 31.69,
         "revenueGrowth5Y": 21.58,
         "epsGrowth3Y": 49.25,
@@ -20310,8 +20310,8 @@
         }
       ],
       "market": {
-        "price": 1257.03,
-        "date": "2026-10-16",
+        "price": 1240.34,
+        "date": "2026-10-19",
         "currency": "USD",
         "source": "Finnhub EOD"
       }
@@ -20329,12 +20329,12 @@
       "dataBasis": "basic-metrics",
       "reportCurrency": "DKK",
       "metrics": {
-        "beta": 1.9584874,
+        "beta": 1.9481426,
         "epsTTM": 26.180699999999998,
-        "peTTM": 10.0292,
-        "psTTM": 3.545,
-        "evEbitdaTTM": 7.4649,
-        "evRevenueTTM": 3.8353,
+        "peTTM": 9.8827,
+        "psTTM": 3.4932,
+        "evEbitdaTTM": 7.3641,
+        "evRevenueTTM": 3.7835,
         "revenueGrowth3Y": 20.43,
         "revenueGrowth5Y": 19.48,
         "epsGrowth3Y": 23.53,
@@ -20524,8 +20524,8 @@
       ],
       "filings": [],
       "market": {
-        "price": 38.83,
-        "date": "2026-10-16",
+        "price": 38.42,
+        "date": "2026-10-19",
         "currency": "USD",
         "source": "Finnhub EOD"
       }
@@ -20545,10 +20545,10 @@
       "metrics": {
         "beta": 0.20530547,
         "epsTTM": 6.5886,
-        "peTTM": 38.2649,
-        "psTTM": 6.2,
-        "evEbitdaTTM": 19.9389,
-        "evRevenueTTM": 6.7082,
+        "peTTM": 37.7019,
+        "psTTM": 6.1087,
+        "evEbitdaTTM": 19.6638,
+        "evRevenueTTM": 6.6157,
         "revenueGrowth3Y": 5.6,
         "revenueGrowth5Y": 2.67,
         "epsGrowth3Y": 17.88,
@@ -20765,8 +20765,8 @@
         }
       ],
       "market": {
-        "price": 255.56,
-        "date": "2026-10-16",
+        "price": 253.79,
+        "date": "2026-10-19",
         "currency": "USD",
         "source": "Finnhub EOD"
       }
@@ -20786,10 +20786,10 @@
       "metrics": {
         "beta": 0.12160154,
         "epsTTM": 1.2521,
-        "peTTM": 113.4837,
-        "psTTM": 5.4092,
-        "evEbitdaTTM": 42.4813,
-        "evRevenueTTM": 6.1161,
+        "peTTM": 113.5848,
+        "psTTM": 5.414,
+        "evEbitdaTTM": 42.5148,
+        "evRevenueTTM": 6.1209,
         "revenueGrowth3Y": 3.12,
         "revenueGrowth5Y": 9.38,
         "epsGrowth3Y": 8.43,
@@ -21006,8 +21006,8 @@
         }
       ],
       "market": {
-        "price": 145.95,
-        "date": "2026-10-16",
+        "price": 143.63,
+        "date": "2026-10-19",
         "currency": "USD",
         "source": "Finnhub EOD"
       }
@@ -21027,10 +21027,10 @@
       "metrics": {
         "beta": 0.30800542,
         "epsTTM": 0.7554000000000001,
-        "peTTM": 38.9098,
-        "psTTM": 2.6469,
-        "evEbitdaTTM": 25.2394,
-        "evRevenueTTM": 3.6237,
+        "peTTM": 38.5613,
+        "psTTM": 2.6232,
+        "evEbitdaTTM": 25.0742,
+        "evRevenueTTM": 3.6,
         "revenueGrowth3Y": -14.8,
         "revenueGrowth5Y": 8.48,
         "epsGrowth3Y": -37.13,
@@ -21247,8 +21247,8 @@
         }
       ],
       "market": {
-        "price": 29.58,
-        "date": "2026-10-16",
+        "price": 29.44,
+        "date": "2026-10-19",
         "currency": "USD",
         "source": "Finnhub EOD"
       }
@@ -21488,8 +21488,8 @@
         }
       ],
       "market": {
-        "price": 285.42,
-        "date": "2026-10-16",
+        "price": 282.68,
+        "date": "2026-10-19",
         "currency": "USD",
         "source": "Finnhub EOD"
       }
@@ -21729,8 +21729,8 @@
         }
       ],
       "market": {
-        "price": 432.49,
-        "date": "2026-10-16",
+        "price": 424.94,
+        "date": "2026-10-19",
         "currency": "USD",
         "source": "Finnhub EOD"
       }
